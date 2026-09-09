@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/router-compat";
 import { IndustryCard, StandardCard } from "@/components/site/Cards";
 import { CertificationProcess } from "@/components/site/CertificationProcess";
 import { CTASection } from "@/components/site/CTASection";

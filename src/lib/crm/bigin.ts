@@ -48,10 +48,24 @@ export async function submitEnquiry(payload: EnquiryPayload): Promise<EnquiryRes
 
     const response = await fetch("/api/public/enquiry", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify(payload),
     });
-    if (!response.ok) return { ok: false, error: "We could not submit your enquiry." };
+
+    if (!response.ok) {
+      // Laravel returns 422 with { message, errors: { field: [msg] } }.
+      const problem = (await response.json().catch(() => null)) as
+        | { message?: string; errors?: Record<string, string[]> }
+        | null;
+      const firstError = problem?.errors
+        ? Object.values(problem.errors)[0]?.[0]
+        : undefined;
+      return {
+        ok: false,
+        error: firstError ?? problem?.message ?? "We could not submit your enquiry.",
+      };
+    }
+
     const data = (await response.json()) as { reference?: string };
     return { ok: true, reference: data.reference ?? "received" };
   } catch {

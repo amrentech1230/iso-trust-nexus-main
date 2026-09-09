@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@/lib/router-compat";
 import { ArrowRight, Check } from "lucide-react";
 import { AppLink } from "@/components/AppLink";
 import { CourseCard } from "@/components/site/Cards";

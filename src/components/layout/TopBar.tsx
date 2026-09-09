@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Globe, Mail, Phone } from "lucide-react";
 import { site, telHref } from "@/config/site";
 import { topbarLinks } from "@/config/navigation";
