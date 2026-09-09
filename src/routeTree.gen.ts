@@ -23,6 +23,7 @@ import { Route as ResourcesFurtherTopicsRouteImport } from './routes/resources.f
 import { Route as ResourcesKnowledgeBaseRouteImport } from './routes/resources.knowledge-base'
 import { Route as ResourcesSitemapRouteImport } from './routes/resources.sitemap'
 import { Route as TrainingIndexRouteImport } from './routes/training.index'
+import { Route as TrainingSuccessRouteImport } from './routes/training.success'
 import { Route as TrainingSlugRouteImport } from './routes/training.$slug'
 import { Route as ResourcesBlogIndexRouteImport } from './routes/resources.blog.index'
 import { Route as ResourcesBlogSlugRouteImport } from './routes/resources.blog.$slug'
@@ -102,6 +103,11 @@ const TrainingIndexRoute = TrainingIndexRouteImport.update({
   path: '/training/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingSuccessRoute = TrainingSuccessRouteImport.update({
+  id: '/training/success',
+  path: '/training/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrainingSlugRoute = TrainingSlugRouteImport.update({
   id: '/training/$slug',
   path: '/training/$slug',
@@ -152,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/resources/knowledge-base': typeof ResourcesKnowledgeBaseRoute
   '/resources/sitemap': typeof ResourcesSitemapRoute
   '/training/$slug': typeof TrainingSlugRoute
+  '/training/success': typeof TrainingSuccessRoute
   '/certification/': typeof CertificationIndexRoute
   '/contact/': typeof ContactIndexRoute
   '/training/': typeof TrainingIndexRoute
@@ -175,6 +182,7 @@ export interface FileRoutesByTo {
   '/resources/knowledge-base': typeof ResourcesKnowledgeBaseRoute
   '/resources/sitemap': typeof ResourcesSitemapRoute
   '/training/$slug': typeof TrainingSlugRoute
+  '/training/success': typeof TrainingSuccessRoute
   '/certification': typeof CertificationIndexRoute
   '/contact': typeof ContactIndexRoute
   '/training': typeof TrainingIndexRoute
@@ -199,6 +207,7 @@ export interface FileRoutesById {
   '/resources/knowledge-base': typeof ResourcesKnowledgeBaseRoute
   '/resources/sitemap': typeof ResourcesSitemapRoute
   '/training/$slug': typeof TrainingSlugRoute
+  '/training/success': typeof TrainingSuccessRoute
   '/certification/': typeof CertificationIndexRoute
   '/contact/': typeof ContactIndexRoute
   '/training/': typeof TrainingIndexRoute
@@ -224,6 +233,7 @@ export interface FileRouteTypes {
     | '/resources/knowledge-base'
     | '/resources/sitemap'
     | '/training/$slug'
+    | '/training/success'
     | '/certification/'
     | '/contact/'
     | '/training/'
@@ -247,6 +257,7 @@ export interface FileRouteTypes {
     | '/resources/knowledge-base'
     | '/resources/sitemap'
     | '/training/$slug'
+    | '/training/success'
     | '/certification'
     | '/contact'
     | '/training'
@@ -270,6 +281,7 @@ export interface FileRouteTypes {
     | '/resources/knowledge-base'
     | '/resources/sitemap'
     | '/training/$slug'
+    | '/training/success'
     | '/certification/'
     | '/contact/'
     | '/training/'
@@ -294,6 +306,7 @@ export interface RootRouteChildren {
   ResourcesKnowledgeBaseRoute: typeof ResourcesKnowledgeBaseRoute
   ResourcesSitemapRoute: typeof ResourcesSitemapRoute
   TrainingSlugRoute: typeof TrainingSlugRoute
+  TrainingSuccessRoute: typeof TrainingSuccessRoute
   CertificationIndexRoute: typeof CertificationIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
   TrainingIndexRoute: typeof TrainingIndexRoute
@@ -412,6 +425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training/success': {
+      id: '/training/success'
+      path: '/training/success'
+      fullPath: '/training/success'
+      preLoaderRoute: typeof TrainingSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/blog/': {
       id: '/resources/blog/'
       path: '/resources/blog'
@@ -470,6 +490,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesKnowledgeBaseRoute: ResourcesKnowledgeBaseRoute,
   ResourcesSitemapRoute: ResourcesSitemapRoute,
   TrainingSlugRoute: TrainingSlugRoute,
+  TrainingSuccessRoute: TrainingSuccessRoute,
   CertificationIndexRoute: CertificationIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
   TrainingIndexRoute: TrainingIndexRoute,
