@@ -62,7 +62,7 @@ touch database/database.sqlite
 #     then create the database:
 #     mysql -u root -e "CREATE DATABASE traibcert CHARACTER SET utf8mb4;"
 
-# 4. Create the schema and seed the courses (with PLACEHOLDER prices)
+# 4. Create the schema and seed courses + the admin user
 php artisan migrate --seed
 
 # 5. Run the API (http://localhost:8000)
@@ -103,6 +103,60 @@ display only — the authoritative price at checkout always comes from this API.
 
 ---
 
+## Admin panel (Filament)
+
+A [Filament](https://filamentphp.com) admin panel is served at **`/admin`**. It
+lets staff manage courses (including **prices**, so you no longer edit code) and
+review orders and enrollments.
+
+### One-time install
+
+Filament ships assets that must be published, so after `composer install` run:
+
+```bash
+php artisan filament:install --panels
+php artisan storage:link
+```
+
+> `composer install` needs internet access to packagist and could not run in
+> the build sandbox — run these in your own environment.
+
+### Create / open the panel
+
+```bash
+# Create an admin login interactively (recommended)
+php artisan make:filament-user
+
+# ...or rely on the seeded admin from `php artisan migrate --seed`,
+# configured via ADMIN_EMAIL / ADMIN_PASSWORD in .env
+```
+
+Then start the server and log in:
+
+```bash
+php artisan serve
+# open http://localhost:8000/admin
+```
+
+Default seeded credentials (⚠️ change immediately):
+
+- **Email:** `admin@traibcert.org.uk` (or your `ADMIN_EMAIL`)
+- **Password:** `password` (or your `ADMIN_PASSWORD`)
+
+### What the panel provides
+
+| Section | Resource | Capability |
+| --- | --- | --- |
+| Catalogue | **Courses** | Full create / edit / delete; **edit prices in £** (stored as pence) and toggle visibility |
+| Sales | **Orders** | Read-only: status, amount, buyer, PayPal ids; filter by status; badge shows paid count |
+| Sales | **Enrollments** | View + change status (e.g. cancel access); reference is copyable |
+| Dashboard | Sales overview | Paid revenue, paid order count, active enrollments |
+
+Restrict who can log in by editing `User::canAccessPanel()` (e.g. limit to
+`@traibcert.org.uk` addresses).
+
+---
+
 ## API reference
 
 | Method | Path | Body | Returns |
@@ -125,6 +179,8 @@ display only — the authoritative price at checkout always comes from this API.
   amount snapshot, PayPal order/capture ids, buyer details, raw PayPal payload.
 - **enrollments** — created on successful payment; carries the public
   `reference` (`TRB-XXXXXXXX`) shown on the receipt page.
+- **users** — admin accounts for the Filament panel (plus the standard
+  `sessions` / `password_reset_tokens` tables).
 
 ---
 
