@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@/lib/router-compat";
 import { AppLink } from "@/components/AppLink";
 import { PageHero } from "@/components/site/PageHero";
 import { legalBySlug, legalPages } from "@/data/legal";

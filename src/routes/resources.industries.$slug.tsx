@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@/lib/router-compat";
 import { Check } from "lucide-react";
 import { CourseCard, StandardCard } from "@/components/site/Cards";
 import { CTASection } from "@/components/site/CTASection";

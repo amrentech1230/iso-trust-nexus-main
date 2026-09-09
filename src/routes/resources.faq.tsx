@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/router-compat";
 import { CTASection } from "@/components/site/CTASection";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { PageHero } from "@/components/site/PageHero";

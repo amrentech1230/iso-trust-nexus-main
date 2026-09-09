@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
+import { createFileRoute } from "@/lib/router-compat";
 import {
   ArrowRight,
   BadgeCheck,

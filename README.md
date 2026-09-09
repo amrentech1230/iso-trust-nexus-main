@@ -1,5 +1,84 @@
 # TRAIBCERT Elevate
 
+## Architecture: React SPA + Laravel API
+
+This project is split into two apps:
+
+- **Frontend** (repository root) — a **React 19 + TypeScript** single-page app
+  built with **Vite**, **React Router** and **Tailwind CSS 4**. It contains all
+  pages (home, certification, training, resources, contact, legal) and the
+  enquiry form.
+- **Backend** (`backend/`) — a **Laravel 11** API that receives enquiry-form
+  submissions at `POST /api/public/enquiry`, validates and stores them, and
+  returns a reference (e.g. `TBC-482913`).
+
+> **Note:** This environment has no package-registry network access, so
+> `npm install`, `bun install` and `composer install` could **not** be run
+> here, and the apps were therefore **not built or tested in this sandbox**.
+> All source is complete and ready to build/run where the network is available.
+> PHP syntax of every backend file was validated with `php -l`.
+
+### Running the frontend (React SPA)
+
+Requires Node.js. From the repository root:
+
+```sh
+npm install          # or: bun install
+cp .env.example .env # set VITE_BIGIN_ENABLED=1 to use the real API
+npm run dev          # Vite dev server on http://localhost:3000
+```
+
+The Vite dev server proxies `/api/*` to the Laravel backend (default
+`http://localhost:8000`, configurable via `VITE_API_PROXY_TARGET`).
+When `VITE_BIGIN_ENABLED` is unset, the enquiry form uses a local mock so the
+UI works without a backend.
+
+Build for production with `npm run build` (outputs to `dist/`). Serve `dist/`
+as static files; configure your host to rewrite unknown paths to `index.html`
+(SPA fallback) and to serve the legacy 301 redirects listed below.
+
+### Running the backend (Laravel API)
+
+Requires PHP 8.2+ and Composer. From `backend/`:
+
+```sh
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite   # SQLite is the default connection
+php artisan migrate
+php artisan serve                # API on http://localhost:8000
+```
+
+#### API endpoints
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `POST` | `/api/public/enquiry` | Submit an enquiry. Returns `201 { reference, message }`. Validation errors return `422 { message, errors }`. Rate limited to 20/min. |
+| `GET` | `/api/admin/enquiries` | List enquiries (paginated). Requires `Authorization: Bearer <ADMIN_API_TOKEN>`. |
+| `GET` | `/up` | Health check. |
+
+Set `FRONTEND_URL` in `backend/.env` for CORS (defaults to
+`http://localhost:3000`). Run the backend test suite with `php artisan test`.
+
+### Migration note (TanStack Start → React Router)
+
+The app was previously built on TanStack Start (SSR). It was converted to a
+plain Vite React SPA:
+
+- `src/main.tsx` + `index.html` are the new client entry (replacing the SSR
+  document shell / server entry).
+- `src/router.tsx` uses React Router's `createBrowserRouter`.
+- `src/lib/router-compat.tsx` is a small shim that keeps each route file's
+  original `createFileRoute({ head, loader, component })` shape, so the 22 route
+  files needed only import changes. `head()` output is rendered via
+  `src/components/site/SEO.tsx` (react-helmet-async).
+- Removed: `src/server.ts`, `src/start.ts`, `src/routeTree.gen.ts`,
+  `src/routes/__root.tsx` (now `src/components/layout/RootLayout.tsx`).
+
+---
+
 # TRAIBCERT — Complete Website Redesign & Development Prompt
 
 Build a modern, professional, responsive corporate website for **TRAIBCERT**, an independent UK certification body providing ISO certification, Cyber Essentials, professional training, inspection and related compliance services across the UK, UAE and internationally.

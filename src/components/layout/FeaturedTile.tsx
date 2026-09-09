@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import type { FeaturedTile as Tile } from "@/config/navigation";
 

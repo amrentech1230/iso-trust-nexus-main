@@ -1,4 +1,4 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@/lib/router-compat";
 import { AppLink } from "@/components/AppLink";
 import { resolveRedirect } from "@/config/redirects";
 

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/router-compat";
 import { Check } from "lucide-react";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { PageHero } from "@/components/site/PageHero";
