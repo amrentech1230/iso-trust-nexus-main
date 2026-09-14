@@ -44,6 +44,7 @@ const certificationLinks = (category: Parameters<typeof standardsByCategory>[0])
 
 export const primaryNav: PrimaryNavItem[] = [
   { label: "Home", href: "/" },
+   { label: "About Us", href: "/about" },
   {
     label: "Certification",
     href: "/certification",

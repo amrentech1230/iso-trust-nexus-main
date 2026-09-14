@@ -15,7 +15,7 @@ export const apiConfig = {
   /** Base URL of the Laravel API. Endpoints are appended under `/api`. */
   baseUrl: (env["VITE_API_BASE_URL"] ?? "http://localhost:8000").replace(/\/$/, ""),
   paypal: {
-    clientId: env["VITE_PAYPAL_CLIENT_ID"] ?? "",
+    clientId: env["VITE_PAYPAL_CLIENT_ID"] ?? "AYZXOzJsI9iIS8NsjdlNIV6dgzUmyxRvdgHgaLT8hYzfhcD9ybLV1B-wG5Zoav9F9lxmrrV-AtneIB6e",
     currency: env["VITE_PAYPAL_CURRENCY"] ?? "GBP",
   },
 } as const;

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CertificationIndexRouteImport } from './routes/certification.index'
 import { Route as CertificationSlugRouteImport } from './routes/certification.$slug'
@@ -23,8 +24,8 @@ import { Route as ResourcesFurtherTopicsRouteImport } from './routes/resources.f
 import { Route as ResourcesKnowledgeBaseRouteImport } from './routes/resources.knowledge-base'
 import { Route as ResourcesSitemapRouteImport } from './routes/resources.sitemap'
 import { Route as TrainingIndexRouteImport } from './routes/training.index'
-import { Route as TrainingSuccessRouteImport } from './routes/training.success'
 import { Route as TrainingSlugRouteImport } from './routes/training.$slug'
+import { Route as TrainingSuccessRouteImport } from './routes/training.success'
 import { Route as ResourcesBlogIndexRouteImport } from './routes/resources.blog.index'
 import { Route as ResourcesBlogSlugRouteImport } from './routes/resources.blog.$slug'
 import { Route as ResourcesDownloadsIndexRouteImport } from './routes/resources.downloads.index'
@@ -40,6 +41,11 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -103,14 +109,14 @@ const TrainingIndexRoute = TrainingIndexRouteImport.update({
   path: '/training/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TrainingSuccessRoute = TrainingSuccessRouteImport.update({
-  id: '/training/success',
-  path: '/training/success',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TrainingSlugRoute = TrainingSlugRouteImport.update({
   id: '/training/$slug',
   path: '/training/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingSuccessRoute = TrainingSuccessRouteImport.update({
+  id: '/training/success',
+  path: '/training/success',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesBlogIndexRoute = ResourcesBlogIndexRouteImport.update({
@@ -148,6 +154,7 @@ const ResourcesIndustriesSlugRoute = ResourcesIndustriesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
@@ -172,6 +179,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
@@ -197,6 +205,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/about'
     | '/careers'
     | '/certification/$slug'
     | '/contact/enquiry'
@@ -247,6 +257,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/about'
     | '/careers'
     | '/certification/$slug'
     | '/contact/enquiry'
@@ -271,6 +282,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$'
+    | '/about'
     | '/careers'
     | '/certification/$slug'
     | '/contact/enquiry'
@@ -296,6 +308,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
   CertificationSlugRoute: typeof CertificationSlugRoute
   ContactEnquiryRoute: typeof ContactEnquiryRoute
@@ -332,6 +345,13 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -480,6 +500,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
   CertificationSlugRoute: CertificationSlugRoute,
   ContactEnquiryRoute: ContactEnquiryRoute,
