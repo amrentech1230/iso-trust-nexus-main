@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { AppLink } from "@/components/AppLink";
 import { CourseCard } from "@/components/site/Cards";
+import { CourseCheckout } from "@/components/site/CourseCheckout";
 import { CTASection } from "@/components/site/CTASection";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { PageHero } from "@/components/site/PageHero";
@@ -63,11 +64,17 @@ function CoursePage() {
         ]}
       >
         <div className="flex flex-wrap gap-3">
-          <AppLink
-            href="/contact/enquiry"
+          <a
+            href="#enrol"
             className="inline-flex items-center gap-2 rounded-md bg-honey px-5 py-3 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover"
           >
-            Book this course <ArrowRight className="size-4" aria-hidden="true" />
+            Enrol &amp; pay online <ArrowRight className="size-4" aria-hidden="true" />
+          </a>
+          <AppLink
+            href="/contact/enquiry"
+            className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
+          >
+            Book by invoice
           </AppLink>
           {standard ? (
             <AppLink
@@ -96,6 +103,37 @@ function CoursePage() {
                 {mode}
               </span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="enrol" className="scroll-mt-24 py-14 md:py-16">
+        <div className="container-page">
+          <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
+            <div>
+              <SectionHeading
+                eyebrow="Enrolment"
+                title="Enrol and pay securely online"
+                intro="Reserve your place with an online card or PayPal payment. Prefer to be invoiced or booking for a group? Choose 'Book by invoice' and our team will arrange it."
+              />
+              <ul className="mt-7 space-y-3">
+                {[
+                  "Instant confirmation and a receipt reference by email",
+                  "Secure payment processed by PayPal",
+                  "Public dates, private in-house cohorts and self-paced study",
+                  "Group bookings and invoicing available on request",
+                ].map((item) => (
+                  <li key={item} className="flex gap-2 text-sm">
+                    <Check
+                      className="mt-0.5 size-4 shrink-0 text-indigo-brand"
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <CourseCheckout course={course} />
           </div>
         </div>
       </section>

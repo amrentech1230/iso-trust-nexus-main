@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CertificationIndexRouteImport } from './routes/certification.index'
 import { Route as CertificationSlugRouteImport } from './routes/certification.$slug'
@@ -24,6 +25,7 @@ import { Route as ResourcesKnowledgeBaseRouteImport } from './routes/resources.k
 import { Route as ResourcesSitemapRouteImport } from './routes/resources.sitemap'
 import { Route as TrainingIndexRouteImport } from './routes/training.index'
 import { Route as TrainingSlugRouteImport } from './routes/training.$slug'
+import { Route as TrainingSuccessRouteImport } from './routes/training.success'
 import { Route as ResourcesBlogIndexRouteImport } from './routes/resources.blog.index'
 import { Route as ResourcesBlogSlugRouteImport } from './routes/resources.blog.$slug'
 import { Route as ResourcesDownloadsIndexRouteImport } from './routes/resources.downloads.index'
@@ -39,6 +41,11 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -107,6 +114,11 @@ const TrainingSlugRoute = TrainingSlugRouteImport.update({
   path: '/training/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrainingSuccessRoute = TrainingSuccessRouteImport.update({
+  id: '/training/success',
+  path: '/training/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesBlogIndexRoute = ResourcesBlogIndexRouteImport.update({
   id: '/resources/blog/',
   path: '/resources/blog/',
@@ -142,6 +154,7 @@ const ResourcesIndustriesSlugRoute = ResourcesIndustriesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
@@ -152,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/resources/knowledge-base': typeof ResourcesKnowledgeBaseRoute
   '/resources/sitemap': typeof ResourcesSitemapRoute
   '/training/$slug': typeof TrainingSlugRoute
+  '/training/success': typeof TrainingSuccessRoute
   '/certification/': typeof CertificationIndexRoute
   '/contact/': typeof ContactIndexRoute
   '/training/': typeof TrainingIndexRoute
@@ -165,6 +179,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
@@ -175,6 +190,7 @@ export interface FileRoutesByTo {
   '/resources/knowledge-base': typeof ResourcesKnowledgeBaseRoute
   '/resources/sitemap': typeof ResourcesSitemapRoute
   '/training/$slug': typeof TrainingSlugRoute
+  '/training/success': typeof TrainingSuccessRoute
   '/certification': typeof CertificationIndexRoute
   '/contact': typeof ContactIndexRoute
   '/training': typeof TrainingIndexRoute
@@ -189,6 +205,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
@@ -199,6 +216,7 @@ export interface FileRoutesById {
   '/resources/knowledge-base': typeof ResourcesKnowledgeBaseRoute
   '/resources/sitemap': typeof ResourcesSitemapRoute
   '/training/$slug': typeof TrainingSlugRoute
+  '/training/success': typeof TrainingSuccessRoute
   '/certification/': typeof CertificationIndexRoute
   '/contact/': typeof ContactIndexRoute
   '/training/': typeof TrainingIndexRoute
@@ -214,6 +232,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/about'
     | '/careers'
     | '/certification/$slug'
     | '/contact/enquiry'
@@ -224,6 +243,7 @@ export interface FileRouteTypes {
     | '/resources/knowledge-base'
     | '/resources/sitemap'
     | '/training/$slug'
+    | '/training/success'
     | '/certification/'
     | '/contact/'
     | '/training/'
@@ -237,6 +257,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/about'
     | '/careers'
     | '/certification/$slug'
     | '/contact/enquiry'
@@ -247,6 +268,7 @@ export interface FileRouteTypes {
     | '/resources/knowledge-base'
     | '/resources/sitemap'
     | '/training/$slug'
+    | '/training/success'
     | '/certification'
     | '/contact'
     | '/training'
@@ -260,6 +282,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$'
+    | '/about'
     | '/careers'
     | '/certification/$slug'
     | '/contact/enquiry'
@@ -270,6 +293,7 @@ export interface FileRouteTypes {
     | '/resources/knowledge-base'
     | '/resources/sitemap'
     | '/training/$slug'
+    | '/training/success'
     | '/certification/'
     | '/contact/'
     | '/training/'
@@ -284,6 +308,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
   CertificationSlugRoute: typeof CertificationSlugRoute
   ContactEnquiryRoute: typeof ContactEnquiryRoute
@@ -294,6 +319,7 @@ export interface RootRouteChildren {
   ResourcesKnowledgeBaseRoute: typeof ResourcesKnowledgeBaseRoute
   ResourcesSitemapRoute: typeof ResourcesSitemapRoute
   TrainingSlugRoute: typeof TrainingSlugRoute
+  TrainingSuccessRoute: typeof TrainingSuccessRoute
   CertificationIndexRoute: typeof CertificationIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
   TrainingIndexRoute: typeof TrainingIndexRoute
@@ -319,6 +345,13 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -412,6 +445,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/training/success': {
+      id: '/training/success'
+      path: '/training/success'
+      fullPath: '/training/success'
+      preLoaderRoute: typeof TrainingSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/blog/': {
       id: '/resources/blog/'
       path: '/resources/blog'
@@ -460,6 +500,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
   CertificationSlugRoute: CertificationSlugRoute,
   ContactEnquiryRoute: ContactEnquiryRoute,
@@ -470,6 +511,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesKnowledgeBaseRoute: ResourcesKnowledgeBaseRoute,
   ResourcesSitemapRoute: ResourcesSitemapRoute,
   TrainingSlugRoute: TrainingSlugRoute,
+  TrainingSuccessRoute: TrainingSuccessRoute,
   CertificationIndexRoute: CertificationIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
   TrainingIndexRoute: TrainingIndexRoute,
