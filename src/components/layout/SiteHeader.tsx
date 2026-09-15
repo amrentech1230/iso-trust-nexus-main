@@ -25,13 +25,13 @@ const aboutLinks: MegaLink[] = [
     title: "Why Choose Us",
     desc: "Our approach & expertise",
     icon: "fa-star",
-    to: "/#why-choose-us",
+    to: "/why-choose-us",
   },
   {
     title: "Our Services",
     desc: "Certification, training & inspection",
     icon: "fa-briefcase",
-    to: "/#services",
+    to: "/services",
   },
   {
     title: "Industries",
