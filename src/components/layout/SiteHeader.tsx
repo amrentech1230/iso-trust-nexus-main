@@ -20,7 +20,12 @@ import "./site-header.css";
 type MegaLink = { title: string; desc: string; icon: string; to: string; external?: boolean };
 
 const aboutLinks: MegaLink[] = [
-  { title: "About TRAIBCERT", desc: "Who we are & our mission", icon: "fa-building", to: "/#about" },
+  {
+    title: "About TRAIBCERT",
+    desc: "Who we are & our mission",
+    icon: "fa-building",
+    to: "/#about",
+  },
   {
     title: "Why Choose Us",
     desc: "Our approach & expertise",
@@ -33,15 +38,101 @@ const aboutLinks: MegaLink[] = [
     icon: "fa-briefcase",
     to: "/services",
   },
+  // {
+  //   title: "Industries",
+  //   desc: "Sectors we serve",
+  //   icon: "fa-industry",
+  //   to: "/resources/industries",
+  // },
   {
-    title: "Industries",
-    desc: "Sectors we serve",
-    icon: "fa-industry",
-    to: "/resources/industries",
+    title: "Careers",
+    desc: "Join our team",
+    icon: "fa-user-plus",
+    to: "/careers",
   },
-  { title: "Careers", desc: "Join our team", icon: "fa-user-plus", to: "/careers" },
-  { title: "Blog", desc: "Latest news & insights", icon: "fa-newspaper", to: "/resources/blog" },
+  {
+    title: "Blog",
+    desc: "Latest news & insights",
+    icon: "fa-newspaper",
+    to: "/resources/blog",
+  },
 ];
+
+const industries: MegaLink[] = [
+  {
+    title: "Technology & SaaS",
+    desc: "Digital, cloud & software-driven businesses",
+    icon: "fa-laptop-code",
+    to: "/resources/industries/technology-saas",
+  },
+  {
+    title: "Banking & Financial Services",
+    desc: "Risk, compliance & operational resilience",
+    icon: "fa-building-columns",
+    to: "/resources/industries/banking-finance",
+  },
+  {
+    title: "Healthcare",
+    desc: "Patient safety, quality & traceability",
+    icon: "fa-stethoscope",
+    to: "/resources/industries/healthcare",
+  },
+  {
+    title: "Manufacturing & Supply Chain",
+    desc: "Production quality & supplier control",
+    icon: "fa-industry",
+    to: "/resources/industries/manufacturing-supply-chain",
+  },
+  {
+    title: "Construction",
+    desc: "Safety, project delivery & supplier assurance",
+    icon: "fa-helmet-safety",
+    to: "/resources/industries/construction",
+  },
+  {
+    title: "Energy & Oil/Gas",
+    desc: "Operational reliability & regulatory compliance",
+    icon: "fa-oil-can",
+    to: "/resources/industries/energy-oil-gas",
+  },
+  {
+    title: "Public Sector & Government",
+    desc: "Public accountability & service standards",
+    icon: "fa-building-columns",
+    to: "/resources/industries/public-sector-government",
+  },
+  {
+    title: "Education",
+    desc: "Learning quality & institutional governance",
+    icon: "fa-graduation-cap",
+    to: "/resources/industries/education",
+  },
+  {
+    title: "Food & Beverage",
+    desc: "Safety, trust & supply continuity",
+    icon: "fa-utensils",
+    to: "/resources/industries/food-beverage",
+  },
+  {
+    title: "Retail & E-Commerce",
+    desc: "Customer experience & trusted operations",
+    icon: "fa-cart-shopping",
+    to: "/resources/industries/retail-ecommerce",
+  },
+  {
+    title: "Transport & Logistics",
+    desc: "Fleet reliability & end-to-end visibility",
+    icon: "fa-truck-fast",
+    to: "/resources/industries/transport-logistics",
+  },
+  {
+    title: "General / Other Industries",
+    desc: "Custom solutions for diverse sectors",
+    icon: "fa-layer-group",
+    to: "/resources/industries/general-other",
+  },
+];
+
 
 const inspectionLinks: MegaLink[] = [
   {
@@ -303,7 +394,24 @@ export function SiteHeader() {
                 </div>
               </li>
 
-              {/* 3. TRAINING */}
+              {/* 3. INDUSTRIES */}
+              <li
+                className={`tc-nav-item${mobItem === "industries" ? " mob-open" : ""}`}
+                onClick={() => toggleMob("industries")}
+              >
+                <Link to="/resources/industries" className="tc-nav-link" onClick={closeAll}>
+                  Industries <i className="fas fa-chevron-down chevron" aria-hidden="true" />
+                </Link>
+                <div className="tc-mega tc-mega-inspect">
+                  <div className="tc-mega-inspect-grid">
+                    {industries.map((l) => (
+                      <MegaLinkRow key={l.title} link={l} onNavigate={closeAll} />
+                    ))}
+                  </div>
+                </div>
+              </li>
+
+              {/* 4. TRAINING */}
               <li
                 className={`tc-nav-item${mobItem === "training" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("training")}
@@ -374,7 +482,7 @@ export function SiteHeader() {
                 </div>
               </li>
 
-              {/* 4. INSPECTION */}
+              {/* 5. INSPECTION */}
               <li
                 className={`tc-nav-item${mobItem === "inspect" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("inspect")}

@@ -78,24 +78,49 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
                           <p className="px-3 pb-1 text-[11px] font-bold tracking-[0.14em] text-indigo-soft uppercase">
                             {column.heading}
                           </p>
-                          <ul>
-                            {column.links.map((link) => (
-                              <li key={link.href + link.label}>
-                                <Link
-                                  to={link.href}
-                                  onClick={onClose}
-                                  className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-indigo-brand"
-                                >
-                                  {link.label}
-                                  {link.tag ? (
-                                    <span className="ml-2 rounded-sm bg-honey-soft px-1.5 py-0.5 text-[9px] font-bold text-honey-text uppercase">
-                                      {link.tag}
-                                    </span>
-                                  ) : null}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
+                          {column.kind === "industries" ? (
+                            <>
+                              <Link
+                                to={column.links[0].href}
+                                onClick={onClose}
+                                className="block rounded-md px-3 py-2 text-sm font-semibold text-indigo-brand hover:bg-secondary"
+                              >
+                                {column.links[0].label}
+                              </Link>
+                              <ul className="grid grid-cols-2 gap-x-1">
+                                {column.links.slice(1).map((link) => (
+                                  <li key={link.href + link.label}>
+                                    <Link
+                                      to={link.href}
+                                      onClick={onClose}
+                                      className="block rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-secondary hover:text-indigo-brand"
+                                    >
+                                      {link.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          ) : (
+                            <ul>
+                              {column.links.map((link) => (
+                                <li key={link.href + link.label}>
+                                  <Link
+                                    to={link.href}
+                                    onClick={onClose}
+                                    className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-indigo-brand"
+                                  >
+                                    {link.label}
+                                    {link.tag ? (
+                                      <span className="ml-2 rounded-sm bg-honey-soft px-1.5 py-0.5 text-[9px] font-bold text-honey-text uppercase">
+                                        {link.tag}
+                                      </span>
+                                    ) : null}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       ))}
                     </div>

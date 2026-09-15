@@ -14,6 +14,7 @@ export type NavLink = {
 export type NavColumn = {
   heading: string;
   links: NavLink[];
+  kind?: "default" | "industries";
 };
 
 export type FeaturedTile = {
@@ -118,8 +119,9 @@ export const primaryNav: PrimaryNavItem[] = [
         },
         {
           heading: "Industries",
+          kind: "industries" as const,
           links: [
-            { label: "Industries", href: "/resources/industries", note: "All sectors" },
+            { label: "All Industries", href: "/resources/industries", note: "All sectors overview" },
             ...industries.map((i) => ({
               label: i.name,
               href: `/resources/industries/${i.slug}`,

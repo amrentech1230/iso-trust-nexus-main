@@ -220,3 +220,12 @@
 @utility animate-fade-up {
   animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+.home-hero-slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.home-hero-slide-active {
+  opacity: 1;
+}
