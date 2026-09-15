@@ -216,15 +216,12 @@ export function SiteHeader() {
         <div className="tc-wrap">
           {/* Logo */}
           <Link to="/" className="tc-logo" aria-label="TRAIBCERT home" onClick={closeAll}>
-            <div className="tc-logo-mark">
-              <i className="fas fa-shield-halved" aria-hidden="true" />
-            </div>
-            <div>
-              <div className="tc-logo-text">
-                TRAIB<span>CERT</span>
-              </div>
-              <div className="tc-logo-sub">Certification • Training • Inspection</div>
-            </div>
+            <img
+              src="https://traibcert.org.uk/images/logo.png"
+              alt="TRAIBCERT logo"
+              className="tc-logo-image"
+              style={{ width: "65%" }}
+            />
           </Link>
 
           {/* Mobile toggle */}
