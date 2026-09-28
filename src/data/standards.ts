@@ -180,6 +180,7 @@ export const standards: Standard[] = [
       "Suppliers asked to evidence environmental credentials",
       "Organisations building an ESG or net-zero programme",
     ],
+<<<<<<< HEAD
     benefit_para:
       "Systematic legal compliance is the benefit regulators notice: every permit, consent, duty-of-care and producer-responsibility obligation is identified, evaluated and evidenced, which reduces the risk of enforcement. Resource and waste savings are the benefit finance directors notice; structured attention to energy, water, raw materials and waste typically pays for certification in the first year.",
     benefits: [
@@ -351,6 +352,21 @@ export const standards: Standard[] = [
       },
     ],
   }),
+=======
+    benefits: 
+    [
+      "Tender and framework points - principal contractors, local authorities, utilities and retailers award points for, or require, a certified environmental system; the certificate answers the environmental section of most supplier questionnaires in one line.",
+      "ESG and lender evidence - investors, lenders and customers increasingly ask for certified environmental management in ESG questionnaires and sustainability-linked finance conditions; an accredited certificate is verifiable evidence rather than a policy statement.",
+      "Incident and reputational protection - operational controls, emergency preparedness and management of change reduce the likelihood of spills, breaches and unsupported claims, the failures that reach the press and the regulator.",
+      "A base for net zero - aspects data, compliance registers and monitoring systems are the foundation for ISO 50001, greenhouse-gas verification and credible net-zero plans, so the environmental system is reused rather than duplicated.",
+    ],
+    benefit_para: "Systematic legal compliance is the benefit regulators notice: every permit, consent, duty-of-care and producer-responsibility obligation is identified, evaluated and evidenced, which reduces the risk of enforcement and gives inspectors confidence when they visit. Resource and waste savings are the benefit finance director's notice; structured attention to energy, water, raw materials and waste typically pays for certification in the first year, and the same data serves SECR, ESOS and customer carbon requests.",
+
+    certification_process: [
+  "One route for every standard. Application and quotation -> Stage 1 -> Stage 2 -> independent review and decision -> three-year certificate with annual surveillance and recertification in year three. The full flow, who does what and typical timings are on our certification process page (/certification/process).",
+
+  "Already certified elsewhere? A valid, accredited ISO 14001 certificate transfers to TRAIBCERT with its expiry date and audit cycle intact after a free pre-transfer review - see certificate transfer (/resources/certificate-transfer) for the documents to send.",
+>>>>>>> 6cdfec51e5de1d54c61b75ca11f25e91784c7942
 
   // ── ISO 22000 ─────────────────────────────────────────────────────────────
   base({
@@ -449,6 +465,7 @@ export const standards: Standard[] = [
     ],
   }),
 
+<<<<<<< HEAD
   // ── ISO 10002 ─────────────────────────────────────────────────────────────
   base({
     slug: "iso-10002",
@@ -540,6 +557,12 @@ export const standards: Standard[] = [
       },
     ],
   }),
+=======
+  "Your ISO 14001:2015 certificate remains valid, but three dates matter: no new 2015 certificates after 31 October 2027, every certificate transitioned by 30 April 2029, and - because certification bodies had to complete their own transition first - TRAIBCERT is issuing 2026 certificates now. We transition at your next scheduled surveillance or recertification audit, adding the time needed to cover the revised clauses and quoting it before the visit, so there is no extra trip. Organisations holding both ISO 14001 and ISO 9001 can transition both standards in the same audit, which is cheaper than two. A stand-alone transition audit is available for anyone who needs the 2026 certificate early. On a positive decision the certificate is reissued as ISO 14001:2026 with your existing expiry date.",
+],
+implementation_intro:
+  "TRAIBCERT audits and certifies; the system itself is built by your own team or an adviser you appoint. First-time certification typically takes four to nine months depending on the number of sites and the state of existing compliance records; organisations that already hold ISO 9001 are usually quicker because the common elements exist.",
+>>>>>>> 6cdfec51e5de1d54c61b75ca11f25e91784c7942
 
   // ── ISO 20000-1 ───────────────────────────────────────────────────────────
   base({
@@ -727,6 +750,7 @@ export const standards: Standard[] = [
     ],
   }),
 
+<<<<<<< HEAD
   // ── ISO 21001 ─────────────────────────────────────────────────────────────
   base({
     slug: "iso-21001",
@@ -814,6 +838,9 @@ export const standards: Standard[] = [
       },
     ],
   }),
+=======
+  "Identify your environmental aspects across the life cycle of your activities, products and services, decide which are significant, and build the register of compliance obligations - permits, consents, waste, packaging, F-gas, COSHH and voluntary commitments - with an owner for each.",
+>>>>>>> 6cdfec51e5de1d54c61b75ca11f25e91784c7942
 
   // ── ISO 41001 ─────────────────────────────────────────────────────────────
   base({
@@ -1738,4 +1765,12 @@ export const popularStandards = [
   "iso-45001",
   "cyber-essentials",
   "iso-22000",
+<<<<<<< HEAD
 ].map((slug) => standardsBySlug[slug]).filter((s): s is Standard => s !== undefined);
+=======
+]
+  // Only include standards that actually exist in the data set, so pages that
+  // render popularStandards cannot crash if a slug is missing.
+  .map((slug) => standardsBySlug[slug])
+  .filter((s): s is Standard => Boolean(s));
+>>>>>>> 6cdfec51e5de1d54c61b75ca11f25e91784c7942
