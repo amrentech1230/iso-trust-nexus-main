@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Award, Globe2, Scale, ShieldCheck, Target, Users } from "lucide-react";
+import { AppLink } from "@/components/AppLink";
 import { AccreditationBadge } from "@/components/site/Cards";
 import { CTASection } from "@/components/site/CTASection";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
@@ -234,12 +235,12 @@ function AboutPage() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {service.body}
                 </p>
-                <Link
-                  to={service.href}
+                <AppLink
+                  href={service.href}
                   className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-indigo-brand hover:underline"
                 >
                   {service.cta} <ArrowRight className="size-4" aria-hidden="true" />
-                </Link>
+                </AppLink>
               </article>
             ))}
           </div>

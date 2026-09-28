@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { AppLink } from "@/components/AppLink";
 import { site } from "@/config/site";
 import { courses } from "@/data/courses";
 import { standards } from "@/data/standards";
@@ -10,8 +10,9 @@ import "./site-header.css";
  *
  * Faithful React port of the shared "TRAIBCERT Reusable Header" HTML. Styling
  * lives in site-header.css (scoped under the .tc-* class names from the design).
- * All navigation targets are internal app routes via TanStack <Link> so the
- * SPA routing keeps working; external destinations use <a>.
+ * Internal navigation uses AppLink (a Link wrapper that accepts a plain href
+ * string, so data-driven paths and hash links type-check); external
+ * destinations use plain <a>.
  *
  * Font Awesome 6.4 and the Outfit + DM Sans Google Fonts are loaded in the
  * root document head (see src/routes/__root.tsx).
@@ -133,9 +134,9 @@ function MegaLinkRow({ link, onNavigate }: { link: MegaLink; onNavigate: () => v
     </>
   );
   return (
-    <Link to={link.to} className="tc-mega-link" onClick={onNavigate}>
+    <AppLink href={link.to} className="tc-mega-link" onClick={onNavigate}>
       {inner}
-    </Link>
+    </AppLink>
   );
 }
 
@@ -170,9 +171,9 @@ export function SiteHeader() {
             </span>
           </div>
           <div className="tc-topstrip-right">
-            <Link to="/contact/enquiry" className="tc-btn-quote">
+            <AppLink href="/contact/enquiry" className="tc-btn-quote">
               <i className="fas fa-file-alt" aria-hidden="true" /> Get Quote
-            </Link>
+            </AppLink>
             <a
               href="http://www.traibcert.org.uk/pdf/Traibcert-Brocuher.pdf"
               className="tc-btn-brochure"
@@ -215,7 +216,7 @@ export function SiteHeader() {
       <header className="tc-header">
         <div className="tc-wrap">
           {/* Logo */}
-          <Link to="/" className="tc-logo" aria-label="TRAIBCERT home" onClick={closeAll}>
+          <AppLink href="/" className="tc-logo" aria-label="TRAIBCERT home" onClick={closeAll}>
             <div className="tc-logo-mark">
               <i className="fas fa-shield-halved" aria-hidden="true" />
             </div>
@@ -225,7 +226,7 @@ export function SiteHeader() {
               </div>
               <div className="tc-logo-sub">Certification • Training • Inspection</div>
             </div>
-          </Link>
+          </AppLink>
 
           {/* Mobile toggle */}
           <button
@@ -246,9 +247,9 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "home" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("home")}
               >
-                <Link to="/" className="tc-nav-link" onClick={closeAll}>
+                <AppLink href="/" className="tc-nav-link" onClick={closeAll}>
                   Home <i className="fas fa-chevron-down chevron" aria-hidden="true" />
-                </Link>
+                </AppLink>
                 <div className="tc-mega tc-mega-about">
                   <div className="tc-mega-about-grid">
                     {aboutLinks.map((l) => (
@@ -263,9 +264,9 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "cert" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("cert")}
               >
-                <Link to="/certification" className="tc-nav-link" onClick={closeAll}>
+                <AppLink href="/certification" className="tc-nav-link" onClick={closeAll}>
                   Certification <i className="fas fa-chevron-down chevron" aria-hidden="true" />
-                </Link>
+                </AppLink>
                 <div className="tc-mega tc-mega-cert">
                   <div className="tc-mega-cert-head">
                     <h4>
@@ -276,15 +277,15 @@ export function SiteHeader() {
                       />{" "}
                       ISO Management System Certifications
                     </h4>
-                    <Link to="/certification" onClick={closeAll}>
+                    <AppLink href="/certification" onClick={closeAll}>
                       View all &rarr;
-                    </Link>
+                    </AppLink>
                   </div>
                   <div className="tc-mega-cert-grid">
                     {certLinks.map((c) => (
-                      <Link
+                      <AppLink
                         key={c.to + c.label}
-                        to={c.to}
+                        href={c.to}
                         className={`tc-cert-link${c.tag ? " highlight" : ""}`}
                         onClick={closeAll}
                       >
@@ -300,7 +301,7 @@ export function SiteHeader() {
                             aria-hidden="true"
                           />
                         ) : null}
-                      </Link>
+                      </AppLink>
                     ))}
                   </div>
                 </div>
@@ -311,9 +312,9 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "training" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("training")}
               >
-                <Link to="/training" className="tc-nav-link" onClick={closeAll}>
+                <AppLink href="/training" className="tc-nav-link" onClick={closeAll}>
                   Training <i className="fas fa-chevron-down chevron" aria-hidden="true" />
-                </Link>
+                </AppLink>
                 <div className="tc-mega tc-mega-training">
                   <div className="tc-mega-training-layout">
                     <div className="tc-mega-col">
@@ -326,10 +327,10 @@ export function SiteHeader() {
                         Classroom Training
                       </h5>
                       {classroomCourses.map((c) => (
-                        <Link key={c.slug} to={`/training/${c.slug}`} onClick={closeAll}>
+                        <AppLink key={c.slug} href={`/training/${c.slug}`} onClick={closeAll}>
                           <i className="fas fa-chevron-right" aria-hidden="true" />
                           {c.code}
-                        </Link>
+                        </AppLink>
                       ))}
                     </div>
                     <div className="tc-mega-col">
@@ -342,10 +343,10 @@ export function SiteHeader() {
                         Foundation E-Learning
                       </h5>
                       {foundationCourses.map((c) => (
-                        <Link key={c.slug} to={`/training/${c.slug}`} onClick={closeAll}>
+                        <AppLink key={c.slug} href={`/training/${c.slug}`} onClick={closeAll}>
                           <i className="fas fa-chevron-right" aria-hidden="true" />
                           {c.code} Foundation
-                        </Link>
+                        </AppLink>
                       ))}
                       <a
                         href={site.academyUrl}
@@ -367,10 +368,10 @@ export function SiteHeader() {
                         Internal Auditor
                       </h5>
                       {auditorCourses.map((c) => (
-                        <Link key={c.slug} to={`/training/${c.slug}`} onClick={closeAll}>
+                        <AppLink key={c.slug} href={`/training/${c.slug}`} onClick={closeAll}>
                           <i className="fas fa-chevron-right" aria-hidden="true" />
                           {c.code} Internal Auditor
-                        </Link>
+                        </AppLink>
                       ))}
                     </div>
                   </div>
@@ -382,9 +383,9 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "inspect" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("inspect")}
               >
-                <Link to="/certification" className="tc-nav-link" onClick={closeAll}>
+                <AppLink href="/certification" className="tc-nav-link" onClick={closeAll}>
                   Inspection <i className="fas fa-chevron-down chevron" aria-hidden="true" />
-                </Link>
+                </AppLink>
                 <div className="tc-mega tc-mega-inspect">
                   <div className="tc-mega-inspect-grid">
                     {inspectionLinks.map((l) => (
@@ -399,9 +400,9 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "resources" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("resources")}
               >
-                <Link to="/resources/blog" className="tc-nav-link" onClick={closeAll}>
+                <AppLink href="/resources/blog" className="tc-nav-link" onClick={closeAll}>
                   Resources <i className="fas fa-chevron-down chevron" aria-hidden="true" />
-                </Link>
+                </AppLink>
                 <div className="tc-mega tc-mega-topics">
                   <div className="tc-mega-topics-grid">
                     {resourceLinks.map((l) => (
@@ -416,9 +417,9 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "contact" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("contact")}
               >
-                <Link to="/contact" className="tc-nav-link" onClick={closeAll}>
+                <AppLink href="/contact" className="tc-nav-link" onClick={closeAll}>
                   Contact <i className="fas fa-chevron-down chevron" aria-hidden="true" />
-                </Link>
+                </AppLink>
                 <div className="tc-mega tc-mega-contact">
                   <div className="tc-contact-card">
                     <i className="fas fa-map-marker-alt" aria-hidden="true" />
@@ -445,10 +446,10 @@ export function SiteHeader() {
                       </div>
                     </div>
                   </div>
-                  <Link to="/contact/enquiry" className="tc-mega-contact-cta" onClick={closeAll}>
+                  <AppLink href="/contact/enquiry" className="tc-mega-contact-cta" onClick={closeAll}>
                     <i className="fas fa-paper-plane" style={{ marginRight: 6 }} aria-hidden="true" />{" "}
                     Submit Enquiry
-                  </Link>
+                  </AppLink>
                 </div>
               </li>
             </ul>
