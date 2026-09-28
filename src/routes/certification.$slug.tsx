@@ -80,18 +80,42 @@ return (
     <div className="container-page grid gap-10 lg:grid-cols-[1.4fr_1fr]">
       <div>
         <SectionHeading eyebrow="Overview" title={`What ${standard.code} is`} />
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify text-justify">
 
-          {standard.whatItIs}
-        </p>
+      <div className="mt-5 space-y-5">
+        {Array.isArray(standard.whatItIs) &&
+          standard.whatItIs.map((paragraph, index) => (
+            <p
+              key={index}
+              className="text-base leading-relaxed text-muted-foreground text-justify"
+            >
+              {paragraph}
+            </p>
+          ))}
+      </div>
         <h2 className="mt-10 text-xl font-bold text-indigo-brand">{`Why is ${standard.code} important`}</h2>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
-          {standard.important}
-        </p>
+          <div className="mt-5 space-y-5">
+            {Array.isArray(standard.important) &&
+              standard.important.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-base leading-relaxed text-muted-foreground text-justify"
+                >
+                  {paragraph}
+                </p>
+              ))}
+          </div>
         <h2 className="mt-10 text-xl font-bold text-indigo-brand">EMS framework</h2>
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
-          {standard.emsFramework}
-        </p>
+          <div className="mt-5 space-y-5">
+            {Array.isArray(standard.emsFramework) &&
+              standard.emsFramework.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-base leading-relaxed text-muted-foreground text-justify"
+                >
+                  {paragraph}
+                </p>
+              ))}
+          </div>
         <h2 className="mt-10 text-xl font-bold text-indigo-brand">
           Benefits of {standard.code}
         </h2>
@@ -170,30 +194,261 @@ return (
 ) : null}
       </div>
 
-      <aside className="space-y-6">
-        <div className="rounded-xl border border-border bg-card p-6">
-          <h2 className="text-base font-bold text-indigo-brand">Who needs it</h2>
-          <ul className="mt-3 space-y-2 text-sm text-muted-foreground text-justify">
-            {standard.whoNeedsIt.map((item) => (
-            <li key={item} className="flex gap-2.5">
-              <Check className="mt-0.5 size-4 shrink-0 text-honey-text" aria-hidden="true" />
-              {item}
-            </li>
-            ))}
-          </ul>
+<aside className="space-y-6">
+
+  {/* Request a Quote Form */}
+  
+
+  {/* Who needs it */}
+  <div className="rounded-xl border border-border bg-card p-6">
+    <h2 className="text-base font-bold text-indigo-brand">
+      Who needs it
+    </h2>
+
+    <ul className="mt-3 space-y-2 text-sm text-muted-foreground text-justify">
+      {standard.whoNeedsIt.map((item) => (
+        <li key={item} className="flex gap-2.5">
+          <Check
+            className="mt-0.5 size-4 shrink-0 text-honey-text"
+            aria-hidden="true"
+          />
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* Benefits */}
+  <div className="rounded-xl border border-border bg-muted/50 p-6">
+    <h2 className="text-base font-bold text-indigo-brand">
+      Benefits of {standard.code}
+    </h2>
+
+    <ul className="mt-3 space-y-2 text-sm text-muted-foreground text-justify">
+      {standard.benefits.map((item) => (
+        <li key={item} className="flex gap-2.5">
+          <Check
+            className="mt-0.5 size-4 shrink-0 text-honey-text"
+            aria-hidden="true"
+          />
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+
+    {/* Form Header */}
+    <div className="bg-[#258eaf] px-5 py-3.5">
+      <h2 className="text-lg font-bold text-white">
+        Request a quote
+      </h2>
+    </div>
+
+    {/* Form Body */}
+    <div className="p-5">
+      <form
+        action="/contact/enquiry"
+        method="POST"
+        className="space-y-4"
+      >
+        {/* Name */}
+        <div>
+          <label
+            htmlFor="sidebar-name"
+            className="mb-1.5 block text-sm font-medium text-indigo-brand"
+          >
+            Name
+          </label>
+
+          <input
+            id="sidebar-name"
+            name="name"
+            type="text"
+            required
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
         </div>
-        <div className="rounded-xl border border-border bg-muted/50 p-6">
-          <h2 className="text-base font-bold text-indigo-brand"> {`Benefits of ${standard.code}`}</h2>
-          <ul className="mt-3 space-y-2 text-sm text-muted-foreground text-justify">
-            {standard.benefits.map((item) => (
-            <li key={item} className="flex gap-2.5">
-              <Check className="mt-0.5 size-4 shrink-0 text-honey-text" aria-hidden="true" />
-              {item}
-            </li>
-            ))}
-          </ul>
+
+        {/* Organization */}
+        <div>
+          <label
+            htmlFor="sidebar-organization"
+            className="mb-1.5 block text-sm font-medium text-indigo-brand"
+          >
+            Organization
+          </label>
+
+          <input
+            id="sidebar-organization"
+            name="organization"
+            type="text"
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
         </div>
-      </aside>
+
+        {/* Email */}
+        <div>
+          <label
+            htmlFor="sidebar-email"
+            className="mb-1.5 block text-sm font-medium text-indigo-brand"
+          >
+            Email
+          </label>
+
+          <input
+            id="sidebar-email"
+            name="email"
+            type="email"
+            required
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
+        </div>
+
+        {/* Std / ISD Code */}
+        <div>
+          <label
+            htmlFor="sidebar-std-code"
+            className="mb-1.5 block text-sm font-medium text-indigo-brand"
+          >
+            Std Or Isd Code
+          </label>
+
+          <input
+            id="sidebar-std-code"
+            name="std_or_isd_code"
+            type="text"
+            placeholder=""
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label
+            htmlFor="sidebar-phone"
+            className="mb-1.5 block text-sm font-medium text-indigo-brand"
+          >
+            Phone
+          </label>
+
+          <input
+            id="sidebar-phone"
+            name="phone"
+            type="tel"
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
+        </div>
+
+        {/* Country */}
+        <div>
+          <label
+            htmlFor="sidebar-country"
+            className="mb-1.5 block text-sm font-medium text-indigo-brand"
+          >
+            Country
+          </label>
+
+          <input
+            id="sidebar-country"
+            name="country"
+            type="text"
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
+        </div>
+
+        {/* Service */}
+        <div>
+          <label
+            htmlFor="sidebar-service"
+            className="sr-only"
+          >
+            Select Service
+          </label>
+
+          <select
+            id="sidebar-service"
+            name="service"
+            defaultValue=""
+            className="w-full rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-700 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          >
+            <option value="" disabled>
+              --Select Service--
+            </option>
+
+            <option value={`${standard.code} Certification`}>
+              {standard.code} Certification
+            </option>
+
+            <option value="Certification">
+              Certification
+            </option>
+
+            <option value="Training">
+              Training
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+          </select>
+        </div>
+
+        {/* Comments */}
+        <div>
+          <label
+            htmlFor="sidebar-comments"
+            className="mb-1.5 block text-sm font-medium text-indigo-brand"
+          >
+            Comments
+          </label>
+
+          <textarea
+            id="sidebar-comments"
+            name="comments"
+            rows={3}
+            className="w-full resize-none rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
+        </div>
+
+        {/* Captcha */}
+        <div>
+          <input
+            type="text"
+            name="captcha"
+            placeholder="Captcha"
+            className="w-32 rounded-md border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 outline-none transition focus:border-indigo-brand focus:ring-1 focus:ring-indigo-brand"
+          />
+        </div>
+
+        {/* Captcha image */}
+        <div className="flex items-center gap-2">
+          <div className="flex h-10 items-center justify-center bg-gray-200 px-3 font-mono text-lg tracking-wider text-black">
+            qdbqhe
+          </div>
+
+          <button
+            type="button"
+            aria-label="Refresh captcha"
+            className="flex size-10 items-center justify-center rounded-md border border-gray-200 bg-white text-lg text-sky-500"
+          >
+            ↻
+          </button>
+        </div>
+
+        {/* Submit */}
+        <button
+          type="submit"
+          className="w-full rounded-md bg-[#ffe01b] px-5 py-3 text-sm font-bold uppercase tracking-wide text-gray-900 transition hover:bg-[#f5d500]"
+        >
+          Submit Contact
+        </button>
+      </form>
+    </div>
+  </div>
+
+</aside>
     </div>
   </section>
 
