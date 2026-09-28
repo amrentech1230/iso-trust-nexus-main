@@ -9,11 +9,23 @@ export type Standard = {
   discipline: string;
   summary: string;
   whatItIs: string;
+  important: string;
+  emsFramework: string;
   whoNeedsIt: string[];
   benefits: string[];
+  certification_process:string[];
+  implementation_intro: string;
+  implementation_steps: string[];
+  implementation_transition: string;
+  benefit_para: string;
   requirements: string[];
   training?: string;
   faqs?: { q: string; a: string }[];
+  why_choose_intro: string[];
+  industries: string[];
+  who_needs_certification: string[];
+  self_check: string[];
+  also_need: string[];
 };
 
 const genericRequirements = [
@@ -31,40 +43,7 @@ const base = (s: Omit<Standard, "requirements"> & { requirements?: string[] }): 
 });
 
 export const standards: Standard[] = [
-  base({
-    slug: "iso-9001",
-    code: "ISO 9001:2015",
-    title: "ISO 9001:2015 Quality Management",
-    category: "iso",
-    discipline: "Quality management",
-    summary:
-      "The world's most widely adopted quality management standard, used to deliver consistent products and services and demonstrate capability to customers.",
-    whatItIs:
-      "ISO 9001:2015 sets out the requirements for a quality management system (QMS). It is built on a process approach, risk-based thinking and the Plan-Do-Check-Act cycle, so quality is managed across the whole organisation rather than inspected at the end.",
-    whoNeedsIt: [
-      "Organisations bidding for contracts that require certified quality management",
-      "Manufacturers and suppliers with multi-stage production or supply chains",
-      "Service organisations standardising delivery across teams or sites",
-      "Any business seeking fewer defects, complaints and reworks",
-    ],
-    benefits: [
-      "Independent, accredited proof of quality capability",
-      "Stronger tender and framework eligibility",
-      "Fewer nonconformities, reworks and customer complaints",
-      "Clear responsibilities and repeatable processes",
-    ],
-    training: "iso-9001",
-    faqs: [
-      {
-        q: "How long does ISO 9001 certification take?",
-        a: "It depends on the size and complexity of your organisation and how mature your current processes are. We confirm a realistic timeline after the initial scoping discussion.",
-      },
-      {
-        q: "Is ISO 9001 being revised?",
-        a: "A revision of ISO 9001 is anticipated. We offer gap assessments so you can plan the transition alongside your existing certification cycle.",
-      },
-    ],
-  }),
+
   base({
     slug: "iso-14001",
     code: "ISO 14001:2026",
@@ -73,865 +52,113 @@ export const standards: Standard[] = [
     tag: "CURRENT",
     discipline: "Environmental management",
     summary:
-      "Environmental management system certification for organisations managing environmental impact, legal compliance and resource efficiency.",
+      "Over half a million organisations worldwide are certified to ISO 14001, and in the UK, it has become the standard answer to the environmental section of every supplier questionnaire, from construction frameworks to retailer codes. ISO 14001:2026, published on 15 April 2026, is the current edition. It widens the view an organisation must take of the environment — climate, biodiversity, pollution and resources — and asks for discipline in managing change and controlling suppliers. TRAIBCERT certifies to the 2026 edition, transitions ISO 14001:2015 certificates ahead of the 30 April 2029 deadline and quotes the full three-year cycle as one fixed price.",
     whatItIs:
-      "ISO 14001 specifies requirements for an environmental management system (EMS). It helps you identify environmental aspects and impacts, meet compliance obligations and improve environmental performance in a structured, auditable way.",
+      "ISO 14001 is the international standard for environmental management systems, published by the International Organization for Standardization. It sets out how an organisation identifies the ways its activities, products and services interact with the environment, meets its legal and other obligations, controls the aspects that matter and improves its environmental performance over time. The current edition, ISO 14001:2026, was published on 15 April 2026 and is the fourth since the standard first appeared in 1996. It replaces ISO 14001:2015; new certificates to the 2015 edition cannot be issued after 31 October 2027, and every certificate must be transitioned to the 2026 edition by 30 April 2029, when any 2015 certificate still in force is withdrawn. The full transition timeline for both standards is shown on our transition timeline (/certification/transition-timeline).\n\nThe revision is evolutionary. The structure shared with ISO 9001 and ISO 45001 is unchanged and policy commitments are the same. The differences are a broader definition of the environmental conditions an organisation must consider — climate change, biodiversity, pollution and resource availability are named; a clearer separation between environmental aspects and the wider risks and opportunities to the business; a new clause on planning of changes; wider language on externally provided processes, products and services in place of 'outsourced processes'; leadership support extended to people in all roles, not only the environmental manager; and internal audits that state their objectives. Guidance in the annex has been expanded to help consistent interpretation.\n\nIt is the second most widely adopted management-system standard in the world, with more than half a million certificates in force across manufacturing, construction, energy, transport, food, facilities and the public sector. An ISO 14001 certificate confirms that an accredited, independent certification body has audited the environmental management system covering the scope on the certificate, found that it meets the standard and seen it operating on site. It is valid for three years with annual surveillance audits and is listed on a public register.",
+      important:
+      "Compliance is the first reason. Permits, consents, waste duty-of-care, packaging and producer-responsibility obligations, F-gas, COSHH and increasingly climate-related disclosure all need to be identified, met and shown to be met. ISO 14001 provides the register, the evaluation and the evidence, and certified organisations report fewer regulatory interventions. Cost is the second. Structured attention to energy, water, materials and waste typically finds savings in the first year that exceed the cost of certification, and the same data feeds carbon reporting. Market access is the third: principal contractors, local authorities, utilities and retailers now require environmental certification of their supply chains, and ESG questionnaires from lenders and customers ask for it explicitly. A certified system is also the natural backbone for ISO 50001 energy management, greenhouse-gas verification and net-zero plans.Reputation completes the case. A pollution incident, a prosecution or an unsupported environmental claim travels quickly, and the 2026 edition's emphasis on life cycle thinking and supplier control is designed to prevent exactly those failures. For a board, the certificate is evidence that environmental risk is managed with the same discipline as financial risk.Cost is the second. Structured attention to energy, water, materials and waste typically finds savings in the first year that exceed the cost of certification, and the same data feeds carbon reporting. Market access is the third: principal contractors, local authorities, utilities and retailers now require environmental certification of their supply chains, and ESG questionnaires from lenders and customers ask for it explicitly. A certified system is also the natural backbone for ISO 50001 energy management, greenhouse-gas verification and net-zero plans.Reputation completes the case. A pollution incident, a prosecution or an unsupported environmental claim travels quickly, and the 2026 edition's emphasis on life cycle thinking and supplier control is designed to prevent exactly those failures. For a board, the certificate is evidence that environmental risk is managed with the same discipline as financial risk.",
+      emsFramework:
+      "An environmental management system follows the Plan-Do-Check-Act cycle: understand your environmental position and plan what to control, run the controls, check performance and compliance, and act on the results. ISO 14001 arranges that cycle in the harmonised structure shared with ISO 9001 and ISO 45001, so leadership, competence, documents, internal audit and management review are common elements that can be run once for all three. Two elements are distinctive to environmental management. The first is the aspects register: a record of how your activities, products and services interact with the environment across their life cycle — procurement, use and end-of-life, not only what happens on site — with the significant ones identified. The second is the register of compliance obligations: the permits, consents, laws and voluntary commitments that apply to you, each with an owner and a known status. Both sit inside a context review that, in the 2026 edition, must visibly consider climate change, biodiversity, pollution and resource availability alongside the expectations of regulators, customers, neighbours and lenders.Around them sit the common elements. Leadership means top management owns the system, commits in writing to protecting the environment, meeting obligations and improving performance, and supports people in every role. Planning keeps business risks and opportunities distinct from environmental aspects, sets measurable objectives for the significant ones and — new in 2026 — assesses changes such as new products, sites, permits or legislation before they happen. Support and operation cover competent people, awareness across the workforce, controlled documents, operational controls for significant aspects, environmental criteria applied to suppliers, contractors and externally provided services, and tested emergency preparedness. Performance evaluation is the monitoring of key environmental parameters, a periodic evaluation of compliance with every obligation, internal audits with stated objectives and a management review that examines the evidence. Improvement corrects incidents, nonconformities and audit findings at root cause so that environmental performance improves year on year rather than simply being maintained.",
+
     whoNeedsIt: [
       "Manufacturers, construction and engineering businesses",
       "Organisations with permits, consents or waste obligations",
       "Suppliers asked to evidence environmental credentials",
       "Organisations building an ESG or net-zero programme",
     ],
-    benefits: [
-      "Structured control of environmental risk and compliance",
-      "Reduced waste, energy and resource costs",
-      "Credible evidence for tenders and ESG reporting",
-      "A foundation for carbon and net-zero work",
+    benefits: 
+    [
+      "Tender and framework points — principal contractors, local authorities, utilities and retailers award points for, or require, a certified environmental system; the certificate answers the environmental section of most supplier questionnaires in one line.",
+      "ESG and lender evidence — investors, lenders and customers increasingly ask for certified environmental management in ESG questionnaires and sustainability-linked finance conditions; an accredited certificate is verifiable evidence rather than a policy statement.",
+      "Incident and reputational protection — operational controls, emergency preparedness and management of change reduce the likelihood of spills, breaches and unsupported claims, the failures that reach the press and the regulator.",
+      "A base for net zero — aspects data, compliance registers and monitoring systems are the foundation for ISO 50001, greenhouse-gas verification and credible net-zero plans, so the environmental system is reused rather than duplicated.",
     ],
-    training: "iso-14001",
-  }),
-  base({
-    slug: "iso-45001",
-    code: "ISO 45001:2018",
-    title: "ISO 45001:2018 Occupational Health & Safety",
-    category: "iso",
-    discipline: "Health & safety",
-    summary:
-      "Occupational health and safety management system certification focused on preventing work-related injury and ill health.",
-    whatItIs:
-      "ISO 45001 sets requirements for an occupational health and safety management system, including hazard identification, worker consultation and participation, operational control and incident investigation.",
-    whoNeedsIt: [
-      "Construction, manufacturing and logistics organisations",
-      "Organisations with high-risk activities or contractor networks",
-      "Employers replacing legacy OH&S frameworks",
-      "Businesses required to evidence safety performance in tenders",
-    ],
-    benefits: [
-      "Reduced incidents, absence and insurance exposure",
-      "Demonstrable duty-of-care and legal awareness",
-      "Meaningful worker participation in safety",
-      "Recognised assurance for clients and regulators",
-    ],
-    training: "iso-45001",
-  }),
-  base({
-    slug: "iso-22000",
-    code: "ISO 22000:2018",
-    title: "ISO 22000:2018 Food Safety Management",
-    category: "iso",
-    discipline: "Food safety",
-    summary:
-      "Food safety management system certification combining HACCP principles with management system discipline across the food chain.",
-    whatItIs:
-      "ISO 22000 specifies requirements for a food safety management system for any organisation in the food chain, integrating HACCP, prerequisite programmes and hazard control planning.",
-    whoNeedsIt: [
-      "Food manufacturers, processors and packers",
-      "Catering, hospitality and food service operators",
-      "Ingredient suppliers, storage and distribution businesses",
-      "Retailers requiring supplier assurance",
-    ],
-    benefits: [
-      "Systematic control of food safety hazards",
-      "Confidence for retailers and food service buyers",
-      "Alignment with regulatory expectations",
-      "Fewer recalls, complaints and product losses",
-    ],
-    training: "iso-22000",
-  }),
-  base({
-    slug: "iso-22301",
-    code: "ISO 22301:2019",
-    title: "ISO 22301:2019 Business Continuity",
-    category: "iso",
-    discipline: "Business continuity",
-    summary:
-      "Business continuity management system certification for organisations that must keep critical services running through disruption.",
-    whatItIs:
-      "ISO 22301 sets requirements for a business continuity management system, including business impact analysis, continuity strategies, plans and exercising.",
-    whoNeedsIt: [
-      "Financial services, healthcare and public sector suppliers",
-      "Technology and data-centre operators",
-      "Organisations with contractual resilience obligations",
-      "Businesses dependent on single sites or key suppliers",
-    ],
-    benefits: [
-      "Tested plans for the disruptions that matter most",
-      "Reduced downtime and recovery cost",
-      "Assurance for clients, insurers and regulators",
-      "Clear roles and escalation during incidents",
-    ],
-    training: "iso-22301",
-  }),
-  base({
-    slug: "iso-20000-1",
-    code: "ISO/IEC 20000-1:2018",
-    title: "ISO/IEC 20000-1:2018 IT Service Management",
-    category: "iso",
-    discipline: "IT service management",
-    summary:
-      "Service management system certification for IT service providers who need to evidence reliable, measurable service delivery.",
-    whatItIs:
-      "ISO/IEC 20000-1 specifies requirements for a service management system (SMS), covering service planning, design, transition, delivery and improvement.",
-    whoNeedsIt: [
-      "Managed service providers and IT outsourcers",
-      "Internal IT functions with defined service catalogues",
-      "SaaS providers with service-level commitments",
-      "Public sector IT suppliers",
-    ],
-    benefits: [
-      "Consistent, measurable service performance",
-      "Stronger position in IT procurement",
-      "Clear incident, change and problem management",
-      "Integrates well with ISO 27001",
-    ],
-    training: "iso-20000-1",
-  }),
-  base({
-    slug: "iso-10002",
-    code: "ISO 10002:2018",
-    title: "ISO 10002:2018 Complaints Management",
-    category: "iso",
-    discipline: "Customer satisfaction",
-    summary:
-      "Guidance-based certification for organisations that want a fair, visible and effective complaints handling process.",
-    whatItIs:
-      "ISO 10002 describes how to plan, design, operate and improve a complaints handling process so complaints are resolved consistently and used to drive improvement.",
-    whoNeedsIt: [
-      "Regulated service providers",
-      "Consumer-facing organisations with high contact volumes",
-      "Public bodies with statutory complaint duties",
-      "Organisations recovering from reputational issues",
-    ],
-    benefits: [
-      "Faster, fairer complaint resolution",
-      "Improved customer retention and trust",
-      "Insight from complaint root-cause analysis",
-      "Evidence of customer-focused governance",
-    ],
-  }),
-  base({
-    slug: "iso-21001",
-    code: "ISO 21001:2018",
-    title: "ISO 21001:2018 Educational Organisations",
-    category: "iso",
-    discipline: "Education management",
-    summary:
-      "Management system certification for educational organisations focused on learner needs and educational outcomes.",
-    whatItIs:
-      "ISO 21001 sets requirements for an educational organisation management system (EOMS), placing learners and other beneficiaries at the centre of planning and delivery.",
-    whoNeedsIt: [
-      "Schools, colleges and universities",
-      "Training providers and academies",
-      "EdTech and online learning organisations",
-      "Corporate learning functions",
-    ],
-    benefits: [
-      "Learner-centred processes and measurable outcomes",
-      "Consistent delivery across programmes and sites",
-      "Credibility with learners, parents and funders",
-      "Structured approach to inclusion and accessibility",
-    ],
-  }),
-  base({
-    slug: "iso-41001",
-    code: "ISO 41001:2018",
-    title: "ISO 41001:2018 Facility Management",
-    category: "iso",
-    discipline: "Facility management",
-    summary:
-      "Facility management system certification for in-house teams and FM service providers.",
-    whatItIs:
-      "ISO 41001 specifies requirements for a facility management system, aligning the built environment and support services with organisational objectives.",
-    whoNeedsIt: [
-      "FM service providers and contractors",
-      "Estates and workplace teams",
-      "Multi-site property operators",
-      "Organisations consolidating FM supply chains",
-    ],
-    benefits: [
-      "Aligned FM strategy, service levels and cost control",
-      "Improved workplace safety and productivity",
-      "Better supplier and contract governance",
-      "Recognised assurance for FM tenders",
-    ],
-    training: "iso-41001",
-  }),
-  base({
-    slug: "iso-31000",
-    code: "ISO 31000:2018",
-    title: "ISO 31000:2018 Risk Management",
-    category: "iso",
-    discipline: "Risk management",
-    summary:
-      "Risk management framework guidance used to embed consistent risk practice across governance and decision-making.",
-    whatItIs:
-      "ISO 31000 provides principles, a framework and a process for managing risk. It is guidance rather than a requirements standard, so it is typically used for assessment, training and framework development.",
-    whoNeedsIt: [
-      "Boards and risk functions formalising risk appetite",
-      "Organisations integrating risk across ISO systems",
-      "Project and programme-heavy businesses",
-      "Regulated organisations with governance obligations",
-    ],
-    benefits: [
-      "Common risk language across the organisation",
-      "Better informed decisions and prioritisation",
-      "Alignment of risk with strategy and objectives",
-      "Support for other ISO management systems",
-    ],
-    training: "iso-31000",
-    requirements: [
-      "Risk management principles and value creation",
-      "Leadership, integration and framework design",
-      "Risk identification, analysis and evaluation",
-      "Risk treatment and residual risk decisions",
-      "Monitoring, review, recording and reporting",
-    ],
-  }),
-  base({
-    slug: "iso-26000",
-    code: "ISO 26000:2010",
-    title: "ISO 26000:2010 Social Responsibility",
-    category: "iso",
-    discipline: "Social responsibility",
-    summary:
-      "Guidance on social responsibility used to structure and evidence responsible business practice.",
-    whatItIs:
-      "ISO 26000 offers guidance on social responsibility across core subjects including governance, human rights, labour practices, the environment, fair operating practices, consumer issues and community involvement.",
-    whoNeedsIt: [
-      "Organisations building a responsible business programme",
-      "Suppliers answering ESG questionnaires",
-      "Public sector and NGO partners",
-      "Businesses reporting on social value",
-    ],
-    benefits: [
-      "Structured, recognised approach to social responsibility",
-      "Support for social value and ESG reporting",
-      "Stronger stakeholder relationships",
-      "Reduced ethical and reputational risk",
-    ],
-    requirements: [
-      "Organisational governance",
-      "Human rights and labour practices",
-      "The environment",
-      "Fair operating practices",
-      "Consumer issues",
-      "Community involvement and development",
-    ],
-  }),
-  base({
-    slug: "iso-50001",
-    code: "ISO 50001:2018",
-    title: "ISO 50001:2018 Energy Management",
-    category: "iso",
-    discipline: "Energy management",
-    summary:
-      "Energy management system certification for organisations reducing energy consumption, cost and carbon intensity.",
-    whatItIs:
-      "ISO 50001 specifies requirements for an energy management system (EnMS), including energy review, baselines, performance indicators and improvement planning.",
-    whoNeedsIt: [
-      "Energy-intensive manufacturers and processors",
-      "Large property and estate portfolios",
-      "Organisations with energy compliance obligations",
-      "Businesses with carbon reduction targets",
-    ],
-    benefits: [
-      "Measured, sustained reductions in energy use",
-      "Evidence for compliance and reporting schemes",
-      "Lower operating costs and carbon emissions",
-      "Data-driven investment decisions",
-    ],
-    training: "iso-50001",
-  }),
-  base({
-    slug: "iso-13485",
-    code: "ISO 13485",
-    title: "ISO 13485 Medical Devices Quality Management",
-    category: "iso",
-    discipline: "Medical devices",
-    summary:
-      "Quality management system certification for organisations involved in the medical device lifecycle.",
-    whatItIs:
-      "ISO 13485 specifies quality management system requirements for organisations designing, producing, installing or servicing medical devices, with strong emphasis on risk management and regulatory requirements.",
-    whoNeedsIt: [
-      "Medical device manufacturers and contract manufacturers",
-      "Component and sterilisation service suppliers",
-      "Distributors and importers of devices",
-      "Software as a medical device developers",
-    ],
-    benefits: [
-      "Regulatory-aligned quality management",
-      "Controlled design, validation and traceability",
-      "Improved supplier and post-market controls",
-      "Confidence for regulators and customers",
-    ],
-  }),
-  base({
-    slug: "iso-29001",
-    code: "ISO 29001:2020",
-    title: "ISO 29001:2020 Petroleum & Gas Quality Management",
-    category: "iso",
-    discipline: "Oil, gas & petrochemical",
-    summary:
-      "Sector-specific quality management certification for the petroleum, petrochemical and natural gas supply chain.",
-    whatItIs:
-      "ISO 29001 builds on ISO 9001 with additional requirements for defect prevention and variation reduction in the oil and gas supply chain.",
-    whoNeedsIt: [
-      "Equipment and materials suppliers to oil and gas",
-      "Service contractors on upstream and downstream projects",
-      "Fabrication and inspection service providers",
-      "Organisations bidding for operator frameworks",
-    ],
-    benefits: [
-      "Sector-recognised quality assurance",
-      "Reduced defects and project delays",
-      "Improved qualification for operator supply chains",
-      "Consistency across projects and sites",
-    ],
-  }),
-  base({
-    slug: "iso-42001",
-    code: "ISO/IEC 42001:2023",
-    title: "ISO/IEC 42001:2023 AI Management System",
-    category: "iso",
-    tag: "NEW",
-    discipline: "Artificial intelligence",
-    summary:
-      "The first management system standard for artificial intelligence, covering responsible development, deployment and oversight of AI systems.",
-    whatItIs:
-      "ISO/IEC 42001 specifies requirements for an AI management system (AIMS), addressing AI-specific risks, impact assessment, data governance and human oversight across the AI lifecycle.",
-    whoNeedsIt: [
-      "SaaS and technology companies shipping AI features",
-      "Organisations deploying AI in regulated decisions",
-      "Public bodies procuring or operating AI systems",
-      "Suppliers facing AI assurance questionnaires",
-    ],
-    benefits: [
-      "Demonstrable responsible-AI governance",
-      "Structured AI risk and impact assessment",
-      "Clear accountability and human oversight",
-      "Readiness for emerging AI regulation",
-    ],
-  }),
-  base({
-    slug: "iso-55001",
-    code: "ISO 55001",
-    title: "ISO 55001 Asset Management",
-    category: "iso",
-    tag: "NEW",
-    discipline: "Asset management",
-    summary:
-      "Asset management system certification for organisations that depend on physical assets and infrastructure.",
-    whatItIs:
-      "ISO 55001 specifies requirements for an asset management system, aligning asset lifecycle decisions with organisational objectives, risk and value.",
-    whoNeedsIt: [
-      "Utilities, transport and infrastructure operators",
-      "Manufacturing plants with critical equipment",
-      "Property and estate portfolios",
-      "Public sector asset owners",
-    ],
-    benefits: [
-      "Whole-life cost and risk visibility",
-      "Better maintenance and investment planning",
-      "Reduced unplanned failures",
-      "Evidence of responsible asset stewardship",
-    ],
-  }),
-  base({
-    slug: "iso-14064",
-    code: "ISO 14064",
-    title: "ISO 14064 Greenhouse Gas Quantification",
-    category: "iso",
-    tag: "NEW",
-    discipline: "Greenhouse gas",
-    summary:
-      "Greenhouse gas quantification and reporting, used to produce credible carbon inventories and support net-zero claims.",
-    whatItIs:
-      "ISO 14064 provides requirements for quantifying and reporting greenhouse gas emissions and removals at organisation and project level, and for validation and verification activities.",
-    whoNeedsIt: [
-      "Organisations reporting Scope 1, 2 and 3 emissions",
-      "Businesses with net-zero or SBTi commitments",
-      "Suppliers asked to disclose carbon data",
-      "Project developers claiming emission reductions",
-    ],
-    benefits: [
-      "Credible, consistent emissions data",
-      "Support for disclosure and customer requirements",
-      "Baseline for reduction planning",
-      "Reduced greenwashing risk",
-    ],
-  }),
+    benefit_para: "Systematic legal compliance is the benefit regulators notice: every permit, consent, duty-of-care and producer-responsibility obligation is identified, evaluated and evidenced, which reduces the risk of enforcement and gives inspectors confidence when they visit. Resource and waste savings are the benefit finance director’s notice; structured attention to energy, water, raw materials and waste typically pays for certification in the first year, and the same data serves SECR, ESOS and customer carbon requests.",
 
-  // Cyber security & compliance
-  base({
-    slug: "cyber-essentials",
-    code: "Cyber Essentials",
-    title: "Cyber Essentials Certification",
-    category: "cyber",
-    discipline: "UK government-backed scheme",
-    summary:
-      "The UK government-backed scheme covering five technical controls that protect against the most common cyber attacks.",
-    whatItIs:
-      "Cyber Essentials is a self-assessment certification, verified by a certification body, covering firewalls, secure configuration, user access control, malware protection and security update management.",
-    whoNeedsIt: [
-      "Suppliers bidding for UK public sector contracts",
-      "SMEs seeking a practical baseline of cyber hygiene",
-      "Organisations needing cyber insurance evidence",
-      "Businesses preparing for ISO 27001",
-    ],
-    benefits: [
-      "Recognised baseline against common attacks",
-      "Eligibility for many public sector tenders",
-      "Fast, cost-effective route to cyber assurance",
-      "Clear remediation actions for IT teams",
-    ],
-    requirements: [
-      "Firewalls and internet gateways",
-      "Secure configuration",
-      "User access control",
-      "Malware protection",
-      "Security update management",
-    ],
-  }),
-  base({
-    slug: "cyber-essentials-plus",
-    code: "Cyber Essentials Plus",
-    title: "Cyber Essentials Plus Certification",
-    category: "cyber",
-    discipline: "Technically audited scheme",
-    summary:
-      "The audited tier of Cyber Essentials, where the five controls are independently tested rather than self-declared.",
-    whatItIs:
-      "Cyber Essentials Plus covers the same five controls as Cyber Essentials, verified through hands-on technical testing of devices, patching and configuration by an assessor.",
-    whoNeedsIt: [
-      "Organisations whose contracts specify the Plus tier",
-      "Suppliers handling sensitive government data",
-      "Businesses wanting independent technical validation",
-      "Organisations already holding Cyber Essentials",
-    ],
-    benefits: [
-      "Independently tested technical controls",
-      "Higher assurance for clients and insurers",
-      "Evidence of effective patch and device management",
-      "Meets stricter procurement requirements",
-    ],
-    requirements: [
-      "Valid Cyber Essentials certification in place",
-      "Sampled device and configuration testing",
-      "Vulnerability scanning of in-scope systems",
-      "Verification of malware and access controls",
-      "Remediation of identified issues",
-    ],
-  }),
-  base({
-    slug: "iso-27001",
-    code: "ISO/IEC 27001:2022",
-    title: "ISO/IEC 27001:2022 Information Security",
-    category: "cyber",
-    discipline: "Information security",
-    summary:
-      "The international standard for information security management systems, and the benchmark for enterprise security assurance.",
-    whatItIs:
-      "ISO/IEC 27001 specifies requirements for an information security management system (ISMS), including risk assessment, risk treatment and the Annex A controls covering organisational, people, physical and technological themes.",
-    whoNeedsIt: [
-      "SaaS and technology providers handling client data",
-      "Financial, legal and healthcare service providers",
-      "Organisations facing enterprise security reviews",
-      "Businesses consolidating fragmented security controls",
-    ],
-    benefits: [
-      "Recognised assurance that shortens security reviews",
-      "Risk-based prioritisation of security investment",
-      "Reduced likelihood and impact of incidents",
-      "Foundation for privacy and cloud extensions",
-    ],
-    training: "iso-27001",
-    faqs: [
-      {
-        q: "Do we need penetration testing for ISO 27001?",
-        a: "Testing is not explicitly mandated, but technical vulnerability management is. Many organisations use penetration testing as evidence that controls work as intended.",
-      },
-    ],
-  }),
-  base({
-    slug: "iso-27701",
-    code: "ISO/IEC 27701",
-    title: "ISO/IEC 27701 Privacy Information Management",
-    category: "cyber",
-    tag: "NEW",
-    discipline: "Privacy management",
-    summary:
-      "A privacy extension to ISO 27001 for organisations processing personally identifiable information as controller or processor.",
-    whatItIs:
-      "ISO/IEC 27701 extends the ISMS with privacy-specific requirements and controls for PII controllers and processors, mapping closely to data protection obligations.",
-    whoNeedsIt: [
-      "Processors handling client personal data",
-      "Organisations with GDPR-heavy obligations",
-      "HR, marketing and health data platforms",
-      "Existing ISO 27001 certified organisations",
-    ],
-    benefits: [
-      "Demonstrable privacy governance",
-      "Clear controller and processor responsibilities",
-      "Efficient reuse of existing ISMS work",
-      "Stronger answers in data protection due diligence",
-    ],
-  }),
-  base({
-    slug: "iso-27017",
-    code: "ISO/IEC 27017",
-    title: "ISO/IEC 27017 Cloud Security Controls",
-    category: "cyber",
-    tag: "NEW",
-    discipline: "Cloud security",
-    summary:
-      "Cloud-specific security guidance for cloud service providers and customers, used alongside ISO 27001.",
-    whatItIs:
-      "ISO/IEC 27017 provides implementation guidance for information security controls in cloud environments, clarifying the split of responsibility between provider and customer.",
-    whoNeedsIt: [
-      "Cloud and managed hosting providers",
-      "SaaS platforms on public cloud infrastructure",
-      "Organisations with significant cloud footprints",
-      "Buyers assessing cloud supplier controls",
-    ],
-    benefits: [
-      "Clear shared-responsibility boundaries",
-      "Cloud-appropriate control implementation",
-      "Improved confidence for cloud customers",
-      "Complements ISO 27001 certification",
-    ],
-  }),
-  base({
-    slug: "iso-27018",
-    code: "ISO/IEC 27018",
-    title: "ISO/IEC 27018 PII Protection in Public Cloud",
-    category: "cyber",
-    tag: "NEW",
-    discipline: "Cloud privacy",
-    summary:
-      "Guidance for public cloud providers acting as processors of personally identifiable information.",
-    whatItIs:
-      "ISO/IEC 27018 sets out controls and guidance for protecting PII in public cloud services, including transparency, data return and disclosure obligations.",
-    whoNeedsIt: [
-      "Public cloud and SaaS processors",
-      "Providers hosting regulated personal data",
-      "Organisations answering privacy assurance requests",
-      "Cloud providers holding ISO 27001",
-    ],
-    benefits: [
-      "Privacy assurance specific to public cloud",
-      "Transparency on data handling and location",
-      "Reduced customer due-diligence friction",
-      "Alignment with data protection expectations",
-    ],
-  }),
-  base({
-    slug: "soc-2-type-ii",
-    code: "SOC 2 Type II",
-    title: "SOC 2 Type II Assessment",
-    category: "cyber",
-    tag: "NEW",
-    discipline: "Assurance assessment",
-    summary:
-      "Readiness and assessment support for the SOC 2 Trust Services Criteria over an operating period.",
-    whatItIs:
-      "A SOC 2 Type II assessment evaluates the design and operating effectiveness of controls against the Trust Services Criteria — security, availability, processing integrity, confidentiality and privacy — over a defined period.",
-    whoNeedsIt: [
-      "SaaS providers selling into North America",
-      "Technology suppliers to enterprise buyers",
-      "Organisations asked for SOC 2 in procurement",
-      "Businesses maturing beyond ISO 27001 alone",
-    ],
-    benefits: [
-      "Evidence of controls operating over time",
-      "Faster enterprise vendor onboarding",
-      "Reuse of existing ISMS evidence",
-      "Clear remediation roadmap before the audit period",
-    ],
-    requirements: [
-      "Scoping of systems and Trust Services Criteria",
-      "Control design and documentation",
-      "Evidence collection across the observation period",
-      "Remediation of identified gaps",
-      "Coordination with the reporting auditor",
-    ],
-  }),
-  base({
-    slug: "pci-dss",
-    code: "PCI DSS",
-    title: "PCI DSS Compliance",
-    category: "cyber",
-    tag: "NEW",
-    discipline: "Payment security",
-    summary:
-      "Support for organisations that store, process or transmit cardholder data and must meet PCI DSS requirements.",
-    whatItIs:
-      "PCI DSS is the payment card industry data security standard. Compliance activity covers scoping the cardholder data environment, implementing the required controls and completing the applicable validation route.",
-    whoNeedsIt: [
-      "E-commerce and retail merchants",
-      "Payment service providers and platforms",
-      "Contact centres taking card payments",
-      "Organisations reducing cardholder data scope",
-    ],
-    benefits: [
-      "Reduced card data breach and fine exposure",
-      "Clarity on scope and applicable validation route",
-      "Stronger acquirer and processor relationships",
-      "Reusable controls for ISO 27001",
-    ],
-    requirements: [
-      "Cardholder data environment scoping and data flows",
-      "Network segmentation and access control",
-      "Encryption, logging and monitoring controls",
-      "Vulnerability management and testing",
-      "Policy, training and validation documentation",
-    ],
-  }),
-  base({
-    slug: "gdpr-assessment",
-    code: "GDPR Assessment",
-    title: "GDPR Assessment",
-    category: "cyber",
-    tag: "NEW",
-    discipline: "Data protection",
-    summary:
-      "An independent review of your data protection practices against UK GDPR obligations, with a prioritised action plan.",
-    whatItIs:
-      "A GDPR assessment reviews lawful bases, records of processing, transparency, data subject rights, retention, international transfers, contracts and breach management, and reports on gaps and priorities.",
-    whoNeedsIt: [
-      "Organisations without a formal data protection programme",
-      "Businesses processing special category data",
-      "Companies expanding into UK or EU markets",
-      "Organisations preparing for ISO 27701",
-    ],
-    benefits: [
-      "Clear picture of data protection maturity",
-      "Prioritised, practical remediation plan",
-      "Better answers for customers and regulators",
-      "Reduced enforcement and reputational risk",
-    ],
-    requirements: [
-      "Records of processing and data mapping",
-      "Lawful basis and transparency review",
-      "Data subject rights procedures",
-      "Retention, security and transfer controls",
-      "Processor contracts and breach response",
-    ],
-  }),
-  base({
-    slug: "penetration-testing",
-    code: "Penetration Testing",
-    title: "Penetration Testing",
-    category: "cyber",
-    tag: "NEW",
-    discipline: "Technical security testing",
-    summary:
-      "Technical security testing of applications, infrastructure and cloud environments, reported with practical remediation advice.",
-    whatItIs:
-      "Penetration testing simulates attacker behaviour against agreed targets to identify exploitable weaknesses, rate their risk and recommend fixes. Findings support ISO 27001, Cyber Essentials Plus and customer assurance.",
-    whoNeedsIt: [
-      "Teams releasing new or significantly changed applications",
-      "Organisations with internet-facing infrastructure",
-      "Businesses with annual testing obligations",
-      "Companies validating remediation work",
-    ],
-    benefits: [
-      "Evidence-based view of real exploitability",
-      "Prioritised, developer-ready remediation guidance",
-      "Support for certification and customer assurance",
-      "Retest confirmation of fixes",
-    ],
-    requirements: [
-      "Agreed scope, targets and testing windows",
-      "Rules of engagement and authorisation",
-      "Testing execution and finding validation",
-      "Risk-rated report with remediation advice",
-      "Optional retest of remediated findings",
-    ],
-  }),
+    certification_process: [
+  "One route for every standard. Application and quotation → Stage 1 → Stage 2 → independent review and decision → three-year certificate with annual surveillance and recertification in year three. The full flow, who does what and typical timings are on our certification process page (/certification/process).",
 
-  // Sustainability
-  base({
-    slug: "esg-sustainability",
-    code: "ESG & Sustainability",
-    title: "ESG & Sustainability Services",
-    category: "sustainability",
-    discipline: "ESG advisory",
-    summary:
-      "Support for building, evidencing and reporting an ESG programme that stands up to customer and investor scrutiny.",
-    whatItIs:
-      "Our ESG services help you define material topics, set governance and targets, collect reliable data and report credibly, using ISO standards as the operating backbone.",
-    whoNeedsIt: [
-      "Suppliers facing ESG questionnaires and audits",
-      "Organisations reporting social value in tenders",
-      "Businesses with investor or lender ESG requirements",
-      "Companies consolidating scattered sustainability claims",
-    ],
-    benefits: [
-      "Focus on material, evidenced topics",
-      "Consistent data and reporting discipline",
-      "Better tender and investor responses",
-      "Reduced greenwashing risk",
-    ],
-    requirements: [
-      "Materiality assessment and stakeholder mapping",
-      "Governance, policy and target setting",
-      "Data collection and assurance readiness",
-      "Reporting alignment with recognised frameworks",
-      "Improvement roadmap and review cycle",
-    ],
-  }),
-  base({
-    slug: "carbon-net-zero",
-    code: "Carbon & Net-Zero",
-    title: "Carbon & Net-Zero Advisory",
-    category: "sustainability",
-    discipline: "Carbon advisory",
-    summary:
-      "Carbon footprint quantification and net-zero planning grounded in ISO 14064 and ISO 50001 practice.",
-    whatItIs:
-      "We help you build a defensible emissions inventory across Scopes 1, 2 and 3, set a credible reduction pathway and put the management systems in place to deliver and evidence it.",
-    whoNeedsIt: [
-      "Organisations with net-zero commitments",
-      "Suppliers asked for carbon data by customers",
-      "Energy-intensive operations targeting cost reduction",
-      "Businesses preparing for verification",
-    ],
-    benefits: [
-      "Defensible baseline and reporting boundary",
-      "Prioritised reduction opportunities",
-      "Energy cost savings alongside carbon cuts",
-      "Verification-ready documentation",
-    ],
-    requirements: [
-      "Boundary and inventory design",
-      "Scope 1, 2 and 3 data collection",
-      "Emission factor and calculation methodology",
-      "Reduction pathway and target setting",
-      "Monitoring, reporting and verification readiness",
-    ],
-  }),
+  "Already certified elsewhere? A valid, accredited ISO 14001 certificate transfers to TRAIBCERT with its expiry date and audit cycle intact after a free pre-transfer review — see certificate transfer (/resources/certificate-transfer) for the documents to send.",
 
-  // Inspection
-  base({
-    slug: "inspection",
-    code: "Inspection Services",
-    title: "Inspection Services Overview",
-    category: "inspection",
-    discipline: "Inspection",
-    summary:
-      "Independent inspection services covering pre-shipment, in-process and supplier verification activities.",
-    whatItIs:
-      "Our inspection services provide independent verification that goods, materials and workmanship match specification, contract and regulatory requirements before value changes hands.",
-    whoNeedsIt: [
-      "Importers and buyers sourcing internationally",
-      "Manufacturers verifying supplier quality",
-      "Trading companies managing shipment risk",
-      "Project owners verifying delivered materials",
-    ],
-    benefits: [
-      "Independent verification before shipment or payment",
-      "Fewer rejected consignments and disputes",
-      "Documented evidence for buyers and insurers",
-      "Reduced rework and logistics cost",
-    ],
-    requirements: [
-      "Specification and acceptance criteria agreement",
-      "Inspection plan and sampling approach",
-      "On-site inspection and testing witness",
-      "Documented findings and photographic evidence",
-      "Reporting and follow-up verification",
-    ],
-  }),
-  base({
-    slug: "what-is-pre-shipment-inspection",
-    code: "Pre-Shipment Inspection",
-    title: "What is Pre-Shipment Inspection?",
-    category: "inspection",
-    discipline: "Inspection",
-    summary:
-      "An explanation of pre-shipment inspection: what happens, when it takes place and what it verifies.",
-    whatItIs:
-      "Pre-shipment inspection (PSI) is an independent check performed before goods leave the supplier, verifying quantity, quality, markings, packing and documentation against the purchase order and specification.",
-    whoNeedsIt: [
-      "Buyers importing from new or distant suppliers",
-      "Organisations paying against shipping documents",
-      "Businesses with recurring quality disputes",
-      "Companies with contractual PSI requirements",
-    ],
-    benefits: [
-      "Problems found before goods ship",
-      "Objective, documented inspection results",
-      "Protection against quantity and quality shortfalls",
-      "Smoother customs and buyer acceptance",
-    ],
-    requirements: [
-      "Purchase order and specification review",
-      "Inspection booking with the supplier",
-      "Quantity, quality and packing verification",
-      "Marking, labelling and document checks",
-      "Inspection report issue",
-    ],
-  }),
-  base({
-    slug: "why-pre-shipment-inspection-is-important",
-    code: "Why PSI Matters",
-    title: "Why Pre-Shipment Inspection is Important",
-    category: "inspection",
-    discipline: "Inspection",
-    summary:
-      "Why independent inspection before shipment protects cash, schedule and reputation in international trade.",
-    whatItIs:
-      "Once goods are shipped, remedies become slow and expensive. Pre-shipment inspection moves the point of verification to the supplier's premises, where problems can still be corrected quickly.",
-    whoNeedsIt: [
-      "Importers with limited supplier oversight",
-      "Businesses with tight delivery deadlines",
-      "Organisations exposed to non-conforming stock",
-      "Buyers using letters of credit",
-    ],
-    benefits: [
-      "Lower risk of paying for non-conforming goods",
-      "Fewer schedule disruptions and returns",
-      "Stronger negotiating position with suppliers",
-      "Evidence for insurance and dispute resolution",
-    ],
-    requirements: [
-      "Clear contractual inspection clauses",
-      "Agreed acceptance and sampling criteria",
-      "Independent inspection before dispatch",
-      "Documented, timely reporting",
-      "Defined action on nonconformity",
-    ],
-  }),
-  base({
-    slug: "benefits-of-pre-shipment-inspection",
-    code: "PSI Benefits",
-    title: "Benefits of Pre-Shipment Inspection",
-    category: "inspection",
-    discipline: "Inspection",
-    summary:
-      "The commercial and operational benefits of adding independent pre-shipment inspection to your supply chain.",
-    whatItIs:
-      "Pre-shipment inspection reduces trade risk, improves supplier performance over time and produces the objective evidence buyers, insurers and customs authorities expect.",
-    whoNeedsIt: [
-      "Procurement teams managing supplier risk",
-      "Quality functions without overseas presence",
-      "Finance teams protecting payment terms",
-      "Logistics teams reducing exceptions",
-    ],
-    benefits: [
-      "Reduced financial exposure on each shipment",
-      "Improved supplier quality discipline",
-      "Objective evidence for claims and disputes",
-      "Predictable, documented acceptance decisions",
-    ],
-    requirements: [
-      "Risk-based inspection programme design",
-      "Supplier performance tracking",
-      "Consistent inspection criteria",
-      "Reporting and corrective action loops",
-      "Periodic programme review",
-    ],
-  }),
+  "Environmental audit days reflect the risk of your activities as well as headcount: permitted installations, waste operations and construction sites attract more time than offices, because there is more to see and more to evaluate for compliance. Stage 1 can be delivered remotely; Stage 2 and surveillance need to see controls working on site, including temporary construction sites and depots, and groups with similar sites under central control can be sampled.",
+
+  "Your ISO 14001:2015 certificate remains valid, but three dates matter: no new 2015 certificates after 31 October 2027, every certificate transitioned by 30 April 2029, and — because certification bodies had to complete their own transition first — TRAIBCERT is issuing 2026 certificates now. We transition at your next scheduled surveillance or recertification audit, adding the time needed to cover the revised clauses and quoting it before the visit, so there is no extra trip. Organisations holding both ISO 14001 and ISO 9001 can transition both standards in the same audit, which is cheaper than two. A stand-alone transition audit is available for anyone who needs the 2026 certificate early. On a positive decision the certificate is reissued as ISO 14001:2026 with your existing expiry date.",
+],
+implementation_intro:
+  "TRAIBCERT audits and certifies; the system itself is built by your own team or an adviser you appoint. First-time certification typically takes four to nine months depending on the number of sites and the state of existing compliance records; organisations that already hold ISO 9001 are usually quicker because the common elements exist.",
+
+implementation_steps: [
+  "Obtain ISO 14001:2026, secure top management commitment and appoint someone to lead the work with authority to reach every site and function in scope.",
+
+  "Carry out a gap review, define the scope and review your context: the environmental conditions that affect you, including climate change, biodiversity, pollution and resource availability, and what regulators, customers, neighbours and lenders expect.",
+
+  "Identify your environmental aspects across the life cycle of your activities, products and services, decide which are significant, and build the register of compliance obligations — permits, consents, waste, packaging, F-gas, COSHH and voluntary commitments — with an owner for each.",
+
+  "Write or update the environmental policy, set measurable objectives for the significant aspects, put operational controls and supplier and contractor criteria in place, establish a process for assessing planned changes before they take effect, and prepare and test emergency arrangements.",
+
+  "Train people at every level so they know the policy, the significant aspects of their own work and what to do when something goes wrong, then run the system for about three months, monitoring key parameters and completing a compliance evaluation against every obligation.",
+
+  "Complete an internal audit with stated objectives, covering every part of the standard and every site in scope.",
+
+  "Hold a management review that examines the audit results, compliance evaluation, monitoring data and objectives and decides what to change.",
+
+  "Apply to TRAIBCERT; after Stage 1, Stage 2 and a positive decision, maintain the system through surveillance and recertification, keeping the compliance register and aspects data current as the business changes.",
+],
+
+implementation_transition:
+  "For an established ISO 14001:2015 system the transition is a matter of weeks, not months. Revisit your context review so that climate change, biodiversity, pollution and resource availability are visibly considered; check that your aspects register looks along the life cycle; put a simple process in place for assessing changes such as new products, sites, permits or legislation, which is the one genuinely new element; make sure environmental criteria reach the suppliers, contractors and services you buy; and state objectives for your internal audits. A management review that records the transition completes the picture. Our one-day ISO 14001:2026 Transition course walks through each point with worked examples.",
+
+  why_choose_intro: [
+  "TRAIBCERT is an accredited, independent certification body with a global clientele and an understanding of its clients' needs. Our environmental auditors have worked in manufacturing, construction, waste, utilities and facilities, and most are qualified across ISO 9001 and ISO 45001 as well, so integrated audits are delivered by one team in one visit. With auditors in the UK, the UAE and India, organisations operating in more than one of those markets hold a single accredited certificate with local site visits and UK-based independent review.",
+
+  "Clients receive a fixed price for the full three-year cycle, a planned route through the ISO 14001:2026 transition timed to a scheduled visit, audit reports that describe findings in terms of your permits, aspects and controls, and a certificate listed on our public register. Where you intend to add ISO 50001 or greenhouse-gas verification, we plan the programme so that the environmental system is reused rather than repeated. Surveillance and expiry dates are protected whether you certify with us first or transfer to us.",
+],
+
+industries: [
+  "Manufacturing & Supply Chain — permits, waste and packaging obligations",
+  "Construction — contractor and framework requirements",
+  "Energy & Oil/Gas — high-risk operations and stakeholder scrutiny",
+  "Transport & Logistics — fleet emissions and depot controls",
+  "Food & Beverage — water, effluent and packaging",
+  "Public Sector & Government — estates and public-sector net-zero commitments",
+  "Retail & E-Commerce",
+  "Technology & SaaS — data-centre energy and e-waste",
+  "Healthcare",
+  "Education",
+  "General / Other Industries — waste and recycling, facilities management and agriculture",
+],
+
+who_needs_certification: [
+  "Environmental sections of supplier questionnaires from principal contractors, utilities, local authorities and retailers.",
+  "Framework and tender criteria that award points for a certified environmental management system.",
+  "Permit and consent holders who must demonstrate systematic legal compliance to regulators.",
+  "ESG questionnaires from lenders, investors and customers that ask for certified environmental management as evidence.",
+  "Organisations preparing for ISO 50001, greenhouse-gas verification or net-zero commitments that need a management backbone.",
+],
+
+self_check: [
+  "You know your permits, consents and waste duties and have checked compliance in the last year",
+  "Your aspects register covers what you buy and what happens to products after use",
+  "Climate change and biodiversity have been considered in your context review",
+  "Changes such as new processes or sites are assessed before they happen",
+  "An emergency drill and an internal audit have been done in the last twelve months",
+],
+
+training: "ISO 14001:2026 Transition (1 day), Foundation, Awareness, Internal Auditor, Lead Auditor",
+
+also_need: [
+  "ISO 50001:2018",
+  "GHG inventory verification",
+  "ISO 9001:2026",
+  "ISO 45001:2018",
+],
+    
+  },
+  
+
+),
+  
+
 ];
 
 export const standardsBySlug = Object.fromEntries(standards.map((s) => [s.slug, s]));
