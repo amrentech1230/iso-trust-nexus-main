@@ -67,7 +67,7 @@ export function Header() {
                     className="relative"
                     onMouseEnter={() => {
                       cancelClose();
-                      setOpenMenu(item.men  u ? item.label : null);
+                      setOpenMenu(item.menu ? item.label : null);
                     }}
                   >
                     {item.menu ? (
