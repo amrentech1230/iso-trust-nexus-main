@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as CertificationIndexRouteImport } from './routes/certification.index'
 import { Route as CertificationSlugRouteImport } from './routes/certification.$slug'
 import { Route as ContactIndexRouteImport } from './routes/contact.index'
@@ -51,6 +53,16 @@ const AboutRoute = AboutRouteImport.update({
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhyChooseUsRoute = WhyChooseUsRouteImport.update({
+  id: '/why-choose-us',
+  path: '/why-choose-us',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CertificationIndexRoute = CertificationIndexRouteImport.update({
@@ -156,6 +168,8 @@ export interface FileRoutesByFullPath {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
+  '/services': typeof ServicesRoute
+  '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -181,6 +195,8 @@ export interface FileRoutesByTo {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
+  '/services': typeof ServicesRoute
+  '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -207,6 +223,8 @@ export interface FileRoutesById {
   '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
+  '/services': typeof ServicesRoute
+  '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -234,6 +252,8 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/careers'
+    | '/services'
+    | '/why-choose-us'
     | '/certification/$slug'
     | '/contact/enquiry'
     | '/legal/$slug'
@@ -259,6 +279,8 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/careers'
+    | '/services'
+    | '/why-choose-us'
     | '/certification/$slug'
     | '/contact/enquiry'
     | '/legal/$slug'
@@ -284,6 +306,8 @@ export interface FileRouteTypes {
     | '/$'
     | '/about'
     | '/careers'
+    | '/services'
+    | '/why-choose-us'
     | '/certification/$slug'
     | '/contact/enquiry'
     | '/legal/$slug'
@@ -310,6 +334,8 @@ export interface RootRouteChildren {
   SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
+  ServicesRoute: typeof ServicesRoute
+  WhyChooseUsRoute: typeof WhyChooseUsRoute
   CertificationSlugRoute: typeof CertificationSlugRoute
   ContactEnquiryRoute: typeof ContactEnquiryRoute
   LegalSlugRoute: typeof LegalSlugRoute
@@ -359,6 +385,20 @@ declare module '@tanstack/react-router' {
       path: '/careers'
       fullPath: '/careers'
       preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/why-choose-us': {
+      id: '/why-choose-us'
+      path: '/why-choose-us'
+      fullPath: '/why-choose-us'
+      preLoaderRoute: typeof WhyChooseUsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/certification/': {
@@ -502,6 +542,8 @@ const rootRouteChildren: RootRouteChildren = {
   SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
+  ServicesRoute: ServicesRoute,
+  WhyChooseUsRoute: WhyChooseUsRoute,
   CertificationSlugRoute: CertificationSlugRoute,
   ContactEnquiryRoute: ContactEnquiryRoute,
   LegalSlugRoute: LegalSlugRoute,

@@ -4,7 +4,7 @@ import type { PrimaryNavItem } from "@/config/navigation";
 import { FeaturedTile } from "./FeaturedTile";
 
 const widthClass: Record<NonNullable<PrimaryNavItem["menu"]>["kind"], string> = {
-  mega: "left-1/2 -translate-x-1/2 w-[min(72rem,calc(100vw-2.5rem))]",
+  mega: "left-1/2 -translate-x-1/2 w-[min(80rem,calc(100vw-2.5rem))]",
   wide: "left-0 w-[min(32.5rem,calc(100vw-2.5rem))]",
   simple: "left-0 w-[min(20rem,calc(100vw-2.5rem))]",
 };
@@ -30,11 +30,16 @@ export function MegaMenuPanel({
     links[(next + links.length) % links.length]?.focus();
   };
 
+  const hasIndustriesCol = menu.columns.some((c) => c.kind === "industries");
+  const colCount = menu.columns.length + (menu.featured ? 1 : 0);
+
   const gridClass =
     menu.kind === "mega"
-      ? `grid gap-x-8 gap-y-6 ${
-          menu.featured ? "lg:grid-cols-[1.15fr_1fr_0.85fr_0.9fr_1fr]" : "lg:grid-cols-4"
-        }`
+      ? hasIndustriesCol
+        ? `grid gap-x-8 gap-y-6 lg:grid-cols-[1fr_2fr_0.7fr${menu.featured ? "_1fr" : ""}]`
+        : `grid gap-x-8 gap-y-6 ${
+            menu.featured ? "lg:grid-cols-[1.15fr_1fr_0.85fr_0.9fr_1fr]" : "lg:grid-cols-4"
+          }`
       : "grid gap-6";
 
   return (
@@ -48,45 +53,81 @@ export function MegaMenuPanel({
             <p className="mb-3 text-[11px] font-bold tracking-[0.14em] text-indigo-soft uppercase">
               {column.heading}
             </p>
-            <ul
-              className={
-                menu.kind === "wide"
-                  ? "max-h-[60vh] space-y-0.5 overflow-y-auto pr-1"
-                  : "max-h-[62vh] space-y-0.5 overflow-y-auto pr-1"
-              }
-            >
-              {column.links.map((link) => (
-                <li key={link.href + link.label}>
-                  <Link
-                    to={link.href}
-                    onClick={onClose}
-                    className="group block rounded-md px-2 py-1.5 transition-colors hover:bg-secondary focus-visible:bg-secondary"
-                  >
-                    <span className="flex items-baseline gap-2">
-                      <span className="text-sm font-semibold text-foreground group-hover:text-indigo-brand">
-                        {link.label}
+            {column.kind === "industries" ? (
+              <>
+                {/* "All Industries" header link */}
+                <Link
+                  to={column.links[0].href}
+                  onClick={onClose}
+                  className="group mb-2 block rounded-md px-2 py-1.5 transition-colors hover:bg-secondary focus-visible:bg-secondary"
+                >
+                  <span className="text-sm font-semibold text-indigo-brand group-hover:text-indigo-brand">
+                    {column.links[0].label}
+                  </span>
+                  {column.links[0].note ? (
+                    <span className="mt-0.5 block text-xs text-muted-foreground">
+                      {column.links[0].note}
+                    </span>
+                  ) : null}
+                </Link>
+                {/* 2-column grid for all industry links */}
+                <ul className="grid grid-cols-2 gap-x-3 gap-y-0.5">
+                  {column.links.slice(1).map((link) => (
+                    <li key={link.href + link.label}>
+                      <Link
+                        to={link.href}
+                        onClick={onClose}
+                        className="group block rounded-md px-2 py-1.5 transition-colors hover:bg-secondary focus-visible:bg-secondary"
+                      >
+                        <span className="text-sm font-semibold text-foreground group-hover:text-indigo-brand">
+                          {link.label}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <ul
+                className={
+                  menu.kind === "wide"
+                    ? "max-h-[60vh] space-y-0.5 overflow-y-auto pr-1"
+                    : "max-h-[62vh] space-y-0.5 overflow-y-auto pr-1"
+                }
+              >
+                {column.links.map((link) => (
+                  <li key={link.href + link.label}>
+                    <Link
+                      to={link.href}
+                      onClick={onClose}
+                      className="group block rounded-md px-2 py-1.5 transition-colors hover:bg-secondary focus-visible:bg-secondary"
+                    >
+                      <span className="flex items-baseline gap-2">
+                        <span className="text-sm font-semibold text-foreground group-hover:text-indigo-brand">
+                          {link.label}
+                        </span>
+                        {link.tag ? (
+                          <span
+                            className={`rounded-sm px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase ${
+                              link.tag === "NEW"
+                                ? "bg-honey-soft text-honey-text"
+                                : "bg-secondary text-indigo-brand"
+                            }`}
+                          >
+                            {link.tag}
+                          </span>
+                        ) : null}
                       </span>
-                      {link.tag ? (
-                        <span
-                          className={`rounded-sm px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase ${
-                            link.tag === "NEW"
-                              ? "bg-honey-soft text-honey-text"
-                              : "bg-secondary text-indigo-brand"
-                          }`}
-                        >
-                          {link.tag}
+                      {link.note ? (
+                        <span className="mt-0.5 block text-xs text-muted-foreground">
+                          {link.note}
                         </span>
                       ) : null}
-                    </span>
-                    {link.note ? (
-                      <span className="mt-0.5 block text-xs text-muted-foreground">
-                        {link.note}
-                      </span>
-                    ) : null}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
         {menu.featured ? <FeaturedTile tile={menu.featured} onNavigate={onClose} /> : null}

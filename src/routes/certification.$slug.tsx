@@ -13,185 +13,376 @@ import { standards, standardsBySlug } from "@/data/standards";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/certification/$slug")({
-  loader: ({ params }) => {
-    const standard = standardsBySlug[params.slug];
-    if (!standard) throw notFound();
-    return { standard };
-  },
-  head: ({ params, loaderData }) => {
-    if (!loaderData) {
-      return {
-        meta: [{ title: "Unavailable | TRAIBCERT" }, { name: "robots", content: "noindex" }],
-      };
-    }
-    const { standard } = loaderData;
-    const path = `/certification/${params.slug}`;
-    const meta = pageMeta({
-      title: `${standard.code} Certification | TRAIBCERT`,
-      description: standard.summary.slice(0, 155),
-      path,
-      type: "article",
-    });
-    return {
-      ...meta,
-      scripts: [
-        breadcrumbJsonLd([
-          { name: "Home", href: "/" },
-          { name: "Certification", href: "/certification" },
-          { name: standard.code, href: path },
-        ]),
-        faqJsonLd([...(standard.faqs ?? []), ...generalFaqs.slice(0, 3)]),
-      ],
-    };
-  },
-  component: StandardPage,
+loader: ({ params }) => {
+const standard = standardsBySlug[params.slug];
+if (!standard) throw notFound();
+return { standard };
+},
+head: ({ params, loaderData }) => {
+if (!loaderData) {
+return {
+meta: [{ title: "Unavailable | TRAIBCERT" }, { name: "robots", content: "noindex" }],
+};
+}
+const { standard } = loaderData;
+const path = `/certification/${params.slug}`;
+const meta = pageMeta({
+title: `${standard.code} Certification | TRAIBCERT`,
+description: standard.summary.slice(0, 155),
+path,
+type: "article",
+});
+return {
+...meta,
+scripts: [
+breadcrumbJsonLd([
+{ name: "Home", href: "/" },
+{ name: "Certification", href: "/certification" },
+{ name: standard.code, href: path },
+]),
+faqJsonLd([...(standard.faqs ?? []), ...generalFaqs.slice(0, 3)]),
+],
+};
+},
+component: StandardPage,
 });
 
 function StandardPage() {
-  const { standard } = Route.useLoaderData();
-  const faqs = [...(standard.faqs ?? []), ...generalFaqs.slice(0, 3)];
-  const course = standard.training ? coursesBySlug[standard.training] : undefined;
-  const related = standards
-    .filter((s) => s.category === standard.category && s.slug !== standard.slug)
-    .slice(0, 3);
+const { standard } = Route.useLoaderData();
+const faqs = [...(standard.faqs ?? []), ...generalFaqs.slice(0, 3)];
+const course = standard.training ? coursesBySlug[standard.training] : undefined;
+const related = standards
+.filter((s) => s.category === standard.category && s.slug !== standard.slug)
+.slice(0, 3);
 
-  return (
-    <>
-      <PageHero
-        eyebrow={standard.discipline}
-        title={`${standard.code} Certification`}
-        intro={standard.summary}
-        crumbs={[
-          { name: "Certification", href: "/certification" },
-          { name: standard.code, href: `/certification/${standard.slug}` },
-        ]}
-      >
-        <div className="flex flex-wrap gap-3">
-          <AppLink
-            href="/contact/enquiry"
-            className="inline-flex items-center gap-2 rounded-md bg-honey px-5 py-3 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover"
-          >
-            Get a Quote <ArrowRight className="size-4" aria-hidden="true" />
-          </AppLink>
-          {course ? (
-            <AppLink
-              href={`/training/${course.slug}`}
-              className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
-            >
-              Related training
-            </AppLink>
-          ) : null}
-        </div>
-      </PageHero>
+return (
+<>
+  <PageHero eyebrow={standard.discipline} title={`${standard.code} Certification`} intro={standard.summary} crumbs={[ {
+    name: "Certification" , href: "/certification" }, { name: standard.code, href: `/certification/${standard.slug}` },
+    ]}>
+    <div className="flex flex-wrap gap-3">
+      {/* <AppLink href="/contact/enquiry"
+        className="inline-flex items-center gap-2 rounded-md bg-honey px-5 py-3 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover">
+        Get a Quote
+        <ArrowRight className="size-4" aria-hidden="true" />
+      </AppLink> */}
 
-      <section className="py-14 md:py-16">
-        <div className="container-page grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div>
-            <SectionHeading eyebrow="Overview" title={`What ${standard.code} is`} />
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              {standard.whatItIs}
-            </p>
-
-            <h2 className="mt-10 text-xl font-bold text-indigo-brand">Requirements at a glance</h2>
-            <ul className="mt-4 space-y-2.5">
-              {standard.requirements.map((requirement) => (
-                <li key={requirement} className="flex gap-2.5 text-sm text-muted-foreground">
-                  <Check className="mt-0.5 size-4 shrink-0 text-honey-text" aria-hidden="true" />
-                  {requirement}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <aside className="space-y-6">
-            <div className="rounded-xl border border-border bg-card p-6">
-              <h2 className="text-base font-bold text-indigo-brand">Who needs it</h2>
-              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                {standard.whoNeedsIt.map((item) => (
-                  <li key={item} className="flex gap-2.5">
-                    <Check className="mt-0.5 size-4 shrink-0 text-honey-text" aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-xl border border-border bg-muted/50 p-6">
-              <h2 className="text-base font-bold text-indigo-brand">Benefits</h2>
-              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                {standard.benefits.map((item) => (
-                  <li key={item} className="flex gap-2.5">
-                    <Check className="mt-0.5 size-4 shrink-0 text-honey-text" aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="bg-muted/40 py-14 md:py-16">
-        <div className="container-page">
-          <SectionHeading
-            eyebrow="Certification process"
-            title={`How ${standard.code} certification works`}
-            align="center"
-          />
-          <div className="mt-9">
-            <CertificationProcess />
-          </div>
-        </div>
-      </section>
-
-      <section className="py-14 md:py-16">
-        <div className="container-page grid gap-10 lg:grid-cols-2">
-          <div>
-            <SectionHeading eyebrow="Why TRAIBCERT" title="Independent, practical, international" />
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              We are an independent UK certification body. We do not implement the systems we audit,
-              so certification decisions rest on objective evidence. Audits are led by auditors with
-              sector experience, planned around your sites and delivered across the UK, UAE and
-              internationally.
-            </p>
-            {course ? (
-              <div className="mt-6 rounded-xl border border-border bg-card p-6">
-                <p className="text-[11px] font-bold tracking-[0.16em] text-honey-text uppercase">
-                  Related training
-                </p>
-                <h3 className="mt-2 text-base font-bold text-indigo-brand">{course.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{course.summary}</p>
-                <AppLink
-                  href={`/training/${course.slug}`}
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-indigo-brand hover:underline"
-                >
-                  View course levels <ArrowRight className="size-4" aria-hidden="true" />
-                </AppLink>
-              </div>
-            ) : null}
-          </div>
-          <div>
-            <SectionHeading eyebrow="FAQs" title="Common questions" />
-            <div className="mt-4">
-              <FAQAccordion faqs={faqs} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {related.length > 0 ? (
-        <section className="bg-muted/40 py-14 md:py-16">
-          <div className="container-page">
-            <SectionHeading eyebrow="Related" title="You may also need" />
-            <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((item) => (
-                <StandardCard key={item.slug} standard={item} />
-              ))}
-            </div>
-          </div>
-        </section>
+      {course ? (
+      <AppLink href={`/training/${course.slug}`}
+        className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10">
+        Related training
+      </AppLink>
       ) : null}
+    </div>
+  </PageHero>
 
-      <CTASection />
-    </>
-  );
+  <section className="py-14 md:py-16">
+    <div className="container-page grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <SectionHeading eyebrow="Overview" title={`What ${standard.code} is`} />
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify text-justify">
+
+          {standard.whatItIs}
+        </p>
+        <h2 className="mt-10 text-xl font-bold text-indigo-brand">{`Why is ${standard.code} important`}</h2>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+          {standard.important}
+        </p>
+        <h2 className="mt-10 text-xl font-bold text-indigo-brand">EMS framework</h2>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+          {standard.emsFramework}
+        </p>
+        <h2 className="mt-10 text-xl font-bold text-indigo-brand">
+          Benefits of {standard.code}
+        </h2>
+
+        <div className="mt-5">
+          {/* Benefits introduction */}
+          {standard.benefit_para ? (
+          <p className="text-base leading-relaxed text-muted-foreground text-justify">
+            {standard.benefit_para}
+          </p>
+          ) : null}
+
+          {/* Benefits list */}
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {standard.benefits.map((benefit, index) => (
+            <div key={index} className="flex items-start gap-3 rounded-lg border border-border bg-white p-4">
+              <span
+                className="flex size-6 shrink-0 items-center justify-center rounded-full bg-honey text-xs font-bold text-indigo-brand">
+                ✓
+              </span>
+
+              <p className="text-sm leading-6 text-muted-foreground text-justify">
+                {benefit}
+              </p>
+            </div>
+            ))}
+          </div>
+        </div>
+
+        <h2 className="mt-10 text-xl font-bold text-indigo-brand">
+          Certification process
+        </h2>
+
+        <div className="mt-5 space-y-5">
+          {Array.isArray(standard.certification_process) &&
+          standard.certification_process.map((paragraph, index) => (
+          <p key={index} className="text-base leading-relaxed text-muted-foreground text-justify">
+            {paragraph}
+          </p>
+          ))}
+        </div>
+<h2 className="mt-10 text-xl font-bold text-indigo-brand">
+  Implementation steps
+</h2>
+
+{/* Introduction */}
+{standard.implementation_intro ? (
+  <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+    {standard.implementation_intro}
+  </p>
+) : null}
+
+{/* Numbered implementation steps */}
+<div className="mt-6 space-y-4">
+  {standard.implementation_steps?.map((step, index) => (
+    <div
+      key={index}
+      className="flex items-start gap-4 rounded-lg border border-border bg-white p-4"
+    >
+      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-honey text-sm font-bold text-indigo-brand">
+        {index + 1}
+      </span>
+
+      <p className="text-sm leading-6 text-muted-foreground text-justify">
+        {step}
+      </p>
+    </div>
+  ))}
+</div>
+
+{/* Transition */}
+{standard.implementation_transition ? (
+  <p className="mt-6 text-base leading-relaxed text-muted-foreground text-justify">
+    {standard.implementation_transition}
+  </p>
+) : null}
+      </div>
+
+      <aside className="space-y-6">
+        <div className="rounded-xl border border-border bg-card p-6">
+          <h2 className="text-base font-bold text-indigo-brand">Who needs it</h2>
+          <ul className="mt-3 space-y-2 text-sm text-muted-foreground text-justify">
+            {standard.whoNeedsIt.map((item) => (
+            <li key={item} className="flex gap-2.5">
+              <Check className="mt-0.5 size-4 shrink-0 text-honey-text" aria-hidden="true" />
+              {item}
+            </li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-xl border border-border bg-muted/50 p-6">
+          <h2 className="text-base font-bold text-indigo-brand"> {`Benefits of ${standard.code}`}</h2>
+          <ul className="mt-3 space-y-2 text-sm text-muted-foreground text-justify">
+            {standard.benefits.map((item) => (
+            <li key={item} className="flex gap-2.5">
+              <Check className="mt-0.5 size-4 shrink-0 text-honey-text" aria-hidden="true" />
+              {item}
+            </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section className="bg-muted/40 py-14 md:py-16">
+    <div className="container-page">
+      <SectionHeading eyebrow="Certification process" title={`How ${standard.code} certification works`}
+        align="center" />
+      <div className="mt-9">
+        <CertificationProcess />
+      </div>
+    </div>
+  </section>
+
+  <section className="py-14 md:py-16">
+    <div className="container-page grid gap-10 lg:grid-cols-2">
+      <div>
+        <SectionHeading eyebrow="Why TRAIBCERT" title="Our surveillance is due early in 2027 — should we transition then?" />
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+          Yes, if your review and internal audit are complete; otherwise at the following visit. You have until 30 April 2029, but earlier avoids the rush, and no new 2015 certificates can be issued after 31 October 2027.
+        </p>
+        {course ? (
+        <div className="mt-6 rounded-xl border border-border bg-card p-6">
+          <p className="text-[11px] font-bold tracking-[0.16em] text-honey-text uppercase">
+            Related training
+          </p>
+          <h3 className="mt-2 text-base font-bold text-indigo-brand">{course.title}</h3>
+          <p className="mt-2 text-sm text-muted-foreground text-justify ">{course.summary}</p>
+          <AppLink href={`/training/${course.slug}`}
+            className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-indigo-brand hover:underline">
+            View course levels
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </AppLink>
+        </div>
+        ) : null}
+      </div>
+      <div>
+        <SectionHeading eyebrow="FAQs" title="" />
+        <div className="mt-4">
+          <FAQAccordion faqs={faqs} />
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  {related.length > 0 ? (
+  <section className="bg-muted/40 py-14 md:py-16">
+    <div className="container-page">
+      <SectionHeading eyebrow="Related" title="You may also need" />
+      <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {related.map((item) => (
+        <StandardCard key={item.slug} standard={item} />
+        ))}
+      </div>
+      
+    </div>
+  </section>
+  ) : null}
+
+    {related.length > 0 ? (
+  <section className="bg-muted/40 py-14 md:py-16">
+    <div className="container-page">
+      <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+{/* Why choose TRAIBCERT? */}
+<h2 className="mt-10 text-xl font-bold text-indigo-brand">
+  Why choose TRAIBCERT?
+</h2>
+
+<div className="mt-5 space-y-5">
+  {standard.why_choose_intro?.map((paragraph, index) => (
+    <p
+      key={index}
+      className="text-base leading-relaxed text-muted-foreground text-justify"
+    >
+      {paragraph}
+    </p>
+  ))}
+</div>
+
+{/* Industries */}
+<h2 className="mt-10 text-xl font-bold text-indigo-brand">
+  Industries we certify to ISO 14001
+</h2>
+
+<p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+  Organisations in these sectors most often ask us for ISO 14001 — select
+  yours for sector-specific guidance.
+</p>
+
+<div className="mt-5 grid gap-3 sm:grid-cols-2">
+  {standard.industries?.map((industry, index) => (
+    <div
+      key={index}
+      className="flex items-start gap-3 rounded-lg border border-border bg-white p-4"
+    >
+      <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-honey text-xs font-bold text-indigo-brand">
+        ✓
+      </span>
+
+      <p className="text-sm leading-6 text-muted-foreground text-justify">
+        {industry}
+      </p>
+    </div>
+  ))}
+</div>
+
+{/* Who needs certification */}
+<h2 className="mt-10 text-xl font-bold text-indigo-brand">
+  Who needs ISO 14001 certification?
+</h2>
+
+<ul className="mt-5 space-y-3">
+  {standard.who_needs_certification?.map((item, index) => (
+    <li
+      key={index}
+      className="flex items-start gap-3 text-sm leading-6 text-muted-foreground text-justify"
+    >
+      <Check
+        className="mt-1 size-4 shrink-0 text-honey-text"
+        aria-hidden="true"
+      />
+      <span>{item}</span>
+    </li>
+  ))}
+</ul>
+
+{/* Self check */}
+<h2 className="mt-10 text-xl font-bold text-indigo-brand">
+  Ready to apply? A quick self-check
+</h2>
+
+<div className="mt-5 space-y-3">
+  {standard.self_check?.map((item, index) => (
+    <div
+      key={index}
+      className="flex items-start gap-3 rounded-lg border border-border bg-white p-4"
+    >
+      <Check
+        className="mt-0.5 size-5 shrink-0 text-honey-text"
+        aria-hidden="true"
+      />
+
+      <p className="text-sm leading-6 text-muted-foreground text-justify">
+        {item}
+      </p>
+    </div>
+  ))}
+</div>
+
+{/* Training */}
+<h2 className="mt-10 text-xl font-bold text-indigo-brand">
+  Training
+</h2>
+
+{standard.training ? (
+  <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+    {standard.training}
+  </p>
+) : null}
+
+{/* You may also need */}
+<h2 className="mt-10 text-xl font-bold text-indigo-brand">
+  You may also need
+</h2>
+
+<div className="mt-5 grid gap-3 sm:grid-cols-2">
+  {standard.also_need?.map((item, index) => (
+    <div
+      key={index}
+      className="flex items-center gap-3 rounded-lg border border-border bg-white p-4"
+    >
+      <Check
+        className="size-5 shrink-0 text-honey-text"
+        aria-hidden="true"
+      />
+
+      <p className="text-sm font-medium text-muted-foreground text-justify">
+        {item}
+      </p>
+    </div>
+  ))}
+</div>
+      </div>
+      
+    </div>
+  </section>
+  ) : null}
+
+  <CTASection />
+</>
+);
 }
