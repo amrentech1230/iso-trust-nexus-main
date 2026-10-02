@@ -68,27 +68,53 @@ export const standards: Standard[] = [
   base({
     slug: "iso-14001",
     code: "ISO 14001:2026",
-    title: "ISO 14001 Environmental Management",
+    title: "ISO 14001:2026 Environmental Management",
     category: "iso",
     tag: "CURRENT",
     discipline: "Environmental management",
     summary:
-      "Environmental management system certification for organisations managing environmental impact, legal compliance and resource efficiency.",
+      "ISO 14001:2026, published on 15 April 2026, is the international standard for environmental management systems. An accredited certificate proves that you control your environmental impacts, meet legal obligations and improve performance. Over half a million organisations hold it, and customers, supplier-approval processes, lenders and regulators ask for it.",
     whatItIs:
-      "ISO 14001 specifies requirements for an environmental management system (EMS). It helps you identify environmental aspects and impacts, meet compliance obligations and improve environmental performance in a structured, auditable way.",
+      "ISO 14001 sets out how an organisation identifies the ways its activities, products and services affect the environment, meets its legal and other obligations, controls significant aspects and improves performance. The 2026 edition names climate change, biodiversity, pollution and resource availability, adds planning of changes and widens control of suppliers. Certificates last three years with annual surveillance and appear on a public register. Compliance comes first: permits, waste, packaging and emissions duties must be identified, met and evidenced, while structured attention to energy, water, materials and waste often finds savings that exceed the cost of certification.",
     whoNeedsIt: [
-      "Manufacturers, construction and engineering businesses",
-      "Organisations with permits, consents or waste obligations",
-      "Suppliers asked to evidence environmental credentials",
-      "Organisations building an ESG or net-zero programme",
+      "Suppliers answering environmental questions from contractors, utilities, authorities and retailers",
+      "Bidders for tenders that score certified environmental management systems",
+      "Permit holders evidencing legal and compliance obligations",
+      "Organisations facing ESG questionnaires or preparing for energy management and net-zero commitments",
     ],
     benefits: [
-      "Structured control of environmental risk and compliance",
-      "Reduced waste, energy and resource costs",
-      "Credible evidence for tenders and ESG reporting",
-      "A foundation for carbon and net-zero work",
+      "Systematic compliance: every permit, consent and waste duty identified, evaluated and evidenced, reducing enforcement risk",
+      "Resource savings from energy, water, material and waste data that often repay certification and feed carbon reporting",
+      "Tender and ESG evidence that answers environmental questionnaires and lender requests with verifiable certification",
+      "Incident protection, with controls and change management that reduce spills, breaches and unsupported environmental claims",
+    ],
+    requirements: [
+      "Context: climate, biodiversity, pollution and resource availability",
+      "Leadership and a written environmental policy",
+      "Aspects register across the whole life cycle",
+      "Register of compliance obligations, each with an owner",
+      "Operational controls, supplier criteria and emergency preparedness",
+      "Monitoring, compliance evaluation, internal audit and management review",
     ],
     training: "iso-14001",
+    faqs: [
+      {
+        q: "Do we need a biodiversity survey?",
+        a: "No. You must show that biodiversity and the other named conditions were considered in your context and, where relevant, in aspects and objectives, in proportion to your activities.",
+      },
+      {
+        q: "Does ISO 14001 apply to temporary sites?",
+        a: "Yes. The system covers activities wherever they are performed, and audits sample live sites so controls such as waste segregation and fuel storage are seen operating.",
+      },
+      {
+        q: "How long does certification take?",
+        a: "Four to nine months for most organisations, with the system running for about three months before Stage 1 so monitoring, compliance and audit records exist.",
+      },
+      {
+        q: "Can it be certified with ISO 9001 and ISO 45001?",
+        a: "Yes. Integrated audits assess the common elements once and reduce total audit days.",
+      },
+    ],
   }),
   base({
     slug: "iso-45001",
