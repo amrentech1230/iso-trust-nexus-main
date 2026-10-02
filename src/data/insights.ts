@@ -261,32 +261,35 @@ export const furtherTopics = [
 
 export const generalFaqs: { q: string; a: string }[] = [
   {
-    q: "Do we need a biodiversity survey?",
-    a: "No. You need to show that biodiversity and the other named conditions were considered in your context and, where relevant, in your aspects and objectives — proportionate to your activities.",
+    q: "What does an independent certification body do?",
+    a: "A certification body audits your management system against a standard and, where requirements are met, issues certification. To protect impartiality, we do not implement the systems we certify.",
   },
   {
-    q: "Can ISO 14001 be certified with ISO 9001 and ISO 45001?",
-    a: "Yes. Integrated audits share the common clauses and reduce total audit days, and both transitions — ISO 9001:2026 and ISO 14001:2026 — can be completed in the same visit.",
+    q: "How long does certification take?",
+    a: "Timescales depend on your size, number of sites, complexity and current readiness. After a short scoping conversation we set out a realistic timeline and audit day estimate.",
   },
   {
-    q: "How much does ISO 14001 certification cost?",
-    a: "Fees depend on audit days, which follow international audit-time rules based on headcount, sites and the environmental risk of your activities. A low-impact single-site organisation of ten people needs around two days for Stage 1 and Stage 2; a permitted site needs more. We quote the whole three-year cycle in one fixed price, and the on-page calculator gives an indicative range.",
+    q: "How much does certification cost?",
+    a: "Cost is driven by audit days, which depend on employee numbers, scope and risk. Request a quote and we will provide a clear breakdown with no obligation.",
   },
   {
-    q: "How long does it take to get certified?",
-    a: "Four to nine months for most organisations, with the system running for about three months before Stage 1 so that monitoring, compliance evaluation, internal audit and management review records exist.",
+    q: "What is the difference between Stage 1 and Stage 2 audits?",
+    a: "Stage 1 confirms your system is designed and documented appropriately and that you are ready. Stage 2 tests whether it is implemented and effective in practice.",
   },
   {
-    q: "We are a construction subcontractor — does ISO 14001 apply to temporary sites?",
-    a: "Yes. The system covers the activities you perform wherever you perform them, and Stage 2 and surveillance audits sample live sites so that controls such as waste segregation, fuel storage and dust and noise management are seen in operation.",
+    q: "Can we transfer an existing certificate to TRAIBCERT?",
+    a: "Yes. Certificate transfer preserves your existing certification cycle where the current certification is valid and accredited. We review your certificate, recent audit reports and open findings.",
   },
   {
-    q: "What happens after the certificate is issued?",
-    a: "Three years of validity with surveillance in each of the first two years and recertification in the third. Between visits you keep the compliance register and aspects data current and tell us about changes to scope or sites.",
+    q: "Do you certify organisations outside the UK?",
+    a: "Yes. We work with organisations across the UK, UAE and internationally, using a mix of on-site and remote audit techniques where appropriate.",
   },
   {
-    q: "Can we transfer an existing ISO 14001 certificate to TRAIBCERT?",
-    a: "Yes. A valid, accredited certificate transfers with its expiry date and cycle intact after a free pre-transfer review; the transition to the 2026 edition can be scheduled at the first visit after transfer.",
+    q: "Do you deliver training as well as certification?",
+    a: "Yes. We provide Foundation, Awareness, Internal Auditor and Lead Auditor training, delivered in the classroom, live online, in-house or through our E-Learning Academy.",
   },
-
+  {
+    q: "What accreditations does TRAIBCERT hold?",
+    a: "We are an ASCB accredited certification body and an IASME partner delivering Cyber Essentials and Cyber Essentials Plus certification.",
+  },
 ];

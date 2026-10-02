@@ -50,11 +50,17 @@ export function Header() {
       >
         <div className="container-page flex h-[78px] items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3" aria-label="TRAIBCERT home">
-            <img
-              src="https://traibcert.org.uk/images/logo.png"
-              alt="TRAIBCERT"
-              className="h-auto w-[60%]"
-            />
+            <span className="gradient-indigo grid size-10 place-items-center rounded-lg text-base font-black text-white">
+              T
+            </span>
+            <span className="leading-none">
+              <span className="block text-xl font-extrabold tracking-tight text-indigo-brand">
+                TRAIBCERT
+              </span>
+              <span className="mt-1 hidden text-[10.5px] font-medium tracking-[0.16em] text-muted-foreground uppercase sm:block">
+                Certification · Training · Inspection
+              </span>
+            </span>
           </Link>
 
           <nav aria-label="Primary" className="hidden lg:block" onMouseLeave={scheduleClose}>

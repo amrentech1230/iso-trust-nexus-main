@@ -15,150 +15,28 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-<section className="gradient-indigo relative overflow-hidden text-white ">
-  <div
-    aria-hidden="true"
-    className="absolute -top-24 -right-24 size-96 rounded-full bg-honey/15 blur-3xl"
-  />
-
-  <div className="container-page relative py-10 md:py-14">
-
-    <Breadcrumbs items={crumbs} tone="dark" />
-
-    <div className="mt-6 grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
-
-      {/* LEFT SIDE */}
-      <div>
-
+    <section className="gradient-indigo relative overflow-hidden text-white">
+      <div
+        aria-hidden="true"
+        className="absolute -top-24 -right-24 size-96 rounded-full bg-honey/15 blur-3xl"
+      />
+      <div className="container-page relative py-10 md:py-14">
+        <Breadcrumbs items={crumbs} tone="dark" />
         {eyebrow ? (
-          <p className="text-[11px] font-bold tracking-[0.18em] text-honey uppercase ">
+          <p className="mt-6 text-[11px] font-bold tracking-[0.18em] text-honey uppercase">
             {eyebrow}
           </p>
         ) : null}
-
         <h1 className="mt-3 max-w-3xl text-3xl leading-tight font-extrabold md:text-4xl lg:text-[2.75rem]">
           {title}
         </h1>
-
         {intro ? (
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg text-justify text-justify tracking-[1px]">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
             {intro}
           </p>
         ) : null}
-
-        {children ? (
-          <div className="mt-7">
-            {children}
-          </div>
-        ) : null}
-
+        {children ? <div className="mt-7">{children}</div> : null}
       </div>
-
-      {/* RIGHT SIDE - ENQUIRY FORM */}
-      <div>
-        <form
-          action="/contact/enquiry"
-          method="get"
-          className="rounded-xl bg-white p-6 text-left shadow-xl"
-        >
-          <h2 className="text-xl font-bold text-indigo-brand">
-            Request an enquiry
-          </h2>
-
-          <p className="mt-2 text-sm leading-6 text-gray-600">
-            Get in touch with our team about your certification requirements.
-          </p>
-
-          <div className="mt-5 space-y-4">
-
-            {/* NAME */}
-            <div>
-              <label
-                htmlFor="hero-name"
-                className="text-sm font-semibold text-indigo-brand"
-              >
-                Name
-              </label>
-
-              <input
-                id="hero-name"
-                name="name"
-                type="text"
-                required
-                placeholder="Your name"
-                className="mt-1 w-full rounded-md border border-border px-3 py-2.5 text-sm text-foreground outline-none focus:border-indigo-brand"
-              />
-            </div>
-
-            {/* EMAIL */}
-            <div>
-              <label
-                htmlFor="hero-email"
-                className="text-sm font-semibold text-indigo-brand"
-              >
-                Work email
-              </label>
-
-              <input
-                id="hero-email"
-                name="email"
-                type="email"
-                required
-                placeholder="you@company.com"
-                className="mt-1 w-full rounded-md border border-border px-3 py-2.5 text-sm text-foreground outline-none focus:border-indigo-brand"
-              />
-            </div>
-
-            {/* PHONE */}
-            <div>
-              <label
-                htmlFor="hero-phone"
-                className="text-sm font-semibold text-indigo-brand"
-              >
-                Phone
-              </label>
-
-              <input
-                id="hero-phone"
-                name="phone"
-                type="tel"
-                placeholder="Your phone number"
-                className="mt-1 w-full rounded-md border border-border px-3 py-2.5 text-sm text-foreground outline-none focus:border-indigo-brand"
-              />
-            </div>
-
-            {/* MESSAGE */}
-            <div>
-              <label
-                htmlFor="hero-message"
-                className="text-sm font-semibold text-indigo-brand"
-              >
-                How can we help?
-              </label>
-
-              <textarea
-                id="hero-message"
-                name="message"
-                rows={3}
-                placeholder="Tell us about your requirements..."
-                className="mt-1 w-full rounded-md border border-border px-3 py-2.5 text-sm text-foreground outline-none focus:border-indigo-brand"
-              />
-            </div>
-
-            {/* SUBMIT */}
-            <button
-              type="submit"
-              className="w-full rounded-md bg-honey px-5 py-3 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover"
-            >
-              Send enquiry
-            </button>
-
-          </div>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
   );
 }

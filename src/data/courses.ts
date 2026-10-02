@@ -18,14 +18,6 @@ export type Course = {
   delivery: string[];
   modules: CourseModule[];
   featured?: boolean;
-  /**
-   * PLACEHOLDER pricing. `priceMinor` is in minor currency units (pence),
-   * matching the Laravel `courses` table. These values are indicative only
-   * and MUST be replaced with TRAIBCERT's real course fees before go-live.
-   * The authoritative price at checkout comes from the backend, not this file.
-   */
-  priceMinor: number;
-  currency: string;
 };
 
 const mod = (
@@ -121,8 +113,6 @@ export const courses: Course[] = [
     delivery: ["Classroom", "Live virtual", "In-house", "E-Learning"],
     modules: standardModules("quality management", "ISO 9001"),
     featured: true,
-    priceMinor: 49500,
-    currency: "GBP",
   },
   {
     slug: "iso-14001",
@@ -135,8 +125,6 @@ export const courses: Course[] = [
     delivery: ["Classroom", "Live virtual", "In-house"],
     modules: standardModules("environmental management", "ISO 14001"),
     featured: true,
-    priceMinor: 49500,
-    currency: "GBP",
   },
   {
     slug: "iso-45001",
@@ -149,8 +137,6 @@ export const courses: Course[] = [
     delivery: ["Classroom", "Live virtual", "In-house"],
     modules: standardModules("occupational health and safety", "ISO 45001"),
     featured: true,
-    priceMinor: 49500,
-    currency: "GBP",
   },
   {
     slug: "iso-22000",
@@ -161,8 +147,6 @@ export const courses: Course[] = [
     summary: "HACCP principles, prerequisite programmes and food safety management auditing.",
     delivery: ["Classroom", "Live virtual", "In-house"],
     modules: standardModules("food safety management", "ISO 22000"),
-    priceMinor: 49500,
-    currency: "GBP",
   },
   {
     slug: "iso-27001",
@@ -175,8 +159,6 @@ export const courses: Course[] = [
     delivery: ["Classroom", "Live virtual", "In-house", "E-Learning"],
     modules: standardModules("information security management", "ISO/IEC 27001"),
     featured: true,
-    priceMinor: 59500,
-    currency: "GBP",
   },
   {
     slug: "iso-41001",
@@ -187,8 +169,6 @@ export const courses: Course[] = [
     summary: "Facility management system requirements, service levels and FM auditing.",
     delivery: ["Live virtual", "In-house"],
     modules: standardModules("facility management", "ISO 41001"),
-    priceMinor: 45000,
-    currency: "GBP",
   },
   {
     slug: "iso-20000-1",
@@ -199,8 +179,6 @@ export const courses: Course[] = [
     summary: "Service management system requirements, service levels and SMS auditing.",
     delivery: ["Live virtual", "In-house"],
     modules: standardModules("IT service management", "ISO/IEC 20000-1"),
-    priceMinor: 45000,
-    currency: "GBP",
   },
   {
     slug: "iso-22301",
@@ -211,8 +189,6 @@ export const courses: Course[] = [
     summary: "Business impact analysis, continuity strategy, exercising and BCMS auditing.",
     delivery: ["Classroom", "Live virtual", "In-house"],
     modules: standardModules("business continuity management", "ISO 22301"),
-    priceMinor: 49500,
-    currency: "GBP",
   },
   {
     slug: "iso-31000",
@@ -223,8 +199,6 @@ export const courses: Course[] = [
     summary: "Risk principles, framework and process, with practical risk assessment workshops.",
     delivery: ["Live virtual", "In-house"],
     modules: standardModules("risk management", "ISO 31000"),
-    priceMinor: 45000,
-    currency: "GBP",
   },
   {
     slug: "iso-50001",
@@ -235,8 +209,6 @@ export const courses: Course[] = [
     summary: "Energy review, baselines, performance indicators and EnMS auditing.",
     delivery: ["Live virtual", "In-house"],
     modules: standardModules("energy management", "ISO 50001"),
-    priceMinor: 45000,
-    currency: "GBP",
   },
   {
     slug: "iso-17025",
@@ -248,8 +220,6 @@ export const courses: Course[] = [
       "Competence requirements for testing and calibration laboratories, including method validation and traceability.",
     delivery: ["Classroom", "Live virtual", "In-house"],
     modules: standardModules("laboratory competence", "ISO/IEC 17025"),
-    priceMinor: 55000,
-    currency: "GBP",
   },
   {
     slug: "iso-17043",
@@ -261,8 +231,6 @@ export const courses: Course[] = [
       "Requirements for proficiency testing providers, scheme design and performance evaluation.",
     delivery: ["Live virtual", "In-house"],
     modules: standardModules("proficiency testing schemes", "ISO/IEC 17043"),
-    priceMinor: 55000,
-    currency: "GBP",
   },
   {
     slug: "iso-13528",
@@ -274,8 +242,6 @@ export const courses: Course[] = [
       "Statistical methods used in interlaboratory comparison, including z-scores and assigned values.",
     delivery: ["Live virtual", "In-house"],
     modules: standardModules("statistical evaluation of proficiency testing", "ISO 13528"),
-    priceMinor: 55000,
-    currency: "GBP",
   },
 ];
 
@@ -295,14 +261,3 @@ export const courseLevels: CourseLevel[] = [
   "Internal Auditor",
   "Lead Auditor",
 ];
-
-
-/**
- * Format a minor-unit amount (pence) as a localised currency string,
- * e.g. formatPrice(49500, "GBP") -> "£495.00".
- */
-export const formatPrice = (priceMinor: number, currency = "GBP") =>
-  new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency,
-  }).format(priceMinor / 100);
