@@ -28,10 +28,14 @@ const fieldClass =
 const labelClass = "block text-sm font-semibold text-foreground";
 
 export function EnquiryForm({
+  defaultService,
   defaultStandard,
+  defaultMessage,
   includeIndustryField = false,
 }: {
+  defaultService?: string;
   defaultStandard?: string;
+  defaultMessage?: string;
   includeIndustryField?: boolean;
 }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -220,7 +224,13 @@ export function EnquiryForm({
           <label className={labelClass} htmlFor="service">
             Service required *
           </label>
-          <select id="service" name="service" className={fieldClass} {...invalid("service")}>
+          <select
+            id="service"
+            name="service"
+            className={fieldClass}
+            defaultValue={defaultService ?? ""}
+            {...invalid("service")}
+          >
             <option value="">Please select…</option>
             {services.map((service) => (
               <option key={service} value={service}>
@@ -279,6 +289,7 @@ export function EnquiryForm({
             name="message"
             rows={5}
             className={fieldClass}
+            defaultValue={defaultMessage}
             {...invalid("message")}
           />
           {fieldError("message")}

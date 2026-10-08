@@ -2699,7 +2699,7 @@ export const industryContent = [
       },
       {
         course: "Cyber Essentials awareness — UK scheme (on request)",
-        url: "/certification/cyber-essentials",
+        url: "/training/iso-27001",
         who: "Small teams preparing a first Cyber Essentials submission.",
       },
     ],

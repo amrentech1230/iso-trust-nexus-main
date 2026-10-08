@@ -230,7 +230,23 @@ function IndustryPage() {
                         ) : null;
                       })}
                     </div>
-                  ) : null}
+                  ) : course ? (
+                    <AppLink
+                      href={item.url}
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-brand hover:underline"
+                    >
+                      View available training
+                      <ArrowRight className="size-4" aria-hidden="true" />
+                    </AppLink>
+                  ) : (
+                    <AppLink
+                      href="/contact/enquiry"
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-indigo-brand hover:underline"
+                    >
+                      Ask about this training
+                      <ArrowRight className="size-4" aria-hidden="true" />
+                    </AppLink>
+                  )}
                 </article>
               );
             })}
