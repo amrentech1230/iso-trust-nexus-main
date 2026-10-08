@@ -464,7 +464,7 @@ function Home() {
         <div className="container-page">
           <SectionHeading
             eyebrow="Industries"
-            title="Sector expertise across twelve industries"
+            title="Sector expertise across fifteen industries"
             intro="Every sector faces a different mix of quality, security, safety and environmental risk. Select yours for relevant standards and training."
           />
           <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
@@ -479,7 +479,7 @@ function Home() {
         <div className="container-page">
           <SectionHeading
             eyebrow="Training levels"
-            title="Four levels for every standard we train"
+            title="Training levels for the standards we teach"
             intro="Courses run in the classroom, live online or in-house at your premises, and are also available through our E-Learning Academy."
             align="center"
           />

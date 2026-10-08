@@ -10,6 +10,44 @@ export type RedirectRule = {
 };
 
 export const redirects: RedirectRule[] = [
+  { from: "/industry.php", to: "/resources/industries" },
+  { from: "/agriculture-and-farming.php", to: "/resources/industries/food-beverage" },
+  {
+    from: "/banking-and-financial-services.php",
+    to: "/resources/industries/banking-finance",
+  },
+  { from: "/construction-and-building.php", to: "/resources/industries/construction" },
+  { from: "/customer-service.php", to: "/certification/iso-10002" },
+  {
+    from: "/welding.php",
+    to: "/resources/industries/manufacturing-supply-chain",
+  },
+  {
+    from: "/environmental-management-and-sustainability.php",
+    to: "/resources/industries/waste-recycling",
+  },
+  {
+    from: "/facilities-management.php",
+    to: "/resources/industries/facilities-management",
+  },
+  { from: "/health-and-safety.php", to: "/certification/iso-45001" },
+  {
+    from: "/information-management.php",
+    to: "/resources/industries/technology-saas",
+  },
+  {
+    from: "/manufacturing-and-processing.php",
+    to: "/resources/industries/manufacturing-supply-chain",
+  },
+  {
+    from: "/quality-and-business-improvement.php",
+    to: "/certification/iso-9001",
+  },
+  {
+    from: "/transport-and-logistics.php",
+    to: "/resources/industries/transport-logistics",
+  },
+  { from: "/waste-and-recycling.php", to: "/resources/industries/waste-recycling" },
   { from: "/about.php", to: "/#about" },
   { from: "/why-choose-us.php", to: "/#why-choose-us" },
   { from: "/services.php", to: "/#services" },

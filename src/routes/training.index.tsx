@@ -35,14 +35,15 @@ function TrainingLanding() {
         title="Practical ISO training, from awareness to lead auditor"
         intro="Build the internal capability to run and audit your own management system. Courses are delivered in the classroom, live online, in-house at your site, or through our e-learning academy."
         crumbs={crumbs}
+        enquiryContext="training"
       />
 
       <section className="py-14 md:py-16">
         <div className="container-page">
           <SectionHeading
             eyebrow="Course levels"
-            title="Four levels, one progression path"
-            intro="Start with the level that matches the role, then progress as responsibilities grow."
+            title="Choose the level that fits your role"
+            intro="Depending on the standard, choose Foundation, Awareness, Internal Auditor, Lead Auditor or Practitioner training. Some accreditation and guidance standards do not offer auditor levels."
           />
           <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {courseLevels.map((level) => (

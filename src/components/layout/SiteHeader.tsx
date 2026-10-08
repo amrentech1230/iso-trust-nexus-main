@@ -127,13 +127,30 @@ const industries: MegaLink[] = [
     to: "/resources/industries/transport-logistics",
   },
   {
+    title: "Facilities Management",
+    desc: "Quality, safety and performance across FM contracts",
+    icon: "fa-building",
+    to: "/resources/industries/facilities-management",
+  },
+  {
+    title: "Waste & Recycling",
+    desc: "Environmental, safety and resource-management assurance",
+    icon: "fa-recycle",
+    to: "/resources/industries/waste-recycling",
+  },
+  {
+    title: "Laboratories & Proficiency Testing",
+    desc: "Competence, impartiality and confidence in test results",
+    icon: "fa-flask",
+    to: "/resources/industries/laboratories-testing",
+  },
+  {
     title: "General / Other Industries",
     desc: "Custom solutions for diverse sectors",
     icon: "fa-layer-group",
     to: "/resources/industries/general-other",
   },
 ];
-
 
 const inspectionLinks: MegaLink[] = [
   {
@@ -194,9 +211,15 @@ const certLinks = standards.map((s) => ({
 // Training courses grouped into the three design columns.
 const classroomCourses = courses;
 const foundationCourses = courses.filter((c) =>
-  ["iso-9001", "iso-45001", "iso-22000", "iso-27001", "iso-17025", "iso-17043", "iso-13528"].includes(
-    c.slug,
-  ),
+  [
+    "iso-9001",
+    "iso-45001",
+    "iso-22000",
+    "iso-27001",
+    "iso-17025",
+    "iso-17043",
+    "iso-13528",
+  ].includes(c.slug),
 );
 const auditorCourses = courses.filter((c) =>
   [
@@ -551,8 +574,16 @@ export function SiteHeader() {
                       </div>
                     </div>
                   </div>
-                  <AppLink href="/contact/enquiry" className="tc-mega-contact-cta" onClick={closeAll}>
-                    <i className="fas fa-paper-plane" style={{ marginRight: 6 }} aria-hidden="true" />{" "}
+                  <AppLink
+                    href="/contact/enquiry"
+                    className="tc-mega-contact-cta"
+                    onClick={closeAll}
+                  >
+                    <i
+                      className="fas fa-paper-plane"
+                      style={{ marginRight: 6 }}
+                      aria-hidden="true"
+                    />{" "}
                     Submit Enquiry
                   </AppLink>
                 </div>

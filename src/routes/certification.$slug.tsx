@@ -9,6 +9,8 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { coursesBySlug } from "@/data/courses";
 import { generalFaqs } from "@/data/insights";
+import { industryMatrixIncludesStandard, industryMatrixTermsBySlug } from "@/data/industry-matrix";
+import { industries } from "@/data/industries";
 import { standards, standardsBySlug } from "@/data/standards";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import certificationProcessImage from "@/assets/certification-process.png";
@@ -52,6 +54,13 @@ function StandardPage() {
 const { standard } = Route.useLoaderData();
 const faqs = [...(standard.faqs ?? []), ...generalFaqs.slice(0, 3)];
 const course = standard.training ? coursesBySlug[standard.training] : undefined;
+const certifyingIndustries = industries.filter((industry) =>
+  industry.certifications.some((item) => item.url === `/certification/${standard.slug}`) ||
+  industryMatrixIncludesStandard(
+    industryMatrixTermsBySlug[industry.slug] ?? [],
+    standard.code,
+  ),
+);
 const related = standards
 .filter((s) => s.category === standard.category && s.slug !== standard.slug)
 .slice(0, 3);
@@ -537,33 +546,34 @@ return (
 
 
     {/* Industries */}
-    <section className="mt-10">
-      <h2 className="text-xl font-bold text-indigo-brand">
-        Industries we certify to ISO 14001
-      </h2>
+    {certifyingIndustries.length > 0 ? (
+      <section className="mt-10">
+        <h2 className="text-xl font-bold text-indigo-brand">
+          Industries we certify to {standard.code}
+        </h2>
 
-      <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
-        Organisations in these sectors most often ask us for ISO 14001 —
-        select yours for sector-specific guidance.
-      </p>
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+          Organisations in these sectors most often ask us for {standard.code} — select yours for
+          sector-specific guidance.
+        </p>
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        {standard.industries?.map((industry, index) => (
-          <div
-            key={index}
-            className="flex items-start gap-3 rounded-lg border border-border bg-white p-4"
-          >
-            <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-honey text-xs font-bold text-indigo-brand">
-              ✓
-            </span>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {certifyingIndustries.map((industry) => (
+            <AppLink
+              key={industry.slug}
+              href={`/resources/industries/${industry.slug}`}
+              className="flex items-start gap-3 rounded-lg border border-border bg-white p-4 transition-colors hover:border-indigo-brand"
+            >
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-honey text-xs font-bold text-indigo-brand">
+                ✓
+              </span>
 
-            <p className="text-sm leading-6 text-muted-foreground text-justify">
-              {industry}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
+              <p className="text-sm leading-6 text-muted-foreground text-justify">{industry.name}</p>
+            </AppLink>
+          ))}
+        </div>
+      </section>
+    ) : null}
 
 
     {/* Who needs certification */}
