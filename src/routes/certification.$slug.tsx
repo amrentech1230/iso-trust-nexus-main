@@ -99,15 +99,76 @@ return (
           </p>
           ))}
         </div>
-        <h2 className="mt-10 text-xl font-bold text-indigo-brand">{`Why is ${standard.code} important`}</h2>
-        <div className="mt-5 space-y-5">
-          {Array.isArray(standard.important) &&
-          standard.important.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed text-muted-foreground text-justify">
-            {paragraph}
-          </p>
+
+{Array.isArray(standard.important) &&
+  standard.important.some((paragraph) => paragraph?.trim()) && (
+    <>
+      <h2 className="mt-10 text-xl font-bold text-indigo-brand">
+        {`Why is ${standard.code} important?`}
+      </h2>
+
+      <div className="mt-5 space-y-5">
+        {standard.important
+          .filter((paragraph) => paragraph?.trim())
+          .map((paragraph, index) => (
+            <p
+              key={index}
+              className="text-base leading-relaxed text-muted-foreground text-justify"
+            >
+              {paragraph}
+            </p>
           ))}
+      </div>
+    </>
+)}
+
+        {Array.isArray(standard.whyitmatters) && standard.whyitmatters.length > 0 && (
+          <>
+            <h2 className="mt-10 text-xl font-bold text-indigo-brand">
+              {`Why it matters`}
+            </h2>
+
+            <div className="mt-5 space-y-5">
+              {standard.whyitmatters.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-base leading-relaxed text-muted-foreground text-justify"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </>
+        )}
+
+        
+{Array.isArray(standard.systemcover) && standard.systemcover.length > 0 && (
+  <>
+    <h2 className="mt-10 text-xl font-bold text-indigo-brand">
+      What the system covers
+    </h2>
+
+    <div className="mt-5 grid gap-3 sm:grid-cols-2">
+      {standard.systemcover.map((item, index) => (
+        <div
+          key={index}
+          className="flex items-start gap-3 rounded-lg border border-border bg-white p-4"
+        >
+          <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-honey text-xs font-bold text-indigo-brand">
+            ✓
+          </span>
+
+          <p className="text-sm leading-6 text-muted-foreground text-justify">
+            {item}
+          </p>
         </div>
+      ))}
+    </div>
+  </>
+)}
+
+{Array.isArray(standard.emsFramework) && standard.emsFramework.length > 0 && (
+  <>
         <h2 className="mt-10 text-xl font-bold text-indigo-brand">EMS framework</h2>
         <div className="mt-5 space-y-5">
           {Array.isArray(standard.emsFramework) &&
@@ -117,6 +178,10 @@ return (
           </p>
           ))}
         </div>
+        </>
+)}
+{Array.isArray(standard.benefits) && standard.benefits.length > 0 && (
+  <>
         <h2 className="mt-10 text-xl font-bold text-indigo-brand">
           Benefits of {standard.code}
         </h2>
@@ -145,45 +210,105 @@ return (
             ))}
           </div>
         </div>
+        </>
+)}
 
+{Array.isArray(standard.assessment_process) && standard.assessment_process.length > 0 && (
+  <>
         <h2 className="mt-10 text-xl font-bold text-indigo-brand">
-          Certification process
+         How the assessment runs
         </h2>
 
-        <div className="mt-5 space-y-5">
-          {Array.isArray(standard.certification_process) &&
-          standard.certification_process.map((paragraph, index) => (
-          <p key={index} className="text-base leading-relaxed text-muted-foreground text-justify">
-            {paragraph}
+        <div className="mt-5">
+          {/* Benefits introduction */}
+          {standard.benefit_para ? (
+          <p className="text-base leading-relaxed text-muted-foreground text-justify">
+            {standard.benefit_para}
           </p>
-          ))}
-        </div>
-        <h2 className="mt-10 text-xl font-bold text-indigo-brand">
-          Implementation steps
-        </h2>
+          ) : null}
 
-        {/* Introduction */}
-        {standard.implementation_intro ? (
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
-          {standard.implementation_intro}
-        </p>
-        ) : null}
+          {/* Benefits list */}
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {standard.benefits.map((benefit, index) => (
+            <div key={index} className="flex items-start gap-3 rounded-lg border border-border bg-white p-4">
+              <span
+                className="flex size-6 shrink-0 items-center justify-center rounded-full bg-honey text-xs font-bold text-indigo-brand">
+                ✓
+              </span>
 
-        {/* Numbered implementation steps */}
-        <div className="mt-6 space-y-4">
-          {standard.implementation_steps?.map((step, index) => (
-          <div key={index} className="flex items-start gap-4 rounded-lg border border-border bg-white p-4">
-            <span
-              className="flex size-8 shrink-0 items-center justify-center rounded-full bg-honey text-sm font-bold text-indigo-brand">
-              {index + 1}
-            </span>
-
-            <p className="text-sm leading-6 text-muted-foreground text-justify">
-              {step}
-            </p>
+              <p className="text-sm leading-6 text-muted-foreground text-justify">
+                {benefit}
+              </p>
+            </div>
+            ))}
           </div>
-          ))}
         </div>
+        </>
+)}
+
+{Array.isArray(standard.certification_process) &&
+  standard.certification_process.some((paragraph) => paragraph?.trim()) && (
+    <>
+      <h2 className="mt-10 text-xl font-bold text-indigo-brand">
+        Certification process
+      </h2>
+
+      <div className="mt-5 space-y-5">
+        {standard.certification_process
+          .filter((paragraph) => paragraph?.trim())
+          .map((paragraph, index) => (
+            <p
+              key={index}
+              className="text-base leading-relaxed text-muted-foreground text-justify"
+            >
+              {paragraph}
+            </p>
+          ))}
+      </div>
+    </>
+)}
+
+{(
+  standard.implementation_intro?.trim() ||
+  (Array.isArray(standard.implementation_steps) &&
+    standard.implementation_steps.some((step) => step?.trim()))
+) && (
+  <>
+    <h2 className="mt-10 text-xl font-bold text-indigo-brand">
+      Implementation steps
+    </h2>
+
+    {/* Introduction */}
+    {standard.implementation_intro?.trim() && (
+      <p className="mt-4 text-base leading-relaxed text-muted-foreground text-justify">
+        {standard.implementation_intro}
+      </p>
+    )}
+
+    {/* Numbered implementation steps */}
+    {Array.isArray(standard.implementation_steps) &&
+      standard.implementation_steps.some((step) => step?.trim()) && (
+        <div className="mt-6 space-y-4">
+          {standard.implementation_steps
+            .filter((step) => step?.trim())
+            .map((step, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-4 rounded-lg border border-border bg-white p-4"
+              >
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-honey text-sm font-bold text-indigo-brand">
+                  {index + 1}
+                </span>
+
+                <p className="text-sm leading-6 text-muted-foreground text-justify">
+                  {step}
+                </p>
+              </div>
+            ))}
+        </div>
+      )}
+  </>
+)}
 
         {/* Transition */}
         {standard.implementation_transition ? (
@@ -425,6 +550,27 @@ return (
       ))}
     </ul>
   </div>
+   {Array.isArray(standard.pricing) && standard.pricing.length > 0 && (
+          <>
+    <div className="rounded-xl border border-border bg-card p-6">
+    <h2 className="text-base font-bold text-indigo-brand">
+      Pricing
+    </h2>
+
+    <ul className="mt-3 space-y-2 text-sm text-muted-foreground text-justify">
+      {standard.pricing.map((item) => (
+        <li key={item} className="flex gap-2.5">
+          <Check
+            className="mt-0.5 size-4 shrink-0 text-honey-text"
+            aria-hidden="true"
+          />
+          {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+  </>
+  )}
 
   {/* Benefits */}
   <div className="rounded-xl border border-border bg-muted/50 p-6">
@@ -463,6 +609,7 @@ return (
 </aside>
     </div>
   </section>
+  
 
   <section className="bg-muted/40 py-14 md:py-16">
     <div className="container-page">
@@ -525,7 +672,8 @@ return (
   {related.length > 0 ? (
 <section className="bg-muted/40 py-14 md:py-16">
   <div className="container-page">
-
+ {Array.isArray(standard.important) && standard.important.length > 0 && (
+          <>
     {/* Why choose TRAIBCERT */}
     <section>
       <h2 className="text-xl font-bold text-indigo-brand">
@@ -543,6 +691,52 @@ return (
         ))}
       </div>
     </section>
+    </>
+  )}
+  <section className="mt-10 rounded-xl border border-border bg-card p-6 md:p-8">
+  <h2 className="text-xl font-bold text-indigo-brand">
+    Why TRAIBCERT?
+  </h2>
+
+  <div className="mt-5 grid gap-4 sm:grid-cols-3">
+    <div className="rounded-lg border border-border bg-white p-4">
+      <h3 className="font-semibold text-indigo-brand">
+        Expert Support
+      </h3>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+        Get guidance throughout your certification journey.
+      </p>
+    </div>
+
+    <div className="rounded-lg border border-border bg-white p-4">
+      <h3 className="font-semibold text-indigo-brand">
+        Trusted Certification
+      </h3>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+        Follow a structured certification process aligned with the applicable standard.
+      </p>
+    </div>
+
+    <div className="rounded-lg border border-border bg-white p-4">
+      <h3 className="font-semibold text-indigo-brand">
+        Clear Next Steps
+      </h3>
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+        Understand the requirements and steps involved in your certification process.
+      </p>
+    </div>
+  </div>
+
+  <div className="mt-7">
+    <a
+      href="https://www.traibcert.org.uk/enquiry/"
+      className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-brand px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+    >
+      Get a certification quote
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
 
 
     {/* Industries */}
@@ -575,7 +769,8 @@ return (
       </section>
     ) : null}
 
-
+{Array.isArray(standard.who_needs_certification) && standard.who_needs_certification.length > 0 && (
+  <>
     {/* Who needs certification */}
     <section className="mt-10">
       <h2 className="text-xl font-bold text-indigo-brand">
@@ -598,32 +793,34 @@ return (
         ))}
       </ul>
     </section>
+    </>
+  )}
 
+{Array.isArray(standard.self_check) && standard.self_check.length > 0 && (
+  <section className="mt-10">
+    <h2 className="text-xl font-bold text-indigo-brand">
+      Ready to apply? A quick self-check
+    </h2>
 
-    {/* Self Check */}
-    <section className="mt-10">
-      <h2 className="text-xl font-bold text-indigo-brand">
-        Ready to apply? A quick self-check
-      </h2>
+    <div className="mt-5 space-y-3">
+      {standard.self_check.map((item, index) => (
+        <div
+          key={index}
+          className="flex items-start gap-3 rounded-lg border border-border bg-white p-4"
+        >
+          <Check
+            className="mt-0.5 size-5 shrink-0 text-honey-text"
+            aria-hidden="true"
+          />
 
-      <div className="mt-5 space-y-3">
-        {standard.self_check?.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-start gap-3 rounded-lg border border-border bg-white p-4"
-          >
-            <Check
-              className="mt-0.5 size-5 shrink-0 text-honey-text"
-              aria-hidden="true"
-            />
-
-            <p className="text-sm leading-6 text-muted-foreground text-justify">
-              {item}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
+          <p className="text-sm leading-6 text-muted-foreground text-justify">
+            {item}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+)}
 
 
     {/* Training */}

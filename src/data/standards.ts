@@ -1,31 +1,35 @@
 ﻿export type StandardCategory = "iso" | "cyber" | "sustainability" | "inspection";
 
 export type Standard = {
-  slug: string;
-  code: string;
-  title: string;
-  category: StandardCategory;
+  slug?: string;
+  code?: string;
+  title?: string;
+  category?: StandardCategory;
   tag?: "NEW" | "CURRENT";
-  discipline: string;
-  summary: string;
-  whatItIs: string[];
-  important: string[];
-  emsFramework: string[];
-  whoNeedsIt: string[];
-  benefits: string[];
-  certification_process: string[];
-  implementation_intro: string;
-  implementation_steps: string[];
-  implementation_transition: string;
-  benefit_para: string;
-  requirements: string[];
+  discipline?: string;
+  summary?: string;
+  whatItIs?: string[];
+  important?: string[];
+  emsFramework?: string[];
+  whoNeedsIt?: string[];
+  benefits?: string[];
+  certification_process?: string[];
+  implementation_intro?: string;
+  implementation_steps?: string[];
+  implementation_transition?: string;
+  benefit_para?: string;
+  requirements?: string[];
   training?: string;
   faqs?: { q: string; a: string }[];
-  why_choose_intro: string[];
-  industries: string[];
-  who_needs_certification: string[];
-  self_check: string[];
-  also_need: string[];
+  why_choose_intro?: string[];
+  industries?: string[];
+  who_needs_certification?: string[];
+  self_check?: string[];
+  also_need?: string[];
+  whyitmatters?: string[];
+  systemcover? : string[];
+  pricing?: string[];
+  assessment_process?: string[];
 };
 
 const genericRequirements = [
@@ -350,6 +354,7 @@ export const standards: Standard[] = [
         a: "Yes. The shared Annex SL structure means the common clauses can be audited once, significantly reducing total audit days.",
       },
     ],
+    systemcover : []
   }),
   // ── ISO 22000 ─────────────────────────────────────────────────────────────
   base({
@@ -359,91 +364,90 @@ export const standards: Standard[] = [
     category: "iso",
     discipline: "Food safety management",
     summary:
-      "ISO 22000:2018 is the international standard for food safety management systems, applicable to all organisations in the food chain from primary production through to retail and food service. It combines the Annex SL management system structure with HACCP principles and prerequisite programmes to provide a comprehensive framework for controlling food safety hazards. TRAIBCERT provides accredited ISO 22000 certification across the UK, UAE and internationally.",
+      "FOOD SAFETY ISO 22000:2018 Certification ISO 22000:2018 is the international standard for food safety management systems, combining HACCP principles with management-system discipline. An accredited certificate proves that hazards are controlled across your products, processes and sites. More than 40,000 organisations hold it, and manufacturers, food-service operators, wholesalers and importers ask for it from suppliers anywhere in the food chain.",
     whatItIs: [
-      "ISO 22000:2018 is the international standard for food safety management systems. It applies to any organisation in the food chain -- farmers, processors, manufacturers, packers, distributors, retailers, caterers and providers of food-related services such as equipment, packaging and cleaning. The 2018 edition adopted the Annex SL high-level structure, aligning it with ISO 9001 and ISO 14001.",
-      "The standard integrates the Codex Alimentarius HACCP principles with prerequisite programmes (PRPs) and management system requirements. Hazard analysis identifies food safety hazards, PRPs control the environment in which food is produced, and HACCP plans control significant hazards at critical control points.",
-      "An ISO 22000 certificate demonstrates to customers, retailers and regulators that food safety hazards are systematically identified, controlled and monitored throughout the supply chain.",
+      "ISO 22000 applies to any organisation in the food chain, from primary production to catering. It combines interactive communication, system management, prerequisite programmes and the internationally agreed HACCP principles. Certificates cover the products, processes and sites in scope, last three years with annual surveillance and appear on a public register. It is also the base text for sector schemes that add prerequisite requirements.",
     ],
     important: [
-      "Customer and retailer requirements drive most certifications. Major retailers, food service operators and brand owners require their suppliers to hold a recognised food safety certification. ISO 22000 is accepted globally and satisfies requirements across diverse markets.",
-      "Regulatory compliance is supported by the requirement to identify applicable food safety legislation and demonstrate that legal requirements are met through the management system.",
-      "Brand protection is the risk management benefit. A food safety incident -- contamination, recall or illness -- causes immediate and lasting reputational damage. A certified system with documented controls and traceability reduces both the likelihood and the impact of such events.",
+      // "Customer and retailer requirements drive most certifications. Major retailers, food service operators and brand owners require their suppliers to hold a recognised food safety certification. ISO 22000 is accepted globally and satisfies requirements across diverse markets.",
+      // "Regulatory compliance is supported by the requirement to identify applicable food safety legislation and demonstrate that legal requirements are met through the management system.",
+      // "Brand protection is the risk management benefit. A food safety incident -- contamination, recall or illness -- causes immediate and lasting reputational damage. A certified system with documented controls and traceability reduces both the likelihood and the impact of such events.",
+    ],
+    whyitmatters:[
+      "Breadth is its strength: primary producers, ingredient and packaging suppliers, hauliers, storage operators and contract caterers all fit one standard. Certified organisations have validated HACCP plans, tested traceability and recall, and documented supplier approval, so they face fewer customer audits, fewer holds and withdrawals, faster onboarding and systematic due-diligence evidence for food regulators. One accredited certificate is routinely accepted in place of several customer audits each year.",
+    ],
+    systemcover: [
+      "Context, scope and communication along the food chain",
+      "Leadership and a competent food safety team",
+      "Prerequisite programmes: hygiene, pest control, allergens, maintenance and supplier control",
+      "Hazard analysis with critical control points and validated limits",
+      "Traceability, emergency preparedness and tested product withdrawal",
+      "Verification, internal audit, management review and improvement",
     ],
     emsFramework: [
-      "ISO 22000 combines three elements: prerequisite programmes that control the general food safety environment (hygiene, pest control, allergen management, cleaning), hazard analysis that identifies biological, chemical and physical hazards at each step of the process, and HACCP plans that establish critical control points, critical limits, monitoring procedures and corrective actions for significant hazards.",
-      "The Annex SL management system structure provides the governance framework: leadership commitment, planning, support, operational control, performance evaluation and improvement. The combination ensures that food safety is managed both at the operational level through HACCP and at the organisational level through the management system.",
     ],
-    whoNeedsIt: [
-      "Food manufacturers, processors and packers",
-      "Primary producers, farmers and growers",
-      "Food retailers, distributors and logistics providers",
-      "Caterers, restaurants and food service operators",
-      "Providers of food contact materials, equipment and services",
-    ],
+
     benefit_para:
       "Retailer and customer access is the primary commercial benefit: ISO 22000 certification satisfies food safety requirements in major retail and food service supply chains. Reduced risk of food safety incidents, recalls and regulatory action is the operational benefit.",
     benefits: [
-      "Supply chain access -- certification satisfies food safety requirements from major retailers, food service operators and brand owners.",
-      "Hazard control -- the combination of PRPs and HACCP plans provides systematic control of biological, chemical and physical food safety hazards.",
-      "Regulatory compliance -- the management system provides documented evidence that applicable food safety legislation is identified and met.",
-      "Traceability -- documented controls and records support product traceability and rapid response in the event of a food safety incident.",
+      "Fewer customer audits — One accredited certificate replaces many supplier audits from manufacturers, food-service operators and wholesalers.",
+      "Fewer holds and recalls — Validated HACCP, verified prerequisites and tested traceability reduce the costliest events in a food business.",
+      "Evidence of due diligence — Systematic records support food regulators and any due-diligence defence.",
+      "Whole-chain coverage — One standard covers manufacturing, storage, transport and catering, and integrates with quality and environmental systems.",
     ],
     certification_process: [
-      "Application and quotation: we agree the scope covering the food chain steps and products in scope, calculate audit days and provide a fixed price.",
-      "Stage 1 audit: review of the food safety management system documentation, hazard analysis, HACCP plans and PRPs.",
-      "Stage 2 audit: on-site audit verifying that the system operates as documented, including observation of production processes and verification of critical control points.",
-      "Certificate issue: accredited ISO 22000:2018 certificate valid for three years.",
-      "Surveillance and recertification: annual surveillance audits; recertification in year three.",
+      "Shared five-step strip (Get started · Assessment · Certification audit · Certification ",
+      "Maintenance) linking to /certification/process; ",
+      "Holding a certificate elsewhere Certificate transfer (/resources/certificate-transfer)",
     ],
     implementation_intro:
-      "First-time certification typically takes four to nine months. Organisations with existing HACCP systems or BRC/SQF certification are usually quicker because the hazard analysis and prerequisite programmes already exist.",
+      "",
     implementation_steps: [
-      "Obtain ISO 22000:2018, secure top management commitment and appoint a food safety team leader.",
-      "Define the scope covering the food chain steps, products and processes included.",
-      "Establish prerequisite programmes covering hygiene, pest control, allergen management, cleaning and maintenance.",
-      "Conduct hazard analysis: identify all biological, chemical and physical hazards at each process step and assess their significance.",
-      "Develop HACCP plans for significant hazards: identify critical control points, establish critical limits, monitoring procedures and corrective actions.",
-      "Write the food safety policy, set measurable food safety objectives and establish the documented information required by the standard.",
-      "Run the system for at least three months, verifying that controls are effective and handling nonconformities through the corrective action process.",
-      "Complete an internal audit and management review, then apply to TRAIBCERT.",
+      "Appoint the food safety team, secure commitment and agree the scope of products and sites.",
+      "Establish and verify prerequisite programmes: cleaning, pest control, hygiene, allergens and suppliers.",
+      "Describe products, confirm flow diagrams on site, analyse hazards and validate control measures.",
+      "Operate for about three months with monitoring records, a mock recall, internal audit and review.",
+      "Apply for a quotation; complete Stage 1, Stage 2 on site and the certification decision.",
+    ],
+    whoNeedsIt: [
+      "Suppliers of ingredients, packaging, storage and transport asked for certification by food manufacturers, food-service operators and wholesalers; caterers and hospitality groups evidencing due diligence; exporters facing import-market requirements; and groups wanting one standard across manufacturing, logistics and service sites.",
+      "one standard across manufacturing, logistics and service sites.Industries: Food & drink manufacturing · Ingredient & packaging suppliers · Contract catering · Storage & distribution · Cold chain · Retail own-label · Hospital catering · School catering · Agriculture · Equipment & chemical suppliers",
+    ],
+    pricing: [
+      "Price follows audit days, set by headcount, the number of distinct HACCP studies, product risk category, production sites and shifts with critical-control monitoring, and integration with quality or environmental audits. Send your details and a sector specialist replies within one working day with a fixed quotation for the whole cycle.",
     ],
     implementation_transition:
-      "Organisations holding ISO 22000:2005 certificates completed transition to the 2018 edition by June 2021. The key changes were adoption of the Annex SL structure, clearer separation of PRPs and HACCP, and strengthened requirements for communication and emergency preparedness.",
+      "",
     why_choose_intro: [
-      "TRAIBCERT auditors have experience across food manufacturing, processing, distribution and food service. We understand the practical application of HACCP and PRPs across diverse food categories and supply chain steps.",
-      "Clients receive a fixed price for the full three-year cycle and audit reports that describe findings in terms of their own hazard analysis and control measures.",
+      "",
     ],
     industries: [
-      "Food & Beverage -- manufacturing, processing and packaging",
-      "Retail & E-Commerce -- food retail and online food delivery",
-      "Transport & Logistics -- cold chain and food distribution",
-      "Agriculture -- primary production and farming",
-      "Healthcare -- hospital catering and food service",
-      "Education -- school and university catering",
+     
     ],
     who_needs_certification: [
-      "Organisations required to hold food safety certification by retail or food service customers.",
-      "Food manufacturers and processors seeking to demonstrate systematic hazard control.",
-      "Organisations in the food chain subject to food safety legislation and regulatory inspection.",
+      
     ],
     self_check: [
-      "Prerequisite programmes are documented and verified as effective",
-      "A hazard analysis has been completed for all process steps and products",
-      "HACCP plans are in place for all significant hazards with critical limits and monitoring",
-      "Traceability records allow product to be traced through the supply chain",
-      "An internal audit and management review have been completed in the last twelve months",
+      
     ],
     training: "ISO 22000:2018 Foundation, Awareness, Internal Auditor, Lead Auditor",
     also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 45001:2018"],
     faqs: [
       {
-        q: "What is the difference between ISO 22000 and HACCP?",
-        a: "HACCP is a food safety methodology for identifying and controlling hazards at critical control points. ISO 22000 incorporates HACCP within a full management system framework that also covers leadership, planning, support, performance evaluation and improvement.",
+        q: "Can a small catering business be certified?",
+        a: "Yes. Audit days scale with headcount and complexity, and a single kitchen has proportionately simple prerequisite programmes and a simple HACCP plan.",
       },
       {
-        q: "Is ISO 22000 recognised by GFSI?",
-        a: "ISO 22000 itself is not a GFSI-benchmarked scheme, but FSSC 22000, which is built on ISO 22000, is GFSI-benchmarked and widely accepted by major retailers.",
+        q: "We are a haulier or cold store. Do we need a HACCP plan?",
+        a: "Yes, proportionate to your activities. Storage and transport hazards are mainly temperature, contamination, allergen segregation and pest control.",
+      },
+      {
+        q: "How long does certification take?",
+        a: "Five to nine months for most first-time applicants, with the system operating for about three months before Stage 1 so monitoring, mock-recall and audit records exist.",
+      },
+      {
+        q: "Can it be audited with ISO 9001 and ISO 14001?",
+        a: "Yes. Shared structure means quality, environmental and food safety requirements are audited in one programme with one management review.",
       },
     ],
   }),
@@ -641,86 +645,92 @@ export const standards: Standard[] = [
     category: "iso",
     discipline: "Business continuity management",
     summary:
-      "ISO 22301:2019 is the international standard for business continuity management systems. It specifies requirements to plan, establish, implement, operate, monitor, review, maintain and continually improve a management system to protect against, reduce the likelihood of, prepare for, respond to and recover from disruptive incidents. TRAIBCERT provides accredited ISO 22301 certification across the UK, UAE and internationally.",
+      "BUSINESS CONTINUITY ISO 22301:2019 Certification ISO 22301:2019 is the international standard for business continuity management systems. An accredited certificate proves that prioritised products and services will continue or recover within agreed times, and that plans have been exercised. Banks, insurers, utilities, public bodies and enterprise customers ask for it from suppliers, increasingly alongside ISO/IEC 27001.",
     whatItIs: [
-      "ISO 22301:2019 is the international standard for business continuity management systems. It applies to organisations of all sizes and sectors that need to ensure continuity of critical activities during and after disruptive incidents -- whether caused by technology failure, supply chain disruption, natural events, cyber incidents or other threats.",
-      "The standard uses the Annex SL high-level structure and requires organisations to understand their context, identify interested parties, determine the scope of the BCMS, conduct a business impact analysis, assess risks, establish business continuity strategies and plans, and test and exercise those plans.",
-      "An ISO 22301 certificate demonstrates to customers, regulators and stakeholders that the organisation has a tested, audited business continuity management system capable of maintaining critical activities during disruption.",
+      "ISO 22301 sets out how an organisation identifies the products and services whose loss would hurt most, the time within which they must be restored, the resources and strategies needed, and the plans, response structure and exercises that make recovery real. Certificates cover the activities, sites and services in scope, last three years with annual surveillance and appear on a public register.",
+    ],
+    whyitmatters: [
+      "Disaster recovery restores systems; business continuity keeps the organisation delivering, including people, premises, suppliers and communications. Operational-resilience rules, critical third-party requirements and customer resilience programmes push the requirement down supply chains. For a mid-sized supplier the certificate is often the fastest route through a resilience questionnaire, and exercises find untested backups, missing alternative suppliers and broken call cascades before an incident does.",
+    ],
+    systemcover: [
+      "Context, scope and continuity obligations",
+      "Leadership, policy and authority to invoke plans",
+      "Business impact analysis with recovery time and recovery point objectives",
+      "Risk assessment of disruption to prioritised activities",
+      "Continuity strategies, resources, response structure and incident plans",
+      "Exercise programme, internal audit, management review and improvement",
     ],
     important: [
-      "Customer and regulatory requirements drive many certifications. Financial services regulators, government departments and large enterprise customers increasingly require their critical suppliers to demonstrate business continuity capability through ISO 22301 certification.",
-      "Operational resilience is the internal benefit. The business impact analysis identifies which activities are critical, the recovery time objectives for each, and the resources required to recover them. This clarity drives investment in the right resilience measures.",
-      "Insurance and risk management benefits follow. Documented business continuity plans and evidence of regular testing can reduce insurance premiums and demonstrate due diligence in the event of a claim.",
+      "",
     ],
     emsFramework: [
-      "ISO 22301 requires a business impact analysis (BIA) that identifies critical activities, their dependencies and the maximum tolerable period of disruption for each. Risk assessment identifies threats to those activities. Business continuity strategies define how critical activities will be maintained or recovered within recovery time objectives.",
-      "Business continuity plans document the procedures for responding to and recovering from specific disruptive incidents. The plans must be tested and exercised regularly, and lessons learned must feed back into plan improvement. The management system framework ensures that the BCMS is maintained, reviewed and improved over time.",
+      "",
     ],
     whoNeedsIt: [
-      "Financial services, utilities and critical infrastructure organisations",
-      "IT service providers and cloud service operators",
-      "Organisations required to demonstrate business continuity by customers or regulators",
-      "Businesses seeking to protect revenue and reputation during disruptive incidents",
+      "",
     ],
     benefit_para:
-      "Regulatory compliance and customer confidence are the primary drivers. Operational resilience -- the ability to maintain critical activities during disruption -- is the internal benefit that protects revenue, reputation and customer relationships.",
+      "",
     benefits: [
-      "Regulatory compliance -- satisfies business continuity requirements from financial services regulators, government departments and enterprise customers.",
-      "Operational resilience -- tested plans and trained teams reduce recovery time and the impact of disruptive incidents.",
-      "Customer confidence -- certification demonstrates that critical services will be maintained during disruption.",
-      "Insurance benefits -- documented plans and evidence of testing can support insurance negotiations.",
+      "Resilience evidence — Answers operational-resilience, licence-condition and contract requirements with independently verified capability.",
+      "Faster supplier due diligence — Often the quickest route through a customer resilience questionnaire, replacing detailed plan reviews",
+      "Bounded cost of disruption — Prioritised activities recover within agreed times, limiting revenue, penalty and customer loss.",
+      "Integration with ISO 27001 — Shared structure means one audit and review; holders of ISO 27001 add continuity for few extra days",
     ],
     certification_process: [
-      "Application and quotation: we agree the scope of the BCMS and the critical activities included, calculate audit days and provide a fixed price.",
-      "Stage 1 audit: review of the BCMS documentation, business impact analysis, risk assessment and business continuity plans.",
-      "Stage 2 audit: on-site audit verifying that the BCMS operates as documented, including review of exercise and test records.",
-      "Certificate issue: accredited ISO 22301:2019 certificate valid for three years.",
-      "Surveillance and recertification: annual surveillance; recertification in year three.",
+      "Shared five-step strip (Get started · Assessment · Certification audit · Certification · Maintenance) linking to /certification/process; 'Holding a certificate elsewhere? Certificate transfer (/resources/certificate-transfer)'.",
     ],
     implementation_intro:
-      "First-time certification typically takes four to nine months. The business impact analysis and risk assessment are the most time-consuming elements for organisations without existing business continuity programmes.",
+      "",
     implementation_steps: [
-      "Obtain ISO 22301:2019, secure top management commitment and define the scope of the BCMS.",
-      "Conduct a business impact analysis identifying critical activities, their dependencies and maximum tolerable periods of disruption.",
-      "Assess risks to critical activities and identify appropriate business continuity strategies.",
-      "Develop business continuity plans for each critical activity covering response, recovery and restoration.",
-      "Establish the BCMS governance: policy, objectives, roles, responsibilities and documented information.",
-      "Test and exercise the business continuity plans and record the results.",
-      "Complete an internal audit and management review.",
-      "Apply to TRAIBCERT for certification.",
+      "Secure commitment, appoint a continuity lead and define scope and obligations.",
+      "Complete the business impact analysis and assess risks to prioritised activities",
+      "Select strategies and secure resources; document the response structure and plans",
+      "Train response teams, run at least one exercise and feed the lessons back.",
+      "Audit internally, hold a management review, then apply for Stage 1, Stage 2 and decision",
     ],
     implementation_transition:
-      "ISO 22301:2019 updated the 2012 edition with adoption of the Annex SL structure and clarified requirements for the business impact analysis and recovery strategies.",
+      "",
     why_choose_intro: [
-      "TRAIBCERT auditors have experience in business continuity management across financial services, IT services, utilities and the public sector. We assess the effectiveness of business continuity plans and exercises, not just their documentation.",
-      "Clients receive a fixed price for the full three-year cycle and practical audit findings that help improve business continuity capability.",
+      "",
+    ],
+    whoNeedsIt: [
+      "Critical third parties and outsourcers in financial services, managed-service and cloud providers whose contracts specify certified continuity, utilities and transport operators and their supply ",
+      "chains, public-sector suppliers, and organisations answering customer resilience questionnaires after major incidents.",
+      "Industries: Banking & financial services · Managed services & cloud · Public sector suppliers · Transport & logistics · Utilities & energy · Healthcare · Manufacturing · Retail & e-commerce · Insurance",
     ],
     industries: [
-      "Banking & Financial Services -- regulatory resilience requirements",
-      "Technology & SaaS -- IT service continuity and cloud operations",
-      "Public Sector & Government -- critical service continuity",
-      "Healthcare -- clinical service continuity",
-      "Energy & Oil/Gas -- operational continuity for critical infrastructure",
-      "Transport & Logistics -- supply chain resilience",
+
     ],
     who_needs_certification: [
-      "Organisations required to demonstrate business continuity capability by financial services regulators or government departments.",
-      "IT service providers and cloud operators whose customers require evidence of service continuity planning.",
-      "Businesses seeking to protect critical revenue streams and customer relationships during disruptive incidents.",
+     
     ],
     self_check: [
-      "A business impact analysis has identified critical activities and recovery time objectives",
-      "Business continuity plans are in place for all critical activities",
-      "Plans have been tested and exercised in the last twelve months",
-      "Staff responsible for business continuity response are trained and aware of their roles",
-      "An internal audit and management review have been completed in the last twelve months",
+    
     ],
+    pricing: [
+      "Price follows audit days, set by headcount, the number and criticality of prioritised activities, operational sites and recovery locations, reliance on outsourced and cloud services, integration with ISO/IEC 27001 and remote delivery. Send your details and a sector specialist replies within one working day with a fixed quotation for the whole cycle.",
+    ],
+
     training: "ISO 22301:2019 Foundation, Awareness, Internal Auditor, Lead Auditor",
     also_need: ["ISO 27001:2022", "ISO 20000-1:2018", "ISO 9001:2015"],
     faqs: [
       {
-        q: "What is the difference between disaster recovery and business continuity?",
-        a: "Disaster recovery focuses on restoring IT systems after a failure. Business continuity covers the full range of critical activities -- people, premises, technology and suppliers -- and how they will be maintained or recovered during any type of disruption.",
+        q: "How is it different from disaster recovery?",
+        a: "Disaster recovery restores IT. ISO 22301 covers continuity of the whole organisation: people, premises, suppliers, information and communications as well as technology",
+      },
+      {
+
+        q: "Must plans be exercised before certification?",
+        a: "Yes. Evidence of exercises, with lessons fed back into the plans, is needed before Stage 2, and exercising continues every year.",
+      },
+      {
+        q: "Does it satisfy a bank customer's resilience requirements?",
+        a : "It provides the tested, independently verified capability those requirements ask for. Scope the system around the services the customer receives so the certificate maps to them."
+      },
+      {
+        q: "How long does certification take?",
+        a: "Four to eight months for most organisations, with the impact analysis complete, plans written and at least one exercise run before Stage 1.",
       },
     ],
   }),
@@ -911,69 +921,69 @@ export const standards: Standard[] = [
     category: "iso",
     discipline: "Risk management",
     summary:
-      "ISO 31000:2018 provides principles, a framework and a process for managing risk. It can be used by any organisation regardless of its size, activity or sector. TRAIBCERT provides ISO 31000 certification and advisory services to help organisations embed systematic risk management across their operations.",
+      "RISK MANAGEMENT ISO 31000:2018 Risk Management Assessment ISO 31000:2018 is the international standard for risk management. It is guidance, not a certifiable standard, so TRAIBCERT carries out an independent assessment against it and issues a findings report and a statement of conformity. Audit committees, lenders, insurers and regulators rely on that statement as evidence that risk shapes decisions, not just registers.",
     whatItIs: [
-      "ISO 31000:2018 is the international standard for risk management. Unlike most ISO management system standards, it is a guidance standard rather than a requirements standard -- it provides principles and guidelines rather than certifiable requirements. However, organisations can be assessed against its framework.",
-      "The standard defines risk as the effect of uncertainty on objectives and provides a framework for integrating risk management into all organisational activities. It covers the risk management process: communication and consultation, scope, context and criteria, risk assessment (identification, analysis and evaluation), risk treatment, monitoring and review, and recording and reporting.",
-      "Organisations use ISO 31000 as the foundation for their enterprise risk management framework, and as the risk management reference for other ISO management system standards including ISO 9001, ISO 14001 and ISO 45001.",
+      "ISO 31000:2018 sets out how organisations of any kind should manage risk. It has three parts: eight principles describing effective risk management, a framework owned by leadership that builds risk into governance, and a process running from scope and context through identification, analysis, evaluation and treatment to monitoring and reporting. Because it contains no certifiable requirements, no accredited certificate exists. TRAIBCERT assesses how closely your practice follows it.",
+    ],
+    whyitmatters: [
+      "Governance codes, lender covenants and insurer questionnaires now ask whether risk management shapes decisions, not whether a risk register exists. An assessment tests whether appetite is set and used, whether risk information reaches decision-makers, whether treatments are tracked and whether the framework is reviewed. Boards gain assurance beyond internal audit, and groups gain a common benchmark across subsidiaries and countries.",
+    ],
+    systemcover: [
+      "Leadership commitment, risk appetite and board accountability",
+      "Risk management built into governance, planning and investment decisions",
+      "Framework design: context, criteria, roles, resources and communication",
+      "Risk process: identify, analyse, evaluate and treat at every level",
+      "Treatment plans with owners, dates, funding and residual-risk decisions",
+      "Monitoring, reporting and annual review of the framework itself",
     ],
     important: [
-      "Enterprise risk management maturity is increasingly expected by boards, investors and regulators. ISO 31000 provides a recognised international framework for demonstrating that risk is managed systematically across the organisation.",
-      "Integration with other management systems is a practical benefit. ISO 31000 provides the risk management methodology referenced by ISO 9001, ISO 14001, ISO 45001 and ISO 27001, so a single risk management framework can serve all management systems.",
-      "Decision-making quality improves when risk is considered systematically. The standard's emphasis on integrating risk management into planning and decision-making processes drives better-informed decisions at all levels.",
+      "",
     ],
     emsFramework: [
-      "ISO 31000 describes a risk management framework covering mandate and commitment, design, implementation, evaluation and improvement. The risk management process covers communication and consultation, establishing context, risk identification, risk analysis, risk evaluation, risk treatment, monitoring and review.",
-      "The standard emphasises that risk management should be integrated into all organisational processes and decision-making, not treated as a separate compliance activity.",
+      "",
     ],
     whoNeedsIt: [
-      "Organisations seeking to embed systematic risk management across all functions",
-      "Boards and senior management teams requiring a recognised risk management framework",
-      "Organisations using ISO 9001, ISO 14001 or ISO 45001 seeking a unified risk approach",
-      "Financial services, public sector and regulated organisations",
+      "",
     ],
     benefit_para:
-      "Better-informed decisions and improved organisational resilience are the primary benefits. A recognised risk management framework also satisfies governance expectations from boards, investors and regulators.",
+      "",
     benefits: [
-      "Governance -- a recognised risk management framework satisfies board, investor and regulatory expectations.",
-      "Integration -- ISO 31000 provides the risk methodology for ISO 9001, ISO 14001, ISO 45001 and ISO 27001.",
-      "Decision quality -- systematic risk consideration improves the quality of decisions at all levels.",
-      "Resilience -- proactive risk identification and treatment reduces the frequency and impact of adverse events.",
+      "Lender and insurer evidence — Due-diligence and covenant questions answered with a findings report and statement, not a self-description.",
+      "Governance assurance — An independent view for boards and audit committees that goes beyond internal audit.",
+      "One risk approach — Risk requirements of other management systems aligned under a single enterprise framework.",
+      "Group consistency — A common benchmark across subsidiaries and countries shows where practice diverges.",
+    ],
+    assessment_process: [
+      "Scoping: agree entities, decision levels, documents and interviews, then receive a fixed quotation.",
+      "Document review: policy, appetite, framework, registers and reporting reviewed against the standard.",
+      "Interviews: board members, executives and risk owners tested on how risk shapes real decisions.",
+      "Report and statement: findings report and statement of conformity, independently reviewed before issue.",
+      "Annual review confirms the framework remains in use and renews the statement.",
+    ],
+    WhoNeedsIt: [
+      "Boards and audit committees seeking assurance beyond internal audit. Investors, lenders and insurers reviewing risk governance. Groups harmonising practice across subsidiaries and countries. Organisations answering governance submissions on embedded risk management, and holders of other management system certificates seeking a single risk approach.Industries: Banking & finance · Public sector · Energy & oil/gas · Manufacturing · Technology & SaaS · Healthcare · Education · Construction",
+    ],
+    pricing: [
+      "Assessments are priced on assessor days. Entities and countries in scope, decision-making levels, interviews required and documentation maturity set the days; combining with a certification audit shares interviews. The fee covers the assessment and annual review. Send your details and a sector specialist replies within one working day with a fixed quotation.",
     ],
     certification_process: [
-      "Assessment scope: we agree the scope of the risk management framework assessment.",
-      "Documentation review: assessment of the risk management framework, process and records.",
-      "On-site assessment: interviews and evidence review to assess implementation effectiveness.",
-      "Assessment report: findings and recommendations for improvement.",
-      "Periodic reassessment to maintain currency.",
+      "",
     ],
     implementation_intro:
-      "ISO 31000 implementation involves establishing a risk management framework, embedding the risk management process into organisational activities and building risk management capability across the organisation.",
+      "",
     implementation_steps: [
-      "Obtain ISO 31000:2018 and secure leadership commitment to systematic risk management.",
-      "Design the risk management framework: mandate, policy, roles, responsibilities and integration with organisational processes.",
-      "Establish the risk management process: context, risk identification, analysis, evaluation and treatment.",
-      "Implement the framework across all functions and decision-making processes.",
-      "Build risk management capability through training and awareness.",
-      "Monitor and review the effectiveness of the risk management framework.",
-      "Continually improve the framework based on review findings.",
+      "",
     ],
     implementation_transition:
-      "ISO 31000:2018 updated the 2009 edition with a more concise and focused presentation of principles, framework and process, and stronger emphasis on leadership commitment and integration.",
+      "",
     why_choose_intro: [
-      "TRAIBCERT provides ISO 31000 assessment and advisory services to help organisations build and embed effective risk management frameworks. Our assessors have experience across financial services, manufacturing, public sector and technology.",
-      "We provide practical findings focused on improving risk management effectiveness, not just compliance with the standard.",
+      "",
     ],
     industries: [
-      "Banking & Financial Services -- enterprise risk management",
-      "Public Sector & Government -- risk governance and accountability",
-      "Manufacturing & Supply Chain -- operational and supply chain risk",
-      "Technology & SaaS -- technology and cyber risk",
-      "Energy & Oil/Gas -- high-consequence risk management",
+      "",
     ],
     who_needs_certification: [
-      "Organisations seeking to demonstrate risk management maturity to boards, investors or regulators.",
-      "Organisations using multiple ISO management system standards seeking a unified risk framework.",
+      "",
     ],
     self_check: [
       "A risk management policy and framework are in place and endorsed by leadership",
@@ -986,8 +996,20 @@ export const standards: Standard[] = [
     also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 27001:2022"],
     faqs: [
       {
-        q: "Is ISO 31000 a certifiable standard?",
-        a: "ISO 31000 is a guidance standard, not a requirements standard. Organisations can be assessed against its framework, but traditional third-party certification is not available in the same way as for ISO 9001 or ISO 14001.",
+        q: "Can we get an ISO 31000 certificate?",
+        a: "No. ISO 31000 is guidance, so accredited certification to it does not exist. TRAIBCERT issues a statement of conformity after an independent assessment.",
+      },
+      {
+        q: "How long does the assessment take?",
+        a: "Typically three to six weeks from proposal to statement, depending on group structure and the number of entities."
+      },
+      {
+        q: "What does the statement say?",
+        a: "That, on the evidence assessed, your risk management framework and process conform to ISO 31000:2018 within a stated scope and date, supported by a findings report.",
+      },
+      {
+        q:"Does the assessment tell us how to fix gaps?",
+        a:"It reports findings prioritised by impact. As an independent body, TRAIBCERT does not design or implement remedies.",
       },
     ],
   }),
@@ -1012,8 +1034,7 @@ export const standards: Standard[] = [
       "Supply chain requirements are growing. Large organisations increasingly require their suppliers to demonstrate social responsibility through assessments against recognised frameworks.",
     ],
     emsFramework: [
-      "ISO 26000 is structured around seven core subjects: organisational governance, human rights, labour practices, the environment, fair operating practices, consumer issues and community involvement and development. Each core subject includes issues and related actions and expectations.",
-      "The standard provides guidance on understanding social responsibility, identifying and engaging with stakeholders, integrating social responsibility throughout the organisation and communicating about social responsibility.",
+      "",
     ],
     whoNeedsIt: [
       "Organisations developing CSR or ESG programmes",
@@ -1175,56 +1196,54 @@ export const standards: Standard[] = [
   base({
     slug: "iso-13485",
     code: "ISO 13485",
-    title: "ISO 13485 Medical Devices Quality Management Systems",
+    title: "ISO 13485:2016 Medical Device QMS Certification | TRAIBCERT",
     category: "iso",
-    discipline: "Medical devices quality management",
+    discipline: "ISO 13485:2016 medical device quality management certification for manufacturers, suppliers, distributors and servicers from an accredited body",
     summary:
-      "ISO 13485:2016 is the international standard for quality management systems for medical devices. It specifies requirements for a quality management system where an organisation needs to demonstrate its ability to provide medical devices and related services that consistently meet customer and applicable regulatory requirements. TRAIBCERT provides ISO 13485 certification for medical device manufacturers, distributors and service providers.",
+      "MEDICAL DEVICES ISO 13485:2016 Certification ISO 13485:2016 is the international quality management standard for medical devices, written for regulatory compliance. An accredited certificate shows your quality system meets the standard and operates effectively. Regulators, notified bodies and device manufacturers auditing their suppliers ask for it across the whole device supply chain.",
     whatItIs: [
-      "ISO 13485:2016 is the international standard for quality management systems in the medical device industry. It is based on ISO 9001 but includes additional requirements specific to medical devices, including risk management, sterile medical devices, implantable devices and in vitro diagnostic medical devices.",
-      "The standard applies to organisations involved in one or more stages of the life cycle of a medical device, including design and development, production, storage and distribution, installation, servicing and final decommissioning and disposal. It also applies to suppliers and other external parties that provide products and services to such organisations.",
-      "ISO 13485 certification is required or expected by regulatory authorities and customers in most major medical device markets, including the EU (MDR/IVDR), UK (UKCA), USA (FDA) and Canada (Health Canada).",
+      "ISO 13485 covers organisations at any stage of the device life cycle: design, production, storage, distribution, installation, servicing and decommissioning, plus suppliers of components, software, packaging and sterilisation. Built on ISO 9001 but written for regulatory compliance, it adds risk management, design controls, validated processes, traceability, complaint handling and regulatory reporting. It is not a product approval; conformity marking is a separate assessment of the device.",
+    ],
+    Whyitmatters: [
+      "A manufacturer without ISO 13485 cannot progress device conformity assessment without building an equivalent system. A supplier without it is a risk on its customer's approved list, and a distributor or importer may fail a health regulator's registration requirements. Beyond access, validated processes and traceability reduce scrap, rework, field actions and recalls, and an accredited certificate shortens customer supplier audits.",
+    ],
+    systemcover: [
+      "Management responsibility, quality policy and regulatory roles",
+      "Competent people and a controlled work environment, including cleanliness",
+      "Risk management across the product life cycle",
+      "Design and development controls with a design file",
+      "Supplier evaluation in proportion to product risk",
+      "Validated processes, identification and traceability",
+      "Complaint handling, reportability decisions and regulator reporting",
     ],
     important: [
-      "Regulatory market access is the primary driver. ISO 13485 certification is required for CE marking under the EU Medical Device Regulation (MDR) and In Vitro Diagnostic Regulation (IVDR), and is expected by regulatory authorities in most major markets.",
-      "Customer requirements reinforce regulatory requirements. Medical device distributors, hospitals and healthcare systems require their suppliers to hold ISO 13485 certification as evidence of quality management system maturity.",
-      "Risk management integration is a distinctive requirement. ISO 13485 requires risk management to be integrated throughout the product life cycle, aligned with ISO 14971 (risk management for medical devices).",
+      "",
     ],
     emsFramework: [
-      "ISO 13485 follows the ISO 9001 structure with medical device-specific additions. Key additions include requirements for risk management throughout the product life cycle, specific requirements for sterile medical devices and implantable devices, advisory notices and field safety corrective actions, and feedback and complaint handling aligned with regulatory requirements.",
-      "The standard requires documented procedures for all key processes, including design and development, purchasing, production and service provision, sterilisation, labelling and packaging, installation and servicing.",
+      "",
     ],
     whoNeedsIt: [
-      "Medical device manufacturers and assemblers",
-      "Medical device distributors and importers",
-      "Contract manufacturers and component suppliers to the medical device industry",
-      "Organisations providing services to medical device manufacturers",
+      "",
     ],
     benefit_para:
-      "Regulatory market access is the primary benefit: ISO 13485 certification is required for CE marking and is expected by regulatory authorities in most major medical device markets. Customer access and supply chain qualification follow.",
+      "",
     benefits: [
-      "Regulatory market access -- required for CE marking under EU MDR/IVDR and expected by regulatory authorities globally.",
-      "Customer qualification -- satisfies quality management requirements from medical device customers and distributors.",
-      "Risk management -- integrated risk management throughout the product life cycle reduces the likelihood of device failures and recalls.",
-      "Supply chain confidence -- demonstrates quality management maturity to customers and regulatory authorities.",
+      "Supplier approval — Keeps component, software, packaging and sterilisation suppliers on manufacturers' approved lists and shortens their audits.",
+      "Regulatory foundation — Provides the quality-system evidence that conformity assessment and market registration routes rely on.",
+      "Fewer field actions — Validated processes, traceability and controlled design reduce nonconformance, recalls and their cost.",
+      "Complaint control — A defined route from complaint to reportability decision keeps regulatory reporting timely and defensible.",
     ],
     certification_process: [
-      "Application and quotation: we agree the scope covering the medical device types and life cycle stages included.",
-      "Stage 1 audit: review of the quality management system documentation, risk management files and regulatory compliance.",
-      "Stage 2 audit: on-site audit verifying that the quality management system operates as documented.",
-      "Certificate issue: ISO 13485:2016 certificate valid for three years.",
-      "Surveillance and recertification: annual surveillance; recertification in year three.",
+      "Shared five-step strip (Get started · Assessment · Certification audit · Certification · Maintenance) linking to /certification/process; 'Holding a certificate elsewhere? Certificate transfer (/resources/certificate-transfer)'.",
     ],
     implementation_intro:
-      "First-time certification typically takes six to twelve months for medical device manufacturers, reflecting the complexity of the regulatory requirements and the need for documented risk management files.",
+      "",
     implementation_steps: [
-      "Obtain ISO 13485:2016 and identify the applicable regulatory requirements for your device types and markets.",
-      "Define the scope covering the device types, life cycle stages and sites included.",
-      "Establish risk management processes aligned with ISO 14971.",
-      "Document all required procedures including design and development, purchasing, production, sterilisation (if applicable) and post-market surveillance.",
-      "Implement the quality management system and collect records for at least three months.",
-      "Complete an internal audit covering all clauses and processes in scope.",
-      "Hold a management review and apply to TRAIBCERT.",
+      "Gap review against ISO 13485:2016; confirm your regulatory role and market requirements",
+      "Secure top management commitment, set policy, define scope and appoint responsible roles",
+      "Build procedures, device files and risk management across design, production and post-market.",
+      "Validate processes, establish traceability and implement complaint and regulatory-reporting procedures",
+      "Operate for three months, complete internal audit and management review, then apply.",
     ],
     implementation_transition:
       "ISO 13485:2016 updated the 2003 edition with strengthened requirements for risk management, software validation, sterile medical devices and post-market surveillance.",
@@ -1454,34 +1473,39 @@ export const standards: Standard[] = [
     category: "cyber",
     discipline: "Cyber security",
     summary:
-      "Cyber Essentials is a UK government-backed certification scheme that helps organisations protect against the most common cyber attacks. It covers five technical controls that block the majority of opportunistic attacks. TRAIBCERT is an IASME-authorised Cyber Essentials certification body providing Cyber Essentials and Cyber Essentials Plus certification across the UK.",
+      "CYBER SECURITY Cyber Essentials Certification Cyber Essentials (Danzell v3.3, from 26 April 2026) is the UK Government-backed baseline for cyber security. A certificate shows that five technical controls are in place that stop most commodity internet attacks. Customers, tender processes, supply-chain questionnaires and insurers ask for it as a minimum.",
     whatItIs: [
-      "Cyber Essentials is a UK government-backed certification scheme managed by IASME on behalf of the National Cyber Security Centre (NCSC). It was introduced in 2014 to help organisations protect themselves against the most common cyber attacks and demonstrate a baseline level of cyber security to customers and supply chains.",
-      "The scheme covers five technical controls: firewalls, secure configuration, user access control, malware protection and patch management. These five controls, when properly implemented, protect against the vast majority of opportunistic cyber attacks that exploit known vulnerabilities and poor security hygiene.",
-      "Cyber Essentials certification is mandatory for UK government contracts involving the handling of personal information or the provision of certain technical products and services. It is also widely required in the supply chains of defence, healthcare and financial services organisations.",
+      "Cyber Essentials is a verified self-assessment. You answer the current question set on your internet boundary, devices, user accounts, malware protection and patching. A board-level signatory declares the answers true, a qualified assessor examines them and, on a pass, the certificate is issued immediately and listed on a public register. It is valid for 12 months. Organisations of any size are eligible, and the process is online",
     ],
+    Whyitmatters: [
+      "Government contracts involving personal data or IT services have required the scheme since 2014, and the expectation has spread to defence, health, education and private-sector supply chains. The latest UK Cyber Security Breaches Survey found that 43 per cent of businesses identified a breach or attack in the past year, rising to 69 per cent of large firms, while only around 5 per cent hold the certificate.",
+      "Cyber Essentials is a UK scheme; it applies to organisations operating in or selling into the UK, although organisations anywhere may certify.",
+    ],
+    controls: [
+      "Firewalls and internet gateways controlling traffic to your network and devices",
+      "Secure configuration: no default passwords, unnecessary software or open services",
+      "Access control: administrator rights limited, multi-factor authentication on cloud services",
+      "Malware protection on every in-scope device",
+      "Security update management: high-risk and critical updates applied within 14 days",
+      "Cloud services in scope, with every legal entity declared",
+    ],
+
     important: [
-      "UK government contract requirements make Cyber Essentials mandatory for many suppliers. Any organisation bidding for UK government contracts involving personal data or certain technical services must hold Cyber Essentials certification.",
-      "Supply chain requirements are growing. Defence, healthcare, financial services and critical national infrastructure organisations increasingly require their suppliers to hold Cyber Essentials as a baseline cyber security requirement.",
-      "Cyber insurance benefits follow. Many cyber insurers offer reduced premiums or improved terms for organisations holding Cyber Essentials certification, recognising that the five controls significantly reduce the risk of common attacks.",
+      "",
     ],
     emsFramework: [
-      "Cyber Essentials is not a management system standard -- it is a technical controls assessment. The five controls are: boundary firewalls and internet gateways (controlling network traffic), secure configuration (removing unnecessary software and changing default settings), user access control (limiting user privileges), malware protection (using anti-malware software), and patch management (keeping software up to date).",
-      "The self-assessment questionnaire (SAQ) asks organisations to confirm that the five controls are implemented across all in-scope devices and software. An authorised certification body reviews the SAQ and issues the certificate if the controls are confirmed as implemented.",
+      "",
     ],
     whoNeedsIt: [
-      "UK government suppliers handling personal data or providing technical services",
-      "Organisations in defence, healthcare and financial services supply chains",
-      "Businesses seeking cyber insurance at competitive rates",
-      "Organisations wanting to demonstrate baseline cyber security to customers",
+      "",
     ],
     benefit_para:
       "UK government contract access and supply chain qualification are the primary commercial benefits. Protection against the majority of opportunistic cyber attacks and cyber insurance benefits are the operational benefits.",
     benefits: [
-      "Government contract access -- mandatory for UK government contracts involving personal data or technical services.",
-      "Supply chain qualification -- satisfies baseline cyber security requirements in defence, healthcare and financial services supply chains.",
-      "Attack prevention -- the five controls protect against the majority of opportunistic cyber attacks.",
-      "Cyber insurance -- many insurers offer improved terms for Cyber Essentials certified organisations.",
+      "Win tenders and contracts — Meets the minimum security requirement that many customers, prime contractors and tender processes set for suppliers.",
+      "Insurance included — Eligible UK organisations under £20 million turnover receive cyber liability insurance with the certificate, up to £25,000.",
+      "Stops common attacks — Five controls block the great majority of commodity attacks, whatever the size of your organisation",
+      "Public proof — Listed on a public register, with a badge for your website, email footers and tenders.",
     ],
     certification_process: [
       "Scoping: we agree the scope covering the devices, software and network boundaries included.",
