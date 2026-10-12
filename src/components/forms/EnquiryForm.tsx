@@ -27,7 +27,17 @@ const fieldClass =
   "w-full rounded-md border border-input bg-background px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-indigo-soft";
 const labelClass = "block text-sm font-semibold text-foreground";
 
-export function EnquiryForm({ defaultStandard }: { defaultStandard?: string }) {
+export function EnquiryForm({
+  defaultService,
+  defaultStandard,
+  defaultMessage,
+  includeIndustryField = false,
+}: {
+  defaultService?: string;
+  defaultStandard?: string;
+  defaultMessage?: string;
+  includeIndustryField?: boolean;
+}) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Errors>({});
   const [reference, setReference] = useState("");
@@ -36,6 +46,7 @@ export function EnquiryForm({ defaultStandard }: { defaultStandard?: string }) {
   const validate = (data: FormData): Errors => {
     const next: Errors = {};
     const required = ["firstName", "lastName", "email", "company", "service", "message"];
+    if (includeIndustryField) required.push("industry");
     for (const key of required) {
       if (!String(data.get(key) ?? "").trim()) next[key] = "This field is required.";
     }
@@ -79,6 +90,9 @@ export function EnquiryForm({ defaultStandard }: { defaultStandard?: string }) {
       service: String(data.get("service")),
       standard: String(data.get("standard") ?? ""),
       employees: String(data.get("employees") ?? ""),
+      ...(String(data.get("industry") ?? "").trim()
+        ? { industry: String(data.get("industry")).trim() }
+        : {}),
       message: String(data.get("message")),
       consent: Boolean(data.get("consent")),
       source: captureSource(),
@@ -184,6 +198,22 @@ export function EnquiryForm({ defaultStandard }: { defaultStandard?: string }) {
           <input id="company" name="company" className={fieldClass} {...invalid("company")} />
           {fieldError("company")}
         </div>
+        {includeIndustryField ? (
+          <div>
+            <label className={labelClass} htmlFor="industry">
+              Industry / sector *
+            </label>
+            <input
+              id="industry"
+              name="industry"
+              className={fieldClass}
+              placeholder="Describe your sector"
+              required
+              {...invalid("industry")}
+            />
+            {fieldError("industry")}
+          </div>
+        ) : null}
         <div>
           <label className={labelClass} htmlFor="country">
             Country
@@ -194,7 +224,13 @@ export function EnquiryForm({ defaultStandard }: { defaultStandard?: string }) {
           <label className={labelClass} htmlFor="service">
             Service required *
           </label>
-          <select id="service" name="service" className={fieldClass} {...invalid("service")}>
+          <select
+            id="service"
+            name="service"
+            className={fieldClass}
+            defaultValue={defaultService ?? ""}
+            {...invalid("service")}
+          >
             <option value="">Please select…</option>
             {services.map((service) => (
               <option key={service} value={service}>
@@ -253,6 +289,7 @@ export function EnquiryForm({ defaultStandard }: { defaultStandard?: string }) {
             name="message"
             rows={5}
             className={fieldClass}
+            defaultValue={defaultMessage}
             {...invalid("message")}
           />
           {fieldError("message")}

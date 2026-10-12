@@ -41,6 +41,8 @@ export function StandardCard({ standard }: { standard: Standard }) {
 }
 
 export function CourseCard({ course }: { course: Course }) {
+  const academyStartingPrice = course.academyCourses?.[0];
+
   return (
     <AppLink
       href={`/training/${course.slug}`}
@@ -70,7 +72,11 @@ export function CourseCard({ course }: { course: Course }) {
         </div>
         <div>
           <dt className="text-muted-foreground">Price</dt>
-          <dd className="font-semibold text-foreground">On request</dd>
+          <dd className="font-semibold text-foreground">
+            {academyStartingPrice
+              ? `From $${academyStartingPrice.price} USD`
+              : "Contact us for current fees"}
+          </dd>
         </div>
       </dl>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-brand">

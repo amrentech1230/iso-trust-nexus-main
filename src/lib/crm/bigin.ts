@@ -26,6 +26,7 @@ export type EnquiryPayload = {
   country: string;
   service: string;
   standard?: string;
+  industry?: string;
   employees?: string;
   message: string;
   consent: boolean;
