@@ -154,12 +154,6 @@ const industries: MegaLink[] = [
 
 const inspectionLinks: MegaLink[] = [
   {
-    title: "Inspection services",
-    desc: "View the inspection hub and process",
-    icon: "fa-list-check",
-    to: "/certification/inspection",
-  },
-  {
     title: "Pre-shipment inspection",
     desc: "Finished goods before dispatch",
     icon: "fa-box-open",
@@ -583,9 +577,6 @@ export function SiteHeader() {
                 </AppLink>
                 <div className="tc-mega tc-mega-inspect">
                   <h4 className="tc-mega-inspect-title">Inspection &amp; Asset Management</h4>
-                  <h5 className="tc-mega-inspect-subtitle">
-                    Inspection services · 1 hub + 9 pages
-                  </h5>
                   <div className="tc-mega-inspect-grid">
                     {inspectionLinks.map((l) => (
                       <MegaLinkRow key={l.title} link={l} onNavigate={closeAll} />
