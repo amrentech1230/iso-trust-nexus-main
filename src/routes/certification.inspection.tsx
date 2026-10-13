@@ -176,6 +176,7 @@ function InspectionPage() {
         intro="An independent inspector on the factory floor, at the loading bay or on your site is the cheapest control you will ever buy. TRAIBCERT inspects products, production, loading, materials and vendors on behalf of buyers, project owners and manufacturers, and reports the same day so the decision to release, hold or rework is made on facts rather than on a supplier's assurance. Inspections are delivered across the UK, the Middle East and India by inspectors who know the product category, and every inspection follows a plan you approve before anyone travels."
         crumbs={crumbs}
         showEnquiryForm={false}
+        fullWidthContent
       >
         <div className="flex flex-wrap gap-3">
           <AppLink
