@@ -288,12 +288,7 @@ export function SiteHeader() {
             <AppLink href="/contact/enquiry" className="tc-btn-quote">
               <i className="fas fa-file-alt" aria-hidden="true" /> Get Quote
             </AppLink>
-            <a
-              href="http://www.traibcert.org.uk/pdf/Traibcert-Brocuher.pdf"
-              className="tc-btn-brochure"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="/TRAIBCERT_BROCHURE.pdf" download className="tc-btn-brochure">
               <i className="fas fa-download" aria-hidden="true" /> Brochure
             </a>
             <div className="tc-topstrip-social">
