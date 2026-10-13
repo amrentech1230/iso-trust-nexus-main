@@ -2,6 +2,7 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { AppLink } from "@/components/AppLink";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import heroImage from "@/assets/hero-certification.jpg";
+import { industries as sectorPages } from "@/data/industries";
 import {
   certificationCopyFaqs,
   type CertificationCopyPage as CertificationCopy,
@@ -43,6 +44,65 @@ const whyTraibcert = [
 ];
 
 const enquiryUrl = "https://www.traibcert.org.uk/enquiry/";
+
+const industrySlugAliases: [RegExp, string][] = [
+  [/telecom/i, "technology-saas"],
+  [
+    /bank|financ|insur|fintech|lending|payment provider|payroll|buy-now-pay-later/i,
+    "banking-finance",
+  ],
+  [/ingredient|food|drink|agri|beverage|catering|cold chain/i, "food-beverage"],
+  [
+    /health|medical|device|life sciences|clinical|hospital|packaging|sterilisation|distributor|importer|refurbishment|revenue-cycle/i,
+    "healthcare",
+  ],
+  [
+    /educat|school|college|universit|academ|vocational|apprenticeship|professional bod|e-learning/i,
+    "education",
+  ],
+  [/construct|property|real estate|building|infrastructure/i, "construction"],
+  [/energy|oil|gas|utilit|renewable|power|EPC contractor/i, "energy-oil-gas"],
+  [
+    /manufactur|supply chain|automotive|aerospace|chemical|engineering|fabrication|component|electronics|valves|pressure equipment|instrumentation|NDT|coating|process industr/i,
+    "manufacturing-supply-chain",
+  ],
+  [
+    /storage|distribution|transport|logistic|passenger|aviation|airport|rail|marine|shipping/i,
+    "transport-logistics",
+  ],
+  [
+    /operate.{0,2}(and|&).{0,2}maintain|facilit|estate|office|corporate workplace/i,
+    "facilities-management",
+  ],
+  [/retail|e-commerce|consumer brand|hospitality|marketplace/i, "retail-ecommerce"],
+  [/waste|recycl/i, "waste-recycling"],
+  [/laborator|proficiency|test facilit/i, "laboratories-testing"],
+  [/public|government|defen|charit|housing/i, "public-sector-government"],
+  [
+    /professional services|consulting|staffing|marketing|agenc|events|translation|HR & recruitment/i,
+    "general-other",
+  ],
+  [/other|reporting organisation/i, "general-other"],
+  [
+    /technology|software|saas|cloud|data cent|managed service|outsourc|hosting|cyber|platform|IT supplier|IT department|legal-tech|media|entertainment|gaming|contact centre|BPO/i,
+    "technology-saas",
+  ],
+];
+
+function normaliseIndustryName(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function getIndustryHref(name: string) {
+  const normalisedName = normaliseIndustryName(name);
+  const exactMatch = sectorPages.find(
+    (industry) => normaliseIndustryName(industry.name) === normalisedName,
+  );
+  const aliasedSlug = industrySlugAliases.find(([pattern]) => pattern.test(name))?.[1];
+  const industry = exactMatch ?? sectorPages.find((candidate) => candidate.slug === aliasedSlug);
+
+  return industry ? `/resources/industries/${industry.slug}` : "/resources/industries";
+}
 
 function getBlock(page: CertificationCopy, prefix: string) {
   return page.blocks.find((block) => block.heading.startsWith(prefix))?.paragraphs ?? [];
@@ -92,11 +152,11 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
   const close = getBlock(page, "10 · Why TRAIBCERT + close").join(" ");
   const quoteLabel = /button:\s*([^→]+)→/i.exec(close)?.[1]?.trim() ?? "Get a quote";
   const heroButtons = getHeroButtons(page);
-  const isEngagement = process.some((paragraph) =>
-    /engagement|assessment process/i.test(paragraph),
-  );
+  const processHeading = processBlock?.heading ?? "";
+  const isEngagement = /assessment|engagement/i.test(processHeading);
   const processStepsToShow = isEngagement ? engagementSteps : certificationSteps;
   const heroEyebrow = hero[0] ?? "";
+  const heroTitle = hero[1] ?? page.title;
   const heroIntro = hero[2] ?? page.metaDescription;
   const transition = process.find((paragraph) => paragraph.startsWith("Transition:"));
   const audience = whoNeedsIt[0] ?? "";
@@ -148,7 +208,7 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
                 {heroEyebrow}
               </p>
               <h1 className="mt-3 text-3xl leading-tight font-extrabold md:text-4xl lg:text-5xl">
-                {page.title}
+                {heroTitle}
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
                 {heroIntro}
@@ -198,7 +258,7 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
       <section className="py-10 md:py-12">
         <div className="container-page grid gap-8 md:grid-cols-2 md:gap-12">
           <div>
-            <h2 className="text-xl font-bold text-indigo-dark">
+            <h2 id="what-it-is" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
               What {page.title.replace(/ Certification$/, "")} is
             </h2>
             {whatItIs.map((paragraph) => (
@@ -208,7 +268,9 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
             ))}
           </div>
           <div>
-            <h2 className="text-xl font-bold text-indigo-dark">Why it matters</h2>
+            <h2 id="why-it-matters" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
+              Why it matters
+            </h2>
             {whyItMatters.map((paragraph) => (
               <p key={paragraph} className="mt-3 text-sm leading-6 text-muted-foreground">
                 {paragraph}
@@ -221,7 +283,10 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
       {systemCovers.length > 0 ? (
         <section className="bg-muted/40 py-10 md:py-12">
           <div className="container-page">
-            <h2 className="text-xl font-bold text-indigo-dark">
+            <h2
+              id="what-the-system-covers"
+              className="scroll-mt-28 text-xl font-bold text-indigo-dark"
+            >
               {systemBlock?.heading.replace(/^\d+ · /, "") ?? "What the system covers"}
             </h2>
             <ul className="mt-5 grid gap-x-10 gap-y-3 sm:grid-cols-2">
@@ -242,7 +307,7 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
       {benefits.length > 0 ? (
         <section className="py-10 md:py-12">
           <div className="container-page">
-            <h2 className="text-xl font-bold text-indigo-dark">
+            <h2 id="benefits" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
               Benefits of {page.title.replace(/ Certification$/, "")}
             </h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -270,7 +335,7 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
 
       <section className="bg-muted/40 py-10 md:py-12">
         <div className="container-page">
-          <h2 className="text-xl font-bold text-indigo-dark">
+          <h2 id="process" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
             {processBlock?.heading.replace(/^\d+ · /, "") ??
               `How ${page.title.replace(/ Certification$/, "")} works`}
           </h2>
@@ -316,7 +381,10 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
       <section className="py-10 md:py-12">
         <div className="container-page grid gap-10 md:grid-cols-2">
           <div>
-            <h2 className="text-xl font-bold text-indigo-dark">
+            <h2
+              id="implementation-steps"
+              className="scroll-mt-28 text-xl font-bold text-indigo-dark"
+            >
               {implementationBlock?.heading.replace(/^\d+ · /, "") ?? "Implementation steps"}
             </h2>
             <ol className="mt-5 space-y-3">
@@ -334,17 +402,20 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
             </ol>
           </div>
           <div>
-            <h2 className="text-xl font-bold text-indigo-dark">Who needs it?</h2>
+            <h2 id="who-needs-it" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
+              Who needs it?
+            </h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{audience}</p>
             {industries.length > 0 ? (
               <div className="mt-4 flex flex-wrap gap-2">
                 {industries.map((industry) => (
-                  <span
+                  <AppLink
                     key={industry}
+                    href={getIndustryHref(industry)}
                     className="rounded-full border border-border px-3 py-1.5 text-xs font-medium text-indigo-brand"
                   >
                     {industry}
-                  </span>
+                  </AppLink>
                 ))}
               </div>
             ) : null}
@@ -355,7 +426,9 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
       {pricing.length > 0 ? (
         <section className="bg-muted/40 py-10 md:py-12">
           <div className="container-page">
-            <h2 className="text-xl font-bold text-indigo-dark">Pricing</h2>
+            <h2 id="pricing" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
+              Pricing
+            </h2>
             <div className="mt-4 flex flex-col gap-5 border-y border-border py-5 md:flex-row md:items-center md:justify-between">
               <div className="max-w-3xl space-y-3">
                 {pricing.map((paragraph) => (
@@ -379,7 +452,9 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
       {faqs.length > 0 ? (
         <section className="py-10 md:py-12">
           <div className="container-page max-w-4xl">
-            <h2 className="text-xl font-bold text-indigo-dark">Frequently asked questions</h2>
+            <h2 id="faqs" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
+              Frequently asked questions
+            </h2>
             <div className="mt-4">
               <FAQAccordion faqs={faqs} />
             </div>
@@ -389,7 +464,10 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
 
       <section className="bg-indigo-brand py-10 text-white md:py-12">
         <div className="container-page">
-          <p className="text-xs font-bold tracking-[0.16em] text-honey uppercase">
+          <p
+            id="why-traibcert"
+            className="scroll-mt-28 text-xs font-bold tracking-[0.16em] text-honey uppercase"
+          >
             Why organisations choose TRAIBCERT
           </p>
           <h2 className="mt-2 text-2xl font-extrabold md:text-3xl">

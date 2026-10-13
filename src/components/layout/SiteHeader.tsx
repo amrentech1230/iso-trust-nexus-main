@@ -157,19 +157,19 @@ const inspectionLinks: MegaLink[] = [
     title: "What is Pre-Shipment",
     desc: "Understanding PSI process",
     icon: "fa-box-open",
-    to: "/certification/pre-shipment-inspection",
+    to: "/certification/what-is-pre-shipment-inspection",
   },
   {
     title: "Why PSI is Important",
     desc: "Key reasons for inspection",
     icon: "fa-circle-exclamation",
-    to: "/certification/pre-shipment-inspection",
+    to: "/certification/what-is-pre-shipment-inspection",
   },
   {
     title: "Benefits of PSI",
     desc: "Advantages for your business",
     icon: "fa-chart-line",
-    to: "/certification/pre-shipment-inspection",
+    to: "/certification/what-is-pre-shipment-inspection",
   },
   {
     title: "Why Choose Our Services",

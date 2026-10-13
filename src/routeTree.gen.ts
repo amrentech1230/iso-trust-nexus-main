@@ -19,6 +19,7 @@ import { Route as CertificationIndexRouteImport } from './routes/certification.i
 import { Route as CertificationSplatRouteImport } from './routes/certification.$'
 import { Route as CertificationSlugRouteImport } from './routes/certification.$slug'
 import { Route as CertificationInspectionRouteImport } from './routes/certification.inspection'
+import { Route as CertificationPreShipmentInspectionRouteImport } from './routes/certification.pre-shipment-inspection'
 import { Route as CertificationProcessRouteImport } from './routes/certification.process'
 import { Route as CertificationTransitionTimelineRouteImport } from './routes/certification.transition-timeline'
 import { Route as CertificationWhatIsPreShipmentInspectionRouteImport } from './routes/certification.what-is-pre-shipment-inspection'
@@ -93,6 +94,12 @@ const CertificationInspectionRoute = CertificationInspectionRouteImport.update({
   path: '/certification/inspection',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationPreShipmentInspectionRoute =
+  CertificationPreShipmentInspectionRouteImport.update({
+    id: '/certification/pre-shipment-inspection',
+    path: '/certification/pre-shipment-inspection',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CertificationProcessRoute = CertificationProcessRouteImport.update({
   id: '/certification/process',
   path: '/certification/process',
@@ -225,6 +232,7 @@ export interface FileRoutesByFullPath {
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/certification/inspection': typeof CertificationInspectionRouteWithChildren
+  '/certification/pre-shipment-inspection': typeof CertificationPreShipmentInspectionRoute
   '/certification/process': typeof CertificationProcessRoute
   '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
   '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
@@ -259,6 +267,7 @@ export interface FileRoutesByTo {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
+  '/certification/pre-shipment-inspection': typeof CertificationPreShipmentInspectionRoute
   '/certification/process': typeof CertificationProcessRoute
   '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
   '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
@@ -295,6 +304,7 @@ export interface FileRoutesById {
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
   '/certification/inspection': typeof CertificationInspectionRouteWithChildren
+  '/certification/pre-shipment-inspection': typeof CertificationPreShipmentInspectionRoute
   '/certification/process': typeof CertificationProcessRoute
   '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
   '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
@@ -332,6 +342,7 @@ export interface FileRouteTypes {
     | '/certification/$'
     | '/certification/$slug'
     | '/certification/inspection'
+    | '/certification/pre-shipment-inspection'
     | '/certification/process'
     | '/certification/transition-timeline'
     | '/certification/what-is-pre-shipment-inspection'
@@ -366,6 +377,7 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/certification/$'
     | '/certification/$slug'
+    | '/certification/pre-shipment-inspection'
     | '/certification/process'
     | '/certification/transition-timeline'
     | '/certification/what-is-pre-shipment-inspection'
@@ -401,6 +413,7 @@ export interface FileRouteTypes {
     | '/certification/$'
     | '/certification/$slug'
     | '/certification/inspection'
+    | '/certification/pre-shipment-inspection'
     | '/certification/process'
     | '/certification/transition-timeline'
     | '/certification/what-is-pre-shipment-inspection'
@@ -437,6 +450,7 @@ export interface RootRouteChildren {
   CertificationSplatRoute: typeof CertificationSplatRoute
   CertificationSlugRoute: typeof CertificationSlugRoute
   CertificationInspectionRoute: typeof CertificationInspectionRouteWithChildren
+  CertificationPreShipmentInspectionRoute: typeof CertificationPreShipmentInspectionRoute
   CertificationProcessRoute: typeof CertificationProcessRoute
   CertificationTransitionTimelineRoute: typeof CertificationTransitionTimelineRoute
   CertificationWhatIsPreShipmentInspectionRoute: typeof CertificationWhatIsPreShipmentInspectionRoute
@@ -531,6 +545,13 @@ declare module '@tanstack/react-router' {
       path: '/certification/inspection'
       fullPath: '/certification/inspection'
       preLoaderRoute: typeof CertificationInspectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certification/pre-shipment-inspection': {
+      id: '/certification/pre-shipment-inspection'
+      path: '/certification/pre-shipment-inspection'
+      fullPath: '/certification/pre-shipment-inspection'
+      preLoaderRoute: typeof CertificationPreShipmentInspectionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/certification/process': {
@@ -723,6 +744,8 @@ const rootRouteChildren: RootRouteChildren = {
   CertificationSplatRoute: CertificationSplatRoute,
   CertificationSlugRoute: CertificationSlugRoute,
   CertificationInspectionRoute: CertificationInspectionRouteWithChildren,
+  CertificationPreShipmentInspectionRoute:
+    CertificationPreShipmentInspectionRoute,
   CertificationProcessRoute: CertificationProcessRoute,
   CertificationTransitionTimelineRoute: CertificationTransitionTimelineRoute,
   CertificationWhatIsPreShipmentInspectionRoute:
