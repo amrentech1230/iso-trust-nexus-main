@@ -566,7 +566,7 @@ export function SiteHeader() {
                 </div>
               </li>
 
-              {/* 5. SERVICES */}
+              {/* 5. INSPECTION */}
               <li
                 className={`tc-nav-item${mobItem === "inspect" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("inspect")}
@@ -576,7 +576,7 @@ export function SiteHeader() {
                   className="tc-nav-link"
                   onClick={closeAll}
                 >
-                  Services <i className="fas fa-chevron-down chevron" aria-hidden="true" />
+                  Inspection <i className="fas fa-chevron-down chevron" aria-hidden="true" />
                 </AppLink>
                 <div className="tc-mega tc-mega-inspect">
                   <h4 className="tc-mega-inspect-title">Inspection &amp; Asset Management</h4>
