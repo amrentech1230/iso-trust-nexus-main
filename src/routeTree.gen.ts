@@ -16,7 +16,10 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as CertificationIndexRouteImport } from './routes/certification.index'
+import { Route as CertificationSplatRouteImport } from './routes/certification.$'
 import { Route as CertificationSlugRouteImport } from './routes/certification.$slug'
+import { Route as CertificationProcessRouteImport } from './routes/certification.process'
+import { Route as CertificationTransitionTimelineRouteImport } from './routes/certification.transition-timeline'
 import { Route as ContactIndexRouteImport } from './routes/contact.index'
 import { Route as ContactEnquiryRouteImport } from './routes/contact.enquiry'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
@@ -70,11 +73,27 @@ const CertificationIndexRoute = CertificationIndexRouteImport.update({
   path: '/certification/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationSplatRoute = CertificationSplatRouteImport.update({
+  id: '/certification/$',
+  path: '/certification/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CertificationSlugRoute = CertificationSlugRouteImport.update({
   id: '/certification/$slug',
   path: '/certification/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationProcessRoute = CertificationProcessRouteImport.update({
+  id: '/certification/process',
+  path: '/certification/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CertificationTransitionTimelineRoute =
+  CertificationTransitionTimelineRouteImport.update({
+    id: '/certification/transition-timeline',
+    path: '/certification/transition-timeline',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ContactIndexRoute = ContactIndexRouteImport.update({
   id: '/contact/',
   path: '/contact/',
@@ -170,7 +189,10 @@ export interface FileRoutesByFullPath {
   '/careers': typeof CareersRoute
   '/services': typeof ServicesRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
+  '/certification/process': typeof CertificationProcessRoute
+  '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
@@ -197,7 +219,10 @@ export interface FileRoutesByTo {
   '/careers': typeof CareersRoute
   '/services': typeof ServicesRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
+  '/certification/process': typeof CertificationProcessRoute
+  '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
@@ -225,7 +250,10 @@ export interface FileRoutesById {
   '/careers': typeof CareersRoute
   '/services': typeof ServicesRoute
   '/why-choose-us': typeof WhyChooseUsRoute
+  '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
+  '/certification/process': typeof CertificationProcessRoute
+  '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
@@ -254,7 +282,10 @@ export interface FileRouteTypes {
     | '/careers'
     | '/services'
     | '/why-choose-us'
+    | '/certification/$'
     | '/certification/$slug'
+    | '/certification/process'
+    | '/certification/transition-timeline'
     | '/contact/enquiry'
     | '/legal/$slug'
     | '/resources/certificate-transfer'
@@ -281,7 +312,10 @@ export interface FileRouteTypes {
     | '/careers'
     | '/services'
     | '/why-choose-us'
+    | '/certification/$'
     | '/certification/$slug'
+    | '/certification/process'
+    | '/certification/transition-timeline'
     | '/contact/enquiry'
     | '/legal/$slug'
     | '/resources/certificate-transfer'
@@ -308,7 +342,10 @@ export interface FileRouteTypes {
     | '/careers'
     | '/services'
     | '/why-choose-us'
+    | '/certification/$'
     | '/certification/$slug'
+    | '/certification/process'
+    | '/certification/transition-timeline'
     | '/contact/enquiry'
     | '/legal/$slug'
     | '/resources/certificate-transfer'
@@ -336,7 +373,10 @@ export interface RootRouteChildren {
   CareersRoute: typeof CareersRoute
   ServicesRoute: typeof ServicesRoute
   WhyChooseUsRoute: typeof WhyChooseUsRoute
+  CertificationSplatRoute: typeof CertificationSplatRoute
   CertificationSlugRoute: typeof CertificationSlugRoute
+  CertificationProcessRoute: typeof CertificationProcessRoute
+  CertificationTransitionTimelineRoute: typeof CertificationTransitionTimelineRoute
   ContactEnquiryRoute: typeof ContactEnquiryRoute
   LegalSlugRoute: typeof LegalSlugRoute
   ResourcesCertificateTransferRoute: typeof ResourcesCertificateTransferRoute
@@ -408,11 +448,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CertificationIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certification/$': {
+      id: '/certification/$'
+      path: '/certification/$'
+      fullPath: '/certification/$'
+      preLoaderRoute: typeof CertificationSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/certification/$slug': {
       id: '/certification/$slug'
       path: '/certification/$slug'
       fullPath: '/certification/$slug'
       preLoaderRoute: typeof CertificationSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certification/process': {
+      id: '/certification/process'
+      path: '/certification/process'
+      fullPath: '/certification/process'
+      preLoaderRoute: typeof CertificationProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certification/transition-timeline': {
+      id: '/certification/transition-timeline'
+      path: '/certification/transition-timeline'
+      fullPath: '/certification/transition-timeline'
+      preLoaderRoute: typeof CertificationTransitionTimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact/': {
@@ -544,7 +605,10 @@ const rootRouteChildren: RootRouteChildren = {
   CareersRoute: CareersRoute,
   ServicesRoute: ServicesRoute,
   WhyChooseUsRoute: WhyChooseUsRoute,
+  CertificationSplatRoute: CertificationSplatRoute,
   CertificationSlugRoute: CertificationSlugRoute,
+  CertificationProcessRoute: CertificationProcessRoute,
+  CertificationTransitionTimelineRoute: CertificationTransitionTimelineRoute,
   ContactEnquiryRoute: ContactEnquiryRoute,
   LegalSlugRoute: LegalSlugRoute,
   ResourcesCertificateTransferRoute: ResourcesCertificateTransferRoute,

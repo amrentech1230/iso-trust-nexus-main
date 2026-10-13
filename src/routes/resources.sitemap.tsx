@@ -6,7 +6,7 @@ import { courses } from "@/data/courses";
 import { industries } from "@/data/industries";
 import { posts } from "@/data/insights";
 import { legalPages } from "@/data/legal";
-import { standards } from "@/data/standards";
+import { certificationCopyPages } from "@/data/certification-copy";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
@@ -34,6 +34,8 @@ function SitemapPage() {
       links: [
         { label: "Home", href: "/" },
         { label: "Certification", href: "/certification" },
+        { label: "Certification process", href: "/certification/process" },
+        { label: "ISO transition timeline", href: "/certification/transition-timeline" },
         { label: "Training", href: "/training" },
         { label: "Contact", href: "/contact" },
         { label: "Enquiry / Get Quote", href: "/contact/enquiry" },
@@ -41,10 +43,10 @@ function SitemapPage() {
       ],
     },
     {
-      heading: "Certification standards",
-      links: standards.map((s) => ({
-        label: s.code === s.title ? s.title : s.code,
-        href: `/certification/${s.slug}`,
+      heading: "Certification pages",
+      links: certificationCopyPages.map((page) => ({
+        label: page.title,
+        href: page.url,
       })),
     },
     {

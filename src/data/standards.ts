@@ -30,6 +30,7 @@ export type Standard = {
   systemcover? : string[];
   pricing?: string[];
   assessment_process?: string[];
+  controls?: string[];
 };
 
 const genericRequirements = [
@@ -51,12 +52,12 @@ export const standards: Standard[] = [
   // ── ISO 9001 ──────────────────────────────────────────────────────────────
   base({
     slug: "iso-9001",
-    code: "ISO 9001:2015",
+    code: "ISO 9001:2026",
     title: "ISO 9001 Quality Management Systems",
     category: "iso",
     discipline: "Quality management",
     summary:
-      "ISO 9001:2015 is the world's most widely adopted management system standard, with over one million certificates in force across every sector and country. It sets out the requirements for a quality management system that consistently delivers products and services meeting customer and regulatory requirements, and drives continual improvement. TRAIBCERT provides accredited ISO 9001 certification for organisations of all sizes across the UK, UAE and internationally.",
+      "ISO 9001:2026 is the international standard for quality management systems. An accredited, independent certificate proves that your processes are defined, controlled and improved. More than a million organisations hold it, and customers, tenders and supplier-approval processes ask for it first.",
     whatItIs: [
       "ISO 9001 is the international standard for quality management systems, published by the International Organization for Standardization. The current edition, ISO 9001:2015, uses the high-level structure shared with ISO 14001 and ISO 45001, making integrated management systems straightforward to build and audit. A revision, ISO 9001:2026, is anticipated; TRAIBCERT will transition certificates as soon as the new edition is published.",
       "The standard requires an organisation to understand its context and the needs of interested parties, apply risk-based thinking to its processes, demonstrate leadership commitment, set measurable quality objectives, control its operations and externally provided products and services, monitor and measure performance, and drive continual improvement through internal audit, management review and corrective action.",
@@ -421,9 +422,6 @@ export const standards: Standard[] = [
     why_choose_intro: [
       "",
     ],
-    industries: [
-     
-    ],
     who_needs_certification: [
       
     ],
@@ -667,10 +665,9 @@ export const standards: Standard[] = [
       "",
     ],
     whoNeedsIt: [
-      "",
+      "Critical third parties and outsourcers in financial services, managed-service and cloud providers whose contracts specify certified continuity, utilities and transport operators and their supply chains, public-sector suppliers, and organisations answering customer resilience questionnaires after major incidents.",
     ],
-    benefit_para:
-      "",
+    benefit_para: "",
     benefits: [
       "Resilience evidence — Answers operational-resilience, licence-condition and contract requirements with independently verified capability.",
       "Faster supplier due diligence — Often the quickest route through a customer resilience questionnaire, replacing detailed plan reviews",
@@ -694,13 +691,16 @@ export const standards: Standard[] = [
     why_choose_intro: [
       "",
     ],
-    whoNeedsIt: [
-      "Critical third parties and outsourcers in financial services, managed-service and cloud providers whose contracts specify certified continuity, utilities and transport operators and their supply ",
-      "chains, public-sector suppliers, and organisations answering customer resilience questionnaires after major incidents.",
-      "Industries: Banking & financial services · Managed services & cloud · Public sector suppliers · Transport & logistics · Utilities & energy · Healthcare · Manufacturing · Retail & e-commerce · Insurance",
-    ],
     industries: [
-
+      "Banking & financial services",
+      "Managed services & cloud",
+      "Public sector suppliers",
+      "Transport & logistics",
+      "Utilities & energy",
+      "Healthcare",
+      "Manufacturing",
+      "Retail & e-commerce",
+      "Insurance",
     ],
     who_needs_certification: [
      
@@ -943,10 +943,9 @@ export const standards: Standard[] = [
       "",
     ],
     whoNeedsIt: [
-      "",
+      "Boards and audit committees seeking assurance beyond internal audit. Investors, lenders and insurers reviewing risk governance. Groups harmonising practice across subsidiaries and countries. Organisations answering governance submissions on embedded risk management, and holders of other management system certificates seeking a single risk approach.",
     ],
-    benefit_para:
-      "",
+    benefit_para: "",
     benefits: [
       "Lender and insurer evidence — Due-diligence and covenant questions answered with a findings report and statement, not a self-description.",
       "Governance assurance — An independent view for boards and audit committees that goes beyond internal audit.",
@@ -960,8 +959,15 @@ export const standards: Standard[] = [
       "Report and statement: findings report and statement of conformity, independently reviewed before issue.",
       "Annual review confirms the framework remains in use and renews the statement.",
     ],
-    WhoNeedsIt: [
-      "Boards and audit committees seeking assurance beyond internal audit. Investors, lenders and insurers reviewing risk governance. Groups harmonising practice across subsidiaries and countries. Organisations answering governance submissions on embedded risk management, and holders of other management system certificates seeking a single risk approach.Industries: Banking & finance · Public sector · Energy & oil/gas · Manufacturing · Technology & SaaS · Healthcare · Education · Construction",
+    industries: [
+      "Banking & finance",
+      "Public sector",
+      "Energy & oil/gas",
+      "Manufacturing",
+      "Technology & SaaS",
+      "Healthcare",
+      "Education",
+      "Construction",
     ],
     pricing: [
       "Assessments are priced on assessor days. Entities and countries in scope, decision-making levels, interviews required and documentation maturity set the days; combining with a certification audit shares interviews. The fee covers the assessment and annual review. Send your details and a sector specialist replies within one working day with a fixed quotation.",
@@ -977,9 +983,6 @@ export const standards: Standard[] = [
     implementation_transition:
       "",
     why_choose_intro: [
-      "",
-    ],
-    industries: [
       "",
     ],
     who_needs_certification: [
@@ -1204,7 +1207,7 @@ export const standards: Standard[] = [
     whatItIs: [
       "ISO 13485 covers organisations at any stage of the device life cycle: design, production, storage, distribution, installation, servicing and decommissioning, plus suppliers of components, software, packaging and sterilisation. Built on ISO 9001 but written for regulatory compliance, it adds risk management, design controls, validated processes, traceability, complaint handling and regulatory reporting. It is not a product approval; conformity marking is a separate assessment of the device.",
     ],
-    Whyitmatters: [
+    whyitmatters: [
       "A manufacturer without ISO 13485 cannot progress device conformity assessment without building an equivalent system. A supplier without it is a risk on its customer's approved list, and a distributor or importer may fail a health regulator's registration requirements. Beyond access, validated processes and traceability reduce scrap, rework, field actions and recalls, and an accredited certificate shortens customer supplier audits.",
     ],
     systemcover: [
@@ -1477,7 +1480,7 @@ export const standards: Standard[] = [
     whatItIs: [
       "Cyber Essentials is a verified self-assessment. You answer the current question set on your internet boundary, devices, user accounts, malware protection and patching. A board-level signatory declares the answers true, a qualified assessor examines them and, on a pass, the certificate is issued immediately and listed on a public register. It is valid for 12 months. Organisations of any size are eligible, and the process is online",
     ],
-    Whyitmatters: [
+    whyitmatters: [
       "Government contracts involving personal data or IT services have required the scheme since 2014, and the expectation has spread to defence, health, education and private-sector supply chains. The latest UK Cyber Security Breaches Survey found that 43 per cent of businesses identified a breach or attack in the past year, rising to 69 per cent of large firms, while only around 5 per cent hold the certificate.",
       "Cyber Essentials is a UK scheme; it applies to organisations operating in or selling into the UK, although organisations anywhere may certify.",
     ],
@@ -1747,7 +1750,9 @@ export const standards: Standard[] = [
 
 ];
 
-export const standardsBySlug = Object.fromEntries(standards.map((s) => [s.slug, s]));
+export const standardsBySlug: Record<string, Standard> = Object.fromEntries(
+  standards.map((s) => [s.slug, s]),
+);
 
 export const standardsByCategory = (category: StandardCategory) =>
   standards.filter((s) => s.category === category);

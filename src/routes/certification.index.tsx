@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { AppLink } from "@/components/AppLink";
 import { IndustryCard, StandardCard } from "@/components/site/Cards";
 import { CertificationProcess } from "@/components/site/CertificationProcess";
 import { CTASection } from "@/components/site/CTASection";
@@ -7,11 +8,13 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { industries } from "@/data/industries";
 import { generalFaqs } from "@/data/insights";
-import { standardsByCategory } from "@/data/standards";
+import { certificationCopyPages } from "@/data/certification-copy";
+import { standardsByCategory, standardsBySlug } from "@/data/standards";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [{ name: "Certification", href: "/certification" }];
 const faqs = generalFaqs.slice(0, 5);
+const additionalPages = certificationCopyPages.filter((page) => !standardsBySlug[page.slug]);
 
 export const Route = createFileRoute("/certification/")({
   head: () => {
@@ -99,6 +102,35 @@ function CertificationLanding() {
           </div>
         </section>
       ))}
+
+      {additionalPages.length > 0 ? (
+        <section className="bg-muted/40 py-14 md:py-16">
+          <div className="container-page">
+            <SectionHeading
+              eyebrow="Assessments and services"
+              title="Additional certification, assessment and verification services"
+              intro="Explore independent assessments and specialist assurance services for security, privacy, sustainability, technology and supply-chain requirements."
+            />
+            <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {additionalPages.map((page) => (
+                <AppLink
+                  key={page.slug}
+                  href={page.url}
+                  className="group flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-indigo-soft/40 hover:shadow-[0_18px_40px_-24px_rgba(26,24,84,0.35)]"
+                >
+                  <span className="text-sm font-bold text-indigo-brand">{page.title}</span>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {page.metaDescription}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-brand">
+                    Learn more <span aria-hidden="true">→</span>
+                  </span>
+                </AppLink>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="py-14 md:py-16">
         <div className="container-page">

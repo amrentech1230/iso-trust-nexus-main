@@ -9,6 +9,7 @@ export function PageHero({
   children,
   enquiryContext = "certification",
   showEnquiryForm = true,
+  fullWidthContent = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -17,6 +18,7 @@ export function PageHero({
   children?: ReactNode;
   enquiryContext?: "certification" | "training";
   showEnquiryForm?: boolean;
+  fullWidthContent?: boolean;
 }) {
   return (
     <section className="gradient-indigo relative overflow-hidden text-white ">
@@ -41,12 +43,20 @@ export function PageHero({
               </p>
             ) : null}
 
-            <h1 className="mt-3 max-w-3xl text-3xl leading-tight font-extrabold md:text-4xl lg:text-[2.75rem]">
+            <h1
+              className={`mt-3 text-3xl leading-tight font-extrabold md:text-4xl lg:text-[2.75rem] ${
+                fullWidthContent ? "max-w-none" : "max-w-3xl"
+              }`}
+            >
               {title}
             </h1>
 
             {intro ? (
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg text-justify text-justify tracking-[1px]">
+              <p
+                className={`mt-4 text-base leading-relaxed text-white/85 md:text-lg text-justify tracking-[1px] ${
+                  fullWidthContent ? "max-w-none" : "max-w-2xl"
+                }`}
+              >
                 {intro}
               </p>
             ) : null}

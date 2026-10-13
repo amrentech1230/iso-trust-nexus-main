@@ -36,6 +36,8 @@ function TrainingLanding() {
         intro="Build the internal capability to run and audit your own management system. Courses are delivered in the classroom, live online, in-house at your site, or through our e-learning academy."
         crumbs={crumbs}
         enquiryContext="training"
+        showEnquiryForm={false}
+        fullWidthContent
       />
 
       <section className="py-14 md:py-16">

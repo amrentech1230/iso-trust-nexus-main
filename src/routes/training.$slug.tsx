@@ -899,6 +899,8 @@ function CoursePage() {
         title={course.title}
         intro={course.summary}
         enquiryContext="training"
+        showEnquiryForm={false}
+        fullWidthContent
         crumbs={[
           { name: "Training", href: "/training" },
           { name: course.code, href: `/training/${course.slug}` },
@@ -912,10 +914,11 @@ function CoursePage() {
             Choose your level <ArrowRight className="size-4" aria-hidden="true" />
           </AppLink>
           <AppLink
-            href="#request-training"
+            href="/contact/enquiry"
             className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10"
           >
-            Ask about training
+            {/* Ask about training */}
+            Request an enquiry
           </AppLink>
           {standard ? (
             <AppLink

@@ -6,17 +6,22 @@ import type { Course } from "@/data/courses";
 import type { Industry } from "@/data/industries";
 import type { Post } from "@/data/insights";
 import type { Standard } from "@/data/standards";
+import { certificationCopyHero, certificationCopyPagesBySlug } from "@/data/certification-copy";
 
 const iconSet = Icons as unknown as Record<string, ComponentType<{ className?: string }>>;
 
 export function StandardCard({ standard }: { standard: Standard }) {
+  const copyPage = standard.slug ? certificationCopyPagesBySlug[standard.slug] : undefined;
+  const hero = copyPage ? certificationCopyHero(copyPage) : [];
   return (
     <AppLink
       href={`/certification/${standard.slug}`}
       className="group flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-indigo-soft/40 hover:shadow-[0_18px_40px_-24px_rgba(26,24,84,0.35)]"
     >
       <div className="flex items-start justify-between gap-3">
-        <span className="text-sm font-bold text-indigo-brand">{standard.code}</span>
+        <span className="text-sm font-bold text-indigo-brand">
+          {copyPage?.title.replace(/ Certification$/, "") ?? standard.code}
+        </span>
         {standard.tag ? (
           <span className="rounded-sm bg-honey-soft px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-honey-text uppercase">
             {standard.tag}
@@ -27,7 +32,7 @@ export function StandardCard({ standard }: { standard: Standard }) {
         {standard.discipline}
       </p>
       <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
-        {standard.summary}
+        {hero[2] ?? standard.summary}
       </p>
       <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-brand">
         Learn more
