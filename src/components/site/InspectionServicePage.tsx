@@ -1,0 +1,140 @@
+import { ArrowRight } from "lucide-react";
+import { AppLink } from "@/components/AppLink";
+import { FAQAccordion } from "@/components/site/FAQAccordion";
+import { PageHero } from "@/components/site/PageHero";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import type { InspectionService } from "@/data/inspection-services";
+
+const process =
+  "Enquiry → scope and quotation (one working day) → inspection plan and date → inspection → same-day flash report → full report within two working days → release, hold or re-inspection decision.";
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+      {items.map((item) => (
+        <li
+          key={item}
+          className="rounded-lg border border-border bg-card p-4 text-sm leading-relaxed text-muted-foreground"
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function InspectionServicePage({ service }: { service: InspectionService }) {
+  return (
+    <>
+      <PageHero
+        eyebrow={service.eyebrow}
+        title={service.title}
+        intro={service.hero}
+        crumbs={[
+          { name: "Certification", href: "/certification" },
+          { name: "Inspection", href: "/certification/inspection" },
+          { name: service.title, href: service.path },
+        ]}
+        showEnquiryForm={false}
+        fullWidthContent
+      >
+        <div className="flex flex-wrap gap-3">
+          <AppLink
+            href="/contact/enquiry"
+            className="inline-flex items-center gap-2 rounded-md bg-honey px-6 py-3.5 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover"
+          >
+            Book this inspection <ArrowRight className="size-4" aria-hidden="true" />
+          </AppLink>
+          <AppLink
+            href="/contact/enquiry"
+            className="inline-flex items-center gap-2 rounded-md border border-white/40 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+          >
+            Get a quote in one working day
+          </AppLink>
+        </div>
+      </PageHero>
+
+      <section id="what" className="py-14 md:py-16">
+        <div className="container-page">
+          <SectionHeading eyebrow="Overview" title={`What ${service.title} is`} />
+          <div className="mt-6 max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
+            {service.what.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="when" className="bg-muted/40 py-14 md:py-16">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="When to use it"
+            title="Is this inspection right for your order?"
+          />
+          <BulletList items={service.when} />
+        </div>
+      </section>
+
+      <section id="checks" className="py-14 md:py-16">
+        <div className="container-page">
+          <SectionHeading eyebrow="Inspection checklist" title="What the inspector checks" />
+          <BulletList items={service.checks} />
+        </div>
+      </section>
+
+      <section id="report" className="bg-muted/40 py-14 md:py-16">
+        <div className="container-page">
+          <SectionHeading eyebrow="Deliverables" title="What you receive" />
+          <p className="mt-5 max-w-4xl text-base leading-relaxed text-muted-foreground">
+            {service.report}
+          </p>
+          <div className="mt-8 rounded-xl border border-border bg-card p-6">
+            <p className="text-xs font-bold tracking-[0.16em] text-indigo-brand uppercase">
+              Inspection process
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{process}</p>
+            <AppLink
+              href="/certification/inspection"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-indigo-brand hover:underline"
+            >
+              See the full inspection process <ArrowRight className="size-4" aria-hidden="true" />
+            </AppLink>
+          </div>
+        </div>
+      </section>
+
+      <section id="industries" className="py-14 md:py-16">
+        <div className="container-page">
+          <SectionHeading eyebrow="Industries" title="Who uses this inspection" />
+          <BulletList items={service.industries} />
+        </div>
+      </section>
+
+      <section id="faq" className="bg-muted/40 py-14 md:py-16">
+        <div className="container-page max-w-3xl">
+          <SectionHeading eyebrow="FAQs" title={`${service.title} questions`} align="center" />
+          <div className="mt-8">
+            <FAQAccordion faqs={service.faqs} />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 md:py-16">
+        <div className="container-page">
+          <SectionHeading eyebrow="Related services" title="Continue exploring inspection" />
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {service.related.map((item) => (
+              <AppLink
+                key={item.href}
+                href={item.href}
+                className="rounded-lg border border-border bg-card p-5 text-sm font-semibold text-indigo-brand transition-colors hover:bg-muted"
+              >
+                {item.label} <ArrowRight className="ml-1 inline size-4" aria-hidden="true" />
+              </AppLink>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

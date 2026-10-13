@@ -21,6 +21,7 @@ import { Route as CertificationSlugRouteImport } from './routes/certification.$s
 import { Route as CertificationInspectionRouteImport } from './routes/certification.inspection'
 import { Route as CertificationProcessRouteImport } from './routes/certification.process'
 import { Route as CertificationTransitionTimelineRouteImport } from './routes/certification.transition-timeline'
+import { Route as CertificationWhatIsPreShipmentInspectionRouteImport } from './routes/certification.what-is-pre-shipment-inspection'
 import { Route as ContactIndexRouteImport } from './routes/contact.index'
 import { Route as ContactEnquiryRouteImport } from './routes/contact.enquiry'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
@@ -33,6 +34,8 @@ import { Route as ResourcesSitemapRouteImport } from './routes/resources.sitemap
 import { Route as TrainingIndexRouteImport } from './routes/training.index'
 import { Route as TrainingSlugRouteImport } from './routes/training.$slug'
 import { Route as TrainingSuccessRouteImport } from './routes/training.success'
+import { Route as CertificationInspectionIndexRouteImport } from './routes/certification.inspection.index'
+import { Route as CertificationInspectionSlugRouteImport } from './routes/certification.inspection.$slug'
 import { Route as ResourcesBlogIndexRouteImport } from './routes/resources.blog.index'
 import { Route as ResourcesBlogSlugRouteImport } from './routes/resources.blog.$slug'
 import { Route as ResourcesDownloadsIndexRouteImport } from './routes/resources.downloads.index'
@@ -101,6 +104,12 @@ const CertificationTransitionTimelineRoute =
     path: '/certification/transition-timeline',
     getParentRoute: () => rootRouteImport,
   } as any)
+const CertificationWhatIsPreShipmentInspectionRoute =
+  CertificationWhatIsPreShipmentInspectionRouteImport.update({
+    id: '/certification/what-is-pre-shipment-inspection',
+    path: '/certification/what-is-pre-shipment-inspection',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ContactIndexRoute = ContactIndexRouteImport.update({
   id: '/contact/',
   path: '/contact/',
@@ -162,6 +171,18 @@ const TrainingSuccessRoute = TrainingSuccessRouteImport.update({
   path: '/training/success',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationInspectionIndexRoute =
+  CertificationInspectionIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => CertificationInspectionRoute,
+  } as any)
+const CertificationInspectionSlugRoute =
+  CertificationInspectionSlugRouteImport.update({
+    id: '/$slug',
+    path: '/$slug',
+    getParentRoute: () => CertificationInspectionRoute,
+  } as any)
 const ResourcesBlogIndexRoute = ResourcesBlogIndexRouteImport.update({
   id: '/resources/blog/',
   path: '/resources/blog/',
@@ -203,9 +224,10 @@ export interface FileRoutesByFullPath {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
-  '/certification/inspection': typeof CertificationInspectionRoute
+  '/certification/inspection': typeof CertificationInspectionRouteWithChildren
   '/certification/process': typeof CertificationProcessRoute
   '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
+  '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
@@ -219,9 +241,11 @@ export interface FileRoutesByFullPath {
   '/contact/': typeof ContactIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/training/': typeof TrainingIndexRoute
+  '/certification/inspection/$slug': typeof CertificationInspectionSlugRoute
   '/resources/blog/$slug': typeof ResourcesBlogSlugRoute
   '/resources/downloads/$slug': typeof ResourcesDownloadsSlugRoute
   '/resources/industries/$slug': typeof ResourcesIndustriesSlugRoute
+  '/certification/inspection/': typeof CertificationInspectionIndexRoute
   '/resources/blog/': typeof ResourcesBlogIndexRoute
   '/resources/downloads/': typeof ResourcesDownloadsIndexRoute
   '/resources/industries/': typeof ResourcesIndustriesIndexRoute
@@ -235,9 +259,9 @@ export interface FileRoutesByTo {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
-  '/certification/inspection': typeof CertificationInspectionRoute
   '/certification/process': typeof CertificationProcessRoute
   '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
+  '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
@@ -251,9 +275,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactIndexRoute
   '/resources': typeof ResourcesIndexRoute
   '/training': typeof TrainingIndexRoute
+  '/certification/inspection/$slug': typeof CertificationInspectionSlugRoute
   '/resources/blog/$slug': typeof ResourcesBlogSlugRoute
   '/resources/downloads/$slug': typeof ResourcesDownloadsSlugRoute
   '/resources/industries/$slug': typeof ResourcesIndustriesSlugRoute
+  '/certification/inspection': typeof CertificationInspectionIndexRoute
   '/resources/blog': typeof ResourcesBlogIndexRoute
   '/resources/downloads': typeof ResourcesDownloadsIndexRoute
   '/resources/industries': typeof ResourcesIndustriesIndexRoute
@@ -268,9 +294,10 @@ export interface FileRoutesById {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
-  '/certification/inspection': typeof CertificationInspectionRoute
+  '/certification/inspection': typeof CertificationInspectionRouteWithChildren
   '/certification/process': typeof CertificationProcessRoute
   '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
+  '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
@@ -284,9 +311,11 @@ export interface FileRoutesById {
   '/contact/': typeof ContactIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/training/': typeof TrainingIndexRoute
+  '/certification/inspection/$slug': typeof CertificationInspectionSlugRoute
   '/resources/blog/$slug': typeof ResourcesBlogSlugRoute
   '/resources/downloads/$slug': typeof ResourcesDownloadsSlugRoute
   '/resources/industries/$slug': typeof ResourcesIndustriesSlugRoute
+  '/certification/inspection/': typeof CertificationInspectionIndexRoute
   '/resources/blog/': typeof ResourcesBlogIndexRoute
   '/resources/downloads/': typeof ResourcesDownloadsIndexRoute
   '/resources/industries/': typeof ResourcesIndustriesIndexRoute
@@ -305,6 +334,7 @@ export interface FileRouteTypes {
     | '/certification/inspection'
     | '/certification/process'
     | '/certification/transition-timeline'
+    | '/certification/what-is-pre-shipment-inspection'
     | '/contact/enquiry'
     | '/legal/$slug'
     | '/resources/certificate-transfer'
@@ -318,9 +348,11 @@ export interface FileRouteTypes {
     | '/contact/'
     | '/resources/'
     | '/training/'
+    | '/certification/inspection/$slug'
     | '/resources/blog/$slug'
     | '/resources/downloads/$slug'
     | '/resources/industries/$slug'
+    | '/certification/inspection/'
     | '/resources/blog/'
     | '/resources/downloads/'
     | '/resources/industries/'
@@ -334,9 +366,9 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/certification/$'
     | '/certification/$slug'
-    | '/certification/inspection'
     | '/certification/process'
     | '/certification/transition-timeline'
+    | '/certification/what-is-pre-shipment-inspection'
     | '/contact/enquiry'
     | '/legal/$slug'
     | '/resources/certificate-transfer'
@@ -350,9 +382,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/resources'
     | '/training'
+    | '/certification/inspection/$slug'
     | '/resources/blog/$slug'
     | '/resources/downloads/$slug'
     | '/resources/industries/$slug'
+    | '/certification/inspection'
     | '/resources/blog'
     | '/resources/downloads'
     | '/resources/industries'
@@ -369,6 +403,7 @@ export interface FileRouteTypes {
     | '/certification/inspection'
     | '/certification/process'
     | '/certification/transition-timeline'
+    | '/certification/what-is-pre-shipment-inspection'
     | '/contact/enquiry'
     | '/legal/$slug'
     | '/resources/certificate-transfer'
@@ -382,9 +417,11 @@ export interface FileRouteTypes {
     | '/contact/'
     | '/resources/'
     | '/training/'
+    | '/certification/inspection/$slug'
     | '/resources/blog/$slug'
     | '/resources/downloads/$slug'
     | '/resources/industries/$slug'
+    | '/certification/inspection/'
     | '/resources/blog/'
     | '/resources/downloads/'
     | '/resources/industries/'
@@ -399,9 +436,10 @@ export interface RootRouteChildren {
   WhyChooseUsRoute: typeof WhyChooseUsRoute
   CertificationSplatRoute: typeof CertificationSplatRoute
   CertificationSlugRoute: typeof CertificationSlugRoute
-  CertificationInspectionRoute: typeof CertificationInspectionRoute
+  CertificationInspectionRoute: typeof CertificationInspectionRouteWithChildren
   CertificationProcessRoute: typeof CertificationProcessRoute
   CertificationTransitionTimelineRoute: typeof CertificationTransitionTimelineRoute
+  CertificationWhatIsPreShipmentInspectionRoute: typeof CertificationWhatIsPreShipmentInspectionRoute
   ContactEnquiryRoute: typeof ContactEnquiryRoute
   LegalSlugRoute: typeof LegalSlugRoute
   ResourcesCertificateTransferRoute: typeof ResourcesCertificateTransferRoute
@@ -509,6 +547,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CertificationTransitionTimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certification/what-is-pre-shipment-inspection': {
+      id: '/certification/what-is-pre-shipment-inspection'
+      path: '/certification/what-is-pre-shipment-inspection'
+      fullPath: '/certification/what-is-pre-shipment-inspection'
+      preLoaderRoute: typeof CertificationWhatIsPreShipmentInspectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact/': {
       id: '/contact/'
       path: '/contact'
@@ -593,6 +638,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/certification/inspection/': {
+      id: '/certification/inspection/'
+      path: '/'
+      fullPath: '/certification/inspection/'
+      preLoaderRoute: typeof CertificationInspectionIndexRouteImport
+      parentRoute: typeof CertificationInspectionRoute
+    }
+    '/certification/inspection/$slug': {
+      id: '/certification/inspection/$slug'
+      path: '/$slug'
+      fullPath: '/certification/inspection/$slug'
+      preLoaderRoute: typeof CertificationInspectionSlugRouteImport
+      parentRoute: typeof CertificationInspectionRoute
+    }
     '/resources/blog/': {
       id: '/resources/blog/'
       path: '/resources/blog'
@@ -638,6 +697,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface CertificationInspectionRouteChildren {
+  CertificationInspectionSlugRoute: typeof CertificationInspectionSlugRoute
+  CertificationInspectionIndexRoute: typeof CertificationInspectionIndexRoute
+}
+
+const CertificationInspectionRouteChildren: CertificationInspectionRouteChildren =
+  {
+    CertificationInspectionSlugRoute: CertificationInspectionSlugRoute,
+    CertificationInspectionIndexRoute: CertificationInspectionIndexRoute,
+  }
+
+const CertificationInspectionRouteWithChildren =
+  CertificationInspectionRoute._addFileChildren(
+    CertificationInspectionRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
@@ -647,9 +722,11 @@ const rootRouteChildren: RootRouteChildren = {
   WhyChooseUsRoute: WhyChooseUsRoute,
   CertificationSplatRoute: CertificationSplatRoute,
   CertificationSlugRoute: CertificationSlugRoute,
-  CertificationInspectionRoute: CertificationInspectionRoute,
+  CertificationInspectionRoute: CertificationInspectionRouteWithChildren,
   CertificationProcessRoute: CertificationProcessRoute,
   CertificationTransitionTimelineRoute: CertificationTransitionTimelineRoute,
+  CertificationWhatIsPreShipmentInspectionRoute:
+    CertificationWhatIsPreShipmentInspectionRoute,
   ContactEnquiryRoute: ContactEnquiryRoute,
   LegalSlugRoute: LegalSlugRoute,
   ResourcesCertificateTransferRoute: ResourcesCertificateTransferRoute,
