@@ -213,6 +213,9 @@ const inspectionLinks: MegaLink[] = [
     icon: "fa-clipboard-check",
     to: "/certification/inspection/vendor-inspection-expediting",
   },
+];
+
+const relatedInspectionLinks: MegaLink[] = [
   {
     title: "Asset management services",
     desc: "Independent EAM/PAM services",
@@ -580,8 +583,19 @@ export function SiteHeader() {
                 </AppLink>
                 <div className="tc-mega tc-mega-inspect">
                   <h4 className="tc-mega-inspect-title">Inspection &amp; Asset Management</h4>
+                  <h5 className="tc-mega-inspect-subtitle">
+                    Inspection services · 1 hub + 9 pages
+                  </h5>
                   <div className="tc-mega-inspect-grid">
                     {inspectionLinks.map((l) => (
+                      <MegaLinkRow key={l.title} link={l} onNavigate={closeAll} />
+                    ))}
+                  </div>
+                  <h5 className="tc-mega-inspect-subtitle tc-mega-inspect-related-title">
+                    Related asset management
+                  </h5>
+                  <div className="tc-mega-inspect-grid">
+                    {relatedInspectionLinks.map((l) => (
                       <MegaLinkRow key={l.title} link={l} onNavigate={closeAll} />
                     ))}
                   </div>
