@@ -103,15 +103,20 @@ export const primaryNav: PrimaryNavItem[] = [
   },
   {
     label: "Resources",
-    href: "/resources/blog",
+    href: "/resources",
     menu: {
       kind: "mega",
       columns: [
         {
           heading: "Knowledge Hub",
           links: [
+            { label: "Resource Centre", href: "/resources" },
+            { label: "Articles", href: "/resources/articles" },
+            { label: "Guides", href: "/resources/guides" },
+            { label: "Checklists & templates", href: "/resources/templates" },
+            { label: "Explainers", href: "/resources/explainers" },
+            { label: "Standards updates", href: "/resources/updates" },
             { label: "Blog", href: "/resources/blog" },
-            { label: "Knowledge Base / Guides", href: "/resources/knowledge-base" },
             { label: "Downloads & Whitepapers", href: "/resources/downloads" },
             { label: "Further Topics", href: "/resources/further-topics" },
             { label: "Frequently Asked Questions", href: "/resources/faq" },

@@ -28,6 +28,8 @@ import { Route as ContactIndexRouteImport } from './routes/contact.index'
 import { Route as ContactEnquiryRouteImport } from './routes/contact.enquiry'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesSplatRouteImport } from './routes/resources.$'
+import { Route as ResourcesTypeRouteImport } from './routes/resources.$type'
 import { Route as ResourcesCertificateTransferRouteImport } from './routes/resources.certificate-transfer'
 import { Route as ResourcesFaqRouteImport } from './routes/resources.faq'
 import { Route as ResourcesFurtherTopicsRouteImport } from './routes/resources.further-topics'
@@ -40,10 +42,12 @@ import { Route as CertificationInspectionIndexRouteImport } from './routes/certi
 import { Route as CertificationInspectionSlugRouteImport } from './routes/certification.inspection.$slug'
 import { Route as ResourcesBlogIndexRouteImport } from './routes/resources.blog.index'
 import { Route as ResourcesBlogSlugRouteImport } from './routes/resources.blog.$slug'
+import { Route as ResourcesCategoriesIdRouteImport } from './routes/resources.categories.$id'
 import { Route as ResourcesDownloadsIndexRouteImport } from './routes/resources.downloads.index'
 import { Route as ResourcesDownloadsSlugRouteImport } from './routes/resources.downloads.$slug'
 import { Route as ResourcesIndustriesIndexRouteImport } from './routes/resources.industries.index'
 import { Route as ResourcesIndustriesSlugRouteImport } from './routes/resources.industries.$slug'
+import { Route as ResourcesTopicsIdRouteImport } from './routes/resources.topics.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -144,6 +148,16 @@ const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
   path: '/resources/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesSplatRoute = ResourcesSplatRouteImport.update({
+  id: '/resources/$',
+  path: '/resources/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesTypeRoute = ResourcesTypeRouteImport.update({
+  id: '/resources/$type',
+  path: '/resources/$type',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesCertificateTransferRoute =
   ResourcesCertificateTransferRouteImport.update({
     id: '/resources/certificate-transfer',
@@ -207,6 +221,11 @@ const ResourcesBlogSlugRoute = ResourcesBlogSlugRouteImport.update({
   path: '/resources/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesCategoriesIdRoute = ResourcesCategoriesIdRouteImport.update({
+  id: '/resources/categories/$id',
+  path: '/resources/categories/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesDownloadsIndexRoute = ResourcesDownloadsIndexRouteImport.update({
   id: '/resources/downloads/',
   path: '/resources/downloads/',
@@ -228,6 +247,11 @@ const ResourcesIndustriesSlugRoute = ResourcesIndustriesSlugRouteImport.update({
   path: '/resources/industries/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesTopicsIdRoute = ResourcesTopicsIdRouteImport.update({
+  id: '/resources/topics/$id',
+  path: '/resources/topics/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -246,6 +270,8 @@ export interface FileRoutesByFullPath {
   '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
+  '/resources/$': typeof ResourcesSplatRoute
+  '/resources/$type': typeof ResourcesTypeRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
   '/resources/faq': typeof ResourcesFaqRoute
   '/resources/further-topics': typeof ResourcesFurtherTopicsRoute
@@ -259,8 +285,10 @@ export interface FileRoutesByFullPath {
   '/training/': typeof TrainingIndexRoute
   '/certification/inspection/$slug': typeof CertificationInspectionSlugRoute
   '/resources/blog/$slug': typeof ResourcesBlogSlugRoute
+  '/resources/categories/$id': typeof ResourcesCategoriesIdRoute
   '/resources/downloads/$slug': typeof ResourcesDownloadsSlugRoute
   '/resources/industries/$slug': typeof ResourcesIndustriesSlugRoute
+  '/resources/topics/$id': typeof ResourcesTopicsIdRoute
   '/certification/inspection/': typeof CertificationInspectionIndexRoute
   '/resources/blog/': typeof ResourcesBlogIndexRoute
   '/resources/downloads/': typeof ResourcesDownloadsIndexRoute
@@ -282,6 +310,8 @@ export interface FileRoutesByTo {
   '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
+  '/resources/$': typeof ResourcesSplatRoute
+  '/resources/$type': typeof ResourcesTypeRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
   '/resources/faq': typeof ResourcesFaqRoute
   '/resources/further-topics': typeof ResourcesFurtherTopicsRoute
@@ -295,8 +325,10 @@ export interface FileRoutesByTo {
   '/training': typeof TrainingIndexRoute
   '/certification/inspection/$slug': typeof CertificationInspectionSlugRoute
   '/resources/blog/$slug': typeof ResourcesBlogSlugRoute
+  '/resources/categories/$id': typeof ResourcesCategoriesIdRoute
   '/resources/downloads/$slug': typeof ResourcesDownloadsSlugRoute
   '/resources/industries/$slug': typeof ResourcesIndustriesSlugRoute
+  '/resources/topics/$id': typeof ResourcesTopicsIdRoute
   '/certification/inspection': typeof CertificationInspectionIndexRoute
   '/resources/blog': typeof ResourcesBlogIndexRoute
   '/resources/downloads': typeof ResourcesDownloadsIndexRoute
@@ -320,6 +352,8 @@ export interface FileRoutesById {
   '/certification/what-is-pre-shipment-inspection': typeof CertificationWhatIsPreShipmentInspectionRoute
   '/contact/enquiry': typeof ContactEnquiryRoute
   '/legal/$slug': typeof LegalSlugRoute
+  '/resources/$': typeof ResourcesSplatRoute
+  '/resources/$type': typeof ResourcesTypeRoute
   '/resources/certificate-transfer': typeof ResourcesCertificateTransferRoute
   '/resources/faq': typeof ResourcesFaqRoute
   '/resources/further-topics': typeof ResourcesFurtherTopicsRoute
@@ -333,8 +367,10 @@ export interface FileRoutesById {
   '/training/': typeof TrainingIndexRoute
   '/certification/inspection/$slug': typeof CertificationInspectionSlugRoute
   '/resources/blog/$slug': typeof ResourcesBlogSlugRoute
+  '/resources/categories/$id': typeof ResourcesCategoriesIdRoute
   '/resources/downloads/$slug': typeof ResourcesDownloadsSlugRoute
   '/resources/industries/$slug': typeof ResourcesIndustriesSlugRoute
+  '/resources/topics/$id': typeof ResourcesTopicsIdRoute
   '/certification/inspection/': typeof CertificationInspectionIndexRoute
   '/resources/blog/': typeof ResourcesBlogIndexRoute
   '/resources/downloads/': typeof ResourcesDownloadsIndexRoute
@@ -359,6 +395,8 @@ export interface FileRouteTypes {
     | '/certification/what-is-pre-shipment-inspection'
     | '/contact/enquiry'
     | '/legal/$slug'
+    | '/resources/$'
+    | '/resources/$type'
     | '/resources/certificate-transfer'
     | '/resources/faq'
     | '/resources/further-topics'
@@ -372,8 +410,10 @@ export interface FileRouteTypes {
     | '/training/'
     | '/certification/inspection/$slug'
     | '/resources/blog/$slug'
+    | '/resources/categories/$id'
     | '/resources/downloads/$slug'
     | '/resources/industries/$slug'
+    | '/resources/topics/$id'
     | '/certification/inspection/'
     | '/resources/blog/'
     | '/resources/downloads/'
@@ -395,6 +435,8 @@ export interface FileRouteTypes {
     | '/certification/what-is-pre-shipment-inspection'
     | '/contact/enquiry'
     | '/legal/$slug'
+    | '/resources/$'
+    | '/resources/$type'
     | '/resources/certificate-transfer'
     | '/resources/faq'
     | '/resources/further-topics'
@@ -408,8 +450,10 @@ export interface FileRouteTypes {
     | '/training'
     | '/certification/inspection/$slug'
     | '/resources/blog/$slug'
+    | '/resources/categories/$id'
     | '/resources/downloads/$slug'
     | '/resources/industries/$slug'
+    | '/resources/topics/$id'
     | '/certification/inspection'
     | '/resources/blog'
     | '/resources/downloads'
@@ -432,6 +476,8 @@ export interface FileRouteTypes {
     | '/certification/what-is-pre-shipment-inspection'
     | '/contact/enquiry'
     | '/legal/$slug'
+    | '/resources/$'
+    | '/resources/$type'
     | '/resources/certificate-transfer'
     | '/resources/faq'
     | '/resources/further-topics'
@@ -445,8 +491,10 @@ export interface FileRouteTypes {
     | '/training/'
     | '/certification/inspection/$slug'
     | '/resources/blog/$slug'
+    | '/resources/categories/$id'
     | '/resources/downloads/$slug'
     | '/resources/industries/$slug'
+    | '/resources/topics/$id'
     | '/certification/inspection/'
     | '/resources/blog/'
     | '/resources/downloads/'
@@ -470,6 +518,8 @@ export interface RootRouteChildren {
   CertificationWhatIsPreShipmentInspectionRoute: typeof CertificationWhatIsPreShipmentInspectionRoute
   ContactEnquiryRoute: typeof ContactEnquiryRoute
   LegalSlugRoute: typeof LegalSlugRoute
+  ResourcesSplatRoute: typeof ResourcesSplatRoute
+  ResourcesTypeRoute: typeof ResourcesTypeRoute
   ResourcesCertificateTransferRoute: typeof ResourcesCertificateTransferRoute
   ResourcesFaqRoute: typeof ResourcesFaqRoute
   ResourcesFurtherTopicsRoute: typeof ResourcesFurtherTopicsRoute
@@ -482,8 +532,10 @@ export interface RootRouteChildren {
   ResourcesIndexRoute: typeof ResourcesIndexRoute
   TrainingIndexRoute: typeof TrainingIndexRoute
   ResourcesBlogSlugRoute: typeof ResourcesBlogSlugRoute
+  ResourcesCategoriesIdRoute: typeof ResourcesCategoriesIdRoute
   ResourcesDownloadsSlugRoute: typeof ResourcesDownloadsSlugRoute
   ResourcesIndustriesSlugRoute: typeof ResourcesIndustriesSlugRoute
+  ResourcesTopicsIdRoute: typeof ResourcesTopicsIdRoute
   ResourcesBlogIndexRoute: typeof ResourcesBlogIndexRoute
   ResourcesDownloadsIndexRoute: typeof ResourcesDownloadsIndexRoute
   ResourcesIndustriesIndexRoute: typeof ResourcesIndustriesIndexRoute
@@ -624,6 +676,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/$': {
+      id: '/resources/$'
+      path: '/resources/$'
+      fullPath: '/resources/$'
+      preLoaderRoute: typeof ResourcesSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/$type': {
+      id: '/resources/$type'
+      path: '/resources/$type'
+      fullPath: '/resources/$type'
+      preLoaderRoute: typeof ResourcesTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/certificate-transfer': {
       id: '/resources/certificate-transfer'
       path: '/resources/certificate-transfer'
@@ -708,6 +774,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesBlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/categories/$id': {
+      id: '/resources/categories/$id'
+      path: '/resources/categories/$id'
+      fullPath: '/resources/categories/$id'
+      preLoaderRoute: typeof ResourcesCategoriesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/downloads/': {
       id: '/resources/downloads/'
       path: '/resources/downloads'
@@ -734,6 +807,13 @@ declare module '@tanstack/react-router' {
       path: '/resources/industries/$slug'
       fullPath: '/resources/industries/$slug'
       preLoaderRoute: typeof ResourcesIndustriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/topics/$id': {
+      id: '/resources/topics/$id'
+      path: '/resources/topics/$id'
+      fullPath: '/resources/topics/$id'
+      preLoaderRoute: typeof ResourcesTopicsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -775,6 +855,8 @@ const rootRouteChildren: RootRouteChildren = {
     CertificationWhatIsPreShipmentInspectionRoute,
   ContactEnquiryRoute: ContactEnquiryRoute,
   LegalSlugRoute: LegalSlugRoute,
+  ResourcesSplatRoute: ResourcesSplatRoute,
+  ResourcesTypeRoute: ResourcesTypeRoute,
   ResourcesCertificateTransferRoute: ResourcesCertificateTransferRoute,
   ResourcesFaqRoute: ResourcesFaqRoute,
   ResourcesFurtherTopicsRoute: ResourcesFurtherTopicsRoute,
@@ -787,8 +869,10 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesIndexRoute: ResourcesIndexRoute,
   TrainingIndexRoute: TrainingIndexRoute,
   ResourcesBlogSlugRoute: ResourcesBlogSlugRoute,
+  ResourcesCategoriesIdRoute: ResourcesCategoriesIdRoute,
   ResourcesDownloadsSlugRoute: ResourcesDownloadsSlugRoute,
   ResourcesIndustriesSlugRoute: ResourcesIndustriesSlugRoute,
+  ResourcesTopicsIdRoute: ResourcesTopicsIdRoute,
   ResourcesBlogIndexRoute: ResourcesBlogIndexRoute,
   ResourcesDownloadsIndexRoute: ResourcesDownloadsIndexRoute,
   ResourcesIndustriesIndexRoute: ResourcesIndustriesIndexRoute,

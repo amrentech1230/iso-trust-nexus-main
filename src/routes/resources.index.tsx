@@ -2,6 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AppLink } from "@/components/AppLink";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import {
+  publishedResources,
+  resourceCategories,
+  resourceSlug,
+  resourcesForCategory,
+} from "@/data/published-resources";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [{ name: "Resources", href: "/resources" }];
@@ -10,39 +16,48 @@ const resourceTypes = [
   {
     title: "Articles",
     count: "150",
+    href: "/resources/articles",
     description: "600–1,200 words; one question answered; published fortnightly.",
   },
   {
     title: "Guides",
     count: "137",
+    href: "/resources/guides",
     description:
       "1,500–3,000 words with a table of contents; the authoritative piece on a topic; updated, not replaced.",
   },
   {
     title: "Checklists & templates",
     count: "63",
+    href: "/resources/templates",
     description:
       "Downloadable PDF, DOCX or XLSX behind a short form; one page of context on the site.",
   },
   {
     title: "Explainers",
     count: "11",
+    href: "/resources/explainers",
     description:
       '300–500 words on one certification concept, including the current "further topics".',
   },
   {
     title: "Standards updates",
     count: "4",
+    href: "/resources/updates",
     description:
       "A short dated notice on a standard, scheme or regulation change and what TRAIBCERT clients should do.",
   },
 ];
 
 const featuredResources = [
-  "What is ISO 45001 and who needs it?",
-  "Building a carbon baseline that survives customer scrutiny",
-  "ISO 9001:2026 is published: a practical transition checklist",
-];
+  publishedResources.find((resource) => resource.title === "What is ISO 45001 and who needs it?"),
+  publishedResources.find(
+    (resource) => resource.title === "Building a carbon baseline that survives customer scrutiny",
+  ),
+  publishedResources.find(
+    (resource) => resource.title === "ISO 9001:2026 is published: a practical transition checklist",
+  ),
+].filter((resource) => resource !== undefined);
 
 const reasons = [
   {
@@ -119,7 +134,11 @@ function ResourcesPage() {
           <SectionHeading eyebrow="Browse resources" title="Find the right resource for you" />
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {resourceTypes.map((type) => (
-              <article key={type.title} className="rounded-xl border border-border bg-card p-6">
+              <AppLink
+                key={type.title}
+                href={type.href}
+                className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-indigo-brand"
+              >
                 <p className="text-xs font-bold tracking-[0.16em] text-indigo-brand uppercase">
                   {type.count} resources
                 </p>
@@ -127,7 +146,7 @@ function ResourcesPage() {
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {type.description}
                 </p>
-              </article>
+              </AppLink>
             ))}
           </div>
         </div>
@@ -137,10 +156,20 @@ function ResourcesPage() {
         <div className="container-page">
           <SectionHeading eyebrow="Featured" title="Start with these resources" />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {featuredResources.map((title) => (
-              <article key={title} className="rounded-xl border border-border bg-card p-6">
-                <h2 className="text-base font-bold text-indigo-brand">{title}</h2>
-              </article>
+            {featuredResources.map((resource) => (
+              <AppLink
+                key={resource.url}
+                href={resource.url}
+                className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-indigo-brand"
+              >
+                <p className="text-xs font-bold tracking-[0.16em] text-indigo-brand uppercase">
+                  {resource.type}
+                </p>
+                <h2 className="mt-2 text-base font-bold text-indigo-brand">{resource.title}</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {resource.excerpt}
+                </p>
+              </AppLink>
             ))}
           </div>
         </div>
@@ -173,6 +202,41 @@ function ResourcesPage() {
             hub explains what we certify, assess or verify, and links to the service page and the
             quotation form.
           </p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {resourceCategories.map((category) => {
+              const topics = [
+                ...new Set(resourcesForCategory(category).flatMap((resource) => resource.topics)),
+              ];
+              return (
+                <article key={category} className="rounded-xl border border-border bg-card p-6">
+                  <AppLink
+                    href={`/resources/categories/${resourceSlug(category)}`}
+                    className="text-base font-bold text-indigo-brand hover:underline"
+                  >
+                    {category}
+                  </AppLink>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {topics.length
+                      ? `${topics.length} published ${topics.length === 1 ? "topic" : "topics"}`
+                      : "Browse this service category"}
+                  </p>
+                  {topics.length ? (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {topics.map((topic) => (
+                        <AppLink
+                          key={topic}
+                          href={`/resources/topics/${resourceSlug(topic)}`}
+                          className="rounded-full bg-muted px-3 py-1 text-xs font-semibold text-indigo-brand hover:bg-indigo-brand/10"
+                        >
+                          {topic}
+                        </AppLink>
+                      ))}
+                    </div>
+                  ) : null}
+                </article>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -181,6 +245,13 @@ function ResourcesPage() {
           <SectionHeading eyebrow="Monthly digest" title="Keep up with new resources" />
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-muted-foreground">
             New guides, checklists and standards updates, once a month.
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            To ask about resource updates,{" "}
+            <AppLink href="/contact" className="font-semibold text-indigo-brand hover:underline">
+              contact our team
+            </AppLink>
+            .
           </p>
         </div>
       </section>

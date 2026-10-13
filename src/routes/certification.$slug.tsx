@@ -345,7 +345,10 @@ function StandardPage() {
 
           <aside className="space-y-6">
             {/* Request a Quote Form */}
-            <div className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+            <div
+              id="quote"
+              className="overflow-hidden rounded-xl border border-border bg-white shadow-sm"
+            >
               {/* Form Header */}
               <div className="bg-[#258eaf] px-5 py-3.5">
                 <h2 className="text-lg font-bold text-white">Request a quote</h2>

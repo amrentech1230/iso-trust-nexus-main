@@ -462,7 +462,7 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
         </section>
       ) : null}
 
-      <section className="bg-indigo-brand py-10 text-white md:py-12">
+      <section id="quote" className="bg-indigo-brand py-10 text-white md:py-12">
         <div className="container-page">
           <p
             id="why-traibcert"

@@ -7,6 +7,12 @@ import { industries } from "@/data/industries";
 import { posts } from "@/data/insights";
 import { legalPages } from "@/data/legal";
 import { certificationCopyPages } from "@/data/certification-copy";
+import {
+  publishedResources,
+  resourceCategories,
+  resourceSlug,
+  resourceTypePaths,
+} from "@/data/published-resources";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
@@ -56,6 +62,8 @@ function SitemapPage() {
     {
       heading: "Resources",
       links: [
+        { label: "Resource Centre", href: "/resources" },
+        ...Object.entries(resourceTypePaths).map(([label, href]) => ({ label, href })),
         { label: "Blog", href: "/resources/blog" },
         { label: "Knowledge Base", href: "/resources/knowledge-base" },
         { label: "Downloads", href: "/resources/downloads" },
@@ -63,6 +71,14 @@ function SitemapPage() {
         { label: "FAQ", href: "/resources/faq" },
         { label: "Certificate Transfer", href: "/resources/certificate-transfer" },
         { label: "Industries", href: "/resources/industries" },
+        ...resourceCategories.map((category) => ({
+          label: category,
+          href: `/resources/categories/${resourceSlug(category)}`,
+        })),
+        ...[...new Set(publishedResources.flatMap((resource) => resource.topics))].map((topic) => ({
+          label: `${topic} resources`,
+          href: `/resources/topics/${resourceSlug(topic)}`,
+        })),
       ],
     },
     {
@@ -74,7 +90,13 @@ function SitemapPage() {
     },
     {
       heading: "Articles",
-      links: posts.map((p) => ({ label: p.title, href: `/resources/blog/${p.slug}` })),
+      links: [
+        ...publishedResources.map((resource) => ({
+          label: resource.title,
+          href: resource.url,
+        })),
+        ...posts.map((p) => ({ label: p.title, href: `/resources/blog/${p.slug}` })),
+      ],
     },
     {
       heading: "Policies",
