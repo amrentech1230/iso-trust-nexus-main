@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppLink } from "@/components/AppLink";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
+import { InspectionWhyTraibcert } from "@/components/site/InspectionWhyTraibcert";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { inspectionServices } from "@/data/inspection-services";
@@ -270,17 +271,7 @@ function InspectionPage() {
         </div>
       </section>
 
-      <section id="why" className="scroll-mt-28 bg-muted/40 py-14 md:py-16">
-        <div className="container-page">
-          <SectionHeading eyebrow="Why TRAIBCERT" title="Independent inspection, clear evidence" />
-          <p className="mt-5 max-w-4xl text-base leading-relaxed text-muted-foreground">
-            Fixed man-day pricing quoted in one working day; inspectors with product-category
-            experience; same-day flash reports; coverage across the UK, the Middle East and India
-            without subcontracting the report; and analysis of your inspection history so the
-            pattern of defects, not only the individual lot, is visible.
-          </p>
-        </div>
-      </section>
+      <InspectionWhyTraibcert id="why" />
 
       <section id="faq" className="py-14 md:py-16">
         <div className="container-page max-w-3xl">

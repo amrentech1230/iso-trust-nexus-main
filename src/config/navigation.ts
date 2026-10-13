@@ -45,7 +45,7 @@ const certificationLinks = (category: Parameters<typeof standardsByCategory>[0])
 
 export const primaryNav: PrimaryNavItem[] = [
   { label: "Home", href: "/" },
-   { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/about" },
   {
     label: "Certification",
     href: "/certification",
@@ -121,7 +121,11 @@ export const primaryNav: PrimaryNavItem[] = [
           heading: "Industries",
           kind: "industries" as const,
           links: [
-            { label: "All Industries", href: "/resources/industries", note: "All sectors overview" },
+            {
+              label: "All Industries",
+              href: "/resources/industries",
+              note: "All sectors overview",
+            },
             ...industries.map((i) => ({
               label: i.name,
               href: `/resources/industries/${i.slug}`,
@@ -174,6 +178,8 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     links: [
       { label: "About Us", href: "/#about" },
       { label: "Services", href: "/#services" },
+      { label: "Inspection services", href: "/certification/inspection" },
+      { label: "Asset management services", href: "/certification/asset-management-services" },
       { label: "Why Choose Us", href: "/#why-choose-us" },
       { label: "Accreditations", href: "/#accreditations" },
       { label: "Careers", href: "/careers" },

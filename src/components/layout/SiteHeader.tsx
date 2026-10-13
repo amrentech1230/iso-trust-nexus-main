@@ -154,28 +154,76 @@ const industries: MegaLink[] = [
 
 const inspectionLinks: MegaLink[] = [
   {
-    title: "What is Pre-Shipment",
-    desc: "Understanding PSI process",
+    title: "Inspection services",
+    desc: "View the inspection hub and process",
+    icon: "fa-list-check",
+    to: "/certification/inspection",
+  },
+  {
+    title: "Pre-shipment inspection",
+    desc: "Finished goods before dispatch",
     icon: "fa-box-open",
-    to: "/certification/what-is-pre-shipment-inspection#what",
+    to: "/certification/what-is-pre-shipment-inspection",
   },
   {
-    title: "Why PSI is Important",
-    desc: "Key reasons for inspection",
-    icon: "fa-circle-exclamation",
-    to: "/certification/what-is-pre-shipment-inspection#when",
+    title: "Initial production check",
+    desc: "Check first units before volume production",
+    icon: "fa-industry",
+    to: "/certification/inspection/initial-production-check",
   },
   {
-    title: "Benefits of PSI",
-    desc: "Advantages for your business",
+    title: "During-production inspection",
+    desc: "Inspect goods while production is underway",
+    icon: "fa-gears",
+    to: "/certification/inspection/during-production",
+  },
+  {
+    title: "Production monitoring",
+    desc: "Monitor manufacturing progress and quality",
     icon: "fa-chart-line",
-    to: "/certification/what-is-pre-shipment-inspection#benefits",
+    to: "/certification/inspection/production-monitoring",
   },
   {
-    title: "Why Choose Our Services",
-    desc: "TRAIBCERT inspection advantage",
-    icon: "fa-handshake",
-    to: "/certification/inspection#why",
+    title: "Container loading",
+    desc: "Supervise loading, packing and shipment",
+    icon: "fa-boxes-stacked",
+    to: "/certification/inspection/container-loading",
+  },
+  {
+    title: "Non-destructive testing",
+    desc: "NDT inspection of materials and components",
+    icon: "fa-magnifying-glass",
+    to: "/certification/inspection/non-destructive-testing",
+  },
+  {
+    title: "Automotive components",
+    desc: "Component inspection, sorting and containment",
+    icon: "fa-car",
+    to: "/certification/inspection/automotive-components",
+  },
+  {
+    title: "Defect classification",
+    desc: "Classify defects and support supplier action",
+    icon: "fa-list-check",
+    to: "/certification/inspection/defect-classification",
+  },
+  {
+    title: "Vendor inspection & expediting",
+    desc: "Verify vendor progress and equipment",
+    icon: "fa-clipboard-check",
+    to: "/certification/inspection/vendor-inspection-expediting",
+  },
+  {
+    title: "Asset management services",
+    desc: "Independent EAM/PAM services",
+    icon: "fa-sitemap",
+    to: "/certification/asset-management-services",
+  },
+  {
+    title: "ISO 55001 certification",
+    desc: "Asset management system certification",
+    icon: "fa-certificate",
+    to: "/certification/iso-55001",
   },
 ];
 
@@ -518,7 +566,7 @@ export function SiteHeader() {
                 </div>
               </li>
 
-              {/* 5. INSPECTION */}
+              {/* 5. SERVICES */}
               <li
                 className={`tc-nav-item${mobItem === "inspect" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("inspect")}
@@ -528,9 +576,10 @@ export function SiteHeader() {
                   className="tc-nav-link"
                   onClick={closeAll}
                 >
-                  Inspection <i className="fas fa-chevron-down chevron" aria-hidden="true" />
+                  Services <i className="fas fa-chevron-down chevron" aria-hidden="true" />
                 </AppLink>
                 <div className="tc-mega tc-mega-inspect">
+                  <h4 className="tc-mega-inspect-title">Inspection &amp; Asset Management</h4>
                   <div className="tc-mega-inspect-grid">
                     {inspectionLinks.map((l) => (
                       <MegaLinkRow key={l.title} link={l} onNavigate={closeAll} />

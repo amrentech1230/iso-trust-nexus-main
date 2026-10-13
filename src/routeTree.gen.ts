@@ -18,6 +18,7 @@ import { Route as WhyChooseUsRouteImport } from './routes/why-choose-us'
 import { Route as CertificationIndexRouteImport } from './routes/certification.index'
 import { Route as CertificationSplatRouteImport } from './routes/certification.$'
 import { Route as CertificationSlugRouteImport } from './routes/certification.$slug'
+import { Route as CertificationAssetManagementServicesRouteImport } from './routes/certification.asset-management-services'
 import { Route as CertificationInspectionRouteImport } from './routes/certification.inspection'
 import { Route as CertificationPreShipmentInspectionRouteImport } from './routes/certification.pre-shipment-inspection'
 import { Route as CertificationProcessRouteImport } from './routes/certification.process'
@@ -89,6 +90,12 @@ const CertificationSlugRoute = CertificationSlugRouteImport.update({
   path: '/certification/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CertificationAssetManagementServicesRoute =
+  CertificationAssetManagementServicesRouteImport.update({
+    id: '/certification/asset-management-services',
+    path: '/certification/asset-management-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CertificationInspectionRoute = CertificationInspectionRouteImport.update({
   id: '/certification/inspection',
   path: '/certification/inspection',
@@ -231,6 +238,7 @@ export interface FileRoutesByFullPath {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
+  '/certification/asset-management-services': typeof CertificationAssetManagementServicesRoute
   '/certification/inspection': typeof CertificationInspectionRouteWithChildren
   '/certification/pre-shipment-inspection': typeof CertificationPreShipmentInspectionRoute
   '/certification/process': typeof CertificationProcessRoute
@@ -267,6 +275,7 @@ export interface FileRoutesByTo {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
+  '/certification/asset-management-services': typeof CertificationAssetManagementServicesRoute
   '/certification/pre-shipment-inspection': typeof CertificationPreShipmentInspectionRoute
   '/certification/process': typeof CertificationProcessRoute
   '/certification/transition-timeline': typeof CertificationTransitionTimelineRoute
@@ -303,6 +312,7 @@ export interface FileRoutesById {
   '/why-choose-us': typeof WhyChooseUsRoute
   '/certification/$': typeof CertificationSplatRoute
   '/certification/$slug': typeof CertificationSlugRoute
+  '/certification/asset-management-services': typeof CertificationAssetManagementServicesRoute
   '/certification/inspection': typeof CertificationInspectionRouteWithChildren
   '/certification/pre-shipment-inspection': typeof CertificationPreShipmentInspectionRoute
   '/certification/process': typeof CertificationProcessRoute
@@ -341,6 +351,7 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/certification/$'
     | '/certification/$slug'
+    | '/certification/asset-management-services'
     | '/certification/inspection'
     | '/certification/pre-shipment-inspection'
     | '/certification/process'
@@ -377,6 +388,7 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/certification/$'
     | '/certification/$slug'
+    | '/certification/asset-management-services'
     | '/certification/pre-shipment-inspection'
     | '/certification/process'
     | '/certification/transition-timeline'
@@ -412,6 +424,7 @@ export interface FileRouteTypes {
     | '/why-choose-us'
     | '/certification/$'
     | '/certification/$slug'
+    | '/certification/asset-management-services'
     | '/certification/inspection'
     | '/certification/pre-shipment-inspection'
     | '/certification/process'
@@ -449,6 +462,7 @@ export interface RootRouteChildren {
   WhyChooseUsRoute: typeof WhyChooseUsRoute
   CertificationSplatRoute: typeof CertificationSplatRoute
   CertificationSlugRoute: typeof CertificationSlugRoute
+  CertificationAssetManagementServicesRoute: typeof CertificationAssetManagementServicesRoute
   CertificationInspectionRoute: typeof CertificationInspectionRouteWithChildren
   CertificationPreShipmentInspectionRoute: typeof CertificationPreShipmentInspectionRoute
   CertificationProcessRoute: typeof CertificationProcessRoute
@@ -538,6 +552,13 @@ declare module '@tanstack/react-router' {
       path: '/certification/$slug'
       fullPath: '/certification/$slug'
       preLoaderRoute: typeof CertificationSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/certification/asset-management-services': {
+      id: '/certification/asset-management-services'
+      path: '/certification/asset-management-services'
+      fullPath: '/certification/asset-management-services'
+      preLoaderRoute: typeof CertificationAssetManagementServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/certification/inspection': {
@@ -743,6 +764,8 @@ const rootRouteChildren: RootRouteChildren = {
   WhyChooseUsRoute: WhyChooseUsRoute,
   CertificationSplatRoute: CertificationSplatRoute,
   CertificationSlugRoute: CertificationSlugRoute,
+  CertificationAssetManagementServicesRoute:
+    CertificationAssetManagementServicesRoute,
   CertificationInspectionRoute: CertificationInspectionRouteWithChildren,
   CertificationPreShipmentInspectionRoute:
     CertificationPreShipmentInspectionRoute,

@@ -314,8 +314,14 @@
   gap: 8px;
 }
 .tc-mega-inspect {
-  width: 520px;
+  width: min(820px, calc(100vw - 40px));
   padding: 28px 30px 24px;
+}
+.tc-mega-inspect-title {
+  margin: 0 0 12px;
+  color: var(--tc-indigo);
+  font-size: 14px;
+  font-weight: 700;
 }
 .tc-mega-inspect-grid {
   display: grid;
