@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { AppLink } from "@/components/AppLink";
 import { site } from "@/config/site";
 import { courses } from "@/data/courses";
@@ -157,25 +157,25 @@ const inspectionLinks: MegaLink[] = [
     title: "What is Pre-Shipment",
     desc: "Understanding PSI process",
     icon: "fa-box-open",
-    to: "/certification/what-is-pre-shipment-inspection",
+    to: "/certification/what-is-pre-shipment-inspection#what",
   },
   {
     title: "Why PSI is Important",
     desc: "Key reasons for inspection",
     icon: "fa-circle-exclamation",
-    to: "/certification/what-is-pre-shipment-inspection",
+    to: "/certification/what-is-pre-shipment-inspection#when",
   },
   {
     title: "Benefits of PSI",
     desc: "Advantages for your business",
     icon: "fa-chart-line",
-    to: "/certification/what-is-pre-shipment-inspection",
+    to: "/certification/what-is-pre-shipment-inspection#benefits",
   },
   {
     title: "Why Choose Our Services",
     desc: "TRAIBCERT inspection advantage",
     icon: "fa-handshake",
-    to: "/certification",
+    to: "/certification/inspection#why",
   },
 ];
 
@@ -247,8 +247,21 @@ function MegaLinkRow({ link, onNavigate }: { link: MegaLink; onNavigate: () => v
       </div>
     </>
   );
+  const handleNavigate = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation();
+    onNavigate();
+  };
+
+  if (link.to.includes("#")) {
+    return (
+      <a href={link.to} className="tc-mega-link" onClick={handleNavigate}>
+        {inner}
+      </a>
+    );
+  }
+
   return (
-    <AppLink href={link.to} className="tc-mega-link" onClick={onNavigate}>
+    <AppLink href={link.to} className="tc-mega-link" onClick={handleNavigate}>
       {inner}
     </AppLink>
   );
@@ -370,7 +383,11 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "cert" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("cert")}
               >
-                <AppLink href="/certification" className="tc-nav-link" onClick={closeAll}>
+                <AppLink
+                  href="/certification/inspection"
+                  className="tc-nav-link"
+                  onClick={closeAll}
+                >
                   Certification <i className="fas fa-chevron-down chevron" aria-hidden="true" />
                 </AppLink>
                 <div className="tc-mega tc-mega-cert">
@@ -506,7 +523,11 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "inspect" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("inspect")}
               >
-                <AppLink href="/certification" className="tc-nav-link" onClick={closeAll}>
+                <AppLink
+                  href="/certification/inspection"
+                  className="tc-nav-link"
+                  onClick={closeAll}
+                >
                   Inspection <i className="fas fa-chevron-down chevron" aria-hidden="true" />
                 </AppLink>
                 <div className="tc-mega tc-mega-inspect">

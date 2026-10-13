@@ -270,7 +270,7 @@ function InspectionPage() {
         </div>
       </section>
 
-      <section id="why" className="bg-muted/40 py-14 md:py-16">
+      <section id="why" className="scroll-mt-28 bg-muted/40 py-14 md:py-16">
         <div className="container-page">
           <SectionHeading eyebrow="Why TRAIBCERT" title="Independent inspection, clear evidence" />
           <p className="mt-5 max-w-4xl text-base leading-relaxed text-muted-foreground">

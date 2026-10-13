@@ -8,6 +8,13 @@ import type { InspectionService } from "@/data/inspection-services";
 const process =
   "Enquiry → scope and quotation (one working day) → inspection plan and date → inspection → same-day flash report → full report within two working days → release, hold or re-inspection decision.";
 
+const preShipmentBenefits = [
+  "Verify quantity, workmanship and conformity with the approved sample before goods leave the factory.",
+  "Apply an agreed ISO 2859-1 sampling plan and AQL so the lot decision follows a defined rule.",
+  "Check product function, safety, packaging, labelling and shipping marks for the destination market.",
+  "Receive a same-day flash result and the full report within two working days to support a release, hold or re-inspection decision.",
+];
+
 function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -54,7 +61,7 @@ export function InspectionServicePage({ service }: { service: InspectionService 
         </div>
       </PageHero>
 
-      <section id="what" className="py-14 md:py-16">
+      <section id="what" className="scroll-mt-28 py-14 md:py-16">
         <div className="container-page">
           <SectionHeading eyebrow="Overview" title={`What ${service.title} is`} />
           <div className="mt-6 max-w-4xl space-y-5 text-base leading-relaxed text-muted-foreground">
@@ -65,15 +72,28 @@ export function InspectionServicePage({ service }: { service: InspectionService 
         </div>
       </section>
 
-      <section id="when" className="bg-muted/40 py-14 md:py-16">
+      <section id="when" className="scroll-mt-28 bg-muted/40 py-14 md:py-16">
         <div className="container-page">
           <SectionHeading
-            eyebrow="When to use it"
-            title="Is this inspection right for your order?"
+            eyebrow="Why PSI is important"
+            title="Why inspect goods before shipment?"
+            intro="A pre-shipment inspection checks finished, packed goods while there is still time to resolve problems before dispatch and balance-payment release."
           />
           <BulletList items={service.when} />
         </div>
       </section>
+
+      {service.slug === "what-is-pre-shipment-inspection" ? (
+        <section id="benefits" className="scroll-mt-28 py-14 md:py-16">
+          <div className="container-page">
+            <SectionHeading
+              eyebrow="Benefits of PSI"
+              title="Make the shipment decision on inspection evidence"
+            />
+            <BulletList items={preShipmentBenefits} />
+          </div>
+        </section>
+      ) : null}
 
       <section id="checks" className="py-14 md:py-16">
         <div className="container-page">
