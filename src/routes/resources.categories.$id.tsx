@@ -62,6 +62,7 @@ function ResourceCategoryPage() {
           { name: category, href: `/resources/categories/${resourceSlug(category)}` },
         ]}
         showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-12 md:py-16">
         <div className="container-page">

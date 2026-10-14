@@ -33,6 +33,8 @@ function KnowledgeBasePage() {
         title="Knowledge base and guides"
         intro="Reference guides covering the questions we are asked most often, written for people implementing and auditing management systems."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       {categories.map((category, index) => (
         <section

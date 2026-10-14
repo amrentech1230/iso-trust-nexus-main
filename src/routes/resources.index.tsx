@@ -112,6 +112,7 @@ function ResourcesPage() {
         intro="TRAIBCERT certifies, assesses, verifies, inspects and trains organisations across the UK, the Middle East and India. Everything here is written by our auditors and technical specialists to get you from the question you have been asked to the certificate, report or course that answers it."
         crumbs={crumbs}
         showEnquiryForm={false}
+        fullWidthContent
       >
         <div className="flex flex-wrap gap-3">
           <AppLink

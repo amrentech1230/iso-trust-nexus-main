@@ -60,6 +60,7 @@ function ResourceTopicPage() {
           { name: `${topic} resources`, href: `/resources/topics/${resourceSlug(topic)}` },
         ]}
         showEnquiryForm={false}
+        fullWidthContent
       />
       {service ? (
         <section className="py-10">
@@ -119,6 +120,7 @@ function Iso9001TopicPage({ items }: { items: typeof publishedResources }) {
           { name: "ISO 9001 resources", href: "/resources/topics/iso-9001" },
         ]}
         showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-10">
         <div className="container-page max-w-4xl">

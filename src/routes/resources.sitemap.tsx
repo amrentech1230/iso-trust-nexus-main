@@ -111,6 +111,8 @@ function SitemapPage() {
         title="Sitemap"
         intro="A complete index of the TRAIBCERT website."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-14 md:py-16">
         <div className="container-page grid gap-10 md:grid-cols-2 lg:grid-cols-3">

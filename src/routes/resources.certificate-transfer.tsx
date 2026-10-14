@@ -38,6 +38,8 @@ function CertificateTransferPage() {
         title="Transfer your certificate to TRAIBCERT"
         intro="If you hold a valid accredited certificate, you can transfer it to us and keep your existing certification cycle intact."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-14 md:py-16">
         <div className="container-page grid gap-10 lg:grid-cols-2">

@@ -80,6 +80,7 @@ function PublishedResourcePage() {
           { name: resource.title, href: resource.url },
         ]}
         showEnquiryForm={false}
+        fullWidthContent
       >
         <p className="text-sm text-white/80">{resource.byline}</p>
         <div className="mt-4 flex flex-wrap gap-2">

@@ -57,6 +57,7 @@ function ResourceTypePage() {
           { name: type, href: resourceTypePaths[type] },
         ]}
         showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-12 md:py-16">
         <div className="container-page">

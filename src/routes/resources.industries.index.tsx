@@ -49,6 +49,8 @@ function IndustriesIndex() {
         title="Certification by industry"
         intro="Every sector is asked to prove something different. A contractor must show it controls safety on site; a software company that it protects customer data; a food manufacturer that hazards are under control; a supplier to government that it meets the cyber and carbon conditions written into public contracts. The standards are international, but the reasons for holding them are local to your industry. Choose your sector below for a plain account of what customers, regulators and insurers in your field require, which certifications and assessments answer those requirements, the training that builds your team's capability, and how organisations like yours usually sequence the work."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       >
         <div className="flex flex-wrap gap-3">
           <AppLink

@@ -52,6 +52,8 @@ function DownloadPage() {
           { name: "Downloads", href: "/resources/downloads" },
           { name: item.title, href: `/resources/downloads/${item.slug}` },
         ]}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-14 md:py-16">
         <div className="container-page max-w-2xl">

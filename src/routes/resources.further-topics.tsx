@@ -31,6 +31,8 @@ function FurtherTopicsPage() {
         title="Further topics"
         intro="Short explanations of the certification concepts that most often come up in tenders, audits and customer questions."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-14 md:py-16">
         <div className="container-page">

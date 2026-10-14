@@ -33,6 +33,8 @@ function DownloadsIndex() {
         title="Downloads and whitepapers"
         intro="Practical documents you can use straight away, from certification roadmaps to audit templates."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-14 md:py-16">
         <div className="container-page">

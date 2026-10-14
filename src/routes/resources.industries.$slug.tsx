@@ -88,6 +88,8 @@ function IndustryPage() {
           { name: "Industries", href: "/resources/industries" },
           { name: industry.name, href: `/resources/industries/${industry.slug}` },
         ]}
+        showEnquiryForm={false}
+        fullWidthContent
       >
         <div className="flex flex-wrap gap-3">
           <AppLink

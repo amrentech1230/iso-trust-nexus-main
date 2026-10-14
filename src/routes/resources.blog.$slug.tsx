@@ -54,6 +54,8 @@ function BlogPost() {
           { name: "Blog", href: "/resources/blog" },
           { name: post.title, href: `/resources/blog/${post.slug}` },
         ]}
+        showEnquiryForm={false}
+        fullWidthContent
       >
         <p className="text-sm text-white/80">
           {post.author} · {post.date} · {post.readingTime}

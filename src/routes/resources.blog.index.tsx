@@ -32,6 +32,8 @@ function BlogIndex() {
         title="Insights on certification, auditing and compliance"
         intro="Practical articles written by our auditors and technical specialists."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-14 md:py-16">
         <div className="container-page">

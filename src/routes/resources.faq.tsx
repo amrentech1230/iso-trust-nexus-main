@@ -35,6 +35,8 @@ function FaqPage() {
         title="Frequently asked questions"
         intro="The questions we are asked most often about certification, audits and training."
         crumbs={crumbs}
+        showEnquiryForm={false}
+        fullWidthContent
       />
       <section className="py-14 md:py-16">
         <div className="container-page max-w-3xl">
