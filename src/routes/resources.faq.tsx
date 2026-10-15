@@ -7,7 +7,7 @@ import { generalFaqs } from "@/data/insights";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
-  { name: "Resources", href: "/resources/blog" },
+  { name: "Resources", href: "/resources" },
   { name: "FAQ", href: "/resources/faq" },
 ];
 

@@ -8,7 +8,7 @@ import { downloads } from "@/data/insights";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
-  { name: "Resources", href: "/resources/blog" },
+  { name: "Resources", href: "/resources" },
   { name: "Downloads", href: "/resources/downloads" },
 ];
 

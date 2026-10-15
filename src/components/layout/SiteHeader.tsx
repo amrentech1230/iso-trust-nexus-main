@@ -52,10 +52,10 @@ const aboutLinks: MegaLink[] = [
     to: "/careers",
   },
   {
-    title: "Blog",
-    desc: "Latest news & insights",
+    title: "Articles",
+    desc: "Latest guidance & insights",
     icon: "fa-newspaper",
-    to: "/resources/blog",
+    to: "/resources/articles",
   },
 ];
 
@@ -231,7 +231,12 @@ const resourceLinks: MegaLink[] = [
     icon: "fa-book-open",
     to: "/resources/further-topics",
   },
-  { title: "Blog", desc: "Latest news & insights", icon: "fa-newspaper", to: "/resources/blog" },
+  {
+    title: "Articles",
+    desc: "Latest guidance & insights",
+    icon: "fa-newspaper",
+    to: "/resources/articles",
+  },
   {
     title: "FAQ",
     desc: "Common questions answered",
@@ -598,7 +603,7 @@ export function SiteHeader() {
                 className={`tc-nav-item${mobItem === "resources" ? " mob-open" : ""}`}
                 onClick={() => toggleMob("resources")}
               >
-                <AppLink href="/resources/blog" className="tc-nav-link" onClick={closeAll}>
+                <AppLink href="/resources" className="tc-nav-link" onClick={closeAll}>
                   Resources <i className="fas fa-chevron-down chevron" aria-hidden="true" />
                 </AppLink>
                 <div className="tc-mega tc-mega-topics">

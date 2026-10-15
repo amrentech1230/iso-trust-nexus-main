@@ -1,5 +1,8 @@
+import { publishedResources, resourcePublishedDate } from "./published-resources";
+
 export type Post = {
   slug: string;
+  url: string;
   title: string;
   category: string;
   date: string;
@@ -7,117 +10,31 @@ export type Post = {
   excerpt: string;
   author: string;
   body: string[];
-  featured?: boolean;
 };
 
-export const postCategories = [
-  "All",
-  "Certification",
-  "Cyber Security",
-  "Sustainability",
-  "Training",
-  "Inspection",
-];
+export const posts: Post[] = publishedResources
+  .filter((resource) => resource.type === "Articles")
+  .map((resource) => {
+    const [author, , readingTime] = resource.byline.split(" · ");
+    const slug = resource.url.split("/").at(-1);
+    if (!author || !readingTime || !slug) {
+      throw new Error(`Invalid article metadata for ${resource.url}`);
+    }
+    return {
+      slug,
+      url: resource.url,
+      title: resource.title,
+      category: resource.category,
+      date: resourcePublishedDate(resource),
+      readingTime,
+      excerpt: resource.excerpt,
+      author,
+      body: resource.body,
+    };
+  })
+  .sort((a, b) => b.date.localeCompare(a.date));
 
-export const posts: Post[] = [
-  {
-    slug: "preparing-for-the-iso-9001-2026-revision",
-    title: "Preparing for the ISO 9001 revision: a practical transition checklist",
-    category: "Certification",
-    date: "2026-08-18",
-    readingTime: "6 min read",
-    author: "TRAIBCERT Technical Team",
-    featured: true,
-    excerpt:
-      "A revision of ISO 9001 is anticipated. Here is how to plan a calm, staged transition instead of a last-minute scramble.",
-    body: [
-      "Every revision of a management system standard triggers the same pattern: a long quiet period, then a rush of activity as the transition deadline approaches. Organisations that treat the revision as a planned project rather than an audit emergency consistently spend less time and money on it.",
-      "Start with a gap assessment against the draft requirements. The objective is not a perfect answer to every clause, but a clear list of the changes that will genuinely affect your documented information, risk approach and internal audit programme.",
-      "Next, map each gap to an owner and a realistic date within your existing certification cycle. Where possible, fold the work into scheduled internal audits and management reviews so the transition becomes part of normal operation rather than an extra programme.",
-      "Finally, brief your auditors and your people early. Awareness training is inexpensive compared with the cost of a surveillance visit where nobody can explain how the system has changed.",
-    ],
-  },
-  {
-    slug: "cyber-essentials-vs-iso-27001",
-    title: "Cyber Essentials or ISO 27001: which one does your organisation need?",
-    category: "Cyber Security",
-    date: "2026-07-29",
-    readingTime: "5 min read",
-    author: "TRAIBCERT Technical Team",
-    excerpt:
-      "The two schemes solve different problems. This guide explains the scope, effort and commercial value of each.",
-    body: [
-      "Cyber Essentials covers five technical controls that block the most common opportunistic attacks. It is fast, affordable and frequently mandated in UK public sector procurement. It is not a management system.",
-      "ISO/IEC 27001 is a management system standard. It asks you to assess information security risk, decide which controls apply, run the system and improve it. Enterprise buyers and regulated clients usually expect it.",
-      "Many organisations do both: Cyber Essentials to satisfy immediate procurement requirements and demonstrate hygiene, then ISO 27001 as the governance backbone that keeps those controls working.",
-      "If your next contract names a specific scheme, start there. If you are building long-term assurance, start with the risk assessment.",
-    ],
-  },
-  {
-    slug: "building-a-credible-carbon-baseline",
-    title: "Building a carbon baseline that survives customer scrutiny",
-    category: "Sustainability",
-    date: "2026-07-11",
-    readingTime: "7 min read",
-    author: "TRAIBCERT Technical Team",
-    excerpt:
-      "Scope 3 is where most carbon inventories fall apart. A defensible boundary and consistent method matter more than precision.",
-    body: [
-      "Carbon reporting fails audits for predictable reasons: unclear boundaries, inconsistent emission factors and undocumented assumptions. None of these require expensive software to fix.",
-      "Define the reporting boundary first and write it down, including what is excluded and why. ISO 14064 provides the structure for this and makes later verification much simpler.",
-      "For Scope 3, accept that early inventories will be estimate-heavy. Document the method, record the data source for each category and plan how each estimate will be improved next cycle.",
-      "Pair the inventory with an energy management system. Measured reductions, rather than pledges, are what customers increasingly ask to see.",
-    ],
-  },
-  {
-    slug: "internal-audit-programme-that-adds-value",
-    title: "How to run an internal audit programme people actually value",
-    category: "Training",
-    date: "2026-06-24",
-    readingTime: "5 min read",
-    author: "TRAIBCERT Training Team",
-    excerpt:
-      "Internal audits should surface risk, not paperwork. A few structural changes make the difference.",
-    body: [
-      "The most common internal audit failure is scheduling by clause rather than by risk. Auditing every clause equally spreads effort thinly across areas where nothing is likely to go wrong.",
-      "Build the programme around your highest-risk processes, recent incidents and customer complaints. Use the remaining capacity for coverage of the rest across the certification cycle.",
-      "Train auditors to gather evidence and describe findings factually. Vague findings generate defensive responses; specific ones generate corrective action.",
-      "Close the loop. An audit programme that never verifies effectiveness of corrective action teaches the organisation that findings can be ignored.",
-    ],
-  },
-  {
-    slug: "pre-shipment-inspection-avoiding-costly-surprises",
-    title: "Pre-shipment inspection: avoiding costly surprises at the port",
-    category: "Inspection",
-    date: "2026-06-02",
-    readingTime: "4 min read",
-    author: "TRAIBCERT Inspection Team",
-    excerpt:
-      "Once goods have shipped, your options narrow and your costs rise. Independent inspection moves the decision point earlier.",
-    body: [
-      "Disputes about quantity, packing and specification are far easier to resolve while goods are still at the supplier's premises.",
-      "A good inspection brief starts with unambiguous acceptance criteria. If the specification is open to interpretation, the inspection result will be too.",
-      "Sampling should reflect risk: new suppliers, new product lines and previous nonconformities all justify tighter inspection.",
-      "Report findings with photographs and measurements. Objective evidence protects the relationship as well as the shipment.",
-    ],
-  },
-  {
-    slug: "iso-42001-ai-governance-first-steps",
-    title: "ISO/IEC 42001: first steps towards AI governance",
-    category: "Certification",
-    date: "2026-05-19",
-    readingTime: "6 min read",
-    author: "TRAIBCERT Technical Team",
-    excerpt:
-      "AI assurance questions are appearing in procurement. ISO/IEC 42001 gives you a structure to answer them.",
-    body: [
-      "Buyers are starting to ask how AI features are governed: what data trains them, who reviews outputs, and what happens when the model is wrong.",
-      "ISO/IEC 42001 provides a management system for exactly these questions, covering AI risk and impact assessment, data governance and human oversight.",
-      "If you already hold ISO 27001, much of the governance scaffolding exists. The new work is usually AI impact assessment and lifecycle documentation.",
-      "Start by inventorying where AI is actually used in your products and operations. Most organisations find more than they expected.",
-    ],
-  },
-];
+export const postCategories = ["All", ...new Set(posts.map((post) => post.category))];
 
 export const postsBySlug = Object.fromEntries(posts.map((p) => [p.slug, p]));
 
@@ -288,5 +205,4 @@ export const generalFaqs: { q: string; a: string }[] = [
     q: "Can we transfer an existing ISO 14001 certificate to TRAIBCERT?",
     a: "Yes. A valid, accredited certificate transfers with its expiry date and cycle intact after a free pre-transfer review; the transition to the 2026 edition can be scheduled at the first visit after transfer.",
   },
-
 ];

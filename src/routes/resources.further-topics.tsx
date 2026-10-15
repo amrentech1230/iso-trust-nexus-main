@@ -6,7 +6,7 @@ import { furtherTopics } from "@/data/insights";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
-  { name: "Resources", href: "/resources/blog" },
+  { name: "Resources", href: "/resources" },
   { name: "Further Topics", href: "/resources/further-topics" },
 ];
 

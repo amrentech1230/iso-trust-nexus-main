@@ -2,7 +2,11 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { PublishedResourceCard } from "@/components/site/PublishedResourceCard";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { publishedResources, resourceTypePaths } from "@/data/published-resources";
+import {
+  publishedResources,
+  resourcePublishedDate,
+  resourceTypePaths,
+} from "@/data/published-resources";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const typeByPath = Object.fromEntries(
@@ -15,7 +19,9 @@ export const Route = createFileRoute("/resources/$type")({
     if (!type) throw notFound();
     return {
       type,
-      items: publishedResources.filter((resource) => resource.type === type),
+      items: publishedResources
+        .filter((resource) => resource.type === type)
+        .sort((a, b) => resourcePublishedDate(b).localeCompare(resourcePublishedDate(a))),
     };
   },
   head: ({ loaderData }) => {

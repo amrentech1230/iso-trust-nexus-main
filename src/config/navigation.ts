@@ -116,7 +116,6 @@ export const primaryNav: PrimaryNavItem[] = [
             { label: "Checklists & templates", href: "/resources/templates" },
             { label: "Explainers", href: "/resources/explainers" },
             { label: "Standards updates", href: "/resources/updates" },
-            { label: "Blog", href: "/resources/blog" },
             { label: "Downloads & Whitepapers", href: "/resources/downloads" },
             { label: "Further Topics", href: "/resources/further-topics" },
             { label: "Frequently Asked Questions", href: "/resources/faq" },
@@ -196,7 +195,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     links: [
       { label: "All Standards", href: "/certification" },
       { label: "Training", href: "/training" },
-      { label: "Blog", href: "/resources/blog" },
+      { label: "Articles", href: "/resources/articles" },
       { label: "FAQ", href: "/resources/faq" },
       { label: "Industries", href: "/resources/industries" },
       { label: "Enquiry", href: "/contact/enquiry" },

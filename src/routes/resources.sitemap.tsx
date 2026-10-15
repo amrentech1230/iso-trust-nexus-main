@@ -4,7 +4,6 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { courses } from "@/data/courses";
 import { industries } from "@/data/industries";
-import { posts } from "@/data/insights";
 import { legalPages } from "@/data/legal";
 import { certificationCopyPages } from "@/data/certification-copy";
 import {
@@ -16,7 +15,7 @@ import {
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
-  { name: "Resources", href: "/resources/blog" },
+  { name: "Resources", href: "/resources" },
   { name: "Sitemap", href: "/resources/sitemap" },
 ];
 
@@ -64,7 +63,6 @@ function SitemapPage() {
       links: [
         { label: "Resource Centre", href: "/resources" },
         ...Object.entries(resourceTypePaths).map(([label, href]) => ({ label, href })),
-        { label: "Blog", href: "/resources/blog" },
         { label: "Knowledge Base", href: "/resources/knowledge-base" },
         { label: "Downloads", href: "/resources/downloads" },
         { label: "Further Topics", href: "/resources/further-topics" },
@@ -95,7 +93,6 @@ function SitemapPage() {
           label: resource.title,
           href: resource.url,
         })),
-        ...posts.map((p) => ({ label: p.title, href: `/resources/blog/${p.slug}` })),
       ],
     },
     {

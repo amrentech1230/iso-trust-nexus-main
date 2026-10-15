@@ -74,7 +74,7 @@ export const searchIndex: SearchResult[] = [
   })),
   ...posts.map((p) => ({
     title: p.title,
-    href: `/resources/blog/${p.slug}`,
+    href: p.url,
     group: "Insights" as const,
     description: p.excerpt,
   })),

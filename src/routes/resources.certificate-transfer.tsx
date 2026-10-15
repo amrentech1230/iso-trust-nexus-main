@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
-  { name: "Resources", href: "/resources/blog" },
+  { name: "Resources", href: "/resources" },
   { name: "Certificate Transfer", href: "/resources/certificate-transfer" },
 ];
 

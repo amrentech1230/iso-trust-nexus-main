@@ -10,7 +10,7 @@ import { industries } from "@/data/industries";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 const crumbs = [
-  { name: "Resources", href: "/resources/blog" },
+  { name: "Resources", href: "/resources" },
   { name: "Industries", href: "/resources/industries" },
 ];
 

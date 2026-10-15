@@ -8,6 +8,12 @@ export const publishedResourcesByUrl = Object.fromEntries(
   publishedResources.map((resource) => [resource.url, resource]),
 ) as Record<string, PublishedResource | undefined>;
 
+export function resourcePublishedDate(resource: PublishedResource) {
+  const date = resource.byline.match(/\d{4}-\d{2}-\d{2}/)?.[0];
+  if (!date) throw new Error(`Missing publication date for ${resource.url}`);
+  return date;
+}
+
 export const resourceCategories = [
   "Quality and operations",
   "Health, safety and environment",

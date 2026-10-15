@@ -149,7 +149,7 @@ export function ServiceCard({
 export function BlogCard({ post }: { post: Post }) {
   return (
     <AppLink
-      href={`/resources/blog/${post.slug}`}
+      href={post.url}
       className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-24px_rgba(26,24,84,0.35)]"
     >
       <div className="gradient-indigo relative h-40 w-full">

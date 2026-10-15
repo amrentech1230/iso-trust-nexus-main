@@ -522,10 +522,10 @@ function Home() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading eyebrow="Latest insights" title="Guidance from our technical team" />
             <Link
-              to="/resources/blog"
+              to="/resources/articles"
               className="inline-flex items-center gap-2 text-sm font-bold text-indigo-brand hover:underline"
             >
-              View All Insights <ArrowRight className="size-4" aria-hidden="true" />
+              View All Articles <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
