@@ -1203,7 +1203,7 @@ export const standards: Standard[] = [
     category: "iso",
     discipline: "ISO 13485:2016 medical device quality management certification",
     summary:
-      "MEDICAL DEVICES ISO 13485:2016 Certification ISO 13485:2016 is the international quality management standard for medical devices, written for regulatory compliance. An accredited certificate shows your quality system meets the standard and operates effectively. Regulators, notified bodies and device manufacturers auditing their suppliers ask for it across the whole device supply chain.",
+      "ISO 13485:2016 medical device quality management certification. This international standard is written for regulatory compliance. An accredited certificate shows your quality system meets the standard and operates effectively. Regulators, notified bodies and device manufacturers auditing their suppliers ask for it across the whole device supply chain.",
     whatItIs: [
       "ISO 13485 covers organisations at any stage of the device life cycle: design, production, storage, distribution, installation, servicing and decommissioning, plus suppliers of components, software, packaging and sterilisation. Built on ISO 9001 but written for regulatory compliance, it adds risk management, design controls, validated processes, traceability, complaint handling and regulatory reporting. It is not a product approval; conformity marking is a separate assessment of the device.",
     ],
