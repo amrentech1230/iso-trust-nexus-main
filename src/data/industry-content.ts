@@ -95,6 +95,12 @@ export const industryContent = [
         why: "Independently tested version now specified by health-service and central-government buyers; verifies that the five controls work on real devices.",
       },
       {
+        name: "IASME Cyber Assurance Level 1",
+        region: "UK",
+        url: "/certification/iasme-cyber-assurance",
+        why: "Governance assurance for suppliers asked for more than Cyber Essentials, including evidence of risk management, policies, staff training and business continuity.",
+      },
+      {
         name: "UK GDPR assessment",
         region: "UK",
         url: "/certification/gdpr-assessment",
@@ -449,6 +455,12 @@ export const industryContent = [
         region: "UK",
         url: "/certification/cyber-essentials-plus",
         why: "Independently tested baseline now required of health-service suppliers under procurement policy and used by insurers.",
+      },
+      {
+        name: "IASME Cyber Assurance Level 1",
+        region: "UK",
+        url: "/certification/iasme-cyber-assurance",
+        why: "Governance assurance for healthcare suppliers asked for more than Cyber Essentials, including risk management, access control, incident response and business continuity.",
       },
       {
         name: "HIPAA assessment (USA)",
@@ -1197,6 +1209,12 @@ export const industryContent = [
         why: "The independently tested tier PPN 014 directs buyers to specify where risk is higher, and the level most health and defence-adjacent buyers now ask for.",
       },
       {
+        name: "IASME Cyber Assurance Level 1",
+        region: "UK",
+        url: "/certification/iasme-cyber-assurance",
+        why: "Governance assurance for public-sector suppliers asked for evidence beyond the Cyber Essentials technical controls.",
+      },
+      {
         name: "UK GDPR assessment",
         region: "UK",
         url: "/certification/gdpr-assessment",
@@ -1381,6 +1399,12 @@ export const industryContent = [
         region: "UK",
         url: "/certification/cyber-essentials-plus",
         why: "The independently tested tier that universities, larger trusts and their IT suppliers hold to evidence that the five controls work.",
+      },
+      {
+        name: "IASME Cyber Assurance Level 1",
+        region: "UK",
+        url: "/certification/iasme-cyber-assurance",
+        why: "Governance assurance for education providers and suppliers asked for risk, policy, staff-training and continuity evidence beyond Cyber Essentials.",
       },
       {
         name: "UK GDPR assessment",
@@ -2659,6 +2683,12 @@ export const industryContent = [
         region: "UK",
         url: "/certification/cyber-essentials-plus",
         why: "Adds independent technical verification for organisations whose clients or insurers want more than a self-assessment.",
+      },
+      {
+        name: "IASME Cyber Assurance Level 1",
+        region: "UK",
+        url: "/certification/iasme-cyber-assurance",
+        why: "Governance assurance for organisations asked by customers, funders or insurers for more than the five Cyber Essentials controls.",
       },
       {
         name: "UK GDPR assessment",

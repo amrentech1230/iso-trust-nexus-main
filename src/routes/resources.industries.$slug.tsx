@@ -6,6 +6,7 @@ import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { coursesBySlug } from "@/data/courses";
+import { certificationCopyPagesBySlug } from "@/data/certification-copy";
 import { industries } from "@/data/industries";
 import { standardsBySlug } from "@/data/standards";
 import { trainingLevelHref } from "@/lib/industry-links";
@@ -135,6 +136,8 @@ function IndustryPage() {
             {certifications.map((item) => {
               const slug = item.url.split("/").at(-1) ?? "";
               const standard = standardsBySlug[slug];
+              const copyPage = certificationCopyPagesBySlug[slug];
+              const hasCertificationPage = Boolean(standard || copyPage);
               const card = (
                 <>
                   <div className="flex items-start justify-between gap-3">
@@ -148,7 +151,7 @@ function IndustryPage() {
                   <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {item.why}
                   </p>
-                  {standard ? (
+                  {hasCertificationPage ? (
                     <span className="mt-4 text-sm font-semibold text-indigo-brand">Learn more</span>
                   ) : (
                     <AppLink
@@ -164,7 +167,7 @@ function IndustryPage() {
               const className =
                 "flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:border-indigo-soft/40 hover:shadow-[0_18px_40px_-24px_rgba(26,24,84,0.35)]";
 
-              return standard ? (
+              return hasCertificationPage ? (
                 <AppLink key={`${item.name}-${item.region}`} href={item.url} className={className}>
                   {card}
                 </AppLink>
