@@ -2,6 +2,9 @@ import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { AppLink } from "@/components/AppLink";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import heroImage from "@/assets/hero-certification.jpg";
+import cyberEssentialsLogo from "@/assets/cyber-essentials-blue.png";
+import cyberEssentialsPlusLogo from "@/assets/cyber-essentials-plus-blue.png";
+import iasmeLogo from "@/assets/IASME-Cyber-Assurance-Level-One-Scheme-Logo.png";
 import { industries as sectorPages } from "@/data/industries";
 import {
   certificationCopyFaqs,
@@ -44,6 +47,17 @@ const whyTraibcert = [
 ];
 
 const enquiryUrl = "https://www.traibcert.org.uk/enquiry/";
+const schemeLogos: Record<string, { src: string; alt: string }> = {
+  "cyber-essentials": { src: cyberEssentialsLogo, alt: "Cyber Essentials certification logo" },
+  "cyber-essentials-plus": {
+    src: cyberEssentialsPlusLogo,
+    alt: "Cyber Essentials Plus certification logo",
+  },
+  "iasme-cyber-assurance": {
+    src: iasmeLogo,
+    alt: "IASME Cyber Assurance Level One scheme logo",
+  },
+};
 
 const industrySlugAliases: [RegExp, string][] = [
   [/telecom/i, "technology-saas"],
@@ -152,6 +166,7 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
   const close = getBlock(page, "10 · Why TRAIBCERT + close").join(" ");
   const quoteLabel = /button:\s*([^→]+)→/i.exec(close)?.[1]?.trim() ?? "Get a quote";
   const heroButtons = getHeroButtons(page);
+  const schemeLogo = schemeLogos[page.slug];
   const processHeading = processBlock?.heading ?? "";
   const isEngagement = /assessment|engagement/i.test(processHeading);
   const processStepsToShow = isEngagement ? engagementSteps : certificationSteps;
@@ -242,15 +257,25 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
               </div>
             </div>
 
-            <div className="mx-auto grid size-48 place-items-center rounded-full border-[3px] border-honey text-center md:size-56">
-              <div className="px-5">
-                <ShieldCheck className="mx-auto size-7 text-honey" aria-hidden="true" />
-                <p className="mt-2 text-lg font-extrabold leading-tight">
-                  {page.title.replace(/ Certification$/, "")}
-                </p>
-                <p className="mt-2 text-xs text-white/80">{hero[0]}</p>
+            {schemeLogo ? (
+              <div className="mx-auto grid min-h-44 w-full max-w-64 place-items-center rounded-xl bg-white p-5 shadow-lg md:min-h-56">
+                <img
+                  src={schemeLogo.src}
+                  alt={schemeLogo.alt}
+                  className="max-h-44 w-full object-contain"
+                />
               </div>
-            </div>
+            ) : (
+              <div className="mx-auto grid size-48 place-items-center rounded-full border-[3px] border-honey text-center md:size-56">
+                <div className="px-5">
+                  <ShieldCheck className="mx-auto size-7 text-honey" aria-hidden="true" />
+                  <p className="mt-2 text-lg font-extrabold leading-tight">
+                    {page.title.replace(/ Certification$/, "")}
+                  </p>
+                  <p className="mt-2 text-xs text-white/80">{hero[0]}</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -406,6 +431,18 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
               Who needs it?
             </h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{audience}</p>
+            {page.slug === "iso-27001" ? (
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Smaller organisations not yet ready for ISO/IEC 27001 can start with{" "}
+                <AppLink
+                  href="/certification/iasme-cyber-assurance"
+                  className="font-semibold text-indigo-brand hover:underline"
+                >
+                  IASME Cyber Assurance Level 1
+                </AppLink>
+                .
+              </p>
+            ) : null}
             {industries.length > 0 ? (
               <div className="mt-4 flex flex-wrap gap-2">
                 {industries.map((industry) => (
@@ -488,6 +525,18 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
               </article>
             ))}
           </div>
+          {page.slug === "cyber-essentials" || page.slug === "cyber-essentials-plus" ? (
+            <p className="mt-5 border-t border-white/20 pt-5 text-sm text-white/90">
+              Need governance evidence beyond the five controls?{" "}
+              <AppLink
+                href="/certification/iasme-cyber-assurance"
+                className="font-bold text-honey hover:underline"
+              >
+                IASME Cyber Assurance Level 1
+              </AppLink>
+              .
+            </p>
+          ) : null}
           <div className="mt-6 flex flex-col gap-4 border-t border-white/20 pt-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-white/90">
               Send your details and a sector specialist replies within one working day.

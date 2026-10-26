@@ -57,11 +57,19 @@ export const primaryNav: PrimaryNavItem[] = [
           links: [
             { label: "Certification", href: "/certification", note: "All standards overview" },
             ...certificationLinks("iso"),
+            { label: "ISO 55001:2024", href: "/certification/iso-55001", note: "Asset management" },
           ],
         },
         {
           heading: "Cyber Security & Compliance",
-          links: certificationLinks("cyber"),
+          links: [
+            ...certificationLinks("cyber"),
+            {
+              label: "IASME Cyber Assurance Level 1",
+              href: "/certification/iasme-cyber-assurance",
+              note: "UK cyber governance assurance",
+            },
+          ],
         },
         {
           heading: "Sustainability",

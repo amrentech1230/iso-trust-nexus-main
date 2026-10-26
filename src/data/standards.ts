@@ -137,7 +137,7 @@ export const standards: Standard[] = [
       "An internal audit and management review have been completed in the last twelve months",
     ],
     training: "ISO 9001:2015 Foundation, Awareness, Internal Auditor, Lead Auditor",
-    also_need: ["ISO 14001:2015", "ISO 45001:2018", "ISO 27001:2022", "ISO 13485"],
+    also_need: ["ISO 14001:2026", "ISO 45001:2018", "ISO 27001:2022", "ISO 13485"],
     faqs: [
       {
         q: "How long does ISO 9001 certification take?",
@@ -157,13 +157,13 @@ export const standards: Standard[] = [
   // ── ISO 14001 ─────────────────────────────────────────────────────────────
   base({
     slug: "iso-14001",
-    code: "ISO 14001:2015",
+    code: "ISO 14001:2026",
     title: "ISO 14001 Environmental Management Systems",
     category: "iso",
     tag: "CURRENT",
     discipline: "Environmental management",
     summary:
-      "Over half a million organisations worldwide are certified to ISO 14001, and in the UK, it has become the standard answer to the environmental section of every supplier questionnaire, from construction frameworks to retailer codes. ISO 14001:2015 is the current edition. It widens the view an organisation must take of the environment -- climate, biodiversity, pollution and resources -- and asks for discipline in managing change and controlling suppliers. TRAIBCERT certifies to the current edition and quotes the full three-year cycle as one fixed price.",
+      "ISO 14001:2026, published on 15 April 2026, is the international standard for environmental management systems. An accredited certificate proves that you control your environmental impacts, meet legal obligations and improve performance. Over half a million organisations hold it, and customers, supplier-approval processes, lenders and regulators ask for it.",
     whatItIs: [
       "ISO 14001 is the international standard for environmental management systems, published by the International Organization for Standardization. It sets out how an organisation identifies the ways its activities, products and services interact with the environment, meets its legal and other obligations, controls the aspects that matter and improves its environmental performance over time.",
       "The standard uses the Annex SL high-level structure shared with ISO 9001 and ISO 45001, so leadership, competence, documents, internal audit and management review are common elements that can be run once for all three. Two elements are distinctive to environmental management: the aspects register and the register of compliance obligations.",
@@ -203,7 +203,7 @@ export const standards: Standard[] = [
     implementation_intro:
       "TRAIBCERT audits and certifies; the system itself is built by your own team or an adviser you appoint. First-time certification typically takes four to nine months depending on the number of sites and the state of existing compliance records. Organisations that already hold ISO 9001 are usually quicker because the common elements exist.",
     implementation_steps: [
-      "Obtain ISO 14001:2015, secure top management commitment and appoint someone to lead the work with authority to reach every site and function in scope.",
+      "Obtain ISO 14001:2026, secure top management commitment and appoint someone to lead the work with authority to reach every site and function in scope.",
       "Carry out a gap review, define the scope and review your context: the environmental conditions that affect you and what regulators, customers, neighbours and lenders expect.",
       "Identify your environmental aspects across the life cycle of your activities, products and services, decide which are significant, and build the register of compliance obligations -- including permits, consents, waste, packaging, F-gas, COSHH and voluntary commitments, with an owner for each.",
       "Write or update the environmental policy, set measurable objectives for the significant aspects, put operational controls in place and prepare and test emergency arrangements.",
@@ -242,7 +242,7 @@ export const standards: Standard[] = [
       "Changes such as new processes or sites are assessed before they happen",
       "An emergency drill and an internal audit have been done in the last twelve months",
     ],
-    training: "ISO 14001:2015 Foundation, Awareness, Internal Auditor, Lead Auditor",
+    training: "ISO 14001:2026 Foundation, Awareness, Internal Auditor, Lead Auditor",
     also_need: ["ISO 50001:2018", "ISO 9001:2015", "ISO 45001:2018"],
     faqs: [
       {
@@ -344,7 +344,7 @@ export const standards: Standard[] = [
       "An internal audit and management review have been completed in the last twelve months",
     ],
     training: "ISO 45001:2018 Foundation, Awareness, Internal Auditor, Lead Auditor",
-    also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 50001:2018"],
+    also_need: ["ISO 9001:2015", "ISO 14001:2026", "ISO 50001:2018"],
     faqs: [
       {
         q: "What replaced OHSAS 18001?",
@@ -429,7 +429,7 @@ export const standards: Standard[] = [
       
     ],
     training: "ISO 22000:2018 Foundation, Awareness, Internal Auditor, Lead Auditor",
-    also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 45001:2018"],
+    also_need: ["ISO 9001:2015", "ISO 14001:2026", "ISO 45001:2018"],
     faqs: [
       {
         q: "Can a small catering business be certified?",
@@ -904,7 +904,7 @@ export const standards: Standard[] = [
       "An internal audit and management review have been completed in the last twelve months",
     ],
     training: "ISO 41001:2018 Foundation, Awareness, Internal Auditor, Lead Auditor",
-    also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 45001:2018"],
+    also_need: ["ISO 9001:2015", "ISO 14001:2026", "ISO 45001:2018"],
     faqs: [
       {
         q: "Does ISO 41001 apply to in-house FM teams?",
@@ -996,7 +996,7 @@ export const standards: Standard[] = [
       "The risk management framework is reviewed and improved regularly",
     ],
     training: "ISO 31000:2018 Foundation, Awareness, Internal Auditor",
-    also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 27001:2022"],
+    also_need: ["ISO 9001:2015", "ISO 14001:2026", "ISO 27001:2022"],
     faqs: [
       {
         q: "Can we get an ISO 31000 certificate?",
@@ -1094,7 +1094,7 @@ export const standards: Standard[] = [
       "Social responsibility performance is monitored and reported",
     ],
     training: "ISO 26000:2010 Awareness",
-    also_need: ["ISO 14001:2015", "ISO 45001:2018", "ISO 50001:2018"],
+    also_need: ["ISO 14001:2026", "ISO 45001:2018", "ISO 50001:2018"],
     faqs: [
       {
         q: "Can organisations be certified to ISO 26000?",
@@ -1186,7 +1186,7 @@ export const standards: Standard[] = [
       "An internal audit and management review have been completed in the last twelve months",
     ],
     training: "ISO 50001:2018 Foundation, Awareness, Internal Auditor, Lead Auditor",
-    also_need: ["ISO 14001:2015", "ISO 9001:2015", "ISO 45001:2018"],
+    also_need: ["ISO 14001:2026", "ISO 9001:2015", "ISO 45001:2018"],
     faqs: [
       {
         q: "Does ISO 50001 satisfy ESOS requirements?",
@@ -1201,7 +1201,7 @@ export const standards: Standard[] = [
     code: "ISO 13485",
     title: "ISO 13485:2016 Medical Device QMS Certification | TRAIBCERT",
     category: "iso",
-    discipline: "ISO 13485:2016 medical device quality management certification for manufacturers, suppliers, distributors and servicers from an accredited body",
+    discipline: "ISO 13485:2016 medical device quality management certification",
     summary:
       "MEDICAL DEVICES ISO 13485:2016 Certification ISO 13485:2016 is the international quality management standard for medical devices, written for regulatory compliance. An accredited certificate shows your quality system meets the standard and operates effectively. Regulators, notified bodies and device manufacturers auditing their suppliers ask for it across the whole device supply chain.",
     whatItIs: [
@@ -1272,7 +1272,7 @@ export const standards: Standard[] = [
       "An internal audit and management review have been completed in the last twelve months",
     ],
     training: "ISO 13485 Awareness, Internal Auditor",
-    also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 45001:2018"],
+    also_need: ["ISO 9001:2015", "ISO 14001:2026", "ISO 45001:2018"],
     faqs: [
       {
         q: "Is ISO 13485 required for CE marking?",
@@ -1362,7 +1362,7 @@ export const standards: Standard[] = [
       "An internal audit and management review have been completed in the last twelve months",
     ],
     training: "ISO 29001:2020 Awareness, Internal Auditor",
-    also_need: ["ISO 9001:2015", "ISO 14001:2015", "ISO 45001:2018"],
+    also_need: ["ISO 9001:2015", "ISO 14001:2026", "ISO 45001:2018"],
     faqs: [
       {
         q: "How does ISO 29001 relate to ISO 9001?",
@@ -1660,7 +1660,7 @@ export const standards: Standard[] = [
     category: "cyber",
     discipline: "Information security management",
     summary:
-      "ISO/IEC 27001:2022 is the international standard for information security management systems. It provides a framework for establishing, implementing, maintaining and continually improving an ISMS to protect the confidentiality, integrity and availability of information. TRAIBCERT provides accredited ISO 27001 certification for organisations across the UK, UAE and internationally.",
+      "ISO/IEC 27001:2022 is the international standard for information security management systems. It provides a framework for establishing, implementing, maintaining and continually improving an ISMS to protect the confidentiality, integrity and availability of information. Enterprise buyers, regulated clients and international customers ask for it because a certificate tells them that security is governed, not only configured.",
     whatItIs: [
       "ISO/IEC 27001:2022 is the international standard for information security management systems, published jointly by ISO and IEC. The 2022 edition updated the 2013 edition with a revised Annex A control set, reorganised from 14 domains and 114 controls to four themes and 93 controls, including 11 new controls addressing areas such as threat intelligence, cloud security and data masking.",
       "The standard requires organisations to assess information security risks, select appropriate controls from Annex A and other sources, implement and operate the ISMS, monitor and measure its performance, and drive continual improvement. The scope can cover the entire organisation or specific business units, locations or systems.",
@@ -1761,7 +1761,4 @@ export const popularStandards = [
   "iso-9001",
   "iso-27001",
   "iso-14001",
-  "iso-45001",
-  "cyber-essentials",
-  "iso-22000",
 ].map((slug) => standardsBySlug[slug]).filter((s): s is Standard => s !== undefined);

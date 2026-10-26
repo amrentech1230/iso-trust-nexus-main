@@ -1,36 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Globe2,
-  GraduationCap,
-  Scale,
-  ShieldCheck,
-  Users,
-} from "lucide-react";
+import { ArrowRight, BadgeCheck, Globe2, Scale, Users } from "lucide-react";
 import aboutTeamImage from "@/assets/home-about-team-clean.jpg";
 import auditDeliveryImage from "@/assets/home-audit-delivery.jpg";
-import cyberImage from "@/assets/home-hero-cyber.jpg";
 import inspectionImage from "@/assets/home-hero-inspection-clean.jpg";
 import certificationImage from "@/assets/home-hero-audit.jpg";
 import trainingImage from "@/assets/home-training.jpg";
-import {
-  AccreditationBadge,
-  BlogCard,
-  IndustryCard,
-  ServiceCard,
-  TestimonialCard,
-} from "@/components/site/Cards";
+import { BlogCard, IndustryCard, ServiceCard } from "@/components/site/Cards";
 import { CertificationProcess } from "@/components/site/CertificationProcess";
 import { CTASection } from "@/components/site/CTASection";
 import { FAQAccordion } from "@/components/site/FAQAccordion";
 import { HomeHero } from "@/components/site/HomeHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { site } from "@/config/site";
 import { courseLevels } from "@/data/courses";
 import { industries } from "@/data/industries";
 import { posts } from "@/data/insights";
-import { popularStandards, standardsByCategory } from "@/data/standards";
+import { popularStandards } from "@/data/standards";
 import { faqJsonLd, pageMeta } from "@/lib/seo";
 import { AppLink } from "@/components/AppLink";
 
@@ -39,7 +23,7 @@ export const Route = createFileRoute("/")({
     const meta = pageMeta({
       title: "ISO Certification, Training & Compliance Services | TRAIBCERT",
       description:
-        "Independent UK certification body delivering ISO certification, Cyber Essentials, professional training and inspection services across the UK, UAE and internationally.",
+        "TRAIBCERT certifies, assesses, verifies, inspects and trains organisations worldwide. Centred in the UK, with audits to current editions of the standards we certify.",
       path: "/",
     });
     return { ...meta, scripts: [faqJsonLd(homeFaqs)] };
@@ -50,125 +34,133 @@ export const Route = createFileRoute("/")({
 const differentiators = [
   {
     icon: Scale,
-    title: "Independent & Impartial",
-    body: "We certify, we do not consult on the systems we audit. Certification decisions rest on objective evidence alone.",
+    title: "Impartial by design",
+    body: "We certify; we do not consult on the systems we audit. Decisions are taken independently of sales and rest on objective evidence alone.",
   },
   {
     icon: Users,
     title: "Experienced Auditors",
-    body: "Audits are led by qualified auditors with practical sector experience, so findings are relevant and actionable.",
+    body: "Audit teams are matched to your scheme and sector, so findings are relevant and the audit adds value beyond the certificate.",
   },
   {
-    icon: Globe2,
-    title: "International Coverage",
-    body: "We support organisations across the UK, UAE and internationally, combining on-site and remote audit techniques.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Professional Training",
-    body: "Foundation, Awareness, Internal Auditor and Lead Auditor courses delivered in class, live online or in-house.",
+    icon: Scale,
+    title: "Fixed price for the whole cycle",
+    body: "The full three-year effort is quoted upfront, with travel at cost. Nothing is cut from the quotation to be added later.",
   },
   {
     icon: BadgeCheck,
-    title: "Industry Expertise",
-    body: "From technology and finance to manufacturing, food and construction, our scope reflects real sector risk.",
+    title: "Current editions, planned transitions",
+    body: "We certify to the latest edition of every standard and plan ISO 9001 and ISO 14001 transitions inside your existing cycle.",
   },
   {
-    icon: ShieldCheck,
-    title: "Customer-Focused Service",
-    body: "Clear scoping, predictable audit planning and responsive support from enquiry through to recertification.",
+    icon: ArrowRight,
+    title: "Transfer without repeating audits",
+    body: "A valid accredited certificate held elsewhere moves to TRAIBCERT with its cycle and expiry date intact.",
+  },
+  {
+    icon: Globe2,
+    title: "Centred in the UK, serving across the world",
+    body: "Audits are delivered on site, remotely or blended, by our own auditors and an international network, under one quality system and one point of contact.",
   },
 ];
 
 const services = [
   {
     title: "Certification",
-    body: "ISO certification services for organisations across multiple industries.",
+    body: "ISO management system certification, cyber and privacy assessments, cloud and vendor-compliance readiness, and ESG and carbon verification. 55 services, one process, one fixed quotation.",
     href: "/certification",
     icon: "BadgeCheck",
     image: certificationImage,
   },
   {
     title: "Training",
-    body: "Professional ISO training including Foundation, Awareness, Internal Auditor and Lead Auditor programmes.",
+    body: "Four levels for 13 standards, from Foundation to Lead Auditor, self-paced 24×7 on TRAIBCERT Academy, tutor-led online, or onsite for your team.",
     href: "/training",
     icon: "GraduationCap",
     image: trainingImage,
   },
   {
     title: "Inspection",
-    body: "Professional inspection and pre-shipment inspection services.",
+    body: "Independent third-party inspection of products, production, loading, materials and vendors, reported the same day.",
     href: "/certification/inspection",
     icon: "ClipboardCheck",
     image: inspectionImage,
   },
-  {
-    title: "E-Learning",
-    body: "Flexible online professional training through the TRAIBCERT E-Learning Academy.",
-    href: "/training",
-    icon: "MonitorPlay",
-    image: cyberImage,
-  },
 ];
 
-const stats = [
-  { value: "UK & UAE", label: "Operating regions" },
-  { value: "30+", label: "Standards and schemes in scope" },
-  { value: "4", label: "Training levels per standard" },
-  { value: "ASCB", label: "Accreditation" },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Placeholder testimonial — replace with approved client wording. Describe the audit experience, auditor knowledge and the commercial outcome achieved.",
-    name: "Client name (placeholder)",
-    role: "Quality Manager, sector (placeholder)",
-  },
-  {
-    quote:
-      "Placeholder testimonial — replace with approved client wording covering training quality and delegate feedback.",
-    name: "Client name (placeholder)",
-    role: "Head of Compliance, sector (placeholder)",
-  },
-  {
-    quote:
-      "Placeholder testimonial — replace with approved client wording about certificate transfer or international audit coverage.",
-    name: "Client name (placeholder)",
-    role: "Operations Director, sector (placeholder)",
-  },
-];
-
-const trustStrip = [
-  { title: "Independent body", body: "Certification decisions separated from consultancy." },
-  { title: "Accredited schemes", body: "ISO management systems and UK cyber schemes." },
-  { title: "UK & UAE teams", body: "On-site and remote audits across both regions." },
-  { title: "Four training levels", body: "Foundation, Awareness, Internal and Lead Auditor." },
+const homeStats = [
+  { value: "55", label: "Certification, assessment and verification services" },
+  { value: "20", label: "ISO standards certified to the current edition" },
+  { value: "13 × 4", label: "Standards taught at four levels, 24×7 on the Academy" },
+  { value: "15", label: "Sectors with dedicated certification guidance" },
+  { value: "9", label: "Inspection services, from pre-shipment to NDT" },
+  { value: "1 working day", label: "For a fixed quotation for the whole cycle" },
 ];
 
 const categoryGroups = [
   {
-    key: "iso" as const,
     title: "ISO Management Systems",
+    count: "20 standards",
     body: "Quality, environment, health and safety, information security, food safety and service management standards.",
+    items: [
+      "ISO 9001:2026",
+      "ISO 14001:2026",
+      "ISO 45001:2018",
+      "ISO/IEC 27001:2022",
+      "ISO 22000:2018",
+    ],
     href: "/certification",
   },
   {
-    key: "cyber" as const,
     title: "Cyber Security & Compliance",
-    body: "Cyber Essentials and information security schemes for organisations handling sensitive data.",
+    count: "15 services",
+    body: "Cyber Essentials, Cyber Essentials Plus, IASME Cyber Assurance, ISO/IEC 27001, penetration testing, SOC 2, CSA STAR and cloud assurance.",
+    items: [
+      "Cyber Essentials",
+      "Cyber Essentials Plus",
+      "IASME Cyber Assurance Level 1",
+      "ISO/IEC 27001",
+      "Penetration testing",
+    ],
     href: "/certification",
   },
   {
-    key: "sustainability" as const,
-    title: "Sustainability",
-    body: "Energy, environment and responsible-business schemes supporting reporting commitments.",
+    title: "Privacy & Data Protection",
+    count: "9 frameworks",
+    body: "Privacy management and data-protection assurance for UK, EU, US, Indian and UAE requirements.",
+    items: ["ISO/IEC 27701", "UK GDPR", "EU GDPR", "HIPAA", "PCI DSS"],
     href: "/certification",
   },
   {
-    key: "inspection" as const,
-    title: "Inspection",
-    body: "Independent inspection services including pre-shipment inspection of goods.",
+    title: "Sustainability & ESG",
+    count: "8 services",
+    body: "ESG assurance, greenhouse-gas verification, carbon and net-zero verification, green audits and ISO 50001.",
+    items: [
+      "ESG assurance",
+      "GHG verification",
+      "Carbon neutrality",
+      "Net-zero verification",
+      "ISO 50001",
+    ],
+    href: "/certification",
+  },
+  {
+    title: "Vendor Compliance",
+    count: "4 frameworks",
+    body: "Supplier and vendor assurance frameworks for organisations working across complex supply chains.",
+    items: ["EcoVadis", "TISAX", "CyberVadis", "Microsoft SSPA"],
+    href: "/certification",
+  },
+  {
+    title: "Inspection & Asset Management",
+    count: "9 inspection services",
+    body: "Independent product and supplier inspection, asset management services and ISO 55001 certification.",
+    items: [
+      "Pre-shipment inspection",
+      "Production monitoring",
+      "Non-destructive testing",
+      "ISO 55001",
+    ],
     href: "/certification/inspection",
   },
 ];
@@ -184,7 +176,7 @@ const deliveryModes = [
   },
   {
     title: "Blended programmes",
-    body: "Multi-site and international scopes combine on-site sampling with remote sessions.",
+    body: "Multi-site and international scopes combine on-site sampling with remote sessions, delivered by our own auditors and international network under one quality system.",
   },
 ];
 
@@ -202,7 +194,7 @@ const homeFaqs = [
   },
   {
     q: "Do you provide consultancy as well as certification?",
-    a: "No. To protect impartiality we do not consult on the management systems we audit. We deliver certification, training and inspection services only.",
+    a: "No. We certify; we do not consult on the management systems we audit. Certification decisions are based on objective evidence and kept separate from sales.",
   },
   {
     q: "Can we transfer an existing certificate to TRAIBCERT?",
@@ -210,7 +202,7 @@ const homeFaqs = [
   },
   {
     q: "Where do you operate?",
-    a: "We support organisations across the UK, the UAE and internationally, using a mix of on-site and remote audit techniques.",
+    a: "TRAIBCERT is centred in the UK and serves organisations across the world. Audits are delivered on site, remotely or blended, by our own auditors and an international network, with one report format and one point of contact wherever you are.",
   },
   {
     q: "How much does certification or training cost?",
@@ -224,14 +216,11 @@ function Home() {
       <HomeHero />
 
       <section className="border-y border-border bg-indigo-brand/[0.03] py-8">
-        <div className="container-page grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {trustStrip.map((item) => (
-            <div key={item.title} className="flex items-start gap-3">
-              <BadgeCheck className="mt-0.5 size-5 shrink-0 text-honey-text" aria-hidden="true" />
-              <div>
-                <p className="text-sm font-bold text-indigo-brand">{item.title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
-              </div>
+        <div className="container-page grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {homeStats.map((stat) => (
+            <div key={stat.label} className="rounded-lg border border-border bg-card p-5">
+              <p className="text-2xl font-extrabold text-indigo-brand">{stat.value}</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -244,16 +233,17 @@ function Home() {
         <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div>
             <SectionHeading
-              eyebrow="About us"
-              title="An independent certification body built around your operations"
-              intro="TRAIBCERT LIMITED is an independent UK certification body providing ISO certification, Cyber Essentials, professional training and inspection services. We work with organisations in the UK, the UAE and internationally."
+              eyebrow="About TRAIBCERT"
+              title="A certification body built around the way you work"
+              intro="TRAIBCERT is an accredited, independent certification body centred in the UK and serving organisations across the world. We certify management systems to the current editions of the ISO standards, assess against cyber, privacy, cloud and vendor-compliance frameworks, verify ESG and greenhouse-gas claims, inspect products and plant, and train the people who run the systems we audit."
             />
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              Our work spans management system certification across quality, environment, health and
-              safety, information security, food safety, service management and sustainability;
-              accredited training at Foundation through Lead Auditor level; and independent
-              inspection including pre-shipment inspection. Certification and consultancy are kept
-              strictly separate to protect impartiality.
+              What sets us apart is the audit itself. Teams are assigned by scheme and sector
+              competence, so the auditor of a contractor has managed sites and the auditor of a
+              software company has run an information security system. The whole three-year cycle is
+              quoted upfront at a fixed price, with nothing added later. A certificate held with
+              another body transfers to TRAIBCERT with its cycle intact. Every enquiry is answered
+              by a sector specialist within one working day.
             </p>
             <Link
               to="/about"
@@ -271,14 +261,6 @@ function Home() {
               alt="Certification professionals reviewing audit evidence together"
               className="aspect-[4/3] w-full rounded-xl object-cover shadow-[0_24px_60px_-36px_rgba(26,24,84,0.45)]"
             />
-            <dl className="mt-4 grid grid-cols-2 gap-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="rounded-lg border border-border bg-card p-4">
-                  <dt className="text-xs text-muted-foreground">{stat.label}</dt>
-                  <dd className="mt-1 text-xl font-extrabold text-indigo-brand">{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
       </section>
@@ -308,8 +290,8 @@ function Home() {
 
       <section id="services" className="scroll-mt-28 bg-muted/40 py-16 md:py-20">
         <div className="container-page">
-          <SectionHeading eyebrow="Our services" title="Four ways we support compliance" />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeading eyebrow="Our services" title="Three ways we support compliance" />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <ServiceCard key={service.title} {...service} />
             ))}
@@ -348,7 +330,7 @@ function Home() {
           <SectionHeading
             eyebrow="Scheme families"
             title="Certification schemes grouped by discipline"
-            intro="Browse by the type of risk you need to demonstrate control over. Each group links through to the full list of standards we certify."
+            intro="Browse by the type of risk you need to demonstrate control over. Each group links through to the relevant certification and assurance services."
           />
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {categoryGroups.map((group) => (
@@ -358,23 +340,21 @@ function Home() {
                 className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 transition-all hover:-translate-y-0.5 hover:border-indigo-soft/40"
               >
                 <p className="text-[11px] font-bold tracking-[0.18em] text-honey-text uppercase">
-                  {standardsByCategory(group.key).length} schemes
+                  {group.count}
                 </p>
                 <h3 className="mt-2 text-lg font-bold text-indigo-brand">{group.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {group.body}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-1.5">
-                  {standardsByCategory(group.key)
-                    .slice(0, 5)
-                    .map((standard) => (
-                      <li
-                        key={standard.slug}
-                        className="rounded-md bg-secondary px-2 py-1 text-[11px] font-semibold text-indigo-brand"
-                      >
-                        {standard.code}
-                      </li>
-                    ))}
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-md bg-secondary px-2 py-1 text-[11px] font-semibold text-indigo-brand"
+                    >
+                      {item}
+                    </li>
+                  ))}
                 </ul>
                 <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-indigo-brand">
                   View standards
@@ -433,29 +413,20 @@ function Home() {
       <section id="accreditations" className="scroll-mt-28 py-16 md:py-20">
         <div className="container-page">
           <SectionHeading
-            eyebrow="Accreditations"
+            eyebrow="Accreditation"
             title="Accredited, recognised and independently overseen"
-            intro="Accreditation is what gives a certificate value. Badge assets are added as approved artwork becomes available."
+            intro="Accreditation is what gives a certificate its value. TRAIBCERT's certification activities are accredited and its Cyber Essentials assessments are delivered under licence from the scheme, so every certificate and assessment we issue is recognised by buyers, regulators and insurers. Certification decisions are reviewed by people who took no part in the audit, and our impartiality committee oversees the separation of certification from every other service."
           />
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {site.accreditations.map((a) => (
-              <AccreditationBadge key={a.label} label={a.label} note={a.note} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-muted/40 py-16 md:py-20">
-        <div className="container-page">
-          <SectionHeading
-            eyebrow="Testimonials"
-            title="What clients say"
-            intro="Placeholder content shown below. Replace each entry with approved client wording and permissions before publication."
-          />
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name + testimonial.role} {...testimonial} />
-            ))}
+          <div className="mt-5 flex flex-wrap gap-5 text-sm font-semibold text-indigo-brand">
+            <AppLink href="/legal/impartiality" className="hover:underline">
+              Impartiality policy <span aria-hidden="true">→</span>
+            </AppLink>
+            <AppLink
+              href="/resources/explainers/checking-a-certificate"
+              className="hover:underline"
+            >
+              Check a certificate <span aria-hidden="true">→</span>
+            </AppLink>
           </div>
         </div>
       </section>
@@ -465,7 +436,7 @@ function Home() {
           <SectionHeading
             eyebrow="Industries"
             title="Sector expertise across fifteen industries"
-            intro="Every sector faces a different mix of quality, security, safety and environmental risk. Select yours for relevant standards and training."
+            intro="Every sector is asked to prove something different. Select yours for the standards, training and inspection it is asked for."
           />
           <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {industries.map((industry) => (
@@ -480,7 +451,7 @@ function Home() {
           <SectionHeading
             eyebrow="Training levels"
             title="Training levels for the standards we teach"
-            intro="Courses run in the classroom, live online or in-house at your premises, and are also available through our E-Learning Academy."
+            intro="Four levels for 13 standards: self-paced 24×7 on TRAIBCERT Academy, tutor-led online on published dates, or onsite for your team."
             align="center"
           />
           <div className="mt-10 grid overflow-hidden rounded-xl border border-border bg-card lg:grid-cols-[0.8fr_1.2fr]">

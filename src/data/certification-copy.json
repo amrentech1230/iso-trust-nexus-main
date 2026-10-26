@@ -1372,7 +1372,7 @@
                            "heading":  "10 · Why TRAIBCERT + close"
                        }
                    ],
-        "metaDescription":  "ISO 13485:2016 medical device quality management certification for manufacturers, suppliers, distributors and servicers from an accredited body.",
+        "metaDescription":  "ISO 13485:2016 medical device quality management certification.",
         "url":  "/certification/iso-13485",
         "seoTitle":  "ISO 13485:2016 Medical Device QMS Certification | TRAIBCERT"
     },
@@ -1968,6 +1968,105 @@
         "metaDescription":  "Independent ISO 14064-1 verification of Scope 1, 2 and 3 inventories with a publishable statement for customers, lenders and disclosure platforms.",
         "url":  "/certification/ghg-verification",
         "seoTitle":  "ISO 14064 GHG Verification | Scope 1, 2 \u0026 3 | TRAIBCERT"
+    },
+    {
+        "title":  "IASME Cyber Assurance Level 1",
+        "slug":  "iasme-cyber-assurance",
+        "blocks":  [
+            {
+                "paragraphs":  [
+                    "CYBER SECURITY",
+                    "IASME Cyber Assurance Level 1",
+                    "IASME Cyber Assurance is the UK cyber security and information governance standard that sits above Cyber Essentials. Level 1 is a verified self-assessment, marked by a licensed TRAIBCERT assessor and signed off by a board member, covering risk, policy, people, access, backup, incident response and business continuity. It is the certificate supply chains ask for when the five technical controls are not enough.",
+                    "Buttons: Start your certification → https://www.traibcert.org.uk/enquiry/ · How certification works → /certification/process"
+                ],
+                "heading":  "1 · Hero"
+            },
+            {
+                "paragraphs":  [
+                    "The standard has fourteen themes in four areas: identify and classify (planning, organisation, assets, the legal and regulatory landscape, assessing and treating risks); protect (physical and environmental protection, people, policy realisation, managing access, technical intrusion, change management); detect and deter (monitoring and review); and respond and recover (backup and restore, resilience, business continuity and incident management). The requirements that apply depend on your size: 20 for organisations of one to nine people, 32 for ten to forty-nine, and 65 for fifty and over. Certification lasts twelve months."
+                ],
+                "heading":  "2 · What it is"
+            },
+            {
+                "paragraphs":  [
+                    "Cyber Essentials proves that five technical controls are in place; it says nothing about whether security is governed. Customers, insurers and public-sector buyers increasingly ask for evidence of risk assessment, policies, staff training, supplier management and a tested continuity plan, and for small and medium organisations the full ISO/IEC 27001 route is more than they need. Level 1 answers those questions at a fixed price, in weeks, with the same assessor who marks your Cyber Essentials. It is a UK scheme recognised across sectors as supply-chain assurance.",
+                    "IASME Cyber Assurance is a UK scheme; it applies to organisations operating in, or selling into, the UK supply chain."
+                ],
+                "heading":  "2 · Why it matters"
+            },
+            {
+                "paragraphs":  [
+                    "• Security policy, risk assessment and business impact assessment",
+                    "• Asset register, legal and regulatory obligations including data protection",
+                    "• People: roles, training, joiners and leavers, acceptable use",
+                    "• Access control, physical security and change management",
+                    "• Monitoring, review and technical intrusion defences",
+                    "• Backup and restore, incident management and business continuity plan"
+                ],
+                "heading":  "3 · What the standard covers"
+            },
+            {
+                "paragraphs":  [
+                    "Supply-chain assurance — A recognised certificate that answers governance questions in customer questionnaires and tenders.",
+                    "Proportionate to size — Twenty requirements for a micro business, sixty-five for a large one; nothing you do not need.",
+                    "Builds on Cyber Essentials — Same assessor, same portal and the same cycle; both certificates renewed together.",
+                    "Route to ISO/IEC 27001 — The policies, risk assessment and continuity plan you write are the core of an ISMS if you certify later."
+                ],
+                "heading":  "4 · Benefits"
+            },
+            {
+                "paragraphs":  [
+                    "Shared five-step strip (Get started · Assessment · Certification audit · Certification · Maintenance) linking to /certification/process; \"Holding a certificate elsewhere? Certificate transfer (/resources/certificate-transfer)\"."
+                ],
+                "heading":  "5 · Certification process"
+            },
+            {
+                "paragraphs":  [
+                    "1. Hold a valid Cyber Essentials certificate with at least one month to run; renew it with us if not.",
+                    "2. Confirm your size band; receive the question set and the templates for policy, risk and continuity.",
+                    "3. Answer the questions and attach your policies; a board member signs the declaration.",
+                    "4. A licensed TRAIBCERT assessor marks the submission and asks for clarification where needed.",
+                    "5. Certificate issued on a pass; renew annually, or progress to Level 2 audited certification."
+                ],
+                "heading":  "6 · How to get certified"
+            },
+            {
+                "paragraphs":  [
+                    "Organisations in the UK supply chain asked by a customer, insurer or framework for governance evidence beyond Cyber Essentials; defence, health and public-sector suppliers; charities and professional firms holding personal data; and any organisation that wants a structured, affordable step towards ISO/IEC 27001.",
+                    "Industries: Technology & SaaS · Professional services · Public-sector suppliers · Defence supply chain · Healthcare suppliers · Education · Charities · Construction · Manufacturing · Retail & e-commerce"
+                ],
+                "heading":  "7 · Who needs it"
+            },
+            {
+                "paragraphs":  [
+                    "Level 1 is a fixed fee by organisation size, plus VAT. A valid Cyber Essentials certificate is a prerequisite and can be included in the quotation if you do not hold one. Level 2 audited certification is quoted on scope. Send your details and a sector specialist replies within one working day with a fixed quotation for the whole cycle."
+                ],
+                "heading":  "8 · Pricing"
+            },
+            {
+                "paragraphs":  [
+                    "Do we need Cyber Essentials first?",
+                    "Yes. A valid Cyber Essentials certificate with at least one month before expiry is a prerequisite, and both certificates must cover the whole organisation. We can assess both together.",
+                    "How long does Level 1 take?",
+                    "Most organisations complete the self-assessment in two to four weeks using the templates; marking takes a few working days once the declaration is signed.",
+                    "What is the difference between Level 1 and Level 2?",
+                    "Level 1 is a verified self-assessment renewed every year. Level 2 is an audited assessment, with documents reviewed, staff interviewed and activities observed, valid for three years. You must hold Level 1 before applying for Level 2.",
+                    "Does it apply outside the UK?",
+                    "It is a UK scheme. Organisations elsewhere can be certified where their customers ask for it, with the prerequisite certification confirmed first; for a global audience ISO/IEC 27001 is the usual route."
+                ],
+                "heading":  "9 · FAQ"
+            },
+            {
+                "paragraphs":  [
+                    "Shared block (three points) and one button: Start your certification → https://www.traibcert.org.uk/enquiry/"
+                ],
+                "heading":  "10 · Why TRAIBCERT + close"
+            }
+        ],
+        "metaDescription":  "IASME Cyber Assurance Level 1: verified cyber security self-assessment, marked by a licensed TRAIBCERT assessor. Fixed fee by organisation size.",
+        "url":  "/certification/iasme-cyber-assurance",
+        "seoTitle":  "IASME Cyber Assurance Level 1 Certification | TRAIBCERT"
     },
     {
         "title":  "Cyber Essentials Certification",

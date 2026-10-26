@@ -252,11 +252,28 @@ const resourceLinks: MegaLink[] = [
 ];
 
 // Certification standards for the wide mega grid (from app data).
-const certLinks = standards.map((s) => ({
-  label: s.code === s.title ? s.title : `${s.code} ${s.discipline ?? ""}`.trim(),
-  to: `/certification/${s.slug}`,
-  tag: s.tag,
-}));
+const certLinks = standards.flatMap((s) => {
+  const link = {
+    label: s.code === s.title ? s.title : `${s.code} ${s.discipline ?? ""}`.trim(),
+    to: `/certification/${s.slug}`,
+    tag: s.tag,
+  };
+  return s.slug === "cyber-essentials-plus"
+    ? [
+        link,
+        {
+          label: "IASME Cyber Assurance Level 1",
+          to: "/certification/iasme-cyber-assurance",
+          tag: undefined,
+        },
+      ]
+    : [link];
+});
+certLinks.push({
+  label: "ISO 55001:2024 Asset management",
+  to: "/certification/iso-55001",
+  tag: undefined,
+});
 
 // Training courses grouped into the three design columns.
 const classroomCourses = courses;

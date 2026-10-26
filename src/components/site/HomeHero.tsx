@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, BadgeCheck, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import auditImage from "@/assets/home-hero-audit.jpg";
 import cyberImage from "@/assets/home-hero-cyber.jpg";
@@ -7,7 +7,6 @@ import globalImage from "@/assets/home-hero-global-clean.jpg";
 import inspectionImage from "@/assets/home-hero-inspection-clean.jpg";
 import trainingImage from "@/assets/home-hero-training-clean.jpg";
 import { Button } from "@/components/ui/button";
-import { site } from "@/config/site";
 
 const slides = [
   { src: auditImage, label: "Management system audit in a modern manufacturing facility" },
@@ -61,14 +60,16 @@ export function HomeHero() {
       <div className="container-page relative flex min-h-[clamp(30rem,calc(100svh-8rem),38rem)] items-center py-14 md:py-16">
         <div className="animate-fade-up max-w-3xl">
           <p className="text-[11px] font-bold tracking-[0.18em] text-honey uppercase">
-            Independent UK certification body
+            Accredited, independent certification body
           </p>
           <h1 className="mt-4 max-w-3xl text-4xl leading-[1.08] font-extrabold md:text-5xl lg:text-[3.55rem]">
             ISO Certification, Training &amp; Compliance Services
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
-            Independent certification, professional training and inspection services for
-            organisations across the UK, UAE and internationally.
+            TRAIBCERT certifies, assesses, verifies, inspects and trains organisations of every size
+            and sector. Centred in the UK and serving organisations across the world, we deliver
+            audits through our own auditors and an international network, to the current editions of
+            every standard we certify.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -84,14 +85,6 @@ export function HomeHero() {
               Explore Certification
             </Link>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-white">
-            {site.accreditations.map((accreditation) => (
-              <li key={accreditation.label} className="inline-flex items-center gap-2">
-                <BadgeCheck className="size-4 text-honey" aria-hidden="true" />
-                {accreditation.label}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
 

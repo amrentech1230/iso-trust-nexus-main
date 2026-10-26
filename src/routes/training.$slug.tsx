@@ -101,10 +101,6 @@ const iso17043TrainingFaqs = [
 const courseSpecificFaqs: Record<string, { q: string; a: string }[]> = {
   "iso-14001": [
     {
-      q: "Are the Academy courses already updated to ISO 14001:2026?",
-      a: "The source document lists the Academy courses under ISO 14001:2015 and says they are being updated. Confirm the current edition and materials with TRAIBCERT before booking.",
-    },
-    {
       q: "Can I take the ISO 9001 and ISO 14001 Internal Auditor bundle?",
       a: "Yes. The Academy lists an integrated bundle with both Internal Auditor courses, about 32 hours of learning and 180-day access. The listed price is $499 USD; confirm the new-site currency before purchase.",
     },
@@ -783,35 +779,6 @@ const trainingSeo: Record<string, { title: string; description: string; eyebrow:
   },
 };
 
-const editionAlignment: Record<string, string> = {
-  "iso-9001":
-    "This page follows the supplied ISO 9001:2026 brief. The source pack identifies the Academy courses as ISO 9001:2015; verify course titles, module and assessment updates, Transition course availability and pricing before booking.",
-  "iso-14001":
-    "This page follows the supplied ISO 14001:2026 brief. The source pack identifies the Academy Awareness and Internal Auditor listings as ISO 14001:2015; verify their titles, modules and assessments have been updated before presenting them as training against the 2026 edition.",
-  "iso-45001":
-    "ISO 45001:2018 is the current edition. The page and Academy listings use the 2018 edition; course content is reviewed against the standard and the current ISO 19011 auditing guidance.",
-  "iso-27001":
-    "The Academy courses are based on ISO/IEC 27001:2022, including the restructured 93 Annex A controls in organisational, people, physical and technological themes. The 2024 Amendment 1 climate-change consideration is relevant to context and interested parties; confirm the latest update status of Academy course materials before booking.",
-  "iso-22000":
-    "The Academy listings and this page use ISO 22000:2018. The course outline includes the food-chain approach, prerequisite programmes, hazard analysis, hazard control plans, monitoring and verification; confirm current course materials with the training team.",
-  "iso-22301":
-    "The Academy listings and this page use ISO 22301:2019. Course material covers business-impact analysis, risk assessment, continuity strategies, plans, response and exercise programmes.",
-  "iso-20000-1":
-    "The Academy listings and this page use ISO/IEC 20000-1:2018. The operational outline covers service portfolio, relationship and agreement, supply and demand, service design and transition, resolution and fulfilment, service assurance and knowledge management.",
-  "iso-31000":
-    "ISO 31000:2018 is guidance, not a certifiable requirements standard. The course covers its principles, framework and process; it offers Awareness, Internal Auditor and Practitioner training, not Lead Auditor training.",
-  "iso-50001":
-    "The Academy listings and this page use ISO 50001:2018. The outline covers the energy review, baseline, energy-performance indicators, data collection, operational controls, design, procurement and performance evaluation.",
-  "iso-41001":
-    "This training page uses ISO 41001:2018 and includes Amendment 1:2024 in its course content. The Academy Internal Auditor listing does not currently mention the amendment.",
-  "iso-17025":
-    "ISO/IEC 17025:2017 is the current edition and is an accreditation standard for testing and calibration laboratories. The Academy Foundation course URL contains â€œAwareness-Training-Course-Copyâ€ although its title and course content identify it as Foundation; Internal Auditor training is tutor-led/onsite only.",
-  "iso-17043":
-    "ISO/IEC 17043:2023 replaced the 2010 edition and reorganised requirements around general, structural, resource, process and management-system requirements. The Academy courses are still titled ISO 17043:2010 and follow the earlier clause numbering; the outlines above map that material to the 2023 edition. Tutor-led courses are delivered against ISO/IEC 17043:2023.",
-  "iso-13528":
-    "This page covers ISO 13528:2022. The Academy listings still carry ISO 13528:2015 in their titles and are being updated; tutor-led classes are delivered against the 2022 edition. Both self-paced levels include 180-day access and a 20-minute final assessment. ISO 13528 is statistical guidance and has no auditor or certification level.",
-};
-
 export const Route = createFileRoute("/training/$slug")({
   loader: ({ params }) => {
     const course = coursesBySlug[params.slug];
@@ -1102,7 +1069,7 @@ function CoursePage() {
           <SectionHeading
             eyebrow="Course levels"
             title={`${course.code} training modules`}
-            intro={editionAlignment[course.slug] ?? ""}
+            intro="Choose the level that fits your responsibilities and experience."
           />
           <div className="mt-9 space-y-6">
             {course.modules.map((module) => {
@@ -1268,18 +1235,6 @@ function CoursePage() {
           </div>
         </div>
       </section>
-
-      {editionAlignment[course.slug] ? (
-        <section id="edition" className="scroll-mt-24 py-14 md:py-16">
-          <div className="container-page">
-            <SectionHeading
-              eyebrow={`Edition note · ${course.code}`}
-              title="Edition and course-content alignment"
-              intro={editionAlignment[course.slug] ?? ""}
-            />
-          </div>
-        </section>
-      ) : null}
 
       <section id="request-training" className="scroll-mt-24 bg-muted/40 py-14 md:py-16">
         <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">

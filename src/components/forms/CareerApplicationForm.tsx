@@ -11,7 +11,7 @@ type Errors = Partial<Record<string, string>>;
 
 const fieldClass = "mt-2 h-11 bg-background";
 
-export function CareerApplicationForm() {
+export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: string }) {
   const [qualifications, setQualifications] = useState<Qualification[]>([
     { id: 1, year: "", title: "" },
   ]);
@@ -114,7 +114,12 @@ export function CareerApplicationForm() {
     ) : null;
 
   return (
-    <form onSubmit={onSubmit} noValidate className="border border-border bg-muted/30 p-5 md:p-8">
+    <form
+      id="apply"
+      onSubmit={onSubmit}
+      noValidate
+      className="border border-border bg-muted/30 p-5 md:p-8"
+    >
       {status === "error" && Object.keys(errors).length > 0 ? (
         <div
           role="alert"
@@ -143,6 +148,7 @@ export function CareerApplicationForm() {
             id="career-designation"
             name="designation"
             placeholder="Role or area of interest"
+            defaultValue={selectedRole}
             className={fieldClass}
           />
           {fieldError("designation")}

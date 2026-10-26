@@ -1,5 +1,9 @@
 const steps = [
-  { number: "01", title: "Get Started", body: "Discuss your certification requirements." },
+  {
+    number: "01",
+    title: "Get Started",
+    body: "Send your details; a sector specialist scopes the work and quotes a fixed price for the whole cycle.",
+  },
   { number: "02", title: "Assessment", body: "Review your current systems and readiness." },
   { number: "03", title: "Certification Audit", body: "Conduct the required audit." },
   {
