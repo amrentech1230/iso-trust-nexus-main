@@ -1,11 +1,9 @@
 /**
- * Integration service layer for Zoho Bigin.
- *
- * While API credentials are unavailable the service resolves a mocked
- * response, so the UI and validation contract stay stable. Connecting the
- * real backend later means implementing `submitToBigin` against a server
- * function — no UI changes required.
+ * Client-side submission helpers for enquiry and career forms.
+ * Career applications are stored by the Laravel API, including private file
+ * attachments. General enquiries retain their separate Bigin integration.
  */
+import { apiConfig } from "@/config/api";
 
 export type EnquirySource = {
   utmSource?: string;
@@ -35,6 +33,38 @@ export type EnquiryPayload = {
 };
 
 export type EnquiryResult = { ok: true; reference: string } | { ok: false; error: string };
+export type CareerApplicationResult =
+  { ok: true; reference: string } | { ok: false; error: string };
+
+export async function submitCareerApplication(
+  formData: FormData,
+): Promise<CareerApplicationResult> {
+  try {
+    const response = await fetch(`${apiConfig.baseUrl}/api/career-applications`, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: formData,
+    });
+    const data = (await response.json().catch(() => null)) as {
+      reference?: string;
+      message?: string;
+      errors?: Record<string, string[]>;
+    } | null;
+    if (!response.ok) {
+      const validationMessage = data?.errors ? Object.values(data.errors).flat()[0] : undefined;
+      return {
+        ok: false,
+        error: validationMessage ?? data?.message ?? "We could not submit your application.",
+      };
+    }
+    if (!data?.reference) {
+      return { ok: false, error: "The server did not confirm your application. Please try again." };
+    }
+    return { ok: true, reference: data.reference };
+  } catch {
+    return { ok: false, error: "Network error. Please try again or email us directly." };
+  }
+}
 
 const isConfigured = () => Boolean(import.meta.env["VITE_BIGIN_ENABLED"]);
 

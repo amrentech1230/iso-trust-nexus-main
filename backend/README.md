@@ -12,10 +12,11 @@ backend is the single source of truth for prices and payment verification.
 ## Architecture
 
 ```
-React training page  ──HTTP/JSON──►  Laravel API  ──Eloquent──►  SQL database
+React pages           ──HTTP/JSON──►  Laravel API  ──Eloquent──►  SQL database
   (PayPal buttons)                   (this app)                  (courses,
         ▲                                 │                       orders,
         └──────── PayPal JS SDK ──────────┴── PayPal Orders v2 ──► enrollments)
+Careers application ──multipart/form-data──► career_applications + private files
 ```
 
 1. Buyer clicks **Pay** on `/training/{slug}`.
@@ -155,6 +156,17 @@ Default seeded credentials (⚠️ change immediately):
 Restrict who can log in by editing `User::canAccessPanel()` (e.g. limit to
 `@traibcert.org.uk` addresses).
 
+Career applications appear under **People → Career applications**. Submissions
+and their attachments are stored in the database and the private `local`
+filesystem disk; files are available only through the authenticated admin
+panel. The endpoint accepts PDF/DOC/DOCX resumes and PDF/JPG/PNG/DOC/DOCX
+qualification files (up to 5 MB each), and is rate-limited to five submissions
+per minute per IP. Apply migrations after deploying the backend update. For a
+production frontend, set `VITE_API_BASE_URL` to this Laravel API and configure
+`FRONTEND_URL` in the backend to the frontend's exact origin. Configure PHP's
+`upload_max_filesize`, `post_max_size` (at least 55 MB for all allowed files),
+and `max_file_uploads` (at least 11) to support the largest application upload.
+
 ---
 
 ## API reference
@@ -167,6 +179,7 @@ Restrict who can log in by editing `User::canAccessPanel()` (e.g. limit to
 | POST | `/api/paypal/capture-order` | `{ orderId, customerName?, customerEmail? }` | `{ status: "paid", reference }` |
 | POST | `/api/paypal/webhook` | PayPal event | `{ received: true }` |
 | GET | `/api/enrollments/{reference}` | — | `{ data: Enrollment }` |
+| POST | `/api/career-applications` | Applicant fields and optional resume/qualification files | `{ reference }` |
 
 `Course` shape: `{ slug, code, title, category, price, priceMinor, currency, isActive }`.
 

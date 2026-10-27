@@ -1,7 +1,11 @@
 import pages from "./certification-copy.json";
 
 export const certificationCopyPages = pages;
-export type CertificationCopyPage = (typeof pages)[number];
+export type CertificationCopyPage = (typeof pages)[number] & {
+  pricingTiers?: { label: string; employees: string; price: string }[];
+  pricingVat?: string;
+  pricingAddOns?: { label: string; price: string }[];
+};
 
 export const certificationCopyPagesBySlug = Object.fromEntries(
   pages.map((page) => [page.slug, page]),

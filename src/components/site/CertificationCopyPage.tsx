@@ -90,7 +90,6 @@ const industrySlugAliases: [RegExp, string][] = [
   ],
   [/retail|e-commerce|consumer brand|hospitality|marketplace/i, "retail-ecommerce"],
   [/waste|recycl/i, "waste-recycling"],
-  [/laborator|proficiency|test facilit/i, "laboratories-testing"],
   [/public|government|defen|charit|housing/i, "public-sector-government"],
   [
     /professional services|consulting|staffing|marketing|agenc|events|translation|HR & recruitment/i,
@@ -167,6 +166,12 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
   const quoteLabel = /button:\s*([^→]+)→/i.exec(close)?.[1]?.trim() ?? "Get a quote";
   const heroButtons = getHeroButtons(page);
   const schemeLogo = schemeLogos[page.slug];
+  const pricingActionLabel =
+    page.slug === "cyber-essentials-plus"
+      ? "Enquire about Cyber Essentials Plus"
+      : page.slug === "cyber-essentials"
+        ? "Enquire about Cyber Essentials"
+        : quoteLabel;
   const processHeading = processBlock?.heading ?? "";
   const isEngagement = /assessment|engagement/i.test(processHeading);
   const processStepsToShow = isEngagement ? engagementSteps : certificationSteps;
@@ -461,27 +466,89 @@ export function CertificationCopyPage({ page }: { page: CertificationCopy }) {
       </section>
 
       {pricing.length > 0 ? (
-        <section className="bg-muted/40 py-10 md:py-12">
+        <section className="bg-muted/40 py-10 md:py-14">
           <div className="container-page">
-            <h2 id="pricing" className="scroll-mt-28 text-xl font-bold text-indigo-dark">
-              Pricing
+            <h2 id="pricing" className="scroll-mt-28 text-2xl font-extrabold text-indigo-dark">
+              Straightforward pricing
             </h2>
-            <div className="mt-4 flex flex-col gap-5 border-y border-border py-5 md:flex-row md:items-center md:justify-between">
-              <div className="max-w-3xl space-y-3">
-                {pricing.map((paragraph) => (
-                  <p key={paragraph} className="text-sm leading-6 text-muted-foreground">
-                    {paragraph}
-                  </p>
-                ))}
+            {page.pricingTiers ? (
+              <>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Fixed organisation-size fees{" "}
+                  <span className="font-bold text-indigo-brand">{page.pricingVat}</span>
+                </p>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {page.pricingTiers.map((tier) => (
+                    <article
+                      key={tier.label}
+                      className="rounded-xl border-2 border-indigo-brand/10 bg-white p-5 shadow-sm"
+                    >
+                      <p className="text-xs font-extrabold tracking-[0.12em] text-honey-text uppercase">
+                        {tier.label}
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">{tier.employees}</p>
+                      <p className="mt-4 text-3xl font-extrabold text-indigo-brand">{tier.price}</p>
+                      <p className="mt-1 text-xs font-semibold text-muted-foreground">
+                        {page.pricingVat}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+                {page.pricingAddOns?.length ? (
+                  <div className="mt-6 rounded-xl border border-border bg-white p-5">
+                    <h3 className="text-sm font-bold text-indigo-brand">Optional CE+ add-ons</h3>
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                      {page.pricingAddOns.map((addOn) => (
+                        <div
+                          key={addOn.label}
+                          className="flex items-center justify-between gap-4 rounded-lg bg-muted/40 px-4 py-3"
+                        >
+                          <span className="text-sm font-semibold text-foreground">
+                            {addOn.label}
+                          </span>
+                          <span className="text-sm font-bold text-indigo-brand">
+                            {addOn.price} <span className="font-normal">ex VAT</span>
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+                <div className="mt-6 flex flex-col gap-4 rounded-xl bg-indigo-brand p-5 text-white sm:flex-row sm:items-center sm:justify-between">
+                  <div className="max-w-3xl space-y-2">
+                    {pricing.map((paragraph) => (
+                      <p key={paragraph} className="text-sm leading-6 text-white/90">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                  <a
+                    href={enquiryUrl}
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-honey px-5 py-3 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover"
+                  >
+                    {pricingActionLabel}
+                    <ArrowRight className="size-4" aria-hidden="true" />
+                  </a>
+                </div>
+              </>
+            ) : (
+              <div className="mt-4 flex flex-col gap-5 border-y border-border py-5 md:flex-row md:items-center md:justify-between">
+                <div className="max-w-3xl space-y-3">
+                  {pricing.map((paragraph) => (
+                    <p key={paragraph} className="text-sm leading-6 text-muted-foreground">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <a
+                  href={enquiryUrl}
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-honey px-5 py-3 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover"
+                >
+                  {quoteLabel}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </a>
               </div>
-              <a
-                href={enquiryUrl}
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-honey px-5 py-3 text-sm font-bold text-indigo-brand transition-colors hover:bg-honey-hover"
-              >
-                {quoteLabel}
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </a>
-            </div>
+            )}
           </div>
         </section>
       ) : null}

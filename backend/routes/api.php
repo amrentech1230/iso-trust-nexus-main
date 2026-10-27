@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\CareerApplicationController;
 use App\Http\Controllers\Api\EnrollmentController;
 use App\Http\Controllers\Api\PayPalController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 // Public course catalogue (prices, metadata) used to render the buy buttons.
 Route::get('/courses', [CourseController::class, 'index']);
 Route::get('/courses/{course:slug}', [CourseController::class, 'show']);
+Route::post('/career-applications', [CareerApplicationController::class, 'store'])
+    ->middleware('throttle:5,1');
 
 // PayPal payment flow. The client never sees the PayPal secret; it only
 // exchanges opaque order IDs with these endpoints.

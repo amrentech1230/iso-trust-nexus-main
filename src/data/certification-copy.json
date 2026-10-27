@@ -2071,6 +2071,13 @@
     {
         "title":  "Cyber Essentials Certification",
         "slug":  "cyber-essentials",
+        "pricingTiers": [
+            {"label": "Micro", "employees": "0–9 employees", "price": "£320"},
+            {"label": "Small", "employees": "10–49 employees", "price": "£440"},
+            {"label": "Medium", "employees": "50–249 employees", "price": "£500"},
+            {"label": "Large", "employees": "250+ employees", "price": "£600"}
+        ],
+        "pricingVat": "Plus VAT",
         "blocks":  [
                        {
                            "paragraphs":  [
@@ -2139,7 +2146,7 @@
                        },
                        {
                            "paragraphs":  [
-                                              "Fixed fees by organisation size, plus VAT: micro (0–9 employees) £320, small (10–49) £440, medium (50–249) £500, large (250+) £600. The fee covers assessor review, written feedback and one resubmission. Send your details and a sector specialist replies within one working day with a fixed quotation for the whole cycle."
+                                              "The fee covers assessor review, written feedback and one resubmission. Confirm your organisation size band and scope with our team before starting."
                                           ],
                            "heading":  "8 · Pricing"
                        },
@@ -2170,6 +2177,17 @@
     {
         "title":  "Cyber Essentials Plus Certification",
         "slug":  "cyber-essentials-plus",
+        "pricingTiers": [
+            {"label": "Micro", "employees": "0–9 employees", "price": "£1,499"},
+            {"label": "Small", "employees": "10–49 employees", "price": "£1,999"},
+            {"label": "Medium", "employees": "50–249 employees", "price": "£2,499"},
+            {"label": "Large", "employees": "250+ employees", "price": "£2,999"}
+        ],
+        "pricingVat": "Excluding VAT",
+        "pricingAddOns": [
+            {"label": "Extra Help", "price": "+ £1,200"},
+            {"label": "Fast Track", "price": "+ £800"}
+        ],
         "blocks":  [
                        {
                            "paragraphs":  [
@@ -2238,7 +2256,7 @@
                        },
                        {
                            "paragraphs":  [
-                                              "Fixed price excluding VAT by organisation size: micro £1,499, small £1,999, medium £2,499, large £2,999. Each includes the audit, findings report, 30-day fix window and one free re-scan. Extra Help adds £1,200; Fast Track adds £800. Send your details and a sector specialist replies within one working day with a fixed quotation."
+                                              "Each size-band fee includes the audit, findings report, 30-day fix window and one free re-scan. Extra Help and Fast Track are optional. Confirm your organisation size band and audit scope with our team before booking."
                                           ],
                            "heading":  "8 · Pricing"
                        },

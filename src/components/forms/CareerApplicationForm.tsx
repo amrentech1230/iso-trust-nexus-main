@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { captureSource, submitEnquiry } from "@/lib/crm/bigin";
+import { captureSource, submitCareerApplication } from "@/lib/crm/bigin";
 
 type Qualification = { id: number; year: string; title: string };
 type Errors = Partial<Record<string, string>>;
@@ -17,6 +17,8 @@ export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: st
   ]);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Errors>({});
+  const [formError, setFormError] = useState("");
+  const [reference, setReference] = useState("");
 
   const addQualification = () => {
     setQualifications((current) => [...current, { id: Date.now(), year: "", title: "" }]);
@@ -59,40 +61,23 @@ export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: st
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
       setStatus("error");
+      setFormError("Please complete the highlighted fields.");
       return;
     }
 
     setStatus("loading");
-    const qualificationSummary = qualifications
-      .filter((item) => item.year || item.title)
-      .map((item) => `${item.year || "Year not given"}: ${item.title || "Qualification"}`)
-      .join("; ");
-    const resume = data.get("resume");
-    const resumeName = resume instanceof File ? resume.name : "Not supplied";
-    const message = [
-      String(data.get("message") ?? ""),
-      `Location: ${String(data.get("location"))}`,
-      `Country: ${String(data.get("country"))}`,
-      `Experience: ${String(data.get("experience"))} years`,
-      `Qualifications: ${qualificationSummary || "Not supplied"}`,
-      `Resume selected: ${resumeName}`,
-    ].join("\n");
+    setFormError("");
+    data.set("source", JSON.stringify(captureSource()));
+    const result = await submitCareerApplication(data);
 
-    const result = await submitEnquiry({
-      firstName: String(data.get("name")),
-      lastName: "Career applicant",
-      email,
-      phone: String(data.get("mobile")),
-      company: "Career application",
-      country: String(data.get("country")),
-      service: `Career: ${String(data.get("designation"))}`,
-      message,
-      consent: true,
-      source: captureSource(),
-    });
-
-    setStatus(result.ok ? "success" : "error");
-    if (result.ok) form.reset();
+    if (result.ok) {
+      setReference(result.reference);
+      setStatus("success");
+      form.reset();
+    } else {
+      setFormError(result.error);
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
@@ -102,7 +87,7 @@ export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: st
         <h2 className="mt-4 text-xl font-bold text-indigo-brand">Application received</h2>
         <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
           Thank you for your interest in TRAIBCERT. Our team will review your details and contact
-          you if a suitable opportunity is available.
+          you if a suitable opportunity is available. Reference: {reference}.
         </p>
       </div>
     );
@@ -120,13 +105,13 @@ export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: st
       noValidate
       className="border border-border bg-muted/30 p-5 md:p-8"
     >
-      {status === "error" && Object.keys(errors).length > 0 ? (
+      {status === "error" ? (
         <div
           role="alert"
           className="mb-6 flex items-center gap-2 border border-destructive/30 bg-background p-3 text-sm text-destructive"
         >
           <AlertCircle className="size-4 shrink-0" aria-hidden="true" />
-          Please complete the highlighted fields.
+          {formError}
         </div>
       ) : null}
 
@@ -248,6 +233,7 @@ export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: st
                 <Label htmlFor={`year-${qualification.id}`}>Year attained</Label>
                 <Input
                   id={`year-${qualification.id}`}
+                  name="qualification_year[]"
                   value={qualification.year}
                   onChange={(event) =>
                     updateQualification(qualification.id, "year", event.target.value)
@@ -260,6 +246,7 @@ export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: st
                 <Label htmlFor={`title-${qualification.id}`}>Title</Label>
                 <Input
                   id={`title-${qualification.id}`}
+                  name="qualification_title[]"
                   value={qualification.title}
                   onChange={(event) =>
                     updateQualification(qualification.id, "title", event.target.value)
@@ -272,6 +259,7 @@ export function CareerApplicationForm({ selectedRole = "" }: { selectedRole?: st
                 <Label htmlFor={`certificate-${qualification.id}`}>Certificate file</Label>
                 <Input
                   id={`certificate-${qualification.id}`}
+                  name="qualification_files[]"
                   type="file"
                   accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
                   className={`${fieldClass} cursor-pointer file:mr-3`}
