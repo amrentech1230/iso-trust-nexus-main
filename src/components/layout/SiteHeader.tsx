@@ -139,12 +139,6 @@ const industries: MegaLink[] = [
     to: "/resources/industries/waste-recycling",
   },
   {
-    title: "Laboratories & Proficiency Testing",
-    desc: "Competence, impartiality and confidence in test results",
-    icon: "fa-flask",
-    to: "/resources/industries/laboratories-testing",
-  },
-  {
     title: "General / Other Industries",
     desc: "Custom solutions for diverse sectors",
     icon: "fa-layer-group",
@@ -274,6 +268,18 @@ certLinks.push({
   to: "/certification/iso-55001",
   tag: undefined,
 });
+certLinks.push(
+  {
+    label: "ISO/IEC 27017 & 27018 Cloud controls",
+    to: "/certification/iso-27017-27018",
+    tag: undefined,
+  },
+  {
+    label: "ISO/IEC 27701:2025 Privacy management",
+    to: "/certification/iso-27701",
+    tag: undefined,
+  },
+);
 
 // Training courses grouped into the three design columns.
 const classroomCourses = courses;

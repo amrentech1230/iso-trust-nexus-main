@@ -69,6 +69,16 @@ export const primaryNav: PrimaryNavItem[] = [
               href: "/certification/iasme-cyber-assurance",
               note: "UK cyber governance assurance",
             },
+            {
+              label: "ISO/IEC 27017 & 27018",
+              href: "/certification/iso-27017-27018",
+              note: "Cloud security & privacy controls",
+            },
+            {
+              label: "ISO/IEC 27701:2025",
+              href: "/certification/iso-27701",
+              note: "Privacy information management",
+            },
           ],
         },
         {

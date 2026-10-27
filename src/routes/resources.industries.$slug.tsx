@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
 import { AppLink } from "@/components/AppLink";
 import { CTASection } from "@/components/site/CTASection";
@@ -14,6 +14,9 @@ import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/resources/industries/$slug")({
   loader: ({ params }) => {
+    if (params.slug === "laboratories-testing") {
+      throw redirect({ to: "/resources/industries", statusCode: 301 });
+    }
     const industry = industries.find((item) => item.slug === params.slug);
     if (!industry) throw notFound();
     return { industry };
